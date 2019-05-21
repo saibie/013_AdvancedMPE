@@ -70,13 +70,6 @@ Sophie Hautphenne, Guy Latouche, and Marie-Ange Remiche.
   binary tree.
 \newblock {\em Linear Algebra Appl.}, 428:2791--2804, 2008.
 
-\bibitem{C.He2004}
-Charlie He, Beatrice Meini, Noah~H. Rhee, and Khosrow Sohraby.
-\newblock A quadratically convergent {Bernoulli}-like algorithm for solving
-  matrix polynomial equations in markov chains.
-\newblock {\em Electronic transactions on numerical analysis}, 17:151--167,
-  2004.
-
 \bibitem{He2001}
 Qi-Ming He and Marcel~F. Neuts.
 \newblock On the convergence and limits of certain matrix sequences arising in
@@ -94,21 +87,10 @@ Nicholas~J. Higham and Hyun-Min Kim.
   line searches.
 \newblock {\em SIAM J. Matrix Anal. Appl.}, 23:303--316, 2001.
 
-\bibitem{Horn1985}
-Roger~A. Horn and Charles~R. Johnson.
-\newblock {\em Matrix Analysis}.
-\newblock Cambridge University Press, 1985.
-
 \bibitem{roger91}
 Roger~A. Horn and Charles~R. Johnson.
 \newblock {\em Topics in Matrix Analysis}.
 \newblock Cambridge University Press, 2nd edition, 1995.
-
-\bibitem{Kelley1986}
-C.~T. Kelley.
-\newblock A shamanskii-like acceleration scheme for nonlinear equations at
-  singular roots.
-\newblock {\em Math. Comp.}, 47(176):609--623, 1986.
 
 \bibitem{Kim2008}
 Hyun-Min Kim.
@@ -131,13 +113,6 @@ Guy Latouche and Vaidyanathan Ramaswami.
 \newblock {\em Introduction to Matrix Analytic Methods in Stochastic Modeling}.
 \newblock ASA-SIAM, 1999.
 
-\bibitem{Meng2017}
-Jie Meng, Sang-hyup Seo, and Hyun-min Kim.
-\newblock Condition numbers and backward error of a matrix polynomial equation
-  arising in stochastic models.
-\newblock {\em J. Sci. Comput.}, January 2018.
-\newblock First Online : \url{https://doi.org/10.1007/s10915-018-0641-x}.
-
 \bibitem{Poole1974}
 George Poole and Thomas Boullion.
 \newblock A survey on {$M$}-matrices.
@@ -154,10 +129,5 @@ Sang-Hyup Seo, Jong-Hyun Seo, and Hyun-Min Kim.
 \newblock {N}ewton's method for solving a quadratic matrix equation with
   special coefficient matrices.
 \newblock {\em Honam Math. J.}, 35(3):417--433, 2013.
-
-\bibitem{strang2006linear}
-Gilbert Strang.
-\newblock {\em Linear Algebra and Its Applications}.
-\newblock Thomson, Brooks/Cole, 4th edition, 2006.
 
 \end{thebibliography}

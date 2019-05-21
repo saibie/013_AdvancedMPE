@@ -111,8 +111,8 @@
 \begin{document}
 
 
-\title[Convergence of a modified Newton method for an MPE]
-{Convergence of a modified Newton method for a matrix polynomial equation arising in stochastic problem}
+\title%[Convergence of a modified Newton method for an MPE]
+{Analysis of Newton method for a matrix polynomial equation}
 
 
 \begin{abstract}
@@ -188,7 +188,7 @@ if the minimal nonnegative solution is non-simple.
 	\begin{enumerate}[1)]
 		\item The coefficient matrices $A_{k}$'s are nonnegative except $A_{1}$.
 		\item $-A_{1}$ is a nonsingular $M$-matrix.
-		\item $A_{0}$, $A_{1}$, and $\sum_{k=2}^{n}A_{k}$ are irreducible.
+		\item $\sum_{k=0}^{n}A_{k}$ are irreducible.
 	\end{enumerate}
 \end{assumption}
 
@@ -276,7 +276,7 @@ if, for any positive solution $S$ of $P(X)$,
 S_{1}\leq S\leq S_{2}.\end{equation}
 
 Similarly, if nonnegative solutions $S_{1}$ and $S_{2}$ satisfy \eqref{eq:s1ss2} for any nonnegative solution $S$,
-$S_{1}$ is called the \textit{elementwise minimal nonnegative solution} and $S_{2}$ is called the \textit{elementwise maximal nonnegative solution}.
+then $S_{1}$ is called the \textit{elementwise minimal nonnegative solution} and $S_{2}$ is called the \textit{elementwise maximal nonnegative solution}.
 \end{defn}
 
 
@@ -322,13 +322,13 @@ that is, $\vec(AXB) = (B^{T} \otimes A)\vec(X)$.
 
 
 
-To reach our goal, in Section \ref{sec:analysis}, we study the minimal nonnegative solution $S$ of \eqref{eq:MPE}
-and the Fr\'{e}chet derivative of $P$ in \eqref{eq:MPE} at $S$,
-and we show the convergence of the Newton iteration for \eqref{eq:MPE}.
-We give an analysis about Newton's method for the non-simple minimal nonnegative solution $S$, in Section \ref{sec:singular}.
-In Section \ref{sec:modified}, we propose a modified Newton method which is better
-for finding the minimal nonnegative solution $S$.
-Finally, we give some numerical experiments, in Section \ref{sec:experiment}.
+%To reach our goal, in Section \ref{sec:analysis}, we study the minimal nonnegative solution $S$ of \eqref{eq:MPE}
+%and the Fr\'{e}chet derivative of $P$ in \eqref{eq:MPE} at $S$,
+%and we show the convergence of the Newton iteration for \eqref{eq:MPE}.
+%We give an analysis about Newton's method for the non-simple minimal nonnegative solution $S$, in Section \ref{sec:singular}.
+%In Section \ref{sec:modified}, we propose a modified Newton method which is better
+%for finding the minimal nonnegative solution $S$.
+%Finally, we give some numerical experiments, in Section \ref{sec:experiment}.
 
 
 For convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
@@ -336,831 +336,831 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 
 
 
-\section{Convergence of Newton's Method for an MPE}\label{sec:analysis}
-
-In this section, we introduce a sufficient condition of the existence of
-the minimal nonnegative solution of the MPE \eqref{eq:MPE} with Assumption \ref{ass:MPE},
-and give some analysis for Newton's method.
-
-\begin{thm}\label{thm:SuffMPE}
-{\rm \cite[Theorem 2.1]{Meng2017}}
-Let the MPE \eqref{eq:MPE} with 1) and 2) in Assumption \ref{ass:MPE} be given.
-Then, there exists the minimal nonnegative solution if
-\begin{equation}\label{eq:SuffMPE}
-B = -\sum_{k=0}^{n}A_{k}~\textrm{is a nonsingular or singular irreducible $M$-matrix.}
-\end{equation}
-
-\end{thm}
-
-
-%\begin{proof}
-%Let a matrix function
-%\begin{equation}\label{eq:MPEfix}
-%G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right)
-%\end{equation}
-%be given.
-%Consider the sequence $\{X_{i}\}_{i=0}^{\infty}$ defined by
-%\begin{equation}\label{eq:FixedPtEq}
-%X_{i+1} = G(X_{i}),
-%\end{equation}
-%with $X_{0} = 0$.
+%\section{Convergence of Newton's Method for an MPE}\label{sec:analysis}
 %
-%By \cite[Theorem A.16, Theorem A.19]{iannazzo2012}, there exists a vector $v>0$ such that
-%$Bv > 0$ if $B$ is a nonsingular $M$-matrix
-%or $Bv = 0$ if $B$ is a singular irreducible $M$-matrix, i.e.,
-%\begin{equation}
-%\left( -\sum_{k=0}^{n}A_{k} \right) v \geq 0.
-%\end{equation}
-%Since $-A_{1}$ is a nonsingular $M$-matrix, we obtain that
-%\begin{equation}\label{eq:vgeqzero}
-%v \geq -A_{1}^{-1}\left(\sum_{k=2}^{n} A_{k} + A_{0}\right)v \geq 0.
+%In this section, we introduce a sufficient condition of the existence of
+%the minimal nonnegative solution of the MPE \eqref{eq:MPE} with Assumption \ref{ass:MPE},
+%and give some analysis for Newton's method.
+%
+%\begin{thm}\label{thm:SuffMPE}
+%{\rm \cite[Theorem 2.1]{Meng2017}}
+%Let the MPE \eqref{eq:MPE} with 1) and 2) in Assumption \ref{ass:MPE} be given.
+%Then, there exists the minimal nonnegative solution if
+%\begin{equation}\label{eq:SuffMPE}
+%B = -\sum_{k=0}^{n}A_{k}~\textrm{is a nonsingular or singular irreducible $M$-matrix.}
 %\end{equation}
 %
-%
-%We will show that
-%\begin{equation}\label{eq:SufficientInduction}
-%X_{i} \leq X_{i+1} \qquad \textrm{and} \qquad X_{i}v < v,
-%\end{equation}
-%for all $i \in \N_{0}$ using the mathematical induction.
-%
-%Clearly,
-%$$X_{1} = -A_{1}^{-1}A_{0} \geq 0 = X_{0} \qquad \textrm{and} \qquad X_{0}v = 0 < v.$$
-%Hence, \eqref{eq:SufficientInduction} holds for $i = 0$.
-%
-%Suppose that \eqref{eq:SufficientInduction} holds for $i = l$.
-%Then,
-%\begin{equation}
-%X_{l+2} - X_{l+1} = -A_{1}^{-1} \sum_{k=2}^{n}A_{k}(X_{l+1}^{k} - X_{l}^{k}) \geq 0.
-%\end{equation}
-%On the other hand, from \eqref{eq:vgeqzero},
-%$$
-%X_{l+1}v = -A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}X_{l}^{k} + A_{0}\right)v < -A_{1}^{-1}\left(\sum_{k=2}^{n} A_{k} + A_{0}\right)v \leq v.
-%$$
-%So, \eqref{eq:SufficientInduction} holds for $i = l+1$.
-%By the mathematical induction, \eqref{eq:SufficientInduction} holds for all $i \in \N_{0}$,
-%i.e., $\{X_{i}\}$ converges to a nonnegative matrix.
-%
-%Let $\{X_{i}\}$ converge to a nonnegative matrix $S$ and let $Y$ be a nonnegative solution of \eqref{eq:MPE}.
-%$X_{0} \leq Y$, clearly.
-%Suppose that $X_{l} \leq Y$. Then,
-%$$
-%\begin{array}{rl}
-%Y - X_{l+1} & = \dtyl -A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}Y^{k} + A_{0}\right) + A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}X_{l}^{k} + A_{0}\right)\\
-%            & = \dtyl -A_{1}^{-1} \sum_{k=2}^{n} A_{k}(Y^{k} - X_{l}^{k}) \geq 0. \end{array}
-%$$
-%By induction, $X_{i} \leq Y$ for all $i \in \N_{0}$.
-%Therefore, $S \leq Y$ for any nonnegative solution $Y$ of \eqref{eq:MPE},
-%i.e., $S$ is the minimal nonnegative solution of \eqref{eq:MPE}.
-%\end{proof}
-
-
-%\begin{thm}\label{thm:limsupeqrho}
-%Let \eqref{eq:MPE} be given with Assumption \ref{ass:MPE}, and \eqref{eq:SuffMPE},
-%and let $S$ be the minimal nonnegative solution of \eqref{eq:MPE}.
-%Then,
-%\begin{equation}\label{eq:limsupeqrho}
-%\limsup_{i\rightarrow\infty} \sqrt[i]{\|X_{i} - S\|} = \rho(\G'_{S}),
-%\end{equation}
-%where $G'_{X}$ is the Fr\'{e}chet derivative of 
-%\begin{equation}\label{eq:MPEfix}
-%G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right)
-%\end{equation}
-%at $X$ and $\G'_{X} = \vec \circ G'_{X} \circ \vec^{-1}$.
 %\end{thm}
 %
-%\begin{proof}
-%Consider the fixed point iteration generated by
-%\begin{equation}
-%X_{i+1} = G(X_{i}),
-%\end{equation}
-%with $X_{0} = -A_{1}^{-1}A_{0}$.
-%According to \cite[Corollary 2.6]{SeoSeo2016}, we need to show that
-%\begin{enumerate}[i)]
-%\item $\{X_{i}\}$ is monotone nondecreasing and converges to $S$,
-%\item $S - X_{0} > 0$,
-%\item $\G'_{X_{0}}$ is a nonnegative matrix such that $\G'_{X_{0}} \ones{} > 0$,
-%\item $\{ \G'_{X_{i}} \}$ is monotone nondecreasing.
-%\end{enumerate}
-%By Theorem \ref{thm:SuffMPE}, $\{X_{i}\}$ converges to $S$.
-%Since $A_{k}$ is irreducible for all $k \in \N_{0}$, $X_{0} > 0$ and
-%\begin{align*}
-%X_{1} &= G(X_{0}) \\
-%      &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}(-A_{1}^{-1}A_{0})^{k} \right) - A_{1}^{-1}A_{0} \numberthis \\
-%      &> -A_{1}^{-1}A_{0} = X_{0}.
-%\end{align*}
-%Suppose that $X_{i+1} > X_{i}$. Then,
-%\begin{align*}
-%X_{i+2} - X_{i+1} &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}X_{i+1}^{k} + A_{0} - \sum_{k=2}^{n} A_{k}X_{i}^{k} - A_{0} \right) \\
-%                  &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}(X_{i+1}^{k} - X_{i}^{k}) \right) > 0.
-%\end{align*}
-%Hence, i) and ii) hold. %$\{X_{i}\}_{i=0}^{\infty}$ is monotone increasing.
 %
-%By \cite[Lemma 4.3.1]{roger91},
-%\begin{equation}
-%\G'_{X_{0}} = \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{0}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{0}^{l}),
-%\end{equation}
-%and is a positive $m^2 \times m^2$ matrix.
-%Moreover, $\{\G'_{X_{i}}\}$ is monotone nondecreasing from the following inequality,
-%\begin{align*}
-%\G'_{X_{i+1}} &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i+1}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{i+1}^{l}) \\
-%                            &\geq \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{i}^{l})  \numberthis \label{eq:increaseDerivative}\\
-%                   &= \G'_{X_{i}},
-%\end{align*}
-%i.e., iii) and iv) hold.
-%Therefore, the equality \eqref{eq:limsupeqrho} holds.
-%\end{proof}
+%%\begin{proof}
+%%Let a matrix function
+%%\begin{equation}\label{eq:MPEfix}
+%%G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right)
+%%\end{equation}
+%%be given.
+%%Consider the sequence $\{X_{i}\}_{i=0}^{\infty}$ defined by
+%%\begin{equation}\label{eq:FixedPtEq}
+%%X_{i+1} = G(X_{i}),
+%%\end{equation}
+%%with $X_{0} = 0$.
+%%
+%%By \cite[Theorem A.16, Theorem A.19]{iannazzo2012}, there exists a vector $v>0$ such that
+%%$Bv > 0$ if $B$ is a nonsingular $M$-matrix
+%%or $Bv = 0$ if $B$ is a singular irreducible $M$-matrix, i.e.,
+%%\begin{equation}
+%%\left( -\sum_{k=0}^{n}A_{k} \right) v \geq 0.
+%%\end{equation}
+%%Since $-A_{1}$ is a nonsingular $M$-matrix, we obtain that
+%%\begin{equation}\label{eq:vgeqzero}
+%%v \geq -A_{1}^{-1}\left(\sum_{k=2}^{n} A_{k} + A_{0}\right)v \geq 0.
+%%\end{equation}
+%%
+%%
+%%We will show that
+%%\begin{equation}\label{eq:SufficientInduction}
+%%X_{i} \leq X_{i+1} \qquad \textrm{and} \qquad X_{i}v < v,
+%%\end{equation}
+%%for all $i \in \N_{0}$ using the mathematical induction.
+%%
+%%Clearly,
+%%$$X_{1} = -A_{1}^{-1}A_{0} \geq 0 = X_{0} \qquad \textrm{and} \qquad X_{0}v = 0 < v.$$
+%%Hence, \eqref{eq:SufficientInduction} holds for $i = 0$.
+%%
+%%Suppose that \eqref{eq:SufficientInduction} holds for $i = l$.
+%%Then,
+%%\begin{equation}
+%%X_{l+2} - X_{l+1} = -A_{1}^{-1} \sum_{k=2}^{n}A_{k}(X_{l+1}^{k} - X_{l}^{k}) \geq 0.
+%%\end{equation}
+%%On the other hand, from \eqref{eq:vgeqzero},
+%%$$
+%%X_{l+1}v = -A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}X_{l}^{k} + A_{0}\right)v < -A_{1}^{-1}\left(\sum_{k=2}^{n} A_{k} + A_{0}\right)v \leq v.
+%%$$
+%%So, \eqref{eq:SufficientInduction} holds for $i = l+1$.
+%%By the mathematical induction, \eqref{eq:SufficientInduction} holds for all $i \in \N_{0}$,
+%%i.e., $\{X_{i}\}$ converges to a nonnegative matrix.
+%%
+%%Let $\{X_{i}\}$ converge to a nonnegative matrix $S$ and let $Y$ be a nonnegative solution of \eqref{eq:MPE}.
+%%$X_{0} \leq Y$, clearly.
+%%Suppose that $X_{l} \leq Y$. Then,
+%%$$
+%%\begin{array}{rl}
+%%Y - X_{l+1} & = \dtyl -A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}Y^{k} + A_{0}\right) + A_{1}^{-1}\left(\sum_{k=2}^{n}A_{k}X_{l}^{k} + A_{0}\right)\\
+%%            & = \dtyl -A_{1}^{-1} \sum_{k=2}^{n} A_{k}(Y^{k} - X_{l}^{k}) \geq 0. \end{array}
+%%$$
+%%By induction, $X_{i} \leq Y$ for all $i \in \N_{0}$.
+%%Therefore, $S \leq Y$ for any nonnegative solution $Y$ of \eqref{eq:MPE},
+%%i.e., $S$ is the minimal nonnegative solution of \eqref{eq:MPE}.
+%%\end{proof}
 %
-%\section{Convergence of Newton's Method}\label{sec:Newton}
-
-The Fr\'{e}chet derivative of the matrix polynomial equation \eqref{eq:MPE} at $X$ in the direction $H$ is given by
-\begin{equation}\label{eq:DerivativeMPE}
-P'_{X}(H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}.
-\end{equation}
-
-The second Fr\'{e}chet derivative of the quadratic
-matrix equation \eqref{eq:MPE} at $X$ is given by
-\begin{equation}\label{eq:2DerivativeMPE}
-P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right).
-\end{equation}
-
-
-For the equation \eqref{eq:MPE}, each step of the Newton iteration with given $X_{0}$ can be written as
-\begin{equation}\label{eq:NewtonStepMPE2}
-X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i}))
-\end{equation}
-if $P'_{X_{i}}$ is invertible for all $i \in \N_{0}$.
-
-\eqref{eq:NewtonStepMPE2} can be separated into two parts as
-\begin{equation}\label{eq:NewtonStepMPE}
-\begin{cases}
-P'_{X_{i}}(H_{i}) = -P(X_{i}),\\
-X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=1,2,\ldots.
-\end{equation}
-
-The general approach for solving \eqref{eq:NewtonStepMPE}
-is to solve the $m^{2}\times m^{2}$ linear system derived by Lemma \ref{lem:AXBC} such as
-$$
-\P'_{X_{i}}\vec(H_{i}) = \vec(-P(X_{i})),
-$$
-where
-\begin{equation}\label{eq:MderivativeQME}
-\P'_{X} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l}.
-\end{equation}
-
-%Clearly from Definition \ref{def:Mmat}, if $-A_{1}$ is an $M$-matrix, then so is $-I_{m} \otimes A_{1}$.
-
-
-
-
+%
+%%\begin{thm}\label{thm:limsupeqrho}
+%%Let \eqref{eq:MPE} be given with Assumption \ref{ass:MPE}, and \eqref{eq:SuffMPE},
+%%and let $S$ be the minimal nonnegative solution of \eqref{eq:MPE}.
+%%Then,
+%%\begin{equation}\label{eq:limsupeqrho}
+%%\limsup_{i\rightarrow\infty} \sqrt[i]{\|X_{i} - S\|} = \rho(\G'_{S}),
+%%\end{equation}
+%%where $G'_{X}$ is the Fr\'{e}chet derivative of 
+%%\begin{equation}\label{eq:MPEfix}
+%%G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right)
+%%\end{equation}
+%%at $X$ and $\G'_{X} = \vec \circ G'_{X} \circ \vec^{-1}$.
+%%\end{thm}
+%%
+%%\begin{proof}
+%%Consider the fixed point iteration generated by
+%%\begin{equation}
+%%X_{i+1} = G(X_{i}),
+%%\end{equation}
+%%with $X_{0} = -A_{1}^{-1}A_{0}$.
+%%According to \cite[Corollary 2.6]{SeoSeo2016}, we need to show that
+%%\begin{enumerate}[i)]
+%%\item $\{X_{i}\}$ is monotone nondecreasing and converges to $S$,
+%%\item $S - X_{0} > 0$,
+%%\item $\G'_{X_{0}}$ is a nonnegative matrix such that $\G'_{X_{0}} \ones{} > 0$,
+%%\item $\{ \G'_{X_{i}} \}$ is monotone nondecreasing.
+%%\end{enumerate}
+%%By Theorem \ref{thm:SuffMPE}, $\{X_{i}\}$ converges to $S$.
+%%Since $A_{k}$ is irreducible for all $k \in \N_{0}$, $X_{0} > 0$ and
+%%\begin{align*}
+%%X_{1} &= G(X_{0}) \\
+%%      &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}(-A_{1}^{-1}A_{0})^{k} \right) - A_{1}^{-1}A_{0} \numberthis \\
+%%      &> -A_{1}^{-1}A_{0} = X_{0}.
+%%\end{align*}
+%%Suppose that $X_{i+1} > X_{i}$. Then,
+%%\begin{align*}
+%%X_{i+2} - X_{i+1} &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}X_{i+1}^{k} + A_{0} - \sum_{k=2}^{n} A_{k}X_{i}^{k} - A_{0} \right) \\
+%%                  &= -A_{1}^{-1}\left( \sum_{k=2}^{n} A_{k}(X_{i+1}^{k} - X_{i}^{k}) \right) > 0.
+%%\end{align*}
+%%Hence, i) and ii) hold. %$\{X_{i}\}_{i=0}^{\infty}$ is monotone increasing.
+%%
+%%By \cite[Lemma 4.3.1]{roger91},
+%%\begin{equation}
+%%\G'_{X_{0}} = \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{0}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{0}^{l}),
+%%\end{equation}
+%%and is a positive $m^2 \times m^2$ matrix.
+%%Moreover, $\{\G'_{X_{i}}\}$ is monotone nondecreasing from the following inequality,
+%%\begin{align*}
+%%\G'_{X_{i+1}} &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i+1}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{i+1}^{l}) \\
+%%                            &\geq \sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}X_{i}^{l})  \numberthis \label{eq:increaseDerivative}\\
+%%                   &= \G'_{X_{i}},
+%%\end{align*}
+%%i.e., iii) and iv) hold.
+%%Therefore, the equality \eqref{eq:limsupeqrho} holds.
+%%\end{proof}
+%%
+%%\section{Convergence of Newton's Method}\label{sec:Newton}
+%
+%The Fr\'{e}chet derivative of the matrix polynomial equation \eqref{eq:MPE} at $X$ in the direction $H$ is given by
+%\begin{equation}\label{eq:DerivativeMPE}
+%P'_{X}(H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}.
+%\end{equation}
+%
+%The second Fr\'{e}chet derivative of the quadratic
+%matrix equation \eqref{eq:MPE} at $X$ is given by
+%\begin{equation}\label{eq:2DerivativeMPE}
+%P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right).
+%\end{equation}
+%
+%
+%For the equation \eqref{eq:MPE}, each step of the Newton iteration with given $X_{0}$ can be written as
+%\begin{equation}\label{eq:NewtonStepMPE2}
+%X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i}))
+%\end{equation}
+%if $P'_{X_{i}}$ is invertible for all $i \in \N_{0}$.
+%
+%\eqref{eq:NewtonStepMPE2} can be separated into two parts as
+%\begin{equation}\label{eq:NewtonStepMPE}
+%\begin{cases}
+%P'_{X_{i}}(H_{i}) = -P(X_{i}),\\
+%X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=1,2,\ldots.
+%\end{equation}
+%
+%The general approach for solving \eqref{eq:NewtonStepMPE}
+%is to solve the $m^{2}\times m^{2}$ linear system derived by Lemma \ref{lem:AXBC} such as
+%$$
+%\P'_{X_{i}}\vec(H_{i}) = \vec(-P(X_{i})),
+%$$
+%where
+%\begin{equation}\label{eq:MderivativeQME}
+%\P'_{X} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l}.
+%\end{equation}
+%
+%%Clearly from Definition \ref{def:Mmat}, if $-A_{1}$ is an $M$-matrix, then so is $-I_{m} \otimes A_{1}$.
+%
+%
+%
+%
+%%\begin{thm}\label{thm:ConvergenceNewtonMPE}
+%%Let the MPE \eqref{eq:MPE} with i) and ii) in Assumption \ref{ass:MPE} satisfy \eqref{eq:SuffMPE}.
+%%If $-\mathcal{P}'_{S}$ is an $M$-matrix,
+%%then for the Newton iteration \eqref{eq:NewtonStepMPE} with $X_{0}=0$,
+%%the sequence $\{X_{i}\}$ is well defined, is monotone nondecreasing, and converges $S$
+%%where $S$ is the elementwise nonnegative solution of \eqref{eq:MPE}.
+%%Furthermore, $-\mathcal{P}'_{X_{i}}$ is a nonsingular $M$-matrix for each $i \in \N_{0}$.
+%%\end{thm}
+%%
+%%\begin{proof}
+%%\cite{SeoSeo2016}
+%%\end{proof}
+%
+%
+%
+%
 %\begin{thm}\label{thm:ConvergenceNewtonMPE}
-%Let the MPE \eqref{eq:MPE} with i) and ii) in Assumption \ref{ass:MPE} satisfy \eqref{eq:SuffMPE}.
-%If $-\mathcal{P}'_{S}$ is an $M$-matrix,
-%then for the Newton iteration \eqref{eq:NewtonStepMPE} with $X_{0}=0$,
-%the sequence $\{X_{i}\}$ is well defined, is monotone nondecreasing, and converges $S$
-%where $S$ is the elementwise nonnegative solution of \eqref{eq:MPE}.
-%Furthermore, $-\mathcal{P}'_{X_{i}}$ is a nonsingular $M$-matrix for each $i \in \N_{0}$.
+%Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
+%Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
+%and converges to the elementwise minimal positive solution $S$.
+%Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \N$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
+%\end{thm}
+%
+%
+%\begin{proof}
+%%From \cite[Theorem 3.8]{SeoSeo2016}, it is sufficient to show that
+%%\begin{enumerate}[i)]
+%%\item there exist $X_{1}, Y_{0} \in \R^{\mbym}$ such that $X_{1} < Y_{0}$ and $P(X_{1}) > 0 \geq P(Y_{0})$;
+%%\item $Y < Z$ implies that $\P'_{Z} - \P'_{Y}$ is nonnegative and irreducible for all $Y, Z \in [X_{1}, Y_{0}] := \{X| X_{1} \leq X \leq Y_{0}\}$;
+%%\item $-\P'_{X_{1}}$ is a $Z$-matrix;
+%%\item $-\P'_{Y_{0}}$ is an $M$-matrix.
+%%\end{enumerate}
+%%
+%%From \cite[Theorem 2.10]{SeoSeoKim2013}, $-A_{1}^{-1}$ is positive. Then, $X_{1} = -A_{1}^{-1}A_{0}$ is positive.
+%%Since $A_{k}$'s are irreducible,
+%%\begin{align*}
+%%P(X_{1})    & = A_{n}X_{1}^{n} + \ldots + A_{1}X_{1} + A_{0} \\
+%%            & = A_{n}X_{1}^{n} + \ldots + A_{2}X_{1}^{2} + A_{1}(-A_{1}^{-1}A_{0}) + A_{0} \\
+%%            & = A_{n}X_{1}^{n} + \ldots + A_{2}X_{1}^{2}
+%%\end{align*}
+%%is also positive.
+%%By Theorem \ref{thm:SuffMPE}, there exists the minimal nonnegative solution $S$ of \eqref{eq:MPE}.
+%%Moreover, we obtain that $S$ is positive and $X_{1} < S$ from the proof of Theorem \ref{thm:limsupeqrho}.
+%%If we put $Y_{0} = S$, then i) holds.
+%%
+%%Suppose that $Y, Z \in [X_{1}, S]$ and $Y < Z$.
+%%Then,
+%%\begin{align*}
+%%\P'_{Z} - \P'_{Y} &= \sum_{k=1}^{n} \sum_{l=0}^{k-1} \left[ (Z^{k-l-1})^{T} \otimes A_{k}Z^{l} - (Y^{k-l-1})^{T} \otimes A_{k}Y^{l} \right] \\
+%%                &\geq \sum_{k=1}^{n} \sum_{l=0}^{k-1} \left[ (Y^{k-l-1})^{T} \otimes A_{k}Z^{l} - (Y^{k-l-1})^{T} \otimes A_{k}Y^{l} \right] \\
+%%                &= \sum_{k=1}^{n} \sum_{l=0}^{k-1} (Y^{k-l-1})^{T} \otimes A_{k}\left( Z^{l} - Y^{l} \right) \\
+%%                &= \sum_{k=2}^{n} \sum_{l=1}^{k-1} (Y^{k-l-1})^{T} \otimes A_{k}\left( Z^{l} - Y^{l} \right).
+%%\end{align*}
+%%Since $Y$, $Z^{l} - Y^{l}$ are positive for $l \geq 1$, and $A_{k}$'s are nonnegative irreducible for $k \geq 2$,
+%%we obtain that $\P'_{Z} - \P'_{Y} > 0$.
+%%Hence, ii) holds.
+%%
+%%From the following equality
+%%\begin{align*}
+%%-\P'_{X_{1}} & = -\sum_{k=1}^{n}\sum_{l=0}^{k-1}(X_{1}^{k-l-1})^{T} \otimes A_{k}X^{l} \\
+%%            & = -\sum_{k=2}^{n}\sum_{l=0}^{k-1}(X_{1}^{k-l-1})^{T} \otimes A_{k}X^{l} + I_{m} \otimes (-A_{1}),
+%%\end{align*}
+%%all of off-diagonal entries of $-\P'_{X_{1}}$ are nonpositive, i.e., $-\P'_{X_{1}}$ is a $Z$-matrix.
+%%
+%%To prove iv), consider the matrix function $G$ defined in \eqref{eq:MPEfix}.
+%%Since the convergence rates of any fixed point iterations are at most 1,
+%%$\rho(\G'_{S}) \leq 1$ by Theorem \ref{thm:limsupeqrho}.
+%%From Lemma \ref{lem:MtimesM} and the following equality,
+%%\begin{align*}
+%%(I_{m} \otimes -A_{1})(I_{m^{2}} - \G'_{S}) & = (I_{m} \otimes -A_{1})\left(I_{m^{2}} - \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}S^{l})\right)\\
+%%                                            & = (I_{m} \otimes -A_{1}) - \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l} \\
+%%                                            & = - \sum_{k=1}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l} \\
+%%                                            & = -\P'_{S},
+%%\end{align*}
+%%$-\P'_{S}$ is an $M$-matrix.
+%%Therefore, the Newton sequence $\{X_{i}\}$ increases monotonically and converges to the minimal positive solution $S$.
+%
+%According to the proof of \cite[Theorem 2.1]{Meng2017},
+%the elementwise minimal nonnegative solution $S$ of \eqref{eq:MPE} is the limit of the monotone nondecreasing sequence $\{X_{i}^{G}\}_{i=0}^{\infty}$
+%which is defined by
+%\begin{equation*}
+%\begin{cases} X_{i+1}^{G} = G(X_{i}^{G}),\\~\\X_{0}^{G} = 0,\end{cases}
+%\end{equation*}
+%where
+%\begin{equation*}\label{eq:MPEfix}
+%G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right).
+%\end{equation*}
+%
+%Since $X_{1}^{G} = -A_{1}^{-1}A_{0} > 0$, the solution $S$ is also positive.
+%Thus, $S \in \{Y \in \R^{\mbym} | Y>0,~~ F(Y) \leq 0\}$.
+%From \cite[Theorem 2.9]{SeoKim2014}, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well-defined, monotone nondecreasing,
+%and converges to the elementwise minimal positive solution $S$.
+%Moreover, 
+%\begin{equation*}
+%-\P'_{X_{i}} = -\sum_{k=1}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
+%\end{equation*}
+%is a nonsingular $M$-matrix for each $i \in \N_{0}$.
+%
+%Now, it is sufficient to show that $-\P'_{X_{i}}$ is irreducible for $i \in \N$.
+%Since $X_{1} = -A_{1}^{-1}A_{0} > 0$ and $A_{p} \geq 0$ for all $p \geq 2$,
+%\begin{equation*}
+%\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
+%\geq \sum_{k=2}^{n} (X_{i}^{k-1})^{T} \otimes A_{k} \geq 0.
+%\end{equation*}
+%From that $X_{i} > 0$, we obtain that $\sum_{k=2}^{n} (X_{i}^{k-1})^{T} \otimes A_{k}$ is irreducible
+%if and only if $\sum_{k=2}^{n} \ones{\mbym} \otimes A_{k} = \ones{\mbym} \otimes \left(\sum_{k=2}^{n}A_{k}\right)$ is irreducible.
+%Since $\sum_{k=2}^{n}A_{k}$ is irreducible,
+%\begin{equation*}
+%\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
+%\end{equation*}
+%is a irreducible nonnegative matrix.
+%Therefore,
+%\begin{equation*}
+%-\P'_{X_{i}} = -I_{m} \otimes A_{1} -\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
+%\end{equation*}
+%is also irreducible.
+%
+%\end{proof}
+%
+%
+%The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
+%and the well known local quadratic convergence of Newton's method.
+%
+%\begin{thm}\label{thm:ConvRateQuadratic}%{\rm (cf.\cite[Theorem 4.1.9]{kim00})}
+%If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
+%is nonsingular, then for $X_{0}=0$, the Newton sequence
+%$\{X_{i}\}$ converges to $S$, quadratically.
+%\end{thm}
+%
+%
+%%\begin{proof}
+%%Let $\delta \in (0,1]$ be given sufficiently small.
+%%By the hypothesis, the Fr$\mathrm{\acute{e}}$chet derivative $P'_{S}$ is an invertible map.
+%%So,
+%%\begin{equation}
+%%c_{0} = \inf\{ \|P'_{X}(H)\| : \|H\|=1, \|X - S\| \leq \delta \} > 0.
+%%\end{equation}
+%%Since the sequence $\{\|X_{i} - S\|\}$ is monotone nonincreasing,
+%%it is bounded by $\|S\|$.
+%%Hence, there exists $a_{0} > 0$ such that
+%%\begin{equation}\label{eq:bigOleq}
+%%\left\|O(\|X_{i} - S\|^{2})\right\| \leq a_{0}\|X_{i} - S\|^{2}.
+%%\end{equation}
+%%With \eqref{eq:Taylor} and \eqref{eq:bigOleq}, we obtain the following inequality,
+%%\begin{align*}
+%%\|X_{i+1} - S\| &= \|X_{i} - S - P_{X_{i}}^{\prime -1}(P(X_{i}))\| \\
+%%                &= \|(X_{i} - S) - P_{X_{i}}^{\prime -1}(P(X_{i}) - P(S))\| \\
+%%                &\leq \|P_{X_{i}}^{\prime -1}\| \| P'_{X_{i}}(X_{i} - S) - (P(X_{i}) - P(S)) \| \numberthis \label{eq:QuadConvIneq}\\
+%%                &\leq (1/c_{0})\left\|O(\|X_{i} - S\|^{2})\right\| \\
+%%                &\leq (a_{0}/c_{0})\|X_{i} - S\|^{2}.
+%%\end{align*}
+%%Therefore, the sequence $\{X_{i}\}$ converges to $S$, quadratically.
+%%\end{proof}
+%
+%
+%
+%\section{Analysis for the Singular $M$-matrix $-\P'_S$}\label{sec:singular}
+%According to Theorem \ref{thm:ConvRateQuadratic}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically
+%if $-\P'_{S}$ is nonsingular.
+%In this section, we will see the convergence rate of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is a singular $M$-matrix.
+%%we will see the Newton sequence also converges to the solution but linearly.
+%If $P'_{S}$ is not invertible, then $P'_{S}$ has a null space $\mathcal{N}=\text{Ker}(P'_{S})$
+%and closed range $\mathcal{M}=\text{Im}(P'_{S})$.
+%Suppose that the direct sum $\mathcal{N} \oplus \mathcal{M} = \mathbb{R}^{\mbym}$.
+%Then, we can define $\pjn$ to be the projection onto $\mathcal{N}$
+%parallel to $\mathcal{M}$ and $\pjm=I-\pjn$.
+%For a nonzero matrix $N_{0}\in\mathcal{N}$, define the map $\mathcal{B}_{N_{0}}:\mathcal{N}\rightarrow\mathcal{N}$
+%given by
+%\begin{equation}\label{eq:secondDerivativeProjection}
+%\mathcal{B}_{N_{0}}(N)=\pjn P_{S}^{\prime \prime}(N_{0},N).
+%\end{equation}
+%In fact, $\mathcal{B}_{N_{0}}$ is a linear map.
+%The main result of this section is an application of the following theorem 
+%which shows the local convergence and the convergence rate of Newton's method under some conditions.
+%
+%
+%
+%\begin{thm}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:ApplicationTheorem}
+%Let $\mathcal{B}_{N_{0}}$ in \eqref{eq:secondDerivativeProjection} be invertible for some nonzero $N_{0}\in\mathcal{N}$,
+%$\mathcal{N} = \mathrm{span}\{N_{0}\}\oplus\mathcal{N}_{1}$ for some subspace $\mathcal{N}_{1}$,
+%and let
+%\begin{equation}\label{eq:Wspace}
+%W(\rho, \theta, \eta) =
+%\left\{ X \left|\,\begin{array}{l}0 < \|X - S\| < \rho, \|\pjm(X - S)\| \leq \theta \|\pjn(X - S)\|,\\ 
+%				\|(\pjn-\mathbf{P}_{0})(X - S)\| \leq \eta \|\pjn(X - S)\|\end{array}\right.\right\},
+%\end{equation}
+%where $\mathbf{P}_{0}$ is the projection onto $\mathrm{span}\{N_{0}\}$
+%parallel to $\mathcal{N}_{1}\oplus\mathcal{M}$. If $X_{0}\in W(\rho_{0},\theta_{0},\eta_{0})$
+%for $\rho_{0},\theta_{0},\eta_{0}$ sufficiently small, then the Newton
+%sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|X_{i} - S\|^{-1}$
+%for all $i\geq1$ and some constant $c>0$. Moreover,
+%$$
+%\lim_{i \rightarrow \infty}\frac{\|X_{i+1} - S\|}{\|X_{i} - S\|} = \frac{1}{2},
+%\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(X_{i} - S)\|}{\|\pjn(X_{i} - S)\|^{2}}=0.
+%$$
+%\end{thm}
+%
+%
+%To analyze convergence of Newton's method when $-\mathcal{P}'_{S}$ is singular,
+%we will show that \eqref{eq:MPE} satisfies the conditions of Theorem \ref{thm:ApplicationTheorem}.
+%From this point, for convenience, we let $\tXi = X_{i} - S$.
+%%Before proving the following lemma, we use $\text{unvec}$ operator from $\mathbb{R}^{n^{2}}$ onto $\R^{\nbyn}$
+%%which is the inverse of the vec operator.
+%
+%
+%
+%
+%\begin{lemma}\label{lem:BisInvertible}
+%Suppose the matrix polynomial equation \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE}.
+%If the matrix $-\mathcal{P}'_{S}$ is a singular $M$-matrix,
+%then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\mathcal{N}\oplus\mathcal{M}=\mathbb{R}^{m \times m}$,
+%$\mathcal{N}$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
+%for some nonzero $N_{0}\in\mathcal{N}$.
+%\end{lemma}
+%
+%
+%\begin{proof}
+%%From \eqref{eq:Mderivative2}, $-\mathcal{D}_{S}=rI_{n^2}-\mathbf{N}(S)$
+%%where $\mathbf{N}(S)=I_{n}\otimes T_{0}+S^{T}\otimes A+I_{n}\otimes AS$.
+%Since $S$ is positive and $A_{k}$'s are irreducible, $-\P'_{S}$ is irreducible.
+%%Hence, $\mathbf{N}(S)$ is also irreducible.
+%Then, by Perron-Frobenius Theorem \cite[Theorem 8.4.4]{Horn1985},
+%$0$ is a simple eigenvalue of $\P'_{S}$ with a positive eigenvector. Thus, we can find $n^{2}$ linearly independent
+%vectors $\chi_{1},\chi_{2},\cdots \chi_{n^{2}}$ such that $\chi_{1}>0$ and
+%
+%\begin{equation}\label{eq:invUDsU}
+%\X^{-1}\P'_{S}\X=\bmatrix{
+%0 & 0\\
+%0 & \mathcal{D}}, ~\textrm{where }\X=\left[\begin{array}{c|c|c|c} \phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}\\ \chi_{1}&\chi_{2}&\cdots&\chi_{n^{2}}\\\phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}
+%\end{array} \right]
+%%X^{-1}\mathcal{D}_{S}X=\bmatrix{
+%%0 & 0\\
+%%0 & \mathcal{D}_{22}}, ~\textrm{where }X=\left[\textrm{\begin{tabular}{c|c|c|c} \multirow{2}{*}{$x_{1}$}&\multirow{2}{*}{$x_{2}$}&\multirow{2}{*}{$\cdots$}&\multirow{2}{*}{$x_{n^{2}}$}\\
+%%& & &
+%%\end{tabular}} \right]
+%\end{equation}
+%and $\mathcal{D}$
+%is an $(n^{2}-1)\times(n^{2}-1)$ nonsingular matrix.
+%By the same way, we also have a positive vector $\psi$ such that $\psi^{T}\P'_{S} = 0$.
+%Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
+%From \eqref{eq:invUDsU}, $\P'_{S}\mathrm{vec}(N) = 0$ if and only if $\mathrm{vec}(N) \in \mathrm{span}(\chi_{1})$,
+%in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \R$.
+%Thus, $\mathcal{N} = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
+%Simiarly, $\mathcal{M} = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
+%Therefore, $\mathcal{N}$ is one-dimensional and $\mathbb{R}^{m \times m}=\mathcal{N}\oplus\mathcal{M}$.
+%
+%To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \mathcal{N}$ , we only need to show that
+%$$
+%\pjn\left( P''_{S}(N_{0},N) \right) \neq 0,
+%$$
+%for all nonzero $N \in \mathcal{N}$ because $\mathcal{B}_{N_{0}}$ is linear and $\mathcal{N}$ is one-dimensional.
+%Since $\vec^{-1}(\chi_{1})>0$ and $S > 0$, we have
+%\begin{align*}
+%P''_{S}(N_{0},N) & = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}N_{0}S^{j}NS^{n-l-j-2} + S^{l}NS^{j}N_{0}S^{n-l-j-2} \right) \\
+%                 & = 2ab \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l} \vec^{-1}(\chi_{1}) S^{j} \vec^{-1}(\chi_{1}) S^{n-l-j-2} \right) \neq 0
+%\end{align*}
+%where $N = a\vec^{-1}(\chi_{1})$ and $N_{0} = b\vec^{-1}(\chi_{1})$.
+%Moreover, $P''_{S}(N_{0},N)$ is either positive or negative.
+%
+%On the other hand,
+%$$
+%\vec\left( P''_{S}(N_{0},N) \right) = k_{1}\chi_{1}+k_{2}\chi_{2}+\cdots+k_{n^{2}}\chi_{n^{2}}
+%$$
+%for some real numbers $k_{1},k_{2},\cdots,k_{n^{2}}$.
+%By Fundamental theorem of linear algebra in \cite{strang2006linear} and Lemma 6.3.10 in \cite{Horn1985}, we have
+%\begin{equation}\label{eq:yTPtYx}
+%\psi^{T} \vec\left( P''_{S}(N_{0},N) \right) = k_{1}\psi^{T}\chi_{1}.
+%\end{equation}
+%Since $P''_{S}(N_{0},N)$ is either positive or negative and $\psi$ is positive, the left side of \eqref{eq:yTPtYx} is also either positive or negative.
+%So, $k_{1}$ cannot be zero.
+%Therefore,
+%$$
+%\pjn \left( P''_{S}(N_{0},N) \right) = k_{1}\vec^{-1}(\chi_{1}) \neq 0.
+%$$
+%
+%\end{proof}
+%
+%
+%
+%
+%
+%\begin{lem}\label{lem:TaylorLemma}
+%	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
+%	and let $\{X_{i}\}_{i=0}^{\infty}$ be a Newton sequence in \eqref{eq:NewtonStepMPE2}. Then,
+%	$$
+%	\| P({X}_{i})\|\leq a\|\tXi\|^{2}+b\|\tXi\|\|\tilde{X}_{i-1}\|+c\|\tilde{X}_{i-1}\|^{2}
+%	$$
+%	for some positive real numbers $a,b,c$.
+%\end{lem}
+%
+%\begin{proof}
+%	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
+%	\begin{equation}\label{eq:Taylor}
+%	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
+%	\end{equation}
+%	and
+%	\begin{equation*}
+%	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
+%	\end{equation*}
+%	which is equivalent to
+%	\begin{equation}\label{eq:TaylorMPE3}
+%	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
+%	\end{equation}
+%	From \eqref{eq:NewtonStepMPE}, we have
+%	\begin{equation}\label{eq:NewtonStepAnother}
+%	0 = P'_{X_{i-1}}(X_{i} - X_{i-1}) + P(X_{i-1}),
+%	\end{equation}
+%	and clearly
+%	\begin{equation}
+%	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
+%	\end{equation}
+%	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
+%	and substitute \eqref{eq:TaylorMPE3}, we obtain
+%	\begin{align*}
+%	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
+%	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
+%	\end{align*}
+%	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
+%	\begin{align*}
+%	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
+%	\end{align*}
+%	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
+%	we have required result.
+%\end{proof}
+%
+%
+%
+%
+%\begin{lem}\label{lem:DominatedPMconvergence}
+%For any fixed $\theta > 0$, let
+%$$
+%\mathcal{Q} = \{i \in \N \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
+%$$
+%where $\{X_{i}\}$ is the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE}.
+%Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
+%$\| \tXi\| \leq c \| \tilde{X}_{i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
+%\end{lem}
+%
+%\begin{proof}
+%Using Taylor's Theorem and the fact that $P'_{S}\left(\pjn(\tXi)\right) = 0$,
+%\begin{equation}\label{eq:TaylorMPE}
+%P(X_{i}) = P(S) + P'_{S}(\tXi) + O(\|\tXi\|^{2}) = P'_{S}\left(\pjm(\tXi)\right) + O(\|\tXi\|^{2}).
+%\end{equation}
+%Since $P'_{S}|_{\mathcal{M}} : \mathcal{M} \rightarrow \mathcal{M}$ is
+%invertible, $\left\| P'_{S}\left(\pjm(\tXi)\right)\right\| \geq c_{1}\|\pjm(\tXi)\|$
+%for some constant $c_{1}>0$.
+%For $i\in\mathcal{Q}$, we have
+%\begin{equation*}
+%\|\tXi\| \leq \left\| \pjm(\tXi)\right\| + \left\| \pjn(\tXi)\right\|
+%\leq (\theta^{-1} + 1) \left\| \pjm(\tXi)\right\|.
+%\end{equation*}
+%Thus by \eqref{eq:TaylorMPE},
+%\begin{equation}\label{eq:NormofhatXi}
+%\|P(X_{i})\| \geq c_{1}\|\pjm(\tXi)\| - c_{2}\|\tXi\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tXi\| - c_{2}\|\tXi\|^{2}.
+%\end{equation}
+%On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
+%$$
+%\| P({X}_{i})\|\leq c_{3}\|\tXi\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tXi\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
+%$$
+%From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
+%any $i$, we have
+%$$
+%c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tXi\| \leq c_{3}\|\tXi\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tXi\|}.
+%$$
+%Since $\tXi$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
+%we can find an $i_{0}$ such that $\|\tXi\|\leq c\|\tilde{X}_{i-1}\|^{2}$
+%for all $i\geq i_{0}$.\end{proof}
+%\begin{cor}
+%Assume that, for given $\theta>0$, $\|\pjm(\tXi)\|>\theta\|\pjn(\tXi)\|$
+%for all $i$ large enough. Then $X_{i}\rightarrow S$ quadratically.
+%\end{cor}
+%
+%
+%When $P'_{S}$ is singular practically the Newton sequence
+%converges linearly, according to the corollary we conclude that \textit{the
+%error will generally be dominated by its $\mathcal{N}$ component}\cite{Guo1998M}.
+%From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
+%we have the following main theorem.
+%
+%\begin{thm}\label{thm:LinearConvergence1over2}
+%If $-\P'_{S}$ is a singular $M$-matrix and the convergence rate
+%of the Newton sequence $\{X_{i}\}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
+%is not quadratic, then $\| P_{X_{i}}^{\prime -1}\|\leq c\| \tXi\|^{-1}$
+%for all $i \geq 1$ and some constant $c > 0$. Moreover,
+%$$
+%\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+%\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+%$$
+%
+%\end{thm}
+%
+%
+%\section{A Modified Newton Method}\label{sec:modified}
+%Under the conditions in Theorem \ref{thm:LinearConvergence1over2}, the convergence rate of the Newton sequence is $1/2$.
+%Furthermore, $\|\pjm(\tXi)\| / \|\pjn(\tXi)\|^{2}$ converges to $0$,
+%i.e.,$\|\pjm(\tilde{X}_{i_{0}})\| < \e\|\pjn(\tilde{X}_{i_{0}})\|$ holds for sufficiently small $\e > 0$ 
+%and large integer $i_{0}$ to make $\|\pjn(\tilde{X}_{i_{0}})\| < 1$.
+%Intuitivley, we understand that $\pjm(\tilde{X}_{i_{0}})$ is almost terminated,
+%and $\{\tXi\}_{i=i_{0}}^{\infty}$ is located near a one-dimensional subspace $\mathcal{N}$.
+%Then, we will give a modified Newton method which has faster convergence than the pure one.
+%
+%\begin{lem}\label{lem:PjnMonotone}
+%Let $\{X_{i}\}$ be the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE},
+%and let the derivative $P'_{S}$ be singular.
+%Suppose that there exists $i_{0} \in \N_{0}$ such that $i \geq i_{0}$ implies that
+%\begin{equation}
+%\|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|,
+%\end{equation}
+%for $0 < \e \leq 1$.
+%Then, $\pjn(\tXi)$ is negative for $i \geq i_{0}$.
+%\end{lem}
+%
+%\begin{proof}
+%From the proof of Lemma \ref{lem:BisInvertible}, $V_{1} := \vec^{-1}(\chi_{1})$ is a positive basis for $\mathcal{N}$.
+%Let $c_{i,1}$ be a scalar such that $\pjn(\tXi) = c_{i,1}V_{1}$.
+%Suppose that $c_{i,1} \geq 0$. Then, $\pjn(\tXi) \geq 0$.
+%Since $\pjn(\tXi) + \pjm(\tXi) = \tXi \leq 0$, we obtain that $0 \leq \pjn(\tXi) \leq -\pjm(\tXi)$.
+%Thus,
+%\begin{equation}
+%\|\pjn(\tXi)\| \leq \|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|.
+%\end{equation}
+%It means that $\e > 1$, i.e., it contradicts the hypothesis.
+%Therefore, $c_{i,1} < 0$ and $\pjn(\tXi) < 0$.
+%\end{proof}
+%
+%Consider a polynomial $f(x) = px^{3} + 2px^{2} + (9p+1)x - 1$ for $p > 0$.
+%Since $f(0) = -1$ and $f(1) = 12p$, $f$ has a root in the interval $(0,1)$.
+%From that $f'(x) = 3px^{2} + 4px + 9p + 1 > 0$ for all $x > 0$,
+%$f$ is monotone increasing in $(0,1)$, i.e., the root $t$ of $f$ in $(0,1)$ is unique.
+%Hence, for $x \in (0,t)$, it holds that
+%\begin{equation}
+%\dfrac{9x + 2x^{2} + x^{3}}{1 - x} < \dfrac{1}{p}.
+%\end{equation}
+%The previous inequality is useful to prove the following theorem.
+%
+%\begin{thm}\label{thm:modifiedNewton}
+%Let $Y_{i+1} = X_{i} - 2P_{X_{i}}^{\prime -1}(P(X_{i}))$, $p = \|\pjn\|$, and let $\e \in (0,t)$ be given where $t$ is the real root of
+%$f(x) = px^3 + 2px^2 + (9p + 1)x - 1$ in $(0,1)$.
+%Suppose that $i \geq i_{0}$ implies that
+%\begin{equation}
+%\left| \dfrac{\|\tXi\|}{\|\tXii\|} - 2 \right| < \e,\qquad \|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|
+%\end{equation}
+%for some $i_{0} \in \N_{0}$. Then, for $i \geq i_{0}$,
+%\begin{equation}
+%\|Y_{i+1} - S\| < \|\tXii\|.
+%\end{equation}
 %\end{thm}
 %
 %\begin{proof}
-%\cite{SeoSeo2016}
-%\end{proof}
-
-
-
-
-\begin{thm}\label{thm:ConvergenceNewtonMPE}
-Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
-Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
-and converges to the elementwise minimal positive solution $S$.
-Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \N$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
-\end{thm}
-
-
-\begin{proof}
-%From \cite[Theorem 3.8]{SeoSeo2016}, it is sufficient to show that
-%\begin{enumerate}[i)]
-%\item there exist $X_{1}, Y_{0} \in \R^{\mbym}$ such that $X_{1} < Y_{0}$ and $P(X_{1}) > 0 \geq P(Y_{0})$;
-%\item $Y < Z$ implies that $\P'_{Z} - \P'_{Y}$ is nonnegative and irreducible for all $Y, Z \in [X_{1}, Y_{0}] := \{X| X_{1} \leq X \leq Y_{0}\}$;
-%\item $-\P'_{X_{1}}$ is a $Z$-matrix;
-%\item $-\P'_{Y_{0}}$ is an $M$-matrix.
-%\end{enumerate}
-%
-%From \cite[Theorem 2.10]{SeoSeoKim2013}, $-A_{1}^{-1}$ is positive. Then, $X_{1} = -A_{1}^{-1}A_{0}$ is positive.
-%Since $A_{k}$'s are irreducible,
+%From the definition of $Y_{i+1}$, we get that
 %\begin{align*}
-%P(X_{1})    & = A_{n}X_{1}^{n} + \ldots + A_{1}X_{1} + A_{0} \\
-%            & = A_{n}X_{1}^{n} + \ldots + A_{2}X_{1}^{2} + A_{1}(-A_{1}^{-1}A_{0}) + A_{0} \\
-%            & = A_{n}X_{1}^{n} + \ldots + A_{2}X_{1}^{2}
+%Y_{i+1} - S &= X_{i} - 2P_{X_{i}}^{\prime -1}(P(X_{i})) - S \\
+%            &= 2\left(X_{i} - P_{X_{i}}^{\prime -1}(P(X_{i}))\right) - X_{i} - S \\
+%            &= 2X_{i+1} - X_{i} - 2S + S \\
+%            &= 2\tXii - \tXi.
 %\end{align*}
-%is also positive.
-%By Theorem \ref{thm:SuffMPE}, there exists the minimal nonnegative solution $S$ of \eqref{eq:MPE}.
-%Moreover, we obtain that $S$ is positive and $X_{1} < S$ from the proof of Theorem \ref{thm:limsupeqrho}.
-%If we put $Y_{0} = S$, then i) holds.
-%
-%Suppose that $Y, Z \in [X_{1}, S]$ and $Y < Z$.
-%Then,
-%\begin{align*}
-%\P'_{Z} - \P'_{Y} &= \sum_{k=1}^{n} \sum_{l=0}^{k-1} \left[ (Z^{k-l-1})^{T} \otimes A_{k}Z^{l} - (Y^{k-l-1})^{T} \otimes A_{k}Y^{l} \right] \\
-%                &\geq \sum_{k=1}^{n} \sum_{l=0}^{k-1} \left[ (Y^{k-l-1})^{T} \otimes A_{k}Z^{l} - (Y^{k-l-1})^{T} \otimes A_{k}Y^{l} \right] \\
-%                &= \sum_{k=1}^{n} \sum_{l=0}^{k-1} (Y^{k-l-1})^{T} \otimes A_{k}\left( Z^{l} - Y^{l} \right) \\
-%                &= \sum_{k=2}^{n} \sum_{l=1}^{k-1} (Y^{k-l-1})^{T} \otimes A_{k}\left( Z^{l} - Y^{l} \right).
-%\end{align*}
-%Since $Y$, $Z^{l} - Y^{l}$ are positive for $l \geq 1$, and $A_{k}$'s are nonnegative irreducible for $k \geq 2$,
-%we obtain that $\P'_{Z} - \P'_{Y} > 0$.
-%Hence, ii) holds.
-%
-%From the following equality
-%\begin{align*}
-%-\P'_{X_{1}} & = -\sum_{k=1}^{n}\sum_{l=0}^{k-1}(X_{1}^{k-l-1})^{T} \otimes A_{k}X^{l} \\
-%            & = -\sum_{k=2}^{n}\sum_{l=0}^{k-1}(X_{1}^{k-l-1})^{T} \otimes A_{k}X^{l} + I_{m} \otimes (-A_{1}),
-%\end{align*}
-%all of off-diagonal entries of $-\P'_{X_{1}}$ are nonpositive, i.e., $-\P'_{X_{1}}$ is a $Z$-matrix.
-%
-%To prove iv), consider the matrix function $G$ defined in \eqref{eq:MPEfix}.
-%Since the convergence rates of any fixed point iterations are at most 1,
-%$\rho(\G'_{S}) \leq 1$ by Theorem \ref{thm:limsupeqrho}.
-%From Lemma \ref{lem:MtimesM} and the following equality,
-%\begin{align*}
-%(I_{m} \otimes -A_{1})(I_{m^{2}} - \G'_{S}) & = (I_{m} \otimes -A_{1})\left(I_{m^{2}} - \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes (-A_{1}^{-1}A_{k}S^{l})\right)\\
-%                                            & = (I_{m} \otimes -A_{1}) - \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l} \\
-%                                            & = - \sum_{k=1}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l} \\
-%                                            & = -\P'_{S},
-%\end{align*}
-%$-\P'_{S}$ is an $M$-matrix.
-%Therefore, the Newton sequence $\{X_{i}\}$ increases monotonically and converges to the minimal positive solution $S$.
-
-According to the proof of \cite[Theorem 2.1]{Meng2017},
-the elementwise minimal nonnegative solution $S$ of \eqref{eq:MPE} is the limit of the monotone nondecreasing sequence $\{X_{i}^{G}\}_{i=0}^{\infty}$
-which is defined by
-\begin{equation*}
-\begin{cases} X_{i+1}^{G} = G(X_{i}^{G}),\\~\\X_{0}^{G} = 0,\end{cases}
-\end{equation*}
-where
-\begin{equation*}\label{eq:MPEfix}
-G(X) = -A_{1}^{-1}\left( \sum_{k=2}^{n}A_{k}X^{k} + A_{0} \right).
-\end{equation*}
-
-Since $X_{1}^{G} = -A_{1}^{-1}A_{0} > 0$, the solution $S$ is also positive.
-Thus, $S \in \{Y \in \R^{\mbym} | Y>0,~~ F(Y) \leq 0\}$.
-From \cite[Theorem 2.9]{SeoKim2014}, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well-defined, monotone nondecreasing,
-and converges to the elementwise minimal positive solution $S$.
-Moreover, 
-\begin{equation*}
--\P'_{X_{i}} = -\sum_{k=1}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
-\end{equation*}
-is a nonsingular $M$-matrix for each $i \in \N_{0}$.
-
-Now, it is sufficient to show that $-\P'_{X_{i}}$ is irreducible for $i \in \N$.
-Since $X_{1} = -A_{1}^{-1}A_{0} > 0$ and $A_{p} \geq 0$ for all $p \geq 2$,
-\begin{equation*}
-\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
-\geq \sum_{k=2}^{n} (X_{i}^{k-1})^{T} \otimes A_{k} \geq 0.
-\end{equation*}
-From that $X_{i} > 0$, we obtain that $\sum_{k=2}^{n} (X_{i}^{k-1})^{T} \otimes A_{k}$ is irreducible
-if and only if $\sum_{k=2}^{n} \ones{\mbym} \otimes A_{k} = \ones{\mbym} \otimes \left(\sum_{k=2}^{n}A_{k}\right)$ is irreducible.
-Since $\sum_{k=2}^{n}A_{k}$ is irreducible,
-\begin{equation*}
-\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
-\end{equation*}
-is a irreducible nonnegative matrix.
-Therefore,
-\begin{equation*}
--\P'_{X_{i}} = -I_{m} \otimes A_{1} -\sum_{k=2}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}
-\end{equation*}
-is also irreducible.
-
-\end{proof}
-
-
-The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
-and the well known local quadratic convergence of Newton's method.
-
-\begin{thm}\label{thm:ConvRateQuadratic}%{\rm (cf.\cite[Theorem 4.1.9]{kim00})}
-If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
-is nonsingular, then for $X_{0}=0$, the Newton sequence
-$\{X_{i}\}$ converges to $S$, quadratically.
-\end{thm}
-
-
-%\begin{proof}
-%Let $\delta \in (0,1]$ be given sufficiently small.
-%By the hypothesis, the Fr$\mathrm{\acute{e}}$chet derivative $P'_{S}$ is an invertible map.
-%So,
+%So, we will show that $\|2\tXii - \tXi\| < \|\tXii\|$.
+%From the hypothesis, we obtain that
 %\begin{equation}
-%c_{0} = \inf\{ \|P'_{X}(H)\| : \|H\|=1, \|X - S\| \leq \delta \} > 0.
+%(1-\e)\|\pjn(\tXi)\| < \|\tXi\| < (1+\e)\|\pjn(\tXi)\|.
 %\end{equation}
-%Since the sequence $\{\|X_{i} - S\|\}$ is monotone nonincreasing,
-%it is bounded by $\|S\|$.
-%Hence, there exists $a_{0} > 0$ such that
-%\begin{equation}\label{eq:bigOleq}
-%\left\|O(\|X_{i} - S\|^{2})\right\| \leq a_{0}\|X_{i} - S\|^{2}.
+%It yields two following inequalities,
+%\begin{equation}
+%\begin{array}{c}
+%2-\e < \dfrac{\|\tXi\|}{\|\tXii\|} < \dfrac{(1+\e)\|\pjn(\tXi)\|}{(1-\e)\|\pjn(\tXii)\|},\\~\\
+%\dfrac{(1-\e)\|\pjn(\tXi)\|}{(1+\e)\|\pjn(\tXii)\|} < \dfrac{\|\tXi\|}{\|\tXii\|} < 2+\e.
+%\end{array}
 %\end{equation}
-%With \eqref{eq:Taylor} and \eqref{eq:bigOleq}, we obtain the following inequality,
+%From the previous two inequalities, we get the inequality
+%\begin{equation}
+%\dfrac{(2-\e)(1-\e)}{1+\e} < \dfrac{\|\pjn(\tXi)\|}{\|\pjn(\tXii)\|} = \dfrac{c_{i,1}}{c_{i+1,1}} < \dfrac{(2+\e)(1+\e)}{1-\e},
+%\end{equation}
+%where $c_{i,1}$ and $c_{i+1,1}$ are scalars which are in the proof of Lemma \ref{lem:PjnMonotone}, i.e., they are negative.
+%It is obtained that
+%\begin{equation}
+%\dfrac{-5\e + \e^2}{1+\e}(-c_{i+1,1}) < 2c_{i+1,1} - c_{i,1} < \dfrac{5\e + \e^2}{1-\e}(-c_{i+1,1}).
+%\end{equation}
+%Since $\dfrac{5\e + \e^2}{1-\e} - \dfrac{5\e - \e^2}{1+\e}$ is positive for $0 < \e < 1$,
+%\begin{equation}
+%|2c_{i+1,1} - c_{i,1}| < \dfrac{5\e + \e^2}{1-\e}|c_{i+1,1}|.
+%\end{equation}
+%
+%Therefore, we get the following inequality,
 %\begin{align*}
-%\|X_{i+1} - S\| &= \|X_{i} - S - P_{X_{i}}^{\prime -1}(P(X_{i}))\| \\
-%                &= \|(X_{i} - S) - P_{X_{i}}^{\prime -1}(P(X_{i}) - P(S))\| \\
-%                &\leq \|P_{X_{i}}^{\prime -1}\| \| P'_{X_{i}}(X_{i} - S) - (P(X_{i}) - P(S)) \| \numberthis \label{eq:QuadConvIneq}\\
-%                &\leq (1/c_{0})\left\|O(\|X_{i} - S\|^{2})\right\| \\
-%                &\leq (a_{0}/c_{0})\|X_{i} - S\|^{2}.
+%\|2\tXii - \tXi\| &= \|2\pjn(\tXii) - \pjn(\tXi) + 2\pjm(\tXii) - \pjm(\tXi)\| \\
+%                  &\leq \|2\pjn(\tXii) - \pjn(\tXi)\| + \|2\pjm(\tXii)\| + \|\pjm(\tXi)\| \\
+%                  &< \|2\pjn(\tXii) - \pjn(\tXi)\| + 2\e\|\pjn(\tXii)\| + \e\|\pjn(\tXi)\| \\
+%                  &= |2c_{i+1,1} - c_{i,1}|\|V_{1}\| + 2\e\|\pjn(\tXii)\| + \e\|\pjn(\tXi)\| \numberthis \label{eq:YiiLessXii}\\
+%                  &< \dfrac{5\e + \e^2}{1-\e}|c_{i+1,1}|\|V_{1}\| + 2\e\|\pjn(\tXii)\| + \dfrac{(2+\e)(1+\e)}{1-\e}\e\|\pjn(\tXii)\| \\
+%                  &= \dfrac{5\e + \e^2}{1-\e}\|\pjn(\tXii)\| + 2\e\|\pjn(\tXii)\| + \dfrac{(2+\e)(1+\e)}{1-\e}\e\|\pjn(\tXii)\| \\
+%                  &= \dfrac{9\e + 2\e^2 + \e^3}{1-\e}\|\pjn(\tXii)\| \\
+%                  &\leq \dfrac{9\e + 2\e^2 + \e^3}{1-\e}p\|\tXii\|.
 %\end{align*}
-%Therefore, the sequence $\{X_{i}\}$ converges to $S$, quadratically.
+%Since $\e \in (0,t)$, $\dfrac{9\e + 2\e^2 + \e^3}{1-\e} < \dfrac{1}{p}$ holds,
+%\begin{equation}
+%\|Y_{i+1} - S\| = \|2\tXii - \tXi\| < \|\tXii\|.
+%\end{equation}
 %\end{proof}
-
-
-
-\section{Analysis for the Singular $M$-matrix $-\P'_S$}\label{sec:singular}
-According to Theorem \ref{thm:ConvRateQuadratic}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically
-if $-\P'_{S}$ is nonsingular.
-In this section, we will see the convergence rate of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is a singular $M$-matrix.
-%we will see the Newton sequence also converges to the solution but linearly.
-If $P'_{S}$ is not invertible, then $P'_{S}$ has a null space $\mathcal{N}=\text{Ker}(P'_{S})$
-and closed range $\mathcal{M}=\text{Im}(P'_{S})$.
-Suppose that the direct sum $\mathcal{N} \oplus \mathcal{M} = \mathbb{R}^{\mbym}$.
-Then, we can define $\pjn$ to be the projection onto $\mathcal{N}$
-parallel to $\mathcal{M}$ and $\pjm=I-\pjn$.
-For a nonzero matrix $N_{0}\in\mathcal{N}$, define the map $\mathcal{B}_{N_{0}}:\mathcal{N}\rightarrow\mathcal{N}$
-given by
-\begin{equation}\label{eq:secondDerivativeProjection}
-\mathcal{B}_{N_{0}}(N)=\pjn P_{S}^{\prime \prime}(N_{0},N).
-\end{equation}
-In fact, $\mathcal{B}_{N_{0}}$ is a linear map.
-The main result of this section is an application of the following theorem 
-which shows the local convergence and the convergence rate of Newton's method under some conditions.
-
-
-
-\begin{thm}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:ApplicationTheorem}
-Let $\mathcal{B}_{N_{0}}$ in \eqref{eq:secondDerivativeProjection} be invertible for some nonzero $N_{0}\in\mathcal{N}$,
-$\mathcal{N} = \mathrm{span}\{N_{0}\}\oplus\mathcal{N}_{1}$ for some subspace $\mathcal{N}_{1}$,
-and let
-\begin{equation}\label{eq:Wspace}
-W(\rho, \theta, \eta) =
-\left\{ X \left|\,\begin{array}{l}0 < \|X - S\| < \rho, \|\pjm(X - S)\| \leq \theta \|\pjn(X - S)\|,\\ 
-				\|(\pjn-\mathbf{P}_{0})(X - S)\| \leq \eta \|\pjn(X - S)\|\end{array}\right.\right\},
-\end{equation}
-where $\mathbf{P}_{0}$ is the projection onto $\mathrm{span}\{N_{0}\}$
-parallel to $\mathcal{N}_{1}\oplus\mathcal{M}$. If $X_{0}\in W(\rho_{0},\theta_{0},\eta_{0})$
-for $\rho_{0},\theta_{0},\eta_{0}$ sufficiently small, then the Newton
-sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|X_{i} - S\|^{-1}$
-for all $i\geq1$ and some constant $c>0$. Moreover,
-$$
-\lim_{i \rightarrow \infty}\frac{\|X_{i+1} - S\|}{\|X_{i} - S\|} = \frac{1}{2},
-\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(X_{i} - S)\|}{\|\pjn(X_{i} - S)\|^{2}}=0.
-$$
-\end{thm}
-
-
-To analyze convergence of Newton's method when $-\mathcal{P}'_{S}$ is singular,
-we will show that \eqref{eq:MPE} satisfies the conditions of Theorem \ref{thm:ApplicationTheorem}.
-From this point, for convenience, we let $\tXi = X_{i} - S$.
-%Before proving the following lemma, we use $\text{unvec}$ operator from $\mathbb{R}^{n^{2}}$ onto $\R^{\nbyn}$
-%which is the inverse of the vec operator.
-
-
-
-
-\begin{lemma}\label{lem:BisInvertible}
-Suppose the matrix polynomial equation \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE}.
-If the matrix $-\mathcal{P}'_{S}$ is a singular $M$-matrix,
-then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\mathcal{N}\oplus\mathcal{M}=\mathbb{R}^{m \times m}$,
-$\mathcal{N}$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
-for some nonzero $N_{0}\in\mathcal{N}$.
-\end{lemma}
-
-
-\begin{proof}
-%From \eqref{eq:Mderivative2}, $-\mathcal{D}_{S}=rI_{n^2}-\mathbf{N}(S)$
-%where $\mathbf{N}(S)=I_{n}\otimes T_{0}+S^{T}\otimes A+I_{n}\otimes AS$.
-Since $S$ is positive and $A_{k}$'s are irreducible, $-\P'_{S}$ is irreducible.
-%Hence, $\mathbf{N}(S)$ is also irreducible.
-Then, by Perron-Frobenius Theorem \cite[Theorem 8.4.4]{Horn1985},
-$0$ is a simple eigenvalue of $\P'_{S}$ with a positive eigenvector. Thus, we can find $n^{2}$ linearly independent
-vectors $\chi_{1},\chi_{2},\cdots \chi_{n^{2}}$ such that $\chi_{1}>0$ and
-
-\begin{equation}\label{eq:invUDsU}
-\X^{-1}\P'_{S}\X=\bmatrix{
-0 & 0\\
-0 & \mathcal{D}}, ~\textrm{where }\X=\left[\begin{array}{c|c|c|c} \phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}\\ \chi_{1}&\chi_{2}&\cdots&\chi_{n^{2}}\\\phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}
-\end{array} \right]
-%X^{-1}\mathcal{D}_{S}X=\bmatrix{
-%0 & 0\\
-%0 & \mathcal{D}_{22}}, ~\textrm{where }X=\left[\textrm{\begin{tabular}{c|c|c|c} \multirow{2}{*}{$x_{1}$}&\multirow{2}{*}{$x_{2}$}&\multirow{2}{*}{$\cdots$}&\multirow{2}{*}{$x_{n^{2}}$}\\
-%& & &
-%\end{tabular}} \right]
-\end{equation}
-and $\mathcal{D}$
-is an $(n^{2}-1)\times(n^{2}-1)$ nonsingular matrix.
-By the same way, we also have a positive vector $\psi$ such that $\psi^{T}\P'_{S} = 0$.
-Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
-From \eqref{eq:invUDsU}, $\P'_{S}\mathrm{vec}(N) = 0$ if and only if $\mathrm{vec}(N) \in \mathrm{span}(\chi_{1})$,
-in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \R$.
-Thus, $\mathcal{N} = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
-Simiarly, $\mathcal{M} = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
-Therefore, $\mathcal{N}$ is one-dimensional and $\mathbb{R}^{m \times m}=\mathcal{N}\oplus\mathcal{M}$.
-
-To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \mathcal{N}$ , we only need to show that
-$$
-\pjn\left( P''_{S}(N_{0},N) \right) \neq 0,
-$$
-for all nonzero $N \in \mathcal{N}$ because $\mathcal{B}_{N_{0}}$ is linear and $\mathcal{N}$ is one-dimensional.
-Since $\vec^{-1}(\chi_{1})>0$ and $S > 0$, we have
-\begin{align*}
-P''_{S}(N_{0},N) & = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}N_{0}S^{j}NS^{n-l-j-2} + S^{l}NS^{j}N_{0}S^{n-l-j-2} \right) \\
-                 & = 2ab \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l} \vec^{-1}(\chi_{1}) S^{j} \vec^{-1}(\chi_{1}) S^{n-l-j-2} \right) \neq 0
-\end{align*}
-where $N = a\vec^{-1}(\chi_{1})$ and $N_{0} = b\vec^{-1}(\chi_{1})$.
-Moreover, $P''_{S}(N_{0},N)$ is either positive or negative.
-
-On the other hand,
-$$
-\vec\left( P''_{S}(N_{0},N) \right) = k_{1}\chi_{1}+k_{2}\chi_{2}+\cdots+k_{n^{2}}\chi_{n^{2}}
-$$
-for some real numbers $k_{1},k_{2},\cdots,k_{n^{2}}$.
-By Fundamental theorem of linear algebra in \cite{strang2006linear} and Lemma 6.3.10 in \cite{Horn1985}, we have
-\begin{equation}\label{eq:yTPtYx}
-\psi^{T} \vec\left( P''_{S}(N_{0},N) \right) = k_{1}\psi^{T}\chi_{1}.
-\end{equation}
-Since $P''_{S}(N_{0},N)$ is either positive or negative and $\psi$ is positive, the left side of \eqref{eq:yTPtYx} is also either positive or negative.
-So, $k_{1}$ cannot be zero.
-Therefore,
-$$
-\pjn \left( P''_{S}(N_{0},N) \right) = k_{1}\vec^{-1}(\chi_{1}) \neq 0.
-$$
-
-\end{proof}
-
-
-
-
-
-\begin{lem}\label{lem:TaylorLemma}
-	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
-	and let $\{X_{i}\}_{i=0}^{\infty}$ be a Newton sequence in \eqref{eq:NewtonStepMPE2}. Then,
-	$$
-	\| P({X}_{i})\|\leq a\|\tXi\|^{2}+b\|\tXi\|\|\tilde{X}_{i-1}\|+c\|\tilde{X}_{i-1}\|^{2}
-	$$
-	for some positive real numbers $a,b,c$.
-\end{lem}
-
-\begin{proof}
-	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
-	\begin{equation}\label{eq:Taylor}
-	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
-	\end{equation}
-	and
-	\begin{equation*}
-	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
-	\end{equation*}
-	which is equivalent to
-	\begin{equation}\label{eq:TaylorMPE3}
-	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
-	\end{equation}
-	From \eqref{eq:NewtonStepMPE}, we have
-	\begin{equation}\label{eq:NewtonStepAnother}
-	0 = P'_{X_{i-1}}(X_{i} - X_{i-1}) + P(X_{i-1}),
-	\end{equation}
-	and clearly
-	\begin{equation}
-	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
-	\end{equation}
-	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
-	and substitute \eqref{eq:TaylorMPE3}, we obtain
-	\begin{align*}
-	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
-	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
-	\end{align*}
-	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
-	\begin{align*}
-	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
-	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
-	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
-	\end{align*}
-	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
-	we have required result.
-\end{proof}
-
-
-
-
-\begin{lem}\label{lem:DominatedPMconvergence}
-For any fixed $\theta > 0$, let
-$$
-\mathcal{Q} = \{i \in \N \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
-$$
-where $\{X_{i}\}$ is the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE}.
-Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
-$\| \tXi\| \leq c \| \tilde{X}_{i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
-\end{lem}
-
-\begin{proof}
-Using Taylor's Theorem and the fact that $P'_{S}\left(\pjn(\tXi)\right) = 0$,
-\begin{equation}\label{eq:TaylorMPE}
-P(X_{i}) = P(S) + P'_{S}(\tXi) + O(\|\tXi\|^{2}) = P'_{S}\left(\pjm(\tXi)\right) + O(\|\tXi\|^{2}).
-\end{equation}
-Since $P'_{S}|_{\mathcal{M}} : \mathcal{M} \rightarrow \mathcal{M}$ is
-invertible, $\left\| P'_{S}\left(\pjm(\tXi)\right)\right\| \geq c_{1}\|\pjm(\tXi)\|$
-for some constant $c_{1}>0$.
-For $i\in\mathcal{Q}$, we have
-\begin{equation*}
-\|\tXi\| \leq \left\| \pjm(\tXi)\right\| + \left\| \pjn(\tXi)\right\|
-\leq (\theta^{-1} + 1) \left\| \pjm(\tXi)\right\|.
-\end{equation*}
-Thus by \eqref{eq:TaylorMPE},
-\begin{equation}\label{eq:NormofhatXi}
-\|P(X_{i})\| \geq c_{1}\|\pjm(\tXi)\| - c_{2}\|\tXi\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tXi\| - c_{2}\|\tXi\|^{2}.
-\end{equation}
-On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
-$$
-\| P({X}_{i})\|\leq c_{3}\|\tXi\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tXi\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
-$$
-From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
-any $i$, we have
-$$
-c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tXi\| \leq c_{3}\|\tXi\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tXi\|}.
-$$
-Since $\tXi$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
-we can find an $i_{0}$ such that $\|\tXi\|\leq c\|\tilde{X}_{i-1}\|^{2}$
-for all $i\geq i_{0}$.\end{proof}
-\begin{cor}
-Assume that, for given $\theta>0$, $\|\pjm(\tXi)\|>\theta\|\pjn(\tXi)\|$
-for all $i$ large enough. Then $X_{i}\rightarrow S$ quadratically.
-\end{cor}
-
-
-When $P'_{S}$ is singular practically the Newton sequence
-converges linearly, according to the corollary we conclude that \textit{the
-error will generally be dominated by its $\mathcal{N}$ component}\cite{Guo1998M}.
-From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
-we have the following main theorem.
-
-\begin{thm}\label{thm:LinearConvergence1over2}
-If $-\P'_{S}$ is a singular $M$-matrix and the convergence rate
-of the Newton sequence $\{X_{i}\}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
-is not quadratic, then $\| P_{X_{i}}^{\prime -1}\|\leq c\| \tXi\|^{-1}$
-for all $i \geq 1$ and some constant $c > 0$. Moreover,
-$$
-\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
-$$
-
-\end{thm}
-
-
-\section{A Modified Newton Method}\label{sec:modified}
-Under the conditions in Theorem \ref{thm:LinearConvergence1over2}, the convergence rate of the Newton sequence is $1/2$.
-Furthermore, $\|\pjm(\tXi)\| / \|\pjn(\tXi)\|^{2}$ converges to $0$,
-i.e.,$\|\pjm(\tilde{X}_{i_{0}})\| < \e\|\pjn(\tilde{X}_{i_{0}})\|$ holds for sufficiently small $\e > 0$ 
-and large integer $i_{0}$ to make $\|\pjn(\tilde{X}_{i_{0}})\| < 1$.
-Intuitivley, we understand that $\pjm(\tilde{X}_{i_{0}})$ is almost terminated,
-and $\{\tXi\}_{i=i_{0}}^{\infty}$ is located near a one-dimensional subspace $\mathcal{N}$.
-Then, we will give a modified Newton method which has faster convergence than the pure one.
-
-\begin{lem}\label{lem:PjnMonotone}
-Let $\{X_{i}\}$ be the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE},
-and let the derivative $P'_{S}$ be singular.
-Suppose that there exists $i_{0} \in \N_{0}$ such that $i \geq i_{0}$ implies that
-\begin{equation}
-\|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|,
-\end{equation}
-for $0 < \e \leq 1$.
-Then, $\pjn(\tXi)$ is negative for $i \geq i_{0}$.
-\end{lem}
-
-\begin{proof}
-From the proof of Lemma \ref{lem:BisInvertible}, $V_{1} := \vec^{-1}(\chi_{1})$ is a positive basis for $\mathcal{N}$.
-Let $c_{i,1}$ be a scalar such that $\pjn(\tXi) = c_{i,1}V_{1}$.
-Suppose that $c_{i,1} \geq 0$. Then, $\pjn(\tXi) \geq 0$.
-Since $\pjn(\tXi) + \pjm(\tXi) = \tXi \leq 0$, we obtain that $0 \leq \pjn(\tXi) \leq -\pjm(\tXi)$.
-Thus,
-\begin{equation}
-\|\pjn(\tXi)\| \leq \|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|.
-\end{equation}
-It means that $\e > 1$, i.e., it contradicts the hypothesis.
-Therefore, $c_{i,1} < 0$ and $\pjn(\tXi) < 0$.
-\end{proof}
-
-Consider a polynomial $f(x) = px^{3} + 2px^{2} + (9p+1)x - 1$ for $p > 0$.
-Since $f(0) = -1$ and $f(1) = 12p$, $f$ has a root in the interval $(0,1)$.
-From that $f'(x) = 3px^{2} + 4px + 9p + 1 > 0$ for all $x > 0$,
-$f$ is monotone increasing in $(0,1)$, i.e., the root $t$ of $f$ in $(0,1)$ is unique.
-Hence, for $x \in (0,t)$, it holds that
-\begin{equation}
-\dfrac{9x + 2x^{2} + x^{3}}{1 - x} < \dfrac{1}{p}.
-\end{equation}
-The previous inequality is useful to prove the following theorem.
-
-\begin{thm}\label{thm:modifiedNewton}
-Let $Y_{i+1} = X_{i} - 2P_{X_{i}}^{\prime -1}(P(X_{i}))$, $p = \|\pjn\|$, and let $\e \in (0,t)$ be given where $t$ is the real root of
-$f(x) = px^3 + 2px^2 + (9p + 1)x - 1$ in $(0,1)$.
-Suppose that $i \geq i_{0}$ implies that
-\begin{equation}
-\left| \dfrac{\|\tXi\|}{\|\tXii\|} - 2 \right| < \e,\qquad \|\pjm(\tXi)\| < \e\|\pjn(\tXi)\|
-\end{equation}
-for some $i_{0} \in \N_{0}$. Then, for $i \geq i_{0}$,
-\begin{equation}
-\|Y_{i+1} - S\| < \|\tXii\|.
-\end{equation}
-\end{thm}
-
-\begin{proof}
-From the definition of $Y_{i+1}$, we get that
-\begin{align*}
-Y_{i+1} - S &= X_{i} - 2P_{X_{i}}^{\prime -1}(P(X_{i})) - S \\
-            &= 2\left(X_{i} - P_{X_{i}}^{\prime -1}(P(X_{i}))\right) - X_{i} - S \\
-            &= 2X_{i+1} - X_{i} - 2S + S \\
-            &= 2\tXii - \tXi.
-\end{align*}
-So, we will show that $\|2\tXii - \tXi\| < \|\tXii\|$.
-From the hypothesis, we obtain that
-\begin{equation}
-(1-\e)\|\pjn(\tXi)\| < \|\tXi\| < (1+\e)\|\pjn(\tXi)\|.
-\end{equation}
-It yields two following inequalities,
-\begin{equation}
-\begin{array}{c}
-2-\e < \dfrac{\|\tXi\|}{\|\tXii\|} < \dfrac{(1+\e)\|\pjn(\tXi)\|}{(1-\e)\|\pjn(\tXii)\|},\\~\\
-\dfrac{(1-\e)\|\pjn(\tXi)\|}{(1+\e)\|\pjn(\tXii)\|} < \dfrac{\|\tXi\|}{\|\tXii\|} < 2+\e.
-\end{array}
-\end{equation}
-From the previous two inequalities, we get the inequality
-\begin{equation}
-\dfrac{(2-\e)(1-\e)}{1+\e} < \dfrac{\|\pjn(\tXi)\|}{\|\pjn(\tXii)\|} = \dfrac{c_{i,1}}{c_{i+1,1}} < \dfrac{(2+\e)(1+\e)}{1-\e},
-\end{equation}
-where $c_{i,1}$ and $c_{i+1,1}$ are scalars which are in the proof of Lemma \ref{lem:PjnMonotone}, i.e., they are negative.
-It is obtained that
-\begin{equation}
-\dfrac{-5\e + \e^2}{1+\e}(-c_{i+1,1}) < 2c_{i+1,1} - c_{i,1} < \dfrac{5\e + \e^2}{1-\e}(-c_{i+1,1}).
-\end{equation}
-Since $\dfrac{5\e + \e^2}{1-\e} - \dfrac{5\e - \e^2}{1+\e}$ is positive for $0 < \e < 1$,
-\begin{equation}
-|2c_{i+1,1} - c_{i,1}| < \dfrac{5\e + \e^2}{1-\e}|c_{i+1,1}|.
-\end{equation}
-
-Therefore, we get the following inequality,
-\begin{align*}
-\|2\tXii - \tXi\| &= \|2\pjn(\tXii) - \pjn(\tXi) + 2\pjm(\tXii) - \pjm(\tXi)\| \\
-                  &\leq \|2\pjn(\tXii) - \pjn(\tXi)\| + \|2\pjm(\tXii)\| + \|\pjm(\tXi)\| \\
-                  &< \|2\pjn(\tXii) - \pjn(\tXi)\| + 2\e\|\pjn(\tXii)\| + \e\|\pjn(\tXi)\| \\
-                  &= |2c_{i+1,1} - c_{i,1}|\|V_{1}\| + 2\e\|\pjn(\tXii)\| + \e\|\pjn(\tXi)\| \numberthis \label{eq:YiiLessXii}\\
-                  &< \dfrac{5\e + \e^2}{1-\e}|c_{i+1,1}|\|V_{1}\| + 2\e\|\pjn(\tXii)\| + \dfrac{(2+\e)(1+\e)}{1-\e}\e\|\pjn(\tXii)\| \\
-                  &= \dfrac{5\e + \e^2}{1-\e}\|\pjn(\tXii)\| + 2\e\|\pjn(\tXii)\| + \dfrac{(2+\e)(1+\e)}{1-\e}\e\|\pjn(\tXii)\| \\
-                  &= \dfrac{9\e + 2\e^2 + \e^3}{1-\e}\|\pjn(\tXii)\| \\
-                  &\leq \dfrac{9\e + 2\e^2 + \e^3}{1-\e}p\|\tXii\|.
-\end{align*}
-Since $\e \in (0,t)$, $\dfrac{9\e + 2\e^2 + \e^3}{1-\e} < \dfrac{1}{p}$ holds,
-\begin{equation}
-\|Y_{i+1} - S\| = \|2\tXii - \tXi\| < \|\tXii\|.
-\end{equation}
-\end{proof}
-
-%If we already know the solution for the given equation,
-%we can choose $Y_{i+1}$ as the next step of a suitable $X_{i}$ after checking the conditions of Theorem \ref{thm:modifiedNewton}.
-%But, we don't know the solution usually.
-%Hence, choosing $Y_{i+1}$ is dangerous for some cases, specially, the cases that the Fr\'{e}chet derivative at the solution is nonsingular.
-%We need to refer the drawing back algorithm which is introduced in \cite{Guo1998M} for algebraic Riccati equations.
-The theoretical result in Theorem \ref{thm:modifiedNewton} suggests a modified Newton method, as in \cite{Guo1998M} for algebraic Riccati equations.
-The main ideas of the algorithm are that we choose $X_{i+1}$ as the next step of $X_{i}$ if $\|P(Y_{i+1})\| \geq \eta$ for given tolerance $\eta$
-and the iteration is terminated if $\|P(X_{i+1})\| < \eta$ or $\|P(Y_{i+1})\| < \eta$.
-
-
-\begin{algo}\label{algo:modifiedNewton}
-The Modified Newton Method for the Matrix Polynomial Equations for the given tolerance $\eta$.
-
-\begin{enumerate}[\small 1.]
-\item $X_{0} \leftarrow 0$;
-\item Calculate $H$ such that $\P'_{X_{0}}\vec(H) = -\vec(P(X_{0}))$;
-\item $X_{0} \leftarrow X_{0} + 2H$;
-\item If $\|P(X_{0})\| < \eta$, then go to step 7;
-\item $X_{0} \leftarrow X_{0} - H$;
-\item If $\|P(X_{0})\| \geq \eta$, then go to step 2;
-\item $S \leftarrow X_{0}$.
-\end{enumerate}
-\end{algo}
-
-
-\section{Numerical Experiments}\label{sec:experiment}
-
-In this section, we compare the effectiveness of the modified Newton method and the pure one for the MPE.
-The experiments are made with MATLAB R2016a.
-The tolerance of the algorithm of Newton's method is given by $\eta = m \times 10^{-16}$
-and we will stop the iteration if $\|P(X_{i+1})\| < \eta$.
-
-\begin{exam}\label{ex:MPE}
-This example is given to check Theorem \ref{thm:modifiedNewton}, theoretically.
-So, we give the example whose solution is easy to be found,
-and the calculations of the iterations in the experiments are computed up to 100 digits with \texttt{vpa} function.
-Let an MPE \eqref{eq:MPE} with degree $n = 6$ be given with the following coefficients
-\begin{equation}\label{eq:MPEex}
-\left\{\begin{array}{ll}
-A_{k} = a_{k}W,&\textrm{for }k = 0, 2, 3, 4, 5, \\
-A_{1} = a_{1}W - I_{m},&\\
-A_{6} = W,&
-\end{array}\right.
-\end{equation}
-where
-\begin{equation}
-W = \dfrac{1}{6200(m-1)}(\ones{m \times m} - I_{m}),\quad\text{and}\quad
-\left\{\begin{array}{ll}
-a_{0} = 4096, & a_{1} = 56,\\
-a_{2} = 384, & a_{3} = 1312,\\
-a_{4} = 321, & a_{5} = 30.
-\end{array}\right.
-\end{equation}
-Then, $A_{k}$'s satisfy Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
-Hence, the MPE has the minimal positive solution $S$.
-
-Let $m = 3$. Then, the minimal nonnegative solution
-\begin{equation*}
-S = \bmatrix{\dfrac{2r+1}{3} & \dfrac{1-r}{3} & \dfrac{1-r}{3} \\~\\
-			\dfrac{1-r}{3} & \dfrac{2r+1}{3} & \dfrac{1-r}{3} \\~\\
-			\dfrac{1-r}{3} & \dfrac{1-r}{3} & \dfrac{2r+1}{3}},
-\end{equation*}
-where $r \approx -0.3287191$ which is the nearest real root to $0$ of the equation $x^6 + 30x^5 + 321x^4 + 1312x^3 + 384x^2 + 12456x + 4096 = 0$.
-Furthermore, $-\P'_{S}$ is a singular $M$-matrix.
-Therefore, we can calculate $\pjn$ and $\pjm$, easily.
-In this example, in fact, $-\P'_{S}$ is symmetric, so, $\pjn$ and $\pjm$ are orthogonal projections, i.e., $p = \|\pjn\| = 1$.
-Thus, $t \approx 0.097985683$ is the real root of $x^3 + 2x^2 + 10x - 1$.
-
-If we calculate the Newton iteration $\{X_{i}\}_{i=1}^{\infty}$ in \eqref{eq:NewtonStepMPE2} with $X_{0} = 0$
-and $\{Y_{i}\}_{i=1}^{\infty}$ in Theorem \ref{thm:modifiedNewton},
-then we obtain Figures \ref{figure:6degree1}, \ref{figure:6degree2}, \ref{figure:6degree3} as results of 
-$\left| \frac{\|\tXi\|}{\|\tXii\|} - 2 \right|$, $\|\pjn(\tXi)\|$, $\|\pjm(\tXi)\|$, $\|X_{i} - S\|$, and $\|Y_{i} - S\|$.
-Figure \ref{figure:6degree1} shows that $\left| \frac{\|\tXi\|}{\|\tXii\|} - 2 \right| < t$ if $i \geq 2$.
-From Figure \ref{figure:6degree2}, we get that $\|\pjm(\tXi)\| < t\|\pjn(\tXi)\|$ when $i \geq 1$.
-Finally, we see that $\|Y_{i} - S\| < \|X_{i} - S\|$ for $i \geq 2$ through Figure \ref{figure:6degree3}.
-
-This experiment shows that, for given $i$, $Y_{i}$ is closer to the solution than $X_{i}$ if it satisfies the conditions of Theorem \ref{thm:modifiedNewton}.
-Furthermore, we obtain that $Y_{i}$'s for $i \geq 13$ are closer to the solution than any $X_{i}$'s.
-It means that we do not need to compute $X_{i}$ for $i \geq 13$ since $Y_{13}$ is thought to be a ``numerical'' minimal nonnegative solution
-which is close sufficiently to the ``mathematical'' minimal nonnegative solution.
-
-%\begin{figure}[t!]
-%	\begin{center}
-%		\resizebox{10cm}{8cm}{\includegraphics{NM1.pdf}}
-%		\caption{\label{figure:6degree1}Checking which $i$ satisfies $\left| \dfrac{\|\tXi\|}{\|\tXii\|} - 2 \right| < t$ }
-%	\end{center}
-%\end{figure}
 %
-%\begin{figure}[t!]
-%	\begin{center}
-%		\resizebox{10cm}{8cm}{\includegraphics{NM2.pdf}}
-%		\caption{\label{figure:6degree2}Checking which $i$ satisfies $\|\pjm(\tXi)\| < t\|\pjn(\tXi)\|$}
-%	\end{center}
-%\end{figure}
+%%If we already know the solution for the given equation,
+%%we can choose $Y_{i+1}$ as the next step of a suitable $X_{i}$ after checking the conditions of Theorem \ref{thm:modifiedNewton}.
+%%But, we don't know the solution usually.
+%%Hence, choosing $Y_{i+1}$ is dangerous for some cases, specially, the cases that the Fr\'{e}chet derivative at the solution is nonsingular.
+%%We need to refer the drawing back algorithm which is introduced in \cite{Guo1998M} for algebraic Riccati equations.
+%The theoretical result in Theorem \ref{thm:modifiedNewton} suggests a modified Newton method, as in \cite{Guo1998M} for algebraic Riccati equations.
+%The main ideas of the algorithm are that we choose $X_{i+1}$ as the next step of $X_{i}$ if $\|P(Y_{i+1})\| \geq \eta$ for given tolerance $\eta$
+%and the iteration is terminated if $\|P(X_{i+1})\| < \eta$ or $\|P(Y_{i+1})\| < \eta$.
 %
-%\begin{figure}[t!]
-%	\begin{center}
-%		\resizebox{10cm}{8cm}{\includegraphics{NM3.pdf}}
-%		\caption{\label{figure:6degree3}Comparison with $\|X_{i} - S\|$ and $\|Y_{i} - S\|$}
-%	\end{center}
-%\end{figure}
-\end{exam}
-
-\begin{exam}\label{ex:nocommonW}{\rm (cf.\cite[Example 1]{C.He2004})}
-	In this example, we use Algorithm \ref{algo:modifiedNewton} for the following MPEs and $m = 8$.
-	Let MPEs
-	\begin{align}
-		Q(X) &= W_{0} + (W_{1} - I_{m})X + W_{2}X^{2} = 0, \label{eq:ex_8deg1}\\
-		R(X) &= W_{3} + (W_{4} - I_{m})X + W_{5}X^{2} = 0 \label{eq:ex_8deg2}
-	\end{align}
-	be given, where $W_{k}$ is a random nonnegative matrix which has null diagonal entries 
-	and positive off-diagonal entries such that $W_{k} \ones{m} = \frac13\ones{m}$ for $k = 0,1,2$,
-	$W_{3} \ones{m} = \frac{1}{2}\ones{m}$, and $W_{k} \ones{m} = \frac{1}{4}\ones{m}$ for $k = 4,5$.
-	Since $\dtyl I - \sum_{k=0}^{2}W_{k}$ and $\dtyl I - \sum_{k=3}^{5}W_{k}$ are singular irreducible $M$-matrices
-	and the coefficients satisfy Assumption \ref{ass:MPE},
-	\eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2} have the minimal positive solutions.
-	
-	We run the pure Newton algorithm(PNA) and the modified Newton algorithm(MNA) 300 times with $X_{0} = 0$, for \eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2} respectively.
-	All of the 300 experiments are run with different coefficients.
-	Averages of the iteration numbers are given in Table \ref{table:nocommonW}.
-	\begin{table}[h!]
-		\begin{tabular}{|c|c|c|}
-			\hline
-			&PNA&MNA\\ \hline
-			$Q(X) = 0$&26&10.99\\ \hline
-			$R(X) = 0$&7&7\\ \hline
-		\end{tabular}
-		\caption{\label{table:nocommonW}Averages of the iteration numbers}
-	\end{table}
-	
-	For \eqref{eq:ex_8deg1}, MNA finds the solution faster than PNA.
-	But, for \eqref{eq:ex_8deg2}, the iteration numbers of MNA and PNA are same.
-	Figure \ref{figure:ex2} shows that the solution $S_{Q}$ of \eqref{eq:ex_8deg1} is numerically non-simple and the solution $S_{R}$ of \eqref{eq:ex_8deg2} is simple.
-%	MNA is not efficient for simple solutions, i.e., MNA and PNA are not different for simple solutions.
-%	But, it is not a problem since iterations from MNA converge quadratically.
-%	In the experiment, for non-simple solutions, MNA lowers the iterations of PNA nearly in half.
-%	Therefore, we see that MNA is more efficient than PNA.
-	We can see from Table \ref{table:nocommonW} that MNA is significantly more efficient than PNA for finding non-simple solutions.
-%	\begin{figure}[t!]
-%		\begin{center}
-%			\resizebox{10cm}{8cm}{\includegraphics{ex2.pdf}}
-%			\caption{\label{figure:ex2}Relative errors of PNA iterations with the numerical solution $\hat{S}_{Q}$ and $\hat{S}_{R}$ from \eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2}, respectively}
-%		\end{center}
-%	\end{figure}
-\end{exam}
+%
+%\begin{algo}\label{algo:modifiedNewton}
+%The Modified Newton Method for the Matrix Polynomial Equations for the given tolerance $\eta$.
+%
+%\begin{enumerate}[\small 1.]
+%\item $X_{0} \leftarrow 0$;
+%\item Calculate $H$ such that $\P'_{X_{0}}\vec(H) = -\vec(P(X_{0}))$;
+%\item $X_{0} \leftarrow X_{0} + 2H$;
+%\item If $\|P(X_{0})\| < \eta$, then go to step 7;
+%\item $X_{0} \leftarrow X_{0} - H$;
+%\item If $\|P(X_{0})\| \geq \eta$, then go to step 2;
+%\item $S \leftarrow X_{0}$.
+%\end{enumerate}
+%\end{algo}
+%
+%
+%\section{Numerical Experiments}\label{sec:experiment}
+%
+%In this section, we compare the effectiveness of the modified Newton method and the pure one for the MPE.
+%The experiments are made with MATLAB R2016a.
+%The tolerance of the algorithm of Newton's method is given by $\eta = m \times 10^{-16}$
+%and we will stop the iteration if $\|P(X_{i+1})\| < \eta$.
+%
+%\begin{exam}\label{ex:MPE}
+%This example is given to check Theorem \ref{thm:modifiedNewton}, theoretically.
+%So, we give the example whose solution is easy to be found,
+%and the calculations of the iterations in the experiments are computed up to 100 digits with \texttt{vpa} function.
+%Let an MPE \eqref{eq:MPE} with degree $n = 6$ be given with the following coefficients
+%\begin{equation}\label{eq:MPEex}
+%\left\{\begin{array}{ll}
+%A_{k} = a_{k}W,&\textrm{for }k = 0, 2, 3, 4, 5, \\
+%A_{1} = a_{1}W - I_{m},&\\
+%A_{6} = W,&
+%\end{array}\right.
+%\end{equation}
+%where
+%\begin{equation}
+%W = \dfrac{1}{6200(m-1)}(\ones{m \times m} - I_{m}),\quad\text{and}\quad
+%\left\{\begin{array}{ll}
+%a_{0} = 4096, & a_{1} = 56,\\
+%a_{2} = 384, & a_{3} = 1312,\\
+%a_{4} = 321, & a_{5} = 30.
+%\end{array}\right.
+%\end{equation}
+%Then, $A_{k}$'s satisfy Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
+%Hence, the MPE has the minimal positive solution $S$.
+%
+%Let $m = 3$. Then, the minimal nonnegative solution
+%\begin{equation*}
+%S = \bmatrix{\dfrac{2r+1}{3} & \dfrac{1-r}{3} & \dfrac{1-r}{3} \\~\\
+%			\dfrac{1-r}{3} & \dfrac{2r+1}{3} & \dfrac{1-r}{3} \\~\\
+%			\dfrac{1-r}{3} & \dfrac{1-r}{3} & \dfrac{2r+1}{3}},
+%\end{equation*}
+%where $r \approx -0.3287191$ which is the nearest real root to $0$ of the equation $x^6 + 30x^5 + 321x^4 + 1312x^3 + 384x^2 + 12456x + 4096 = 0$.
+%Furthermore, $-\P'_{S}$ is a singular $M$-matrix.
+%Therefore, we can calculate $\pjn$ and $\pjm$, easily.
+%In this example, in fact, $-\P'_{S}$ is symmetric, so, $\pjn$ and $\pjm$ are orthogonal projections, i.e., $p = \|\pjn\| = 1$.
+%Thus, $t \approx 0.097985683$ is the real root of $x^3 + 2x^2 + 10x - 1$.
+%
+%If we calculate the Newton iteration $\{X_{i}\}_{i=1}^{\infty}$ in \eqref{eq:NewtonStepMPE2} with $X_{0} = 0$
+%and $\{Y_{i}\}_{i=1}^{\infty}$ in Theorem \ref{thm:modifiedNewton},
+%then we obtain Figures \ref{figure:6degree1}, \ref{figure:6degree2}, \ref{figure:6degree3} as results of 
+%$\left| \frac{\|\tXi\|}{\|\tXii\|} - 2 \right|$, $\|\pjn(\tXi)\|$, $\|\pjm(\tXi)\|$, $\|X_{i} - S\|$, and $\|Y_{i} - S\|$.
+%Figure \ref{figure:6degree1} shows that $\left| \frac{\|\tXi\|}{\|\tXii\|} - 2 \right| < t$ if $i \geq 2$.
+%From Figure \ref{figure:6degree2}, we get that $\|\pjm(\tXi)\| < t\|\pjn(\tXi)\|$ when $i \geq 1$.
+%Finally, we see that $\|Y_{i} - S\| < \|X_{i} - S\|$ for $i \geq 2$ through Figure \ref{figure:6degree3}.
+%
+%This experiment shows that, for given $i$, $Y_{i}$ is closer to the solution than $X_{i}$ if it satisfies the conditions of Theorem \ref{thm:modifiedNewton}.
+%Furthermore, we obtain that $Y_{i}$'s for $i \geq 13$ are closer to the solution than any $X_{i}$'s.
+%It means that we do not need to compute $X_{i}$ for $i \geq 13$ since $Y_{13}$ is thought to be a ``numerical'' minimal nonnegative solution
+%which is close sufficiently to the ``mathematical'' minimal nonnegative solution.
+%
+%%\begin{figure}[t!]
+%%	\begin{center}
+%%		\resizebox{10cm}{8cm}{\includegraphics{NM1.pdf}}
+%%		\caption{\label{figure:6degree1}Checking which $i$ satisfies $\left| \dfrac{\|\tXi\|}{\|\tXii\|} - 2 \right| < t$ }
+%%	\end{center}
+%%\end{figure}
+%%
+%%\begin{figure}[t!]
+%%	\begin{center}
+%%		\resizebox{10cm}{8cm}{\includegraphics{NM2.pdf}}
+%%		\caption{\label{figure:6degree2}Checking which $i$ satisfies $\|\pjm(\tXi)\| < t\|\pjn(\tXi)\|$}
+%%	\end{center}
+%%\end{figure}
+%%
+%%\begin{figure}[t!]
+%%	\begin{center}
+%%		\resizebox{10cm}{8cm}{\includegraphics{NM3.pdf}}
+%%		\caption{\label{figure:6degree3}Comparison with $\|X_{i} - S\|$ and $\|Y_{i} - S\|$}
+%%	\end{center}
+%%\end{figure}
+%\end{exam}
+%
+%\begin{exam}\label{ex:nocommonW}{\rm (cf.\cite[Example 1]{C.He2004})}
+%	In this example, we use Algorithm \ref{algo:modifiedNewton} for the following MPEs and $m = 8$.
+%	Let MPEs
+%	\begin{align}
+%		Q(X) &= W_{0} + (W_{1} - I_{m})X + W_{2}X^{2} = 0, \label{eq:ex_8deg1}\\
+%		R(X) &= W_{3} + (W_{4} - I_{m})X + W_{5}X^{2} = 0 \label{eq:ex_8deg2}
+%	\end{align}
+%	be given, where $W_{k}$ is a random nonnegative matrix which has null diagonal entries 
+%	and positive off-diagonal entries such that $W_{k} \ones{m} = \frac13\ones{m}$ for $k = 0,1,2$,
+%	$W_{3} \ones{m} = \frac{1}{2}\ones{m}$, and $W_{k} \ones{m} = \frac{1}{4}\ones{m}$ for $k = 4,5$.
+%	Since $\dtyl I - \sum_{k=0}^{2}W_{k}$ and $\dtyl I - \sum_{k=3}^{5}W_{k}$ are singular irreducible $M$-matrices
+%	and the coefficients satisfy Assumption \ref{ass:MPE},
+%	\eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2} have the minimal positive solutions.
+%	
+%	We run the pure Newton algorithm(PNA) and the modified Newton algorithm(MNA) 300 times with $X_{0} = 0$, for \eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2} respectively.
+%	All of the 300 experiments are run with different coefficients.
+%	Averages of the iteration numbers are given in Table \ref{table:nocommonW}.
+%	\begin{table}[h!]
+%		\begin{tabular}{|c|c|c|}
+%			\hline
+%			&PNA&MNA\\ \hline
+%			$Q(X) = 0$&26&10.99\\ \hline
+%			$R(X) = 0$&7&7\\ \hline
+%		\end{tabular}
+%		\caption{\label{table:nocommonW}Averages of the iteration numbers}
+%	\end{table}
+%	
+%	For \eqref{eq:ex_8deg1}, MNA finds the solution faster than PNA.
+%	But, for \eqref{eq:ex_8deg2}, the iteration numbers of MNA and PNA are same.
+%	Figure \ref{figure:ex2} shows that the solution $S_{Q}$ of \eqref{eq:ex_8deg1} is numerically non-simple and the solution $S_{R}$ of \eqref{eq:ex_8deg2} is simple.
+%%	MNA is not efficient for simple solutions, i.e., MNA and PNA are not different for simple solutions.
+%%	But, it is not a problem since iterations from MNA converge quadratically.
+%%	In the experiment, for non-simple solutions, MNA lowers the iterations of PNA nearly in half.
+%%	Therefore, we see that MNA is more efficient than PNA.
+%	We can see from Table \ref{table:nocommonW} that MNA is significantly more efficient than PNA for finding non-simple solutions.
+%%	\begin{figure}[t!]
+%%		\begin{center}
+%%			\resizebox{10cm}{8cm}{\includegraphics{ex2.pdf}}
+%%			\caption{\label{figure:ex2}Relative errors of PNA iterations with the numerical solution $\hat{S}_{Q}$ and $\hat{S}_{R}$ from \eqref{eq:ex_8deg1} and \eqref{eq:ex_8deg2}, respectively}
+%%		\end{center}
+%%	\end{figure}
+%\end{exam}
 
 \bibliographystyle{plain}
 \bibliography{SHSeo}
