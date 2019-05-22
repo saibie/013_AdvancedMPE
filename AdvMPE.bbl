@@ -124,6 +124,12 @@ Jong-Hyeon Seo and Hyun-Min Kim.
   polynomial equation arising in stochastic models.
 \newblock {\em Linear Algebra Appl.}, 440:34--49, 2014.
 
+\bibitem{SeoSeoKim2018}
+Sang-hyup Seo, Jong-Hyeon Seo, and Hyun-Min Kim.
+\newblock Convergence of a modified {N}ewton method for a matrix polynomial
+  equation arising in stochastic problem.
+\newblock {\em Electron. J. Linear Algebra}, 34:500--513, October 2018.
+
 \bibitem{SeoSeoKim2013}
 Sang-Hyup Seo, Jong-Hyun Seo, and Hyun-Min Kim.
 \newblock {N}ewton's method for solving a quadratic matrix equation with
