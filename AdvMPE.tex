@@ -1162,6 +1162,27 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 %%	\end{figure}
 %\end{exam}
 
+\section{Note}
+
+\begin{align*}
+	Q(X) & = A_{2}X^{2} + A_{1}X + A_{0} = 0 \\
+	X_{i+1} & = X_{i} - Q_{X_{i}}^{\prime -1}(Q(X_{i})) = X_{i} + H_{i} \\
+	& \\
+	X_{1} & = X_{0} - Q_{X_{0}}^{\prime -1}(Q(X_{0})) = X_{0} - Q_{X_{0}}^{\prime -1}(A_{0}) = X_{0} + H_{0} \\
+	& \\
+	Q(X_{1}) & = A_{2}X_{1}^{2} + A_{1}X_{1} + A_{0} \\
+	& = A_{2}(X_{0} + H_{0})^{2} + A_{1}(X_{0} + H_{0}) + A_{0} \\
+	& = Q(X_{0}) + Q'_{X_{0}}(H_{0}) + A_{2}H_{0}^{2} \\
+	& = A_{2}\left(Q_{X_{0}}^{\prime -1}(A_{0})\right)^{2} \\
+	X_{2} & = X_{1} - Q_{X_{1}}^{\prime -1}\left(A_{2}\left(Q_{X_{0}}^{\prime -1}(A_{0})\right)^{2}\right) \\
+	& \\
+	X_{3} & = X_{2} - Q_{X_{2}}^{\prime -1}\left( Q(X_{2}) \right) \\
+	X_{3} & = X_{2} - Q_{X_{2}}^{\prime -1}\left(A_{2}H_{1}^{2}\right) \\
+	& = X_{2} - Q_{X_{2}}^{\prime -1}\left(A_{2}\left( Q_{X_{1}}^{\prime -1}\left(A_{2}\left(Q_{X_{0}}^{\prime -1}(A_{0})\right)^{2}\right) \right)^{2}\right) \\
+	&\\
+	H_{i+1} & = -Q_{X_{i+1}}^{\prime -1}(A_{2}H_{i}^{2})
+\end{align*}
+
 \bibliographystyle{plain}
 \bibliography{SHSeo}
 
