@@ -1200,8 +1200,19 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 		\alpha c_{1} \|P_{N_{1}}(x_{i} - s)\|\cdot\|m_{i}\| 
 		& \leq \|w_{i} - P_{X_{1}}w_{i}\| \leq c\|w_{i} - F'[s]y_{i}\|\\
 		& \leq c \|F''[s](x_{i}-s)m_{i} - F'[s]y_{i}\| + c\|F''[s]P_{X_{1}}(x_{i} - s)m_{i}\|\\
-		& \leq 
+		& \leq c\|F''[s](x_{i}-s)m_{i} - F'[x_{i}]y_{i}\| + c\|F'[x_{i}]y_{i}-F'[s]y_{i}\|\\
+		& \qquad\qquad +c \|F''[s]P_{X_{1}}(x_{i} - s)m_{i}\| \numberthis \label{eq:longeq}\\
+		& \leq c\e_{i} + c c_{6}\|x_{i} - s\|^{2}\|m_{i}\| + \|\beta_{1}(x_{i})\|a_{2}c\\
+		& \qquad\qquad + c\|F''[s]\|\theta_{i}\|P_{N_{1}}(x_{i} - s)\|\cdot\|m_{i}\|,
 	\end{align*}
+	where $\|P_{N_{1}}z\| \leq c\|z\|$. Note that $\|P_{X_{1}}(x_{i} - s)\| \leq c\theta_{i}\|x_{i}-s\|$
+	and $\|P_{N_{1}}(x_{i} - s)\| \geq (1 - c\theta_{i})\|x_{i} - s\|$.
+	Substituting into \eqref{eq:longeq} and dividing by $\|x_{i}-s\|\cdot\|n_{i}\|$,
+	we have
+	\begin{equation}
+		\alpha c_{1}(1-c\theta_{i}) \leq c\e_{i}a_{3}^{-1}
+		+ cc_{6}\|x_{i} - s\| + c_{7}a_{3}^{-1}\|x_{i} - s\| + c_{5}\theta_{i}.
+	\end{equation}
 \end{proof}
 
 \section{Note}
