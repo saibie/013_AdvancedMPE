@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.21)  4 JUN 2019 16:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.21)  26 NOV 2019 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -460,30 +460,30 @@ Package color Info: Driver file: pdftex.def on input line 147.
 (./AdvMPE.aux)
 \openout1 = `AdvMPE.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Try loading font information for U+msa on input line 111.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Try loading font information for U+msa on input line 107.
  (c:/usr/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 111.
+LaTeX Font Info:    Try loading font information for U+msb on input line 107.
 
 (c:/usr/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 111.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 107.
 
 (c:/usr/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -518,9 +518,9 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package xypdf Info: Line width: 0.39998pt on input line 111.
+Package xypdf Info: Line width: 0.39998pt on input line 107.
 \AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring OFF on input line 111.
+Package hyperref Info: Link coloring OFF on input line 107.
 
 (c:/usr/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -530,39 +530,43 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 111.
-LaTeX Info: Redefining \pageref on input line 111.
-LaTeX Info: Redefining \nameref on input line 111.
+LaTeX Info: Redefining \ref on input line 107.
+LaTeX Info: Redefining \pageref on input line 107.
+LaTeX Info: Redefining \nameref on input line 107.
 
 (./AdvMPE.out) (./AdvMPE.out)
 \@outlinefile=\write4
 \openout4 = `AdvMPE.out'.
 
- [1{c:/usr/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./A
-dvMPE.bbl [3])
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1189
-.
+ [1{c:/usr/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Overfull \hbox (5.4071pt too wide) detected at line 1187
+[]
+ []
 
-(c:/usr/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
+(./AdvMPE.bbl [4])
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1193
+.
+ (c:/usr/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1189.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1189.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1193.
+
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1193.
  (./AdvMPE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1189.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1189.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1193.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1193.
 
 Package rerunfilecheck Info: File `AdvMPE.out' has not changed.
 (rerunfilecheck)             Checksum: C6B66D5E8213114F4033CAD2B94369D9;138.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1189.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1193.
  ) 
 Here is how much of TeX's memory you used:
- 9938 strings out of 492649
- 133521 string characters out of 6131492
- 277303 words of memory out of 5000000
- 13425 multiletter control sequences out of 15000+600000
- 18070 words of font info for 62 fonts, out of 8000000 for 9000
+ 9939 strings out of 492649
+ 133541 string characters out of 6131492
+ 277277 words of memory out of 5000000
+ 13424 multiletter control sequences out of 15000+600000
+ 18836 words of font info for 63 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  34i,13n,32p,3238b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/usr/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/
@@ -578,23 +582,22 @@ c/amsfonts/cm/cmr5.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmr6.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr7.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
 b><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:
-/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/usr/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/usr/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/usr/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/usr/texlive/2018/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/texlive/2018/texmf-
-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/usr/texlive/2018/texmf-dist/f
-onts/type1/public/cm-super/sfcc0800.pfb><c:/usr/texlive/2018/texmf-dist/fonts/t
-ype1/public/cm-super/sfcc1000.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/p
-ublic/cm-super/sfrm0700.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/
-cm-super/sfrm0800.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/cm-sup
-er/sfrm1000.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sft
-i0800.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.
-pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on AdvMPE.pdf (4 pages, 386298 bytes).
+/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/usr/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/usr/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/t
+exlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/usr/texlive
+/2018/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb><c:/usr/texlive/2018/
+texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/usr/texlive/2018/texmf-
+dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/usr/texlive/2018/texmf-dist/f
+onts/type1/public/cm-super/sfrm0800.pfb><c:/usr/texlive/2018/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1000.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/p
+ublic/cm-super/sfti0800.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/
+cm-super/sfti1000.pfb><c:/usr/texlive/2018/texmf-dist/fonts/type1/public/cm-sup
+er/sftt0800.pfb>
+Output written on AdvMPE.pdf (5 pages, 366203 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
+ 231 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
