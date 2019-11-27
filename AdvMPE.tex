@@ -1137,6 +1137,7 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 
 \section{Analysis for Nearly-Singular Points}
 \begin{assumption}
+	We assume that
 	\begin{enumerate}
 		\item $F(s) = 0$;
 		\item $N_{1}$ is eigenspace for the smallest eigenvalue;
@@ -1144,7 +1145,7 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 		\item $F'[s]X_{1} = X_{1}$;
 		\item $P_{X_{1}}$ and $P_{N_{1}}$;
 		\item $W_{\rho, \theta}(s) = \left\{ x \in X : \|x - s\| \leq \rho,
-		\|P_{X_{1}}(x - s) \leq \theta\|P_{N_{1}}(x - s)\| \right\}$
+		\|P_{X_{1}}(x - s) \leq \theta\|P_{N_{1}}(x - s)\| \right\}$.
 	\end{enumerate}
 \end{assumption}
 
@@ -1153,6 +1154,48 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 		\item $\gamma(M, N) = \inf\{{\rm dist}(u, N) : u \in M, \|u\| = 1\}$.
 	\end{enumerate}
 \end{definition}
+
+\begin{thm}\label{thm:main}
+	Let
+	\begin{enumerate}
+		\item $N_{1}$ : 1-dim.;
+		\item $F''[s]N_{1}N_{1} \cap X_{1} = \{0\}$;
+		\item $\|F''[s]nx\| \geq c_{1}\|n\|\|x\|$ for all $n\in N_{1}, x \in X$ with $c_{1} > 0$.
+	\end{enumerate}
+	Then,
+	\begin{enumerate}
+		\item $\exists \rho > 0,~\theta > 0$ : $\exists F'[x]^{-1}$ for all $x(\neq s) 
+		\in W_{\rho,\theta}(s)$;
+		\item $\|F'[x]^{-1}\| \leq c_{2}\|x-s\|^{-1}$;
+		\item $GW_{\rho,\theta}(s) \subset W_{\rho,\theta}(s)$ where $Gx \equiv x - F'[x]^{-1}F(x)$;
+		\item $F^{-1}(0) \cap B_{\rho}(s) = s$;
+		\item $x_{i} = Gx_{i-1}$ $\Rightarrow$ $x_{i} \rightarrow s$ 
+		and $\|P_{X_{1}}(x_{i}-s)\|\leq c\|x_{i-1}-s\|^{2}$.
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}
+	Let $\theta > 0$ and $\rho > 0$ be chosen.
+	Since $F(x) = F(s) + F'[s](x-s) + \beta_{2}(x)$, 
+	then $F'[x]^{-1}F(x) = F'[x]^{-1}F'[s]{\color{red}P_{X_{1}}(x-s)} + \beta_{1}(x) 
+	= P_{X_{1}}(x-s)+\beta_{1}(x)$ for $x \neq s$ in $W$.
+	{\color{red} Thus $Gx \rightarrow s$ as $x \rightarrow s$ in $W$.}
+	Hence we define $Gs = s$.
+	
+	Choose $x_{0} \in W$.
+	Then $x_{1} = Gx_{0}$, the first Newton iterate, is defined and
+	\begin{equation*}
+		F'[x_{0}](x_{1} - s) = F'[x_{0}](x_{0} - s) - F(x_{0}).
+	\end{equation*}
+	Now
+	\begin{equation*}
+		F'[x_{0}]^{-1}F(x_{0}) = -(s-x_{0}) - F'[x_{0}]^{-1}\dfrac{F''[x_{0}]}{2}(s-x_{0})^{2} + \beta_{2}(x_{0}),
+	\end{equation*}
+	and so
+	\begin{align*}
+		x_{1} - s &= F'[x_{0}]^{-1}
+	\end{align*}
+\end{proof}
 
 \begin{lem}
 	There exists a constant $c_{3} > 0$ such that $\|F'[x]y\| \geq c_{3}\|y\|$ holds 
@@ -1213,6 +1256,8 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 		\alpha c_{1}(1-c\theta_{i}) \leq c\e_{i}a_{3}^{-1}
 		+ cc_{6}\|x_{i} - s\| + c_{7}a_{3}^{-1}\|x_{i} - s\| + c_{5}\theta_{i}.
 	\end{equation}
+	Thus for $i$ sufficiently large, we have $\alpha c_{1} \leq 2(cc_{6}+c_{7}a_{3}^{-1})\|x-s\|$.
+	Thus for $\rho$ sufficiently small, we have a contradiction, completing the proof.
 \end{proof}
 
 \section{Note}
