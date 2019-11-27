@@ -1142,7 +1142,7 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 		\item $F(s) = 0$;
 		\item $N_{1}$ is eigenspace for the smallest eigenvalue;
 		\item $X = N_{1} \oplus X_{1}$ with a closed $X_{1}$;
-		\item $F'[s]X_{1} = X_{1}$;
+		\item $F'[s]X_{1} = X_{1}$, $F'[s]N_{1} = N_{1}$;
 		\item $P_{X_{1}}$ and $P_{N_{1}}$;
 		\item $W_{\rho, \theta}(s) = \left\{ x \in X : \|x - s\| \leq \rho,
 		\|P_{X_{1}}(x - s) \leq \theta\|P_{N_{1}}(x - s)\| \right\}$.
@@ -1214,24 +1214,37 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 	There exist positive constants $c_{5}$, $\rho$, and $\theta$ such that $\gamma(F'[x]N_{1}, F'[x]X_{1}) \geq c_{5}$ for $x \neq s$ in $W_{\rho, \theta}(s)$.
 \end{lemma}
 
+\definecolor{gray}{rgb}{.5,.5,.5}
 \begin{proof}
 	Fix $\rho > 0$. Suppose the conclusion is false.
 	Then we have sequences $\{x_{i}\} \in B_{\rho}(s)$, $\{m_{i}\} \in N_{1}$, and $\{y_{i}\} \in X_{1}$
 	such that $\|F'[x_{i}]m_{i}\| = 1$, $\|F'[x_{i}]m_{i} - F'[x_{i}]y_{i}\| \equiv \e_{i} \rightarrow 0$, 
 	and $\|P_{X_{i}}(x_{i} - s)\| \leq \theta_{i}\|P_{N_{1}}(x_{i} - s)\|$ with $\theta_{i} \rightarrow 0$.
-	{\color{red}Note for $\rho$ small $F'[x]N_{1} \neq N_{1}$, $x \neq s$ in $B_{\rho}(s)$.}
+	{\color{red}Note for $\rho$ small $F'[x]N_{1} \neq \{0\}$, $x \neq s$ in $B_{\rho}(s)$.}
 	Anyway, $\gamma(F'[x]N_{1}, F'[x]X_{1})$ is defined.
 	Note also that there exist $a_{1}, a_{2} > 0$ such that $a_{1} \leq \|y_{i}\| \leq a_{2}$.
 	{\color{red}Since $F''[s]N_{1}N_{1}$ is 1-dim. of $X$ such that $F''[s]N_{1}N_{1} \cap X_{1} = \{0\}$,
 	$\|w - P_{X_{1}}w\| \geq \alpha \|w\|$ for some $\alpha > 0$ and all $w$ in $F''[s]N_{1}N_{1}$.}
-	We finally note that since $F'[x_{i}]m_{i} = F''[s](x_{i} - s)m_{i} + \beta_{2}(x_{i})m_{i}$, then
+	We finally note that 
+	{\color{red}since $F'[x_{i}]m_{i} = F'[s]m_{i} + F''[s](x_{i} - s)m_{i} + \beta_{2}(x_{i})m_{i}$,} then
+	\begin{align*}
+		F'[x_{i}]m_{i} &= F'[s]m_{i} + F''[s](x_{i} - s)m_{i} + \beta_{2}(x_{i})m_{i}\\
+		F'[x_{i}]m_{i} - \beta_{2}(x_{i})m_{i} - \l m_{i} &= F''[s](x_{i} - s)m_{i} \\
+		\|F'[x_{i}]m_{i} - \beta_{2}(x_{i})m_{i} - \l m_{i}\| &= \|F''[s](x_{i} - s)m_{i}\| \\
+		\|F'[x_{i}]m_{i}\| + c_{6}\|x_{i}-s\|^{2}\|m_{i}\| + |\l|\|m_{i}\| 
+		& \geq \|F'[x_{i}]m_{i}\| + \|\beta_{2}(x_{i})m_{i}\| + |\l|\|m_{i}\| \\
+		&\geq \|F''[s](x_{i} - s)m_{i}\| \\
+		&\geq c_{1}\|x_{i} - s\|\|m_{i}\|
+	\end{align*}
+	
 	\begin{equation}
-		c_{1}\|x_{i} - s\|\cdot\|m_{i}\| - c_{6}\|x_{i} - s\|^{2}\|m_{i}\| \leq 1
+		1 \geq c_{1}\|x_{i} - s\|\|m_{i}\| - c_{6}\|x_{i} - s\|^{2}\|m_{i}\| - |\l|\|m_{i}\|
 	\end{equation}
 	and
 	\begin{equation}
-		1 \leq \|F''[s]\|\cdot\|x_{i} - s\|\|m_{i}\| + c_{6}\|x_{i} - s\|^{2}\cdot\|m_{i}\|.
+		1 \leq |\l|\|m_{i}\| + \|F''[s]\|\|x_{i} - s\|\|m_{i}\| + c_{6}\|x_{i} - s\|^{2}\|m_{i}\|,
 	\end{equation}
+	{\color{red}if $\|F''[s]\|$ is bounded}.
 	Thus for some constants $a_{3}$ and $a_{4}$,
 	\begin{equation}
 		0 < a_{3} \leq \|x_{i} - s\|\cdot\|m_{i}\| \leq a_{4}
