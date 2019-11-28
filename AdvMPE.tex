@@ -101,6 +101,7 @@
 \def\ones#1{\mathbf{1}_{#1}}
 %\def\onesn{\mathbf{1}_{n \times n}}
 
+\definecolor{gray}{rgb}{.5,.5,.5}
 
 \makeatother
 
@@ -1198,15 +1199,25 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 \end{proof}
 
 \begin{lem}
-	There exists a constant $c_{3} > 0$ such that $\|F'[x]y\| \geq c_{3}\|y\|$ holds 
-	for all $y \in X$ and $x \in B_{\rho}(s)$.
+	\begin{enumerate}
+		\item There exists a constant $c_{3} > 0$ such that $\|F'[x]y\| \geq c_{3}\|y\|$ holds 
+		for all $y \in X$ and $x \in B_{\rho}(s)$.
+		{\color{red}\item There exists a constant $c_{4} > 0$ so that 
+			$\|(F'[x] - \l I)m\| \geq c_{4}\|x-s\|\|m\|$
+		holds for all $m \in N_{1}$ and all $x \in B_{\rho}(s)$.\label{lem:enu:2}}
+	\end{enumerate}
 \end{lem}
 
 \begin{proof}
+	\eqref{lem:enu:2}
 	\begin{align*}
-	F'[x]y &= F'[s]y + F''[s]y(x - s) + \frac12 F'''[s]y(x - s)(x - s) + O(\|y\|\|x - s\|^3)\\
-	&= F'[s]y + F''[s]y(x - s) + O(\|y\|\|x - s\|^2)\\
-	&= F'[s]y + O(\|y\|\|x - s\|)
+		F'[x]m &= F'[s]m + F''[s]m(x - s) + \frac12 F'''[s]m(x - s)(x - s) + O(\|m\|\|x - s\|^3)\\
+		&= \l m + F''[s]m(x - s) + O(\|m\|\|x - s\|^2)\\
+		&= \l m + O(\|m\|\|x - s\|)
+	\end{align*}
+	\begin{align*}
+		F'[x]m - \l m = O(\|m\|\|x - s\|)\\
+		(F'[x] - \l I) m = O(\|m\|\|x - s\|)
 	\end{align*}
 \end{proof}
 
@@ -1214,7 +1225,7 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 	There exist positive constants $c_{5}$, $\rho$, and $\theta$ such that $\gamma(F'[x]N_{1}, F'[x]X_{1}) \geq c_{5}$ for $x \neq s$ in $W_{\rho, \theta}(s)$.
 \end{lemma}
 
-\definecolor{gray}{rgb}{.5,.5,.5}
+{\color{gray}
 \begin{proof}
 	Fix $\rho > 0$. Suppose the conclusion is false.
 	Then we have sequences $\{x_{i}\} \in B_{\rho}(s)$, $\{m_{i}\} \in N_{1}$, and $\{y_{i}\} \in X_{1}$
@@ -1271,7 +1282,7 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 	\end{equation}
 	Thus for $i$ sufficiently large, we have $\alpha c_{1} \leq 2(cc_{6}+c_{7}a_{3}^{-1})\|x-s\|$.
 	Thus for $\rho$ sufficiently small, we have a contradiction, completing the proof.
-\end{proof}
+\end{proof}}
 
 \section{Note}
 
