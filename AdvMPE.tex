@@ -1183,6 +1183,18 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 	{\color{red} Thus $Gx \rightarrow s$ as $x \rightarrow s$ in $W$.}
 	Hence we define $Gs = s$.
 	
+	\begin{align*}
+		F'[s]y &= F'[x_{0}]y + F''[x_{0}](s - x_{0})y + \frac12 F'''[x_{0}](s - x_{0})^{2}y + \cdots
+	\end{align*}
+	
+	\begin{align*}
+	F''[x_{0}](x_{0} - s)y &= F'[x_{0}]y - F'[s]y + \frac12 F'''[x_{0}](s - x_{0})^{2}y + \cdots
+	\end{align*}
+	
+	\begin{align*}
+	F''[x_{0}](x_{0} - s)P_{N_{1}}(x_{0} - s) &= (F'[x_{0}] - F'[s])P_{N_{1}}(x_{0} - s) + \beta_{3}
+	\end{align*}
+	
 	Choose $x_{0} \in W$.
 	Then $x_{1} = Gx_{0}$, the first Newton iterate, is defined and
 	\begin{equation*}
@@ -1194,7 +1206,26 @@ and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ 
 	\end{equation*}
 	and so
 	\begin{align*}
-		x_{1} - s &= F'[x_{0}]^{-1}
+		x_{1} - s &= x_{0} - s - F'[x_{0}]^{-1}F(x_{0}) \\
+		&= \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)^{2} + \beta_{2}(x_{0}) \\
+		&= \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)P_{X_{1}}(x_{0} - s) \\
+		&\qquad + \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)P_{N_{1}}(x_{0} - s) + \beta_{2}(x_{0}) \\
+		&= \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)P_{X_{1}}(x_{0} - s) \\
+		&\qquad + \frac12 F'[x_{0}]^{-1}(F'[x_{0}] - F'[s])P_{N_{1}}(x_{0} - s) + \beta_{2}(x_{0}) \\
+		&= \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)P_{X_{1}}(x_{0} - s) \\
+		&\qquad + \frac12 P_{N_{1}}(x_{0} - s) - \frac12 F'[x_{0}]^{-1}F'[s]P_{N_{1}}(x_{0} - s) + \beta_{2}(x_{0}) \\
+		&= \frac12 F'[x_{0}]^{-1}F''[x_{0}](x_{0} - s)P_{X_{1}}(x_{0} - s) \\
+		&\qquad + \frac12 P_{N_{1}}(x_{0} - s) - \frac12 \l F'[x_{0}]^{-1}P_{N_{1}}(x_{0} - s) + \beta_{2}(x_{0}) 
+	\end{align*}
+	
+	\begin{align*}
+		P_{X_{1}}(x_{1} - s) &= \frac12 (P_{X_{1}}F'[x_{0}]^{-1})F''[x_{0}](x_{0} - s)P_{X_{1}}(x_{0} - s) \\
+		&\qquad - \frac12 \l P_{X_{1}}F'[x_{0}]^{-1}P_{N_{1}}(x_{0} - s) + \beta_{2}(x_{0}) 
+	\end{align*}
+	
+	\begin{align*}
+	\|P_{X_{1}}(x_{1} - s)\| &\leq c^*\|x_{0} - s\|^{2} + |\l|c^{**}\|x_{0} - s\| \\
+	\dfrac{\|P_{X_{1}}(x_{1} - s)\|}{\|x_{0} - s\|} & \leq c^{*}\|x_{0} - s\| + |\l|c^{**}
 	\end{align*}
 \end{proof}
 
