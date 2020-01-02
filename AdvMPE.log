@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.26)  30 DEC 2019 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.26)  2 JAN 2020 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,7 +567,7 @@ LaTeX Info: Redefining \nameref on input line 108.
 \openout4 = `AdvMPE.out'.
 
  [1{c:/usr/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (22.60925pt too wide) detected at line 1228
+Overfull \hbox (82.47458pt too wide) detected at line 1216
 []
  []
 
@@ -636,7 +636,7 @@ ype1/public/cm-super/sfrm1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/p
 ublic/cm-super/sfti0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/
 cm-super/sfti1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-sup
 er/sftt0800.pfb>
-Output written on AdvMPE.pdf (6 pages, 375412 bytes).
+Output written on AdvMPE.pdf (6 pages, 375166 bytes).
 PDF statistics:
  273 PDF objects out of 1000 (max. 8388607)
  237 compressed objects within 3 object streams
