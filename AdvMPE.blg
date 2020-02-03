@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: AdvMPE.aux
 The style file: plain.bst
 Database file #1: SHSeo.bib
-You've used 24 entries,
+You've used 28 entries,
             2118 wiz_defined-function locations,
-            1010 strings with 13581 characters,
-and the built_in function-call counts, 7456 in all, are:
-= -- 726
-> -- 326
+            1042 strings with 14189 characters,
+and the built_in function-call counts, 8707 in all, are:
+= -- 861
+> -- 378
 < -- 0
-+ -- 131
-- -- 104
-* -- 540
-:= -- 1275
-add.period$ -- 72
-call.type$ -- 24
-change.case$ -- 120
++ -- 153
+- -- 120
+* -- 636
+:= -- 1484
+add.period$ -- 84
+call.type$ -- 28
+change.case$ -- 140
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 270
-empty$ -- 609
-format.name$ -- 104
-if$ -- 1542
+cite$ -- 28
+duplicate$ -- 313
+empty$ -- 705
+format.name$ -- 120
+if$ -- 1787
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 30
-newline$ -- 124
-num.names$ -- 48
-pop$ -- 110
+int.to.str$ -- 28
+missing$ -- 34
+newline$ -- 144
+num.names$ -- 56
+pop$ -- 124
 preamble$ -- 2
-purify$ -- 100
+purify$ -- 116
 quote$ -- 0
-skip$ -- 171
+skip$ -- 203
 stack$ -- 0
-substring$ -- 512
-swap$ -- 24
+substring$ -- 610
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
+type$ -- 100
 warning$ -- 0
-while$ -- 71
-width$ -- 26
-write$ -- 263
+while$ -- 89
+width$ -- 30
+write$ -- 306

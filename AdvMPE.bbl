@@ -25,16 +25,26 @@ Geoffrey.~J. Butler, Charles~R. Johnson, and Henry Wolkowicz.
   comparison theorems in ordinary differential equations.
 \newblock {\em SIAM J. Algebraic Discrete Methods}, 6(1):47--53, January 1985.
 
-\bibitem{Davis1981}
-George~J. Davis.
-\newblock Numerical solution of a quadratic matrix equation.
-\newblock {\em SIAM J. Sci. Comput.}, 2:164--175, 1981.
+\bibitem{DeckerKellerKelley1983}
+D.~W. Decker, H.~B. Keller, and C.~T. Kelley.
+\newblock Convergence rates for {N}ewton's method at singular points.
+\newblock {\em SIAM J. Numer. Anal.}, 20(2):296--314, 1983.
 
-\bibitem{Davis1983}
-George~J. Davis.
-\newblock Algorithm 598: an algorithm to compute solvent of the matrix equation
-  {$AX^2 + BX + C = 0$}.
-\newblock {\em ACM Trans. Math. Software}, 9(2):246--254, June 1983.
+\bibitem{DeckerKelley1980Newton1}
+D.~W. Decker and C~.T. Kelley.
+\newblock {N}ewton's method at singular points. {I}.
+\newblock {\em SIAM J. Numer. Anal.}, 17(1):66--70, 1980.
+
+\bibitem{DeckerKelley1980Newton2}
+D.~W. Decker and C.~T. Kelley.
+\newblock {N}ewton's method at singular points. {II}.
+\newblock {\em SIAM J. Numer. Anal.}, 17(3):465--471, 1980.
+
+\bibitem{DeckerKelley1985}
+D.~W. Decker and C.~T. Kelley.
+\newblock Expanded convergence domains for {N}ewton's method at nearly singular
+  roots.
+\newblock {\em SIAM J. Sci. Statist. Comput.}, 6(4):951--966, 1985.
 
 \bibitem{Gohberg1982}
 Israel Gohberg, Peter Lancaster, and Leiba Rodman.
@@ -64,33 +74,32 @@ Chun-Hua Guo and Alan~J Laub.
   {Riccati} equations.
 \newblock {\em SIAM J. Matrix Anal. Appl.}, 22(2):376--391, 2000.
 
-\bibitem{SophieHautphenne2008}
-Sophie Hautphenne, Guy Latouche, and Marie-Ange Remiche.
-\newblock {Newton's} iteration for the extinction probability of a {Markovian}
-  binary tree.
-\newblock {\em Linear Algebra Appl.}, 428:2791--2804, 2008.
-
 \bibitem{He2001}
 Qi-Ming He and Marcel~F. Neuts.
 \newblock On the convergence and limits of certain matrix sequences arising in
   quasi-birth-and-death {Markov} chains.
 \newblock {\em J. Appl. Probab.}, 38(2):519--541, 2001.
 
-\bibitem{Higham2000}
-Nicholas~J. Higham and Hyun-Min Kim.
-\newblock Numerical analysis of a quadratic matrix equation.
-\newblock {\em IMA J. Numer. Anal.}, 20(4):499--519, 2000.
-
-\bibitem{Higham2001}
-Nicholas~J. Higham and Hyun-Min Kim.
-\newblock Solving a quadratic matrix equation by {Newton's} method with exact
-  line searches.
-\newblock {\em SIAM J. Matrix Anal. Appl.}, 23:303--316, 2001.
-
 \bibitem{roger91}
 Roger~A. Horn and Charles~R. Johnson.
 \newblock {\em Topics in Matrix Analysis}.
 \newblock Cambridge University Press, 2nd edition, 1995.
+
+\bibitem{Kantorovich1964}
+L.~V. Kantorovich and G.~P. Akilov.
+\newblock Functional analysis in normed linear spaces.
+\newblock {\em English translation, Pergamon Press, New York}, 1964.
+
+\bibitem{Kelley1986}
+C.~T. Kelley.
+\newblock A shamanskii-like acceleration scheme for nonlinear equations at
+  singular roots.
+\newblock {\em Math. Comp.}, 47(176):609--623, 1986.
+
+\bibitem{Kelley1983}
+C.~T. Kelley and R.~Suresh.
+\newblock A new acceleration method for {N}ewton's method at singular points.
+\newblock {\em SIAM J. Numer. Anal.}, 20(5):1001--1009, 1983.
 
 \bibitem{Kim2008}
 Hyun-Min Kim.
@@ -118,11 +127,22 @@ George Poole and Thomas Boullion.
 \newblock A survey on {$M$}-matrices.
 \newblock {\em SIAM Rev.}, 16(4):419--427, 1974.
 
+\bibitem{Reddien1978}
+G.~W. Reddien.
+\newblock On {N}ewton's method for singular problems.
+\newblock {\em SIAM J. Numer. Anal.}, 15(5):993--996, 1978.
+
 \bibitem{SeoKim2014}
 Jong-Hyeon Seo and Hyun-Min Kim.
 \newblock Convergence of pure and relaxed {N}ewton methods for solving a matrix
   polynomial equation arising in stochastic models.
 \newblock {\em Linear Algebra Appl.}, 440:34--49, 2014.
+
+\bibitem{SeoSeo2020}
+Sang-hyup Seo and Jong-Hyeon Seo.
+\newblock Convergence of relaxed {N}ewton method for order-convex matrix
+  equations.
+\newblock {\em Comput. Appl. Math.}, 39(1):1--17, 2020.
 
 \bibitem{SeoSeoKim2018}
 Sang-hyup Seo, Jong-Hyeon Seo, and Hyun-Min Kim.
