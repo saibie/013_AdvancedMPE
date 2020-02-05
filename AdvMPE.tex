@@ -152,9 +152,9 @@ Kim \cite{Kim2008} showed that the minimal positive solutions also can be found 
 %Hautphenne, Latouche, and Remiche \cite{SophieHautphenne2008} studied the Newton method for the Markovian binary tree.
 Seo and Kim \cite{SeoSeoKim2013, SeoKim2014} studied the Newton iteration for a quadratic matrix equation and a matrix polynomial equation.
 
-Newton's method is one of powerful tools to find a solution of a nonlinear matrix equation.
-It is well-known that the convergence rate of the method is quadratic in many cases by Kantrovich theorem \cite{Kantorovich1964}.
-But, if the derivative at the solution is singular, then we cannot apply Kantrovich theorem.
+Newton's method is one of powerful tools to find solutions of nonlinear matrix equations.
+By Kantorovich theorem \cite{Kantorovich1964}, the convergence rate of the method is quadratic if the derivative on the domain is Lipschitz continuous and at the solution is nonsingular.
+But, if the derivative at the solution is singular, then we cannot apply Kantrovich theorem, i.e., we cannot guarantee that the rate is quadratic.
 The followings are researches to analyze the problems with singular derivative at the solution and improve the method.
 
 For general functions on Banach spaces, Reddien \cite{Reddien1978}, Decker and Kelley \cite{DeckerKelley1980Newton1, DeckerKelley1980Newton2} gave analyses about Newton's method for singular problems.
@@ -164,7 +164,16 @@ Decker and Kelley \cite{DeckerKelley1985} showed an analysis for Newton's method
 at nearly singular roots.
 In \cite{Kelley1986}, Kelley analyzed convergence rate of the method for functions whose high order derivatives at the solution are singular.
 For specific functions on $\R^{\mbyn}$, Guo and Lancaster \cite{Guo1998M} analyzed and provided a modification about Newton's method for algebraic Riccati equations at singular roots.
-In \cite{SeoSeo2020}, Seo S-.H. and Seo J-.H. suggested a modified Newton method for matrix polynomial equations with $n$-degree for singular problems.
+In \cite{SeoSeo2020}, S-.H. Seo and J-.H. Seo suggested a modified Newton method for matrix polynomial equations with $n$-degree for singular problems.
+
+In \cite{Kelley1983, DeckerKellerKelley1983}, accelerations for Newton's method at singular roots was suggested for general functions on Banach spaces.
+For specific functions on $\R^{\mbyn}$, modifications of Newton's method at singular roots was provided in \cite{Guo1998M, SeoSeoKim2018}.
+But, the main hypotheses of the papers are similar and that the solution is non-simple, i.e., the derivative at the solution is singular.
+It means that the accelerations for Newton's method cannot be applied and the accelerated iterations cannot be guaranteed converge to the solutions.
+Even if the iterations converge to the solutions, they cannot be guaranteed faster than the pure iterations.
+
+
+Otherwise, in \cite{DeckerKelley1985}, the authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots.
 
 We give some basic definitions and lemmas for this paper.
 
@@ -194,7 +203,6 @@ If nonnegative solutions $S_{1}$ and $S_{2}$ of $F(X) = 0$ are satisfy
 	S_{1}\leq S\leq S_{2},\end{equation}
 for any nonnegative solution $S$ of $F(X) = 0$, then they are called the {\it minimal nonnegative solution} and the {\it maximal nonnegative solution}, respectively.
 The {\it minimal positive solution} and the {\it maximal positive solution} also are can be defined, similarly.
-
 If the Fr\'echet derivative of $F$ at a solution $S$ is nonsingular, then $S$ is called {\it simple}.
 Furthermore, we call that a not simple solution is {\it non-simple}.
 
@@ -210,14 +218,7 @@ Furthermore, we call that a not simple solution is {\it non-simple}.
 
 
 
-Aim of this paper is to provide an improved Newton's method for \eqref{eq:MPE}.
-
-%This MPE is useful for stochastic theory, quasi-birth-and-death problem, and so on.
-%In \cite{Guo1998M}, Guo and Lancaster showed that $\|Y_{i+1} - S\| < c\varepsilon$ 
-%for the modified iteration $Y_{i+1}$, the solution $S$, a constant $c > 0$, and small $\varepsilon > 0$.
-%Similarily, Seo, Seo, and Kim \cite{SeoSeoKim2018} showed that the modified Newton iteration $Y_{i+1}$ for the MPE is closer to the solution $S$ than
-%the pure Newton iteration $X_{i+1}$.
-%But, in both of \cite{Guo1998M, SeoSeoKim2018}, the authors showed that the modifications are better than the pure if the solution $S$ is non-simple.
+%Aim of this paper is to provide an improved Newton's method for \eqref{eq:MPE} at nearly singular roots.
 
 
 For convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
