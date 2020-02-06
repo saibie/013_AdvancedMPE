@@ -57,11 +57,6 @@ Chun-Hua {Guo}.
   factorization for M-matrices.}
 \newblock {\em SIAM J. Matrix Anal. Appl.}, 23(1):225--242, 2001.
 
-\bibitem{Guo2007}
-Chun-Hua Guo and Nicholas~J. Higham.
-\newblock Iterative solution of a nonsymmetric algebraic {R}iccati equation.
-\newblock {\em SIAM J. Matrix Anal. Appl.}, 29:396--412, 2007.
-
 \bibitem{Guo1998M}
 Chun-hua Guo and Peter Lancaster.
 \newblock Analysis and modification of {N}ewton's method for algebraic
@@ -79,11 +74,6 @@ Qi-Ming He and Marcel~F. Neuts.
 \newblock On the convergence and limits of certain matrix sequences arising in
   quasi-birth-and-death {Markov} chains.
 \newblock {\em J. Appl. Probab.}, 38(2):519--541, 2001.
-
-\bibitem{roger91}
-Roger~A. Horn and Charles~R. Johnson.
-\newblock {\em Topics in Matrix Analysis}.
-\newblock Cambridge University Press, 2nd edition, 1995.
 
 \bibitem{Kantorovich1964}
 L.~V. Kantorovich and G.~P. Akilov.
@@ -122,15 +112,16 @@ Guy Latouche and Vaidyanathan Ramaswami.
 \newblock {\em Introduction to Matrix Analytic Methods in Stochastic Modeling}.
 \newblock ASA-SIAM, 1999.
 
-\bibitem{Poole1974}
-George Poole and Thomas Boullion.
-\newblock A survey on {$M$}-matrices.
-\newblock {\em SIAM Rev.}, 16(4):419--427, 1974.
-
 \bibitem{Reddien1978}
 G.~W. Reddien.
 \newblock On {N}ewton's method for singular problems.
 \newblock {\em SIAM J. Numer. Anal.}, 15(5):993--996, 1978.
+
+\bibitem{Seo2008}
+Jong~Hyeon Seo and Hyun-Min Kim.
+\newblock Solving matrix polynomials by {Newton's} method with exact line
+  searches.
+\newblock {\em J. Korean Soc. Ind. Appl. Math.}, 12(2):55--68, 2008.
 
 \bibitem{SeoKim2014}
 Jong-Hyeon Seo and Hyun-Min Kim.

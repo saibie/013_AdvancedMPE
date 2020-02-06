@@ -150,7 +150,7 @@ Guo and Laub \cite{Guo2000} considered a nonsymmetric algebraic Riccati equation
 In \cite{Guo2001}, Guo provided a sufficient condition for the existence of nonnegative solutions of nonsymmetric algebraic Riccati equations.
 Kim \cite{Kim2008} showed that the minimal positive solutions also can be found by the Newton method with the zero initial matrices in some different types of quadratic equations.
 %Hautphenne, Latouche, and Remiche \cite{SophieHautphenne2008} studied the Newton method for the Markovian binary tree.
-Seo and Kim \cite{SeoSeoKim2013, SeoKim2014} studied the Newton iteration for a quadratic matrix equation and a matrix polynomial equation.
+Seo and Kim \cite{SeoSeoKim2013, SeoKim2014} studied the Newton iteration for matrix polynomial equations.
 
 Newton's method is one of powerful tools to find solutions of nonlinear matrix equations.
 By Kantorovich theorem \cite{Kantorovich1964}, the convergence rate of the method is quadratic if the derivative on the domain is Lipschitz continuous and at the solution is nonsingular.
@@ -169,13 +169,18 @@ In \cite{SeoSeo2020}, S-.H. Seo and J-.H. Seo suggested a modified Newton method
 In \cite{Kelley1983, DeckerKellerKelley1983}, accelerations for Newton's method at singular roots was suggested for general functions on Banach spaces.
 For specific functions on $\R^{\mbyn}$, modifications of Newton's method at singular roots was provided in \cite{Guo1998M, SeoSeoKim2018}.
 But, the main hypotheses of the papers are similar and that the solution is non-simple, i.e., the derivative at the solution is singular.
-It means that the accelerations for Newton's method cannot be applied and the accelerated iterations cannot be guaranteed converge to the solutions.
-Even if the iterations converge to the solutions, they cannot be guaranteed faster than the pure iterations.
+It means that the accelerations for Newton's method cannot be applied and the accelerated iterations cannot be guaranteed converge to the solutions if the solution is simple.
+Even if the iterations converge to the solutions, they cannot be guaranteed better than the pure iterations.
 
 
-Otherwise, in \cite{DeckerKelley1985}, the authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots.
+Otherwise, in \cite{DeckerKelley1985}, authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots.
+In \cite{SeoKim2014}, it was suggested that a global accelerated Newton's method, which can be applied whether the solution is simple or not, for \eqref{eq:MPE}.
 
-We give some basic definitions and lemmas for this paper.
+The aim of this paper is also to provide an improved Newton's method for \eqref{eq:MPE} at nearly singular roots.
+We show that the differences between the Newton sequences and the solution lie on nearly one-dimensional space.
+Moreover, with the exact line search idea in \cite{Seo2008}, we suggest a proper acceleration weight $\a$.
+
+Here, we give some basic definitions and lemmas for this paper.
 
 Let $A, B \in \R^{\mbym}$ be matrices.
 If all elements of $A$ is nonnegative, then we call that $A$ is a {\it nonnegative} matrix and denote $A \geq 0$. In similar sense, we define $A \leq 0$, $A > 0$, and $A < 0$.
@@ -205,6 +210,8 @@ for any nonnegative solution $S$ of $F(X) = 0$, then they are called the {\it mi
 The {\it minimal positive solution} and the {\it maximal positive solution} also are can be defined, similarly.
 If the Fr\'echet derivative of $F$ at a solution $S$ is nonsingular, then $S$ is called {\it simple}.
 Furthermore, we call that a not simple solution is {\it non-simple}.
+In this paper, for convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
+and $\N_{0}$ is defined by $\N \cup \{0\}$ because they are used very frequently.
 
 \begin{assumption}\label{ass:MPE}
 	For the MPE \eqref{eq:MPE},
@@ -218,11 +225,11 @@ Furthermore, we call that a not simple solution is {\it non-simple}.
 
 
 
-%Aim of this paper is to provide an improved Newton's method for \eqref{eq:MPE} at nearly singular roots.
 
 
-For convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
-and $\N_{0}$ is used as $\N \cup \{0\}$ because the Frobenius norm and $\N_{0}$ are used very frequently in this paper.
+
+
+\section{Analysis}\label{sec:analysis}
 
 
 
