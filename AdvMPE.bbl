@@ -75,6 +75,11 @@ Qi-Ming He and Marcel~F. Neuts.
   quasi-birth-and-death {Markov} chains.
 \newblock {\em J. Appl. Probab.}, 38(2):519--541, 2001.
 
+\bibitem{Horn1985}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Matrix Analysis}.
+\newblock Cambridge University Press, 1985.
+
 \bibitem{Kantorovich1964}
 L.~V. Kantorovich and G.~P. Akilov.
 \newblock Functional analysis in normed linear spaces.
@@ -112,6 +117,13 @@ Guy Latouche and Vaidyanathan Ramaswami.
 \newblock {\em Introduction to Matrix Analytic Methods in Stochastic Modeling}.
 \newblock ASA-SIAM, 1999.
 
+\bibitem{Meng2017}
+Jie Meng, Sang-hyup Seo, and Hyun-min Kim.
+\newblock Condition numbers and backward error of a matrix polynomial equation
+  arising in stochastic models.
+\newblock {\em J. Sci. Comput.}, 76(2):759--776, January 2018.
+\newblock First Online : \url{https://doi.org/10.1007/s10915-018-0641-x}.
+
 \bibitem{Reddien1978}
 G.~W. Reddien.
 \newblock On {N}ewton's method for singular problems.
@@ -146,5 +158,10 @@ Sang-Hyup Seo, Jong-Hyun Seo, and Hyun-Min Kim.
 \newblock {N}ewton's method for solving a quadratic matrix equation with
   special coefficient matrices.
 \newblock {\em Honam Math. J.}, 35(3):417--433, 2013.
+
+\bibitem{strang2006linear}
+Gilbert Strang.
+\newblock {\em Linear Algebra and Its Applications}.
+\newblock Thomson, Brooks/Cole, 4th edition, 2006.
 
 \end{thebibliography}

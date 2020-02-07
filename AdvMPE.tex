@@ -34,6 +34,8 @@
 \let\footnote=\endnote
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{Theorem}[thm]{Theorem}
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{Def}[thm]{Definition}
@@ -61,7 +63,7 @@
 \def\normm#1#2{\|#1\|_{#2}}
 \def\normF#1{\|#1\|_{F}}
 \def\Proof{{\bf Proof.\enspace}}
-\def\vec{\mathrm{vec}}
+\def\vec{{\sf vec}}
 %\def\unvec{\mathrm{unvec}}
 \def\tr{\mathrm{tr}}
 %\def\tr{\textrm{tr}}
@@ -176,9 +178,19 @@ Even if the iterations converge to the solutions, they cannot be guaranteed bett
 Otherwise, in \cite{DeckerKelley1985}, authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots.
 In \cite{SeoKim2014}, it was suggested that a global accelerated Newton's method, which can be applied whether the solution is simple or not, for \eqref{eq:MPE}.
 
-The aim of this paper is also to provide an improved Newton's method for \eqref{eq:MPE} at nearly singular roots.
+The aim of this paper is also to provide an improved Newton's method for \eqref{eq:MPE} which satisfies following Assumption \ref{ass:MPE} at nearly singular roots.
 We show that the differences between the Newton sequences and the solution lie on nearly one-dimensional space.
 Moreover, with the exact line search idea in \cite{Seo2008}, we suggest a proper acceleration weight $\a$.
+
+\begin{assumption}\label{ass:MPE}
+	For the MPE \eqref{eq:MPE},
+	\begin{enumerate}[1)]
+		\item The coefficient matrices $A_{k}$'s are nonnegative except $A_{1}$.
+		\item $-A_{1}$ is a nonsingular $M$-matrix.
+		\item $A_{0}$, $A_{1}$, and $\sum_{k=2}^{n}A_{k}$ are irreducible.
+	\end{enumerate}
+\end{assumption}
+
 
 Here, we give some basic definitions and lemmas for this paper.
 
@@ -202,7 +214,6 @@ The following is a basic theorem for $M$-matrices.
 \end{thm}
 
 Let a function $F : \R^{\mbyn} \rightarrow \R^{\mbyn}$ and an equation $F(X) = 0$ be given.
-
 If nonnegative solutions $S_{1}$ and $S_{2}$ of $F(X) = 0$ are satisfy
 	\begin{equation}\label{eq:s1ss2}
 	S_{1}\leq S\leq S_{2},\end{equation}
@@ -213,25 +224,311 @@ Furthermore, we call that a not simple solution is {\it non-simple}.
 In this paper, for convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
 and $\N_{0}$ is defined by $\N \cup \{0\}$ because they are used very frequently.
 
-\begin{assumption}\label{ass:MPE}
-	For the MPE \eqref{eq:MPE},
-	\begin{enumerate}[1)]
-		\item The coefficient matrices $A_{k}$'s are nonnegative except $A_{1}$.
-		\item $-A_{1}$ is a nonsingular $M$-matrix.
-		\item $\sum_{k=0}^{n}A_{k}$ is irreducible.
-		\item $A_{0}$, $A_{1}$, and $\sum_{k=2}^{n}A_{k}$ are irreducible.
-	\end{enumerate}
-\end{assumption}
+
+
+
+\section{Convergence of Newton's Method for the MPE}\label{sec:analysis}
+
+In this paper, we denote that 
+\begin{equation}\label{eq:DerivativeMPE}
+P'_{X}(H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}
+\end{equation}
+is the Fr\'{e}chet derivative of the MPE \eqref{eq:MPE} at $X$ in the direction $H$,
+and the second Fr\'{e}chet derivative at $X$ is given by
+\begin{equation}\label{eq:2DerivativeMPE}
+P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right).
+\end{equation}
+
+
+For given initial guess $X_{0}$, the Newton iteration of \eqref{eq:MPE}
+\begin{equation}\label{eq:NewtonStepMPE2}
+X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i}))
+\end{equation}
+can be separated into two parts as
+\begin{equation}\label{eq:NewtonStepMPE}
+\begin{cases}
+P'_{X_{i}}(H_{i}) = -P(X_{i}),\\
+X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=1,2,\ldots.
+\end{equation}
+If we define that
+\begin{equation}
+	\P'_{X} = \vec \circ P_{X}^{\prime} \circ \vec^{-1} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l},
+\end{equation}
+then solving \eqref{eq:NewtonStepMPE} is equivalent to solving the following $m^{2}\times m^{2}$ linear system
+\begin{equation}
+\P'_{X_{i}}\vec(H_{i}) = \vec(-P(X_{i})),
+\end{equation}
+where $\vec$ is the vectorization.
+
+
+
+We introduce a sufficient condition of the existence of
+the minimal nonnegative solution of the MPE \eqref{eq:MPE} with Assumption \ref{ass:MPE},
+and give some analysis for Newton's method.
+
+\begin{theorem}\label{thm:SuffMPE}
+	{\rm \cite[Theorem 2.1]{Meng2017}}
+	Let the MPE \eqref{eq:MPE} with 1) and 2) in Assumption \ref{ass:MPE} be given.
+	Then, there exists the minimal nonnegative solution if
+	\begin{equation}\label{eq:SuffMPE}
+	B = -\sum_{k=0}^{n}A_{k}~\textrm{is a nonsingular or singular irreducible $M$-matrix.}
+	\end{equation}
+	
+\end{theorem}
 
 
 
 
 
 
+\begin{theorem}\label{thm:ConvergenceNewtonMPE}{\rm\cite[Theorem 2.2]{SeoSeoKim2018}}
+	Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
+	Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
+	and converges to the elementwise minimal positive solution $S$.
+	Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \N$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
+\end{theorem}
 
-\section{Analysis}\label{sec:analysis}
 
 
+The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
+and the well known local quadratic convergence of Newton's method.
+
+\begin{theorem}\label{thm:ConvRateQuadratic}
+	If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
+	is nonsingular, then for $X_{0}=0$, the Newton sequence
+	$\{X_{i}\}$ converges to $S$, quadratically.
+\end{theorem}
+
+
+
+
+
+\section{Analysis for the Singular $M$-matrix $-\P'_S$}\label{sec:singular}
+According to Theorem \ref{thm:ConvRateQuadratic}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically
+if $-\P'_{S}$ is nonsingular.
+In this section, we will see the convergence rate of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is a singular $M$-matrix.
+If $P'_{S}$ is not invertible, then $P'_{S}$ has a null space $\mathcal{N}=\text{Ker}(P'_{S})$
+and closed range $\mathcal{M}=\text{Im}(P'_{S})$.
+Suppose that the direct sum $\mathcal{N} \oplus \mathcal{M} = \mathbb{R}^{\mbym}$.
+Then, we can define $\pjn$ to be the projection onto $\mathcal{N}$
+parallel to $\mathcal{M}$ and $\pjm=I-\pjn$.
+For a nonzero matrix $N_{0}\in\mathcal{N}$, define the map $\mathcal{B}_{N_{0}}:\mathcal{N}\rightarrow\mathcal{N}$
+given by
+\begin{equation}\label{eq:secondDerivativeProjection}
+\mathcal{B}_{N_{0}}(N)=\pjn P_{S}^{\prime \prime}(N_{0},N).
+\end{equation}
+In fact, $\mathcal{B}_{N_{0}}$ is a linear map.
+The main result of this section is an application of the following theorem 
+which shows the local convergence and the convergence rate of Newton's method under some conditions.
+
+
+
+\begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:ApplicationTheorem}
+	Let $\mathcal{B}_{N_{0}}$ in \eqref{eq:secondDerivativeProjection} be invertible for some nonzero $N_{0}\in\mathcal{N}$,
+	$\mathcal{N} = \mathrm{span}\{N_{0}\}\oplus\mathcal{N}_{1}$ for some subspace $\mathcal{N}_{1}$,
+	and let
+	\begin{equation}\label{eq:Wspace}
+	W(\rho, \theta, \eta) =
+	\left\{ X \left|\,\begin{array}{l}0 < \|X - S\| < \rho, \|\pjm(X - S)\| \leq \theta \|\pjn(X - S)\|,\\ 
+	\|(\pjn-\mathbf{P}_{0})(X - S)\| \leq \eta \|\pjn(X - S)\|\end{array}\right.\right\},
+	\end{equation}
+	where $\mathbf{P}_{0}$ is the projection onto $\mathrm{span}\{N_{0}\}$
+	parallel to $\mathcal{N}_{1}\oplus\mathcal{M}$. If $X_{0}\in W(\rho_{0},\theta_{0},\eta_{0})$
+	for $\rho_{0},\theta_{0},\eta_{0}$ sufficiently small, then the Newton
+	sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|X_{i} - S\|^{-1}$
+	for all $i\geq1$ and some constant $c>0$. Moreover,
+	$$
+	\lim_{i \rightarrow \infty}\frac{\|X_{i+1} - S\|}{\|X_{i} - S\|} = \frac{1}{2},
+	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(X_{i} - S)\|}{\|\pjn(X_{i} - S)\|^{2}}=0.
+	$$
+\end{theorem}
+
+
+To analyze convergence of Newton's method when $-\mathcal{P}'_{S}$ is singular,
+we will show that \eqref{eq:MPE} satisfies the conditions of Theorem \ref{thm:ApplicationTheorem}.
+From this point, for convenience, we let $\tXi = X_{i} - S$.
+
+
+\begin{lemma}\label{lem:BisInvertible}
+	Suppose the matrix polynomial equation \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE}.
+	If the matrix $-\mathcal{P}'_{S}$ is a singular $M$-matrix,
+	then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\mathcal{N}\oplus\mathcal{M}=\mathbb{R}^{m \times m}$,
+	$\mathcal{N}$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
+	for some nonzero $N_{0}\in\mathcal{N}$.
+\end{lemma}
+
+
+\begin{proof}
+	Since $S$ is positive and $A_{k}$'s are irreducible, $-\P'_{S}$ is irreducible.
+	Then, by Perron-Frobenius Theorem \cite[Theorem 8.4.4]{Horn1985},
+	$0$ is a simple eigenvalue of $\P'_{S}$ with a positive eigenvector. Thus, we can find $n^{2}$ linearly independent
+	vectors $\chi_{1},\chi_{2},\cdots \chi_{n^{2}}$ such that $\chi_{1}>0$ and
+	
+	\begin{equation}\label{eq:invUDsU}
+	\X^{-1}\P'_{S}\X=\bmatrix{
+		0 & 0\\
+		0 & \mathcal{D}}, ~\textrm{where }\X=\left[\begin{array}{c|c|c|c} \phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}\\ \chi_{1}&\chi_{2}&\cdots&\chi_{n^{2}}\\\phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}
+	\end{array} \right]
+	\end{equation}
+	and $\mathcal{D}$
+	is an $(n^{2}-1)\times(n^{2}-1)$ nonsingular matrix.
+	By the same way, we also have a positive vector $\psi$ such that $\psi^{T}\P'_{S} = 0$.
+	Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
+	From \eqref{eq:invUDsU}, $\P'_{S}\mathrm{vec}(N) = 0$ if and only if $\mathrm{vec}(N) \in \mathrm{span}(\chi_{1})$,
+	in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \R$.
+	Thus, $\mathcal{N} = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
+	Simiarly, $\mathcal{M} = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
+	Therefore, $\mathcal{N}$ is one-dimensional and $\mathbb{R}^{m \times m}=\mathcal{N}\oplus\mathcal{M}$.
+	
+	To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \mathcal{N}$ , we only need to show that
+	$$
+	\pjn\left( P''_{S}(N_{0},N) \right) \neq 0,
+	$$
+	for all nonzero $N \in \mathcal{N}$ because $\mathcal{B}_{N_{0}}$ is linear and $\mathcal{N}$ is one-dimensional.
+	Since $\vec^{-1}(\chi_{1})>0$ and $S > 0$, we have
+	\begin{align*}
+	P''_{S}(N_{0},N) & = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}N_{0}S^{j}NS^{n-l-j-2} + S^{l}NS^{j}N_{0}S^{n-l-j-2} \right) \\
+	& = 2ab \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l} \vec^{-1}(\chi_{1}) S^{j} \vec^{-1}(\chi_{1}) S^{n-l-j-2} \right) \neq 0
+	\end{align*}
+	where $N = a\vec^{-1}(\chi_{1})$ and $N_{0} = b\vec^{-1}(\chi_{1})$.
+	Moreover, $P''_{S}(N_{0},N)$ is either positive or negative.
+	
+	On the other hand,
+	$$
+	\vec\left( P''_{S}(N_{0},N) \right) = k_{1}\chi_{1}+k_{2}\chi_{2}+\cdots+k_{n^{2}}\chi_{n^{2}}
+	$$
+	for some real numbers $k_{1},k_{2},\cdots,k_{n^{2}}$.
+	By Fundamental theorem of linear algebra in \cite{strang2006linear} and Lemma 6.3.10 in \cite{Horn1985}, we have
+	\begin{equation}\label{eq:yTPtYx}
+	\psi^{T} \vec\left( P''_{S}(N_{0},N) \right) = k_{1}\psi^{T}\chi_{1}.
+	\end{equation}
+	Since $P''_{S}(N_{0},N)$ is either positive or negative and $\psi$ is positive, the left side of \eqref{eq:yTPtYx} is also either positive or negative.
+	So, $k_{1}$ cannot be zero.
+	Therefore,
+	$$
+	\pjn \left( P''_{S}(N_{0},N) \right) = k_{1}\vec^{-1}(\chi_{1}) \neq 0.
+	$$
+	
+\end{proof}
+
+
+
+
+
+\begin{lemma}\label{lem:TaylorLemma}
+	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
+	and let $\{X_{i}\}_{i=0}^{\infty}$ be a Newton sequence in \eqref{eq:NewtonStepMPE2}. Then,
+	$$
+	\| P({X}_{i})\|\leq a\|\tXi\|^{2}+b\|\tXi\|\|\tilde{X}_{i-1}\|+c\|\tilde{X}_{i-1}\|^{2}
+	$$
+	for some positive real numbers $a,b,c$.
+\end{lemma}
+
+\begin{proof}
+	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
+	\begin{equation}\label{eq:Taylor}
+	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
+	\end{equation}
+	and
+	\begin{equation*}
+	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
+	\end{equation*}
+	which is equivalent to
+	\begin{equation}\label{eq:TaylorMPE3}
+	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
+	\end{equation}
+	From \eqref{eq:NewtonStepMPE}, we have
+	\begin{equation}\label{eq:NewtonStepAnother}
+	0 = P'_{X_{i-1}}(X_{i} - X_{i-1}) + P(X_{i-1}),
+	\end{equation}
+	and clearly
+	\begin{equation}
+	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
+	\end{equation}
+	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
+	and substitute \eqref{eq:TaylorMPE3}, we obtain
+	\begin{align*}
+	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
+	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
+	\end{align*}
+	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
+	\begin{align*}
+	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
+	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
+	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
+	\end{align*}
+	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
+	we have required result.
+\end{proof}
+
+
+
+
+\begin{lemma}\label{lem:DominatedPMconvergence}
+	For any fixed $\theta > 0$, let
+	$$
+	\mathcal{Q} = \{i \in \N \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
+	$$
+	where $\{X_{i}\}$ is the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE}.
+	Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
+	$\| \tXi\| \leq c \| \tilde{X}_{i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
+\end{lemma}
+
+\begin{proof}
+	Using Taylor's Theorem and the fact that $P'_{S}\left(\pjn(\tXi)\right) = 0$,
+	\begin{equation}\label{eq:TaylorMPE}
+	P(X_{i}) = P(S) + P'_{S}(\tXi) + O(\|\tXi\|^{2}) = P'_{S}\left(\pjm(\tXi)\right) + O(\|\tXi\|^{2}).
+	\end{equation}
+	Since $P'_{S}|_{\mathcal{M}} : \mathcal{M} \rightarrow \mathcal{M}$ is
+	invertible, $\left\| P'_{S}\left(\pjm(\tXi)\right)\right\| \geq c_{1}\|\pjm(\tXi)\|$
+	for some constant $c_{1}>0$.
+	For $i\in\mathcal{Q}$, we have
+	\begin{equation*}
+	\|\tXi\| \leq \left\| \pjm(\tXi)\right\| + \left\| \pjn(\tXi)\right\|
+	\leq (\theta^{-1} + 1) \left\| \pjm(\tXi)\right\|.
+	\end{equation*}
+	Thus by \eqref{eq:TaylorMPE},
+	\begin{equation}\label{eq:NormofhatXi}
+	\|P(X_{i})\| \geq c_{1}\|\pjm(\tXi)\| - c_{2}\|\tXi\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tXi\| - c_{2}\|\tXi\|^{2}.
+	\end{equation}
+	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
+	$$
+	\| P({X}_{i})\|\leq c_{3}\|\tXi\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tXi\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
+	$$
+	From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
+	any $i$, we have
+	$$
+	c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tXi\| \leq c_{3}\|\tXi\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tXi\|}.
+	$$
+	Since $\tXi$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
+	we can find an $i_{0}$ such that $\|\tXi\|\leq c\|\tilde{X}_{i-1}\|^{2}$
+	for all $i\geq i_{0}$.\end{proof}
+\begin{corollary}
+	Assume that, for given $\theta>0$, $\|\pjm(\tXi)\|>\theta\|\pjn(\tXi)\|$
+	for all $i$ large enough. Then $X_{i}\rightarrow S$ quadratically.
+\end{corollary}
+
+
+When $P'_{S}$ is singular practically the Newton sequence
+converges linearly, according to the corollary we conclude that \textit{the
+	error will generally be dominated by its $\mathcal{N}$ component}\cite{Guo1998M}.
+From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
+we have the following main theorem.
+
+\begin{theorem}\label{thm:LinearConvergence1over2}
+	If $-\P'_{S}$ is a singular $M$-matrix and the convergence rate
+	of the Newton sequence $\{X_{i}\}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
+	is not quadratic, then $\| P_{X_{i}}^{\prime -1}\|\leq c\| \tXi\|^{-1}$
+	for all $i \geq 1$ and some constant $c > 0$. Moreover,
+	$$
+	\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+	\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+	$$
+	
+\end{theorem}
 
 
 \bibliographystyle{plain}
