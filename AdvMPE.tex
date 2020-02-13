@@ -23,6 +23,8 @@
 \usepackage{latexsym}
 \usepackage[hidelinks]{hyperref}
 \usepackage{color}
+\usepackage{eucal}
+\usepackage{mathrsfs}
 %\usepackage{hfont}
 
 
@@ -140,6 +142,7 @@ P(X)=\sum_{k=0}^{n} A_{k}X^{k}= A_{n}X^{n}+A_{n-1}X^{n-1}+\cdots+A_{1}X + A_{0}=
 \end{equation}
 where the coefficient matrices $A_{k}$'s are $\mbym$ matrices.
 Then, the unknown matrix $X$ must be an $\mbym$ matrix.
+A matrix $S$ is called a solution of \eqref{eq:MPE} if $P(S) = 0$.
 
 
 The MPE \eqref{eq:MPE} often occurs in the theory of differential equations, system theory, network theory, stochastic theory, quasi-birth-and-death
@@ -221,8 +224,8 @@ for any nonnegative solution $S$ of $F(X) = 0$, then they are called the {\it mi
 The {\it minimal positive solution} and the {\it maximal positive solution} also are can be defined, similarly.
 If the Fr\'echet derivative of $F$ at a solution $S$ is nonsingular, then $S$ is called {\it simple}.
 Furthermore, we call that a not simple solution is {\it non-simple}.
-In this paper, for convenience, the notation $||\,\cdot\,||$ is used instead of the Frobenius norm $||\,\cdot\,||_{F}$
-and $\N_{0}$ is defined by $\N \cup \{0\}$ because they are used very frequently.
+In this paper, for convenience, the notation $||\cdot||$ is used instead of the Frobenius norm $||\cdot||_{F}$ and $\tilde{X}$ denotes $X - S$, the difference between $X$ and the solution $S$, 
+because they are used very frequently.
 
 
 
@@ -233,22 +236,21 @@ In this paper, we denote that
 \begin{equation}\label{eq:DerivativeMPE}
 P'_{X}(H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}
 \end{equation}
-is the Fr\'{e}chet derivative of the MPE \eqref{eq:MPE} at $X$ in the direction $H$,
-and the second Fr\'{e}chet derivative at $X$ is given by
+is the Fr\'{e}chet derivative of the MPE \eqref{eq:MPE} at $X$ in the direction $H$, and 
 \begin{equation}\label{eq:2DerivativeMPE}
-P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right).
+P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right)
 \end{equation}
-
+is the second Fr\'{e}chet derivative at $X$.
 
 For given initial guess $X_{0}$, the Newton iteration of \eqref{eq:MPE}
 \begin{equation}\label{eq:NewtonStepMPE2}
-X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i}))
+X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i})),\quad i=0,1,2,\ldots
 \end{equation}
 can be separated into two parts as
 \begin{equation}\label{eq:NewtonStepMPE}
 \begin{cases}
 P'_{X_{i}}(H_{i}) = -P(X_{i}),\\
-X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=1,2,\ldots.
+X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=0,1,2,\ldots.
 \end{equation}
 If we define that
 \begin{equation}
@@ -290,40 +292,49 @@ and give some analysis for Newton's method.
 
 
 
-The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
-and the well known local quadratic convergence of Newton's method.
-
-\begin{theorem}\label{thm:ConvRateQuadratic}
-	If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
-	is nonsingular, then for $X_{0}=0$, the Newton sequence
-	$\{X_{i}\}$ converges to $S$, quadratically.
-\end{theorem}
-
-
+%The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
+%and the well known local quadratic convergence of Newton's method.
+%
+%\begin{theorem}\label{thm:ConvRateQuadratic}
+%	If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
+%	is nonsingular, then for $X_{0}=0$, the Newton sequence
+%	$\{X_{i}\}$ converges to $S$, quadratically.
+%\end{theorem}
 
 
 
-\section{Analysis for the Singular $M$-matrix $-\P'_S$}\label{sec:singular}
-According to Theorem \ref{thm:ConvRateQuadratic}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically
-if $-\P'_{S}$ is nonsingular.
-In this section, we will see the convergence rate of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is a singular $M$-matrix.
-If $P'_{S}$ is not invertible, then $P'_{S}$ has a null space $\mathcal{N}=\text{Ker}(P'_{S})$
-and closed range $\mathcal{M}=\text{Im}(P'_{S})$.
-Suppose that the direct sum $\mathcal{N} \oplus \mathcal{M} = \mathbb{R}^{\mbym}$.
+
+
+\section{Analysis for the Nearly Singular $M$-matrix $-\P'_S$}\label{sec:nearlysingular}
+Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'_{S}$ is nonsingular.
+But, if $-P'_{S}$ becomes nearly singular, the quadratic convergence rate radius will be very small.
+In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is nearly singular.
+
+We assume that
+\begin{equation}
+	\begin{array}{ll}
+		-P_{S}(E) = \e E,& \mathcal{N}={\rm span}\{E\},\\
+		\R^{\mbym} = \mathcal{M} \oplus \mathcal{N},& P_{S}(\mathcal{M}) = \mathcal{M}.
+	\end{array}	
+\end{equation}
 Then, we can define $\pjn$ to be the projection onto $\mathcal{N}$
 parallel to $\mathcal{M}$ and $\pjm=I-\pjn$.
-For a nonzero matrix $N_{0}\in\mathcal{N}$, define the map $\mathcal{B}_{N_{0}}:\mathcal{N}\rightarrow\mathcal{N}$
-given by
-\begin{equation}\label{eq:secondDerivativeProjection}
-\mathcal{B}_{N_{0}}(N)=\pjn P_{S}^{\prime \prime}(N_{0},N).
-\end{equation}
-In fact, $\mathcal{B}_{N_{0}}$ is a linear map.
-The main result of this section is an application of the following theorem 
-which shows the local convergence and the convergence rate of Newton's method under some conditions.
-
+If $\e = 0$, then the following theorem shows the converging tendency of \eqref{eq:NewtonStepMPE2}.
 
 
 \begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:ApplicationTheorem}
+	Let $\pjn P''_{S}(E, E)$ be nonzero and let
+	\begin{equation}\label{eq:Wset}
+	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
+	\end{equation}
+	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	\begin{equation}
+	\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}{\rm (cf. \cite[Theorem 3.22]{DeckerKelley1985})}\label{thm:NealySingularConvergence}
 	Let $\mathcal{B}_{N_{0}}$ in \eqref{eq:secondDerivativeProjection} be invertible for some nonzero $N_{0}\in\mathcal{N}$,
 	$\mathcal{N} = \mathrm{span}\{N_{0}\}\oplus\mathcal{N}_{1}$ for some subspace $\mathcal{N}_{1}$,
 	and let
@@ -530,6 +541,10 @@ we have the following main theorem.
 	
 \end{theorem}
 
+\section{Note}
+$$
+Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
+$$
 
 \bibliographystyle{plain}
 \bibliography{SHSeo}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.26)  7 FEB 2020 14:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.26)  13 FEB 2020 14:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -477,41 +477,55 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
+(c:/usr/texlive/2019/texmf-dist/tex/latex/amsfonts/eucal.sty
+Package: eucal 2009/06/22 v3.00 Euler Script fonts
+LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
+(Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
+)
+(c:/usr/texlive/2019/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup7
+)
 \c@thm=\count131
-
-(./AdvMPE.aux)
+ (./AdvMPE.aux)
 \openout1 = `AdvMPE.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 110
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 112
 .
- (c:/usr/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+(c:/usr/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 110
+LaTeX Font Info:    Trying to load font information for U+msb on input line 112
 .
 
 (c:/usr/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 11
-0.
+2.
 
 (c:/usr/texlive/2019/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 11
+2.
+
+(c:/usr/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 (c:/usr/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -543,9 +557,9 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package xypdf Info: Line width: 0.39998pt on input line 110.
+Package xypdf Info: Line width: 0.39998pt on input line 112.
 \AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring OFF on input line 110.
+Package hyperref Info: Link coloring OFF on input line 112.
 
 (c:/usr/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -558,58 +572,74 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 110.
-LaTeX Info: Redefining \pageref on input line 110.
-LaTeX Info: Redefining \nameref on input line 110.
+LaTeX Info: Redefining \ref on input line 112.
+LaTeX Info: Redefining \pageref on input line 112.
+LaTeX Info: Redefining \nameref on input line 112.
 
 (./AdvMPE.out) (./AdvMPE.out)
 \@outlinefile=\write4
 \openout4 = `AdvMPE.out'.
 
  [1{c:/usr/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Trying to load font information for U+eus on input line 257
+.
+
+(c:/usr/texlive/2019/texmf-dist/tex/latex/amsfonts/ueus.fd
+File: ueus.fd 2013/01/14 v3.01 Euler Script
+)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
+(hyperref)                removing `math shift' on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 306.
+(hyperref)                removing `math shift' on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 306.
+(hyperref)                removing `math shift' on input line 308.
 
-[3] [4] [5] (./AdvMPE.bbl [6]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 308.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 308.
+
+[3]
+
+LaTeX Warning: Reference `eq:secondDerivativeProjection' on page 4 undefined on
+ input line 338.
+
+[4] [5] [6] (./AdvMPE.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 25.
 
 (c:/usr/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-))
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 537.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 537.
- (./AdvMPE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 537.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 537.
+) [7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
+
+(./AdvMPE.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 552.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 552.
 Package rerunfilecheck Info: File `AdvMPE.out' has not changed.
-(rerunfilecheck)             Checksum: 84B720ABE77121B9C44B341148D5DFFE;256.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 537.
+(rerunfilecheck)             Checksum: 4F0CB374B099DD6E68AEE0AAB5390761;305.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 552.
  ) 
 Here is how much of TeX's memory you used:
- 10396 strings out of 492164
- 140409 string characters out of 6127191
- 283198 words of memory out of 5000000
- 14283 multiletter control sequences out of 15000+600000
- 21715 words of font info for 70 fonts, out of 8000000 for 9000
+ 10460 strings out of 492164
+ 141567 string characters out of 6127191
+ 284435 words of memory out of 5000000
+ 14324 multiletter control sequences out of 15000+600000
+ 23539 words of font info for 80 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  39i,11n,34p,3238b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/usr/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/
@@ -627,21 +657,23 @@ cmr8.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.
 pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/usr
 /texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/usr/texli
-ve/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/usr/texli
-ve/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/texli
-ve/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/usr/texlive/201
-9/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb><c:/usr/texlive/2019/texm
-f-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/usr/texlive/2019/texmf-dist
-/fonts/type1/public/cm-super/sfrm0700.pfb><c:/usr/texlive/2019/texmf-dist/fonts
-/type1/public/cm-super/sfrm0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1
-/public/cm-super/sfrm1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/publi
-c/cm-super/sfti0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-s
-uper/sfti1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/s
-ftt0800.pfb>
-Output written on AdvMPE.pdf (7 pages, 407511 bytes).
+ve/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/usr/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/usr/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/usr/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/texlive/20
+19/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/usr/texlive/2019/tex
+mf-dist/fonts/type1/public/cm-super/sfcc0800.pfb><c:/usr/texlive/2019/texmf-dis
+t/fonts/type1/public/cm-super/sfcc1000.pfb><c:/usr/texlive/2019/texmf-dist/font
+s/type1/public/cm-super/sfrm0700.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type
+1/public/cm-super/sfrm0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-
+super/sfti0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/
+sfti1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt08
+00.pfb>
+Output written on AdvMPE.pdf (8 pages, 415273 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 302 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
