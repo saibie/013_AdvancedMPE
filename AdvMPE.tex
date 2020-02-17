@@ -71,9 +71,9 @@
 %\def\tr{\textrm{tr}}
 \def\bmatrix#1{\left[\begin{matrix}#1\end{matrix}\right]}
 \def\pmatrix#1{\left(\begin{matrix}#1\end{matrix}\right)}
-\def\R{\mathbb{R}}
-\def\N{\mathbb{N}}
-\def\C{\mathbb{C}}
+\def\RR{\mathbb{R}}
+\def\NN{\mathbb{N}}
+\def\CC{\mathbb{C}}
 \def\nbyn{n\times n}
 \def\mbyn{m\times n}
 \def\mbym{m\times m}
@@ -92,6 +92,7 @@
 \def\G{\mathcal{G}}
 \def\Q{\mathcal{Q}}
 \def\M{\mathcal{M}}
+\def\N{\mathcal{N}}
 \def\P{\mathcal{P}}
 \def\X{\mathcal{X}}
 \def\pjn{\mathbf{P}_{\mathcal{N}}}
@@ -168,11 +169,11 @@ Kelley and Suresh \cite{Kelley1983} suggested a new accelerated Newton's method 
 Decker and Kelley \cite{DeckerKelley1985} showed an analysis for Newton's method
 at nearly singular roots.
 In \cite{Kelley1986}, Kelley analyzed convergence rate of the method for functions whose high order derivatives at the solution are singular.
-For specific functions on $\R^{\mbyn}$, Guo and Lancaster \cite{Guo1998M} analyzed and provided a modification about Newton's method for algebraic Riccati equations at singular roots.
+For specific functions on $\RR^{\mbyn}$, Guo and Lancaster \cite{Guo1998M} analyzed and provided a modification about Newton's method for algebraic Riccati equations at singular roots.
 In \cite{SeoSeo2020}, S-.H. Seo and J-.H. Seo suggested a modified Newton method for matrix polynomial equations with $n$-degree for singular problems.
 
 In \cite{Kelley1983, DeckerKellerKelley1983}, accelerations for Newton's method at singular roots was suggested for general functions on Banach spaces.
-For specific functions on $\R^{\mbyn}$, modifications of Newton's method at singular roots was provided in \cite{Guo1998M, SeoSeoKim2018}.
+For specific functions on $\RR^{\mbyn}$, modifications of Newton's method at singular roots was provided in \cite{Guo1998M, SeoSeoKim2018}.
 But, the main hypotheses of the papers are similar and that the solution is non-simple, i.e., the derivative at the solution is singular.
 It means that the accelerations for Newton's method cannot be applied and the accelerated iterations cannot be guaranteed converge to the solutions if the solution is simple.
 Even if the iterations converge to the solutions, they cannot be guaranteed better than the pure iterations.
@@ -197,9 +198,9 @@ Moreover, with the exact line search idea in \cite{Seo2008}, we suggest a proper
 
 Here, we give some basic definitions and lemmas for this paper.
 
-Let $A, B \in \R^{\mbym}$ be matrices.
+Let $A, B \in \RR^{\mbym}$ be matrices.
 If all elements of $A$ is nonnegative, then we call that $A$ is a {\it nonnegative} matrix and denote $A \geq 0$. In similar sense, we define $A \leq 0$, $A > 0$, and $A < 0$.
-If a matrix $A$ can be written as $rI-B$ with $B \geq 0$ and $r \in \R$, we call that $A$ is a \textit{$Z$-matrix}.
+If a matrix $A$ can be written as $rI-B$ with $B \geq 0$ and $r \in \RR$, we call that $A$ is a \textit{$Z$-matrix}.
 Moreover, if $A=rI-B$ is a $Z$-matrix and $r\geq\rho(B)$ then $A$ is called an $M$-matrix.
 The following is a basic theorem for $M$-matrices.
 
@@ -216,7 +217,7 @@ The following is a basic theorem for $M$-matrices.
 	\end{enumerate}
 \end{thm}
 
-Let a function $F : \R^{\mbyn} \rightarrow \R^{\mbyn}$ and an equation $F(X) = 0$ be given.
+Let a function $F : \RR^{\mbyn} \rightarrow \RR^{\mbyn}$ and an equation $F(X) = 0$ be given.
 If nonnegative solutions $S_{1}$ and $S_{2}$ of $F(X) = 0$ are satisfy
 	\begin{equation}\label{eq:s1ss2}
 	S_{1}\leq S\leq S_{2},\end{equation}
@@ -287,7 +288,7 @@ and give some analysis for Newton's method.
 	Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
 	Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
 	and converges to the elementwise minimal positive solution $S$.
-	Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \N$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
+	Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \NN$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
 \end{theorem}
 
 
@@ -312,60 +313,56 @@ In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2
 
 We assume that
 \begin{equation}
-	\begin{array}{ll}
-		-P_{S}(E) = \e E,& \mathcal{N}={\rm span}\{E\},\\
-		\R^{\mbym} = \mathcal{M} \oplus \mathcal{N},& P_{S}(\mathcal{M}) = \mathcal{M}.
+	\begin{array}{l}
+		-P_{S}(E) = \e E, \quad\|E\| = 1, \quad\N={\rm span}\{E\},\\
+		\RR^{\mbym} = \M \oplus \N,\qquad P_{S}(\M) = \M.
 	\end{array}	
 \end{equation}
-Then, we can define $\pjn$ to be the projection onto $\mathcal{N}$
-parallel to $\mathcal{M}$ and $\pjm=I-\pjn$.
+Then, we can define $\pjn$ to be the projection onto $\N$
+parallel to $\M$ and $\pjm=I-\pjn$.
 If $\e = 0$, then the following theorem shows the converging tendency of \eqref{eq:NewtonStepMPE2}.
 
 
-\begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:ApplicationTheorem}
+\begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:SingularConvergence}
 	Let $\pjn P''_{S}(E, E)$ be nonzero and let
 	\begin{equation}\label{eq:Wset}
-	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
+		W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
 	\end{equation}
 	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
 	\begin{equation}
-	\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+		\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+		\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
 	\end{equation}
 \end{theorem}
+
+Defining
+\begin{align*}
+	\l E &= \pjn P''_{S}(E, E),\\
+	\mu E &= \pjn \tilde{X},\numberthis\\
+	s &= {\rm sign}(\e\l),
+\end{align*}
+we consider the conical region
+\begin{equation}\label{eq:Wsset}
+	W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|, ~{\rm sign}(\mu) = s \right.\right\}.
+\end{equation}
 
 \begin{theorem}{\rm (cf. \cite[Theorem 3.22]{DeckerKelley1985})}\label{thm:NealySingularConvergence}
-	Let $\mathcal{B}_{N_{0}}$ in \eqref{eq:secondDerivativeProjection} be invertible for some nonzero $N_{0}\in\mathcal{N}$,
-	$\mathcal{N} = \mathrm{span}\{N_{0}\}\oplus\mathcal{N}_{1}$ for some subspace $\mathcal{N}_{1}$,
-	and let
-	\begin{equation}\label{eq:Wspace}
-	W(\rho, \theta, \eta) =
-	\left\{ X \left|\,\begin{array}{l}0 < \|X - S\| < \rho, \|\pjm(X - S)\| \leq \theta \|\pjn(X - S)\|,\\ 
-	\|(\pjn-\mathbf{P}_{0})(X - S)\| \leq \eta \|\pjn(X - S)\|\end{array}\right.\right\},
+	Assume $\l \neq 0$, and $0 < \e < \bar{\e}$.
+	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{0} \in W_{s}(\rho, \theta)$ then $F_{X_{0}}^{\prime -1}$ exists and all subsequent Newton iterates remain in this set and converges to $S = S(\e)$. Further,
+	\begin{equation}
+		\|\pjn\tXii\| < \tfrac{3}{4}\|\pjn\tXi\|, \qquad \|\pjm(\tXii)\| \leq K\|\tXi\|^{2},
 	\end{equation}
-	where $\mathbf{P}_{0}$ is the projection onto $\mathrm{span}\{N_{0}\}$
-	parallel to $\mathcal{N}_{1}\oplus\mathcal{M}$. If $X_{0}\in W(\rho_{0},\theta_{0},\eta_{0})$
-	for $\rho_{0},\theta_{0},\eta_{0}$ sufficiently small, then the Newton
-	sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|X_{i} - S\|^{-1}$
-	for all $i\geq1$ and some constant $c>0$. Moreover,
-	$$
-	\lim_{i \rightarrow \infty}\frac{\|X_{i+1} - S\|}{\|X_{i} - S\|} = \frac{1}{2},
-	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(X_{i} - S)\|}{\|\pjn(X_{i} - S)\|^{2}}=0.
-	$$
+	for $i \in \NN \cup \{0\}$, some $K > 0$, and $\rho(\e)$, $\theta(\e)$ may be chosen such that $\rho(0) = \rho_{0}$, $\theta(0) = \theta_{0}$ where $\rho_{0}$, $\theta_{0}$ are values for which the conclusions of Theorem \ref{thm:SingularConvergence} hold.
 \end{theorem}
 
-
-To analyze convergence of Newton's method when $-\mathcal{P}'_{S}$ is singular,
-we will show that \eqref{eq:MPE} satisfies the conditions of Theorem \ref{thm:ApplicationTheorem}.
-From this point, for convenience, we let $\tXi = X_{i} - S$.
 
 
 \begin{lemma}\label{lem:BisInvertible}
 	Suppose the matrix polynomial equation \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE}.
 	If the matrix $-\mathcal{P}'_{S}$ is a singular $M$-matrix,
-	then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\mathcal{N}\oplus\mathcal{M}=\mathbb{R}^{m \times m}$,
-	$\mathcal{N}$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
-	for some nonzero $N_{0}\in\mathcal{N}$.
+	then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\N\oplus\M=\mathbb{R}^{m \times m}$,
+	$\N$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
+	for some nonzero $N_{0}\in\N$.
 \end{lemma}
 
 
@@ -386,16 +383,16 @@ From this point, for convenience, we let $\tXi = X_{i} - S$.
 	By the same way, we also have a positive vector $\psi$ such that $\psi^{T}\P'_{S} = 0$.
 	Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
 	From \eqref{eq:invUDsU}, $\P'_{S}\mathrm{vec}(N) = 0$ if and only if $\mathrm{vec}(N) \in \mathrm{span}(\chi_{1})$,
-	in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \R$.
-	Thus, $\mathcal{N} = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
-	Simiarly, $\mathcal{M} = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
-	Therefore, $\mathcal{N}$ is one-dimensional and $\mathbb{R}^{m \times m}=\mathcal{N}\oplus\mathcal{M}$.
+	in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \RR$.
+	Thus, $\N = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
+	Simiarly, $\M = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
+	Therefore, $\N$ is one-dimensional and $\mathbb{R}^{m \times m}=\N\oplus\M$.
 	
-	To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \mathcal{N}$ , we only need to show that
+	To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \N$ , we only need to show that
 	$$
 	\pjn\left( P''_{S}(N_{0},N) \right) \neq 0,
 	$$
-	for all nonzero $N \in \mathcal{N}$ because $\mathcal{B}_{N_{0}}$ is linear and $\mathcal{N}$ is one-dimensional.
+	for all nonzero $N \in \N$ because $\mathcal{B}_{N_{0}}$ is linear and $\N$ is one-dimensional.
 	Since $\vec^{-1}(\chi_{1})>0$ and $S > 0$, we have
 	\begin{align*}
 	P''_{S}(N_{0},N) & = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}N_{0}S^{j}NS^{n-l-j-2} + S^{l}NS^{j}N_{0}S^{n-l-j-2} \right) \\
@@ -481,7 +478,7 @@ From this point, for convenience, we let $\tXi = X_{i} - S$.
 \begin{lemma}\label{lem:DominatedPMconvergence}
 	For any fixed $\theta > 0$, let
 	$$
-	\mathcal{Q} = \{i \in \N \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
+	\mathcal{Q} = \{i \in \NN \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
 	$$
 	where $\{X_{i}\}$ is the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE}.
 	Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
@@ -493,7 +490,7 @@ From this point, for convenience, we let $\tXi = X_{i} - S$.
 	\begin{equation}\label{eq:TaylorMPE}
 	P(X_{i}) = P(S) + P'_{S}(\tXi) + O(\|\tXi\|^{2}) = P'_{S}\left(\pjm(\tXi)\right) + O(\|\tXi\|^{2}).
 	\end{equation}
-	Since $P'_{S}|_{\mathcal{M}} : \mathcal{M} \rightarrow \mathcal{M}$ is
+	Since $P'_{S}|_{\M} : \M \rightarrow \M$ is
 	invertible, $\left\| P'_{S}\left(\pjm(\tXi)\right)\right\| \geq c_{1}\|\pjm(\tXi)\|$
 	for some constant $c_{1}>0$.
 	For $i\in\mathcal{Q}$, we have
@@ -525,7 +522,7 @@ From this point, for convenience, we let $\tXi = X_{i} - S$.
 
 When $P'_{S}$ is singular practically the Newton sequence
 converges linearly, according to the corollary we conclude that \textit{the
-	error will generally be dominated by its $\mathcal{N}$ component}\cite{Guo1998M}.
+	error will generally be dominated by its $\N$ component}\cite{Guo1998M}.
 From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
 we have the following main theorem.
 
@@ -545,6 +542,15 @@ we have the following main theorem.
 $$
 Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
 $$
+
+\begin{equation}
+P_{\e}(X) = A_{0} + \e S + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
+\end{equation}
+
+\begin{align*}
+\P'_{\e}[X] &= I \otimes (A_{1} - \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+&= \P'_{0}[X] - \e (I \otimes I),
+\end{align*}
 
 \bibliographystyle{plain}
 \bibliography{SHSeo}
