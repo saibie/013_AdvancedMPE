@@ -95,6 +95,7 @@
 \def\N{\mathcal{N}}
 \def\P{\mathcal{P}}
 \def\X{\mathcal{X}}
+\def\proj{\mathbf{P}}
 \def\pjn{\mathbf{P}_{\mathcal{N}}}
 \def\pjm{\mathbf{P}_{\mathcal{M}}}
 \def\tXi{\tilde{X}_{i}}
@@ -245,21 +246,21 @@ is the second Fr\'{e}chet derivative at $X$.
 
 For given initial guess $X_{0}$, the Newton iteration of \eqref{eq:MPE},
 \begin{equation}\label{eq:NewtonStepMPE2}
-X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i})),\quad i=0,1,2,\ldots
+X_{i+1}=X_{i}-P'[X_{i}]^{-1}(P(X_{i})),\quad i=0,1,2,\ldots
 \end{equation}
 can be separated into two parts as
 \begin{equation}\label{eq:NewtonStepMPE}
 \begin{cases}
-P'_{X_{i}}(H_{i}) = -P(X_{i}),\\
+P'[X_{i}](H_{i}) = -P(X_{i}),\\
 X_{i+1}=X_{i}+H_{i},\end{cases}\quad i=0,1,2,\ldots.
 \end{equation}
 If we define that
 \begin{equation}
-	\P'_{X} = \vec \circ P_{X}^{\prime} \circ \vec^{-1} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l},
+	\P'[X] = \vec \circ P[X]^{\prime} \circ \vec^{-1} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l},
 \end{equation}
 then solving the above equation of \eqref{eq:NewtonStepMPE} is equivalent to solving the following $m^{2}\times m^{2}$ linear system
 \begin{equation}
-\P'_{X_{i}}\vec(H_{i}) = \vec(-P(X_{i})),
+\P'[X_{i}]\vec(H_{i}) = \vec(-P(X_{i})),
 \end{equation}
 where $\vec$ is the vectorization by \cite[Lemma 4.3.1]{Horn1994}.
 
@@ -285,66 +286,67 @@ and give some analysis for Newton's method.
 	Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
 	Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
 	and converges to the minimal positive solution $S$.
-	Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \NN$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
+	Furthermore, $-\P'[X_{i}]$ is a nonsingular irreducible $M$-matrix for $i \in \NN$, and $-\P'[S]$ is an irreducible $M$-matrix.
 \end{theorem}
 
-Now, we consider an MPE with other coefficients given by
-\begin{equation}\label{eq:eMPE}
-P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
-\end{equation}
-where $\e \geq 0$ and $S$ is the minimal positive solution in Theorem \ref{thm:ConvergenceNewtonMPE}.
-Then, \eqref{eq:eMPE} also satisfies Assumption \ref{ass:MPE}.
-Moreover, for $Y_{1} \leq Y_{2} \in L[0,S]:=\{Y \in \RR^{\mbym} ~|~ 0 \leq Y \leq S\}$,
-\begin{align*}
-	(P'_{\e}[Y_{2}] - P'_{\e}[Y_{1}])(Y_{2} - Y_{1}) &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} A_{k}(Y_{2}^{l}(Y_{2}-Y_{1})Y_{2}^{k-l-1} - Y_{1}^{l}(Y_{2}-Y_{1})Y_{1}^{k-l-1})\\
-	&\qquad + (A_{1}-\e I)(Y_{2}-Y_{1}) - (A_{1}-\e I)(Y_{2}-Y_{1})\geq 0,
-\end{align*}
-i.e., $P_{\e}$ is order-convex on $L[0,S]$.
-Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
-Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
+%Now, we consider an MPE with other coefficients given by
+%\begin{equation}\label{eq:eMPE}
+%P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
+%\end{equation}
+%where $\e \geq 0$ and $S$ is the minimal positive solution in Theorem \ref{thm:ConvergenceNewtonMPE}.
+%Then, \eqref{eq:eMPE} also satisfies Assumption \ref{ass:MPE}.
+%Moreover, for $Y_{1} \leq Y_{2} \in L[0,S]:=\{Y \in \RR^{\mbym} ~|~ 0 \leq Y \leq S\}$,
+%\begin{align*}
+%	(P'_{\e}[Y_{2}] - P'_{\e}[Y_{1}])(Y_{2} - Y_{1}) &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} A_{k}(Y_{2}^{l}(Y_{2}-Y_{1})Y_{2}^{k-l-1} - Y_{1}^{l}(Y_{2}-Y_{1})Y_{1}^{k-l-1})\\
+%	&\qquad + (A_{1}-\e I)(Y_{2}-Y_{1}) - (A_{1}-\e I)(Y_{2}-Y_{1})\geq 0,
+%\end{align*}
+%i.e., $P_{\e}$ is order-convex on $L[0,S]$.
+%Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
+%Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
 
 
 
 
 
 \section{Analysis for the Nearly Singular $M$-matrix $-\P'_S$}\label{sec:nearlysingular}
-Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'_{S}$ is nonsingular.
-But, if $-P'_{S}$ becomes nearly singular, the quadratic convergence radius will be very small.
-In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'_{S}$ is nearly singular.
+Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'[S]$ is nonsingular.
+But, if $-P'[S]$ becomes nearly singular, the quadratic convergence radius will be very small.
+In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'[S]$ is nearly singular.
 
 We assume that
 \begin{equation}
 	\begin{array}{l}
-		-P_{S}(E) = \e E, \quad\|E\| = 1, \quad\N={\rm span}\{E\},\\
-		\RR^{\mbym} = \M \oplus \N,\qquad P_{S}(\M) = \M.
+		-P'[S](E) = \e E, \quad\|E\| = 1, \quad\N_{\e}={\rm span}\{E\},\\
+		\RR^{\mbym} = \M_{\e} \oplus \N_{\e},\qquad P'[S](\M_{\e}) = \M_{\e},
 	\end{array}	
 \end{equation}
-Then, we can define $\pjn$ to be the projection onto $\N$
-parallel to $\M$ and $\pjm=I-\pjn$.
-If $\e = 0$, then the following theorem shows the converging tendency of \eqref{eq:NewtonStepMPE2}.
+where $\e$ is a simple eigenvalue of $-\P'[S]$ whose absolute value is the smallest.
+Then, we can define $\proj_{\N_{\e}}$ to be the projection onto $\N$
+parallel to $\M$ and $\proj_{\M_{\e}}=I-\proj_{\N_{\e}}$.
+If $\e = 0$, then the following theorem shows the converging tendency of \eqref{eq:NewtonStepMPE2} for the singular $-P'_{0}[S]$.
 
 
 \begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:SingularConvergence}
-	Let $\pjn P''_{S}(E, E)$ be nonzero and let
+	Let $\proj_{\N_{0}} P''[S](E, E)$ be nonzero and let
 	\begin{equation}\label{eq:Wset}
-		W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
+		W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{0}}(\tilde{X})\| \leq \theta \|\proj_{\N_{0}}(\tilde{X})\|\right.\right\}.
 	\end{equation}
-	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P_{X_{i}}^{\prime -1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P'[X_{i}]^{-1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
 	\begin{equation}
 		\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-		\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+		\qquad \lim_{i \rightarrow \infty}\frac{\|\proj_{\M_{0}}(\tXi)\|}{\|\proj_{\N_{0}}(\tXi)\|^{2}}=0.
 	\end{equation}
 \end{theorem}
 
 Defining
 \begin{align*}
-	\l E &= \pjn P''_{S}(E, E),\\
-	\mu E &= \pjn \tilde{X},\numberthis\\
+	\l E &= \proj_{\N_{\e}} P''[S](E, E),\\
+	\mu E &= \proj_{\N_{\e}} \tilde{X},\numberthis\\
 	s &= {\rm sign}(\e\l),
 \end{align*}
 we consider the conical region
 \begin{equation}\label{eq:Wsset}
-	W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|, ~{\rm sign}(\mu) = s \right.\right\}.
+	W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{\e}}(\tilde{X})\| \leq \theta \|\proj_{\N_{\e}}(\tilde{X})\|, ~{\rm sign}(\mu) = s \right.\right\}.
 \end{equation}
 
 \begin{theorem}{\rm (cf. \cite[Theorem 3.22]{DeckerKelley1985})}\label{thm:NealySingularConvergence}
