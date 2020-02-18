@@ -127,7 +127,7 @@
 %	Finally, we give a numerical experiment which is related with our issue.
 \end{abstract}
 
-\keywords{matrix polynomial equation, elementwise positive solution, elementwise nonnegative solution, $M$-matrix, Newton's method, line search, acceleration of a method, nearly non-simple}
+\keywords{matrix polynomial equation, positive solution, nonnegative solution, $M$-matrix, Newton's method, line search, acceleration of a method, nearly non-simple}
 
 \subjclass[2010]{65H10}
 
@@ -139,7 +139,7 @@
 
 We consider a matrix polynomial equation(MPE) with $n$-degree defined by
 \begin{equation}\label{eq:MPE}
-P(X)=\sum_{k=0}^{n} A_{k}X^{k}= A_{n}X^{n}+A_{n-1}X^{n-1}+\cdots+A_{1}X + A_{0}=0,
+P(X)=\sum_{k=0}^{n} A_{k}X^{k}= A_{0}+A_{1}X+\cdots+A_{n-1}X^{n-1} + A_{n}X^{n}=0,
 \end{equation}
 where the coefficient matrices $A_{k}$'s are $\mbym$ matrices.
 Then, the unknown matrix $X$ must be an $\mbym$ matrix.
@@ -179,7 +179,7 @@ It means that the accelerations for Newton's method cannot be applied and the ac
 Even if the iterations converge to the solutions, they cannot be guaranteed better than the pure iterations.
 
 
-Otherwise, in \cite{DeckerKelley1985}, authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots.
+Otherwise, in \cite{DeckerKelley1985}, authors analyzed and suggested an acceleration for Newton's method about the case of nearly singular roots with the general bifurcation problem \cite{Keller1977, Stakgold1971}.
 In \cite{SeoKim2014}, it was suggested that a global accelerated Newton's method, which can be applied whether the solution is simple or not, for \eqref{eq:MPE}.
 
 The aim of this paper is also to provide an improved Newton's method for \eqref{eq:MPE} which satisfies following Assumption \ref{ass:MPE} at nearly singular roots.
@@ -225,7 +225,7 @@ for any nonnegative solution $S$ of $F(X) = 0$, then they are called the {\it mi
 The {\it minimal positive solution} and the {\it maximal positive solution} also are can be defined, similarly.
 If the Fr\'echet derivative of $F$ at a solution $S$ is nonsingular, then $S$ is called {\it simple}.
 Furthermore, we call that a not simple solution is {\it non-simple}.
-In this paper, for convenience, the notation $||\cdot||$ is used instead of the Frobenius norm $||\cdot||_{F}$ and $\tilde{X}$ denotes $X - S$, the difference between $X$ and the solution $S$, 
+In this paper, for convenience, the notation $||\cdot||$ is used instead of the Frobenius norm $||\cdot||_{F}$ and $\tilde{X}$ denotes $S - X$, the difference between $X$ and the solution $S$, 
 because they are used very frequently.
 
 
@@ -233,17 +233,17 @@ because they are used very frequently.
 
 \section{Convergence of Newton's Method for the MPE}\label{sec:analysis}
 
-In this paper, we denote that 
+In this paper, we denote that
 \begin{equation}\label{eq:DerivativeMPE}
-P'_{X}(H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}
+P'[X](H)=\sum_{k=1}^{n} \sum_{l=0}^{k-1} A_{k}X^{l}HX^{k-l-1}
 \end{equation}
-is the Fr\'{e}chet derivative of the MPE \eqref{eq:MPE} at $X$ in the direction $H$, and 
+is the Fr\'{e}chet derivative of the MPE \eqref{eq:MPE} at $X$ in the direction $H$, and
 \begin{equation}\label{eq:2DerivativeMPE}
-P_{X}''(K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right)
+P''[X](K,H)=\sum_{k=2}^{n}\sum_{l=0}^{k-2}\sum_{j=0}^{l} A_{k} \left( X^{l}HX^{j}KX^{n-l-j-2} + X^{l}KX^{j}HX^{n-l-j-2} \right)
 \end{equation}
 is the second Fr\'{e}chet derivative at $X$.
 
-For given initial guess $X_{0}$, the Newton iteration of \eqref{eq:MPE}
+For given initial guess $X_{0}$, the Newton iteration of \eqref{eq:MPE},
 \begin{equation}\label{eq:NewtonStepMPE2}
 X_{i+1}=X_{i}-P_{X_{i}}^{\prime -1}(P(X_{i})),\quad i=0,1,2,\ldots
 \end{equation}
@@ -257,11 +257,11 @@ If we define that
 \begin{equation}
 	\P'_{X} = \vec \circ P_{X}^{\prime} \circ \vec^{-1} = \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X^{k-l-1})^{T} \otimes A_{k}X^{l},
 \end{equation}
-then solving \eqref{eq:NewtonStepMPE} is equivalent to solving the following $m^{2}\times m^{2}$ linear system
+then solving the above equation of \eqref{eq:NewtonStepMPE} is equivalent to solving the following $m^{2}\times m^{2}$ linear system
 \begin{equation}
 \P'_{X_{i}}\vec(H_{i}) = \vec(-P(X_{i})),
 \end{equation}
-where $\vec$ is the vectorization.
+where $\vec$ is the vectorization by \cite[Lemma 4.3.1]{Horn1994}.
 
 
 
@@ -269,12 +269,11 @@ We introduce a sufficient condition of the existence of
 the minimal nonnegative solution of the MPE \eqref{eq:MPE} with Assumption \ref{ass:MPE},
 and give some analysis for Newton's method.
 
-\begin{theorem}\label{thm:SuffMPE}
-	{\rm \cite[Theorem 2.1]{Meng2017}}
+\begin{theorem}\label{thm:SuffMPE}{\rm \cite[Theorem 2.1]{Meng2017}}
 	Let the MPE \eqref{eq:MPE} with 1) and 2) in Assumption \ref{ass:MPE} be given.
 	Then, there exists the minimal nonnegative solution if
 	\begin{equation}\label{eq:SuffMPE}
-	B = -\sum_{k=0}^{n}A_{k}~\textrm{is a nonsingular or singular irreducible $M$-matrix.}
+	-\sum_{k=0}^{n}A_{k}~\textrm{is a nonsingular or singular irreducible $M$-matrix.}
 	\end{equation}
 	
 \end{theorem}
@@ -282,25 +281,27 @@ and give some analysis for Newton's method.
 
 
 
-
-
 \begin{theorem}\label{thm:ConvergenceNewtonMPE}{\rm\cite[Theorem 2.2]{SeoSeoKim2018}}
 	Suppose that the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:SuffMPE}.
 	Then, the Newton sequence $\{X_{i}\}$ with $X_{0} = 0$ is well defined, is monotone nondecreasing,
-	and converges to the elementwise minimal positive solution $S$.
+	and converges to the minimal positive solution $S$.
 	Furthermore, $-\P'_{X_{i}}$ is a nonsingular irreducible $M$-matrix for $i \in \NN$, and $-\mathcal{P}'_{S}$ is an irreducible $M$-matrix.
 \end{theorem}
 
-
-
-%The next theorem follows directly from Theorem \ref{thm:ConvergenceNewtonMPE} 
-%and the well known local quadratic convergence of Newton's method.
-%
-%\begin{theorem}\label{thm:ConvRateQuadratic}
-%	If the matrix $-\mathcal{P}'_{S}$ in Theorem \ref{thm:ConvergenceNewtonMPE}
-%	is nonsingular, then for $X_{0}=0$, the Newton sequence
-%	$\{X_{i}\}$ converges to $S$, quadratically.
-%\end{theorem}
+Now, we consider an MPE with other coefficients given by
+\begin{equation}\label{eq:eMPE}
+P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
+\end{equation}
+where $\e \geq 0$ and $S$ is the minimal positive solution in Theorem \ref{thm:ConvergenceNewtonMPE}.
+Then, \eqref{eq:eMPE} also satisfies Assumption \ref{ass:MPE}.
+Moreover, for $Y_{1} \leq Y_{2} \in L[0,S]:=\{Y \in \RR^{\mbym} ~|~ 0 \leq Y \leq S\}$,
+\begin{align*}
+	(P'_{\e}[Y_{2}] - P'_{\e}[Y_{1}])(Y_{2} - Y_{1}) &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} A_{k}(Y_{2}^{l}(Y_{2}-Y_{1})Y_{2}^{k-l-1} - Y_{1}^{l}(Y_{2}-Y_{1})Y_{1}^{k-l-1})\\
+	&\qquad + (A_{1}-\e I)(Y_{2}-Y_{1}) - (A_{1}-\e I)(Y_{2}-Y_{1})\geq 0,
+\end{align*}
+i.e., $P_{\e}$ is order-convex on $L[0,S]$.
+Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
+Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
 
 
 
@@ -308,8 +309,8 @@ and give some analysis for Newton's method.
 
 \section{Analysis for the Nearly Singular $M$-matrix $-\P'_S$}\label{sec:nearlysingular}
 Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'_{S}$ is nonsingular.
-But, if $-P'_{S}$ becomes nearly singular, the quadratic convergence rate radius will be very small.
-In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-\P'_{S}$ is nearly singular.
+But, if $-P'_{S}$ becomes nearly singular, the quadratic convergence radius will be very small.
+In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'_{S}$ is nearly singular.
 
 We assume that
 \begin{equation}

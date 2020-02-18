@@ -80,10 +80,22 @@ Roger~A. Horn and Charles~R. Johnson.
 \newblock {\em Matrix Analysis}.
 \newblock Cambridge University Press, 1985.
 
+\bibitem{Horn1994}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Topics in Matrix Analysis}.
+\newblock Cambridge University Press, 1994.
+
 \bibitem{Kantorovich1964}
 L.~V. Kantorovich and G.~P. Akilov.
-\newblock Functional analysis in normed linear spaces.
-\newblock {\em English translation, Pergamon Press, New York}, 1964.
+\newblock {\em Functional Analysis in Normed Linear Spaces}.
+\newblock English translation, Pergamon Press, New York, 1964.
+
+\bibitem{Keller1977}
+H.B. Keller.
+\newblock Numerical solution of bifurcation and nonlinear eigenvalue problems.
+\newblock In {\em Applications of bifurcation theory}, pages 359--384, New
+  York, 1977. Proc. Advanced Sem., Univ. Wisconsin, Madison, Wis., 1976, Publ.
+  Math. Res. Center, No. 38, Academic Press.
 
 \bibitem{Kelley1986}
 C.~T. Kelley.
@@ -124,6 +136,11 @@ Jie Meng, Sang-hyup Seo, and Hyun-min Kim.
 \newblock {\em J. Sci. Comput.}, 76(2):759--776, January 2018.
 \newblock First Online : \url{https://doi.org/10.1007/s10915-018-0641-x}.
 
+\bibitem{Ortega2000}
+James~M. Ortega and Werner~C. Rheinboldt.
+\newblock {\em Iterative Solution of Nonlinear Equations in Several Variables}.
+\newblock SIAM, 2000.
+
 \bibitem{Reddien1978}
 G.~W. Reddien.
 \newblock On {N}ewton's method for singular problems.
@@ -158,6 +175,11 @@ Sang-Hyup Seo, Jong-Hyun Seo, and Hyun-Min Kim.
 \newblock {N}ewton's method for solving a quadratic matrix equation with
   special coefficient matrices.
 \newblock {\em Honam Math. J.}, 35(3):417--433, 2013.
+
+\bibitem{Stakgold1971}
+Ivar Stakgold.
+\newblock Branching of solutions of nonlinear equations.
+\newblock {\em SIAM Rev.}, 13(3):289--332, 1971.
 
 \bibitem{strang2006linear}
 Gilbert Strang.
