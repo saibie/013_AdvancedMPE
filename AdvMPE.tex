@@ -289,21 +289,6 @@ and give some analysis for Newton's method.
 	Furthermore, $-\P'[X_{i}]$ is a nonsingular irreducible $M$-matrix for $i \in \NN$, and $-\P'[S]$ is an irreducible $M$-matrix.
 \end{theorem}
 
-%Now, we consider an MPE with other coefficients given by
-%\begin{equation}\label{eq:eMPE}
-%P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
-%\end{equation}
-%where $\e \geq 0$ and $S$ is the minimal positive solution in Theorem \ref{thm:ConvergenceNewtonMPE}.
-%Then, \eqref{eq:eMPE} also satisfies Assumption \ref{ass:MPE}.
-%Moreover, for $Y_{1} \leq Y_{2} \in L[0,S]:=\{Y \in \RR^{\mbym} ~|~ 0 \leq Y \leq S\}$,
-%\begin{align*}
-%	(P'_{\e}[Y_{2}] - P'_{\e}[Y_{1}])(Y_{2} - Y_{1}) &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} A_{k}(Y_{2}^{l}(Y_{2}-Y_{1})Y_{2}^{k-l-1} - Y_{1}^{l}(Y_{2}-Y_{1})Y_{1}^{k-l-1})\\
-%	&\qquad + (A_{1}-\e I)(Y_{2}-Y_{1}) - (A_{1}-\e I)(Y_{2}-Y_{1})\geq 0,
-%\end{align*}
-%i.e., $P_{\e}$ is order-convex on $L[0,S]$.
-%Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
-%Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
-
 
 
 
@@ -554,6 +539,52 @@ P_{\e}(X) = A_{0} + \e S + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
 \P'_{\e}[X] &= I \otimes (A_{1} - \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
 &= \P'_{0}[X] - \e (I \otimes I),
 \end{align*}
+
+\begin{center}
+	=============================
+\end{center}
+
+\begin{equation}
+	P(X) = \sum_{k=0}^{n} A_{k}X^{k}
+\end{equation}
+
+\begin{equation}
+	-\P'[S]{\bf e} = \e {\bf e}
+\end{equation}
+
+\begin{equation}
+	R(X) = \sum_{k=2}^{n} A_{k}X^{k} + (A_{1} + \e I)X + A_{0}
+\end{equation}
+
+\begin{align*}
+	\mathcal{R}'[X] &= I \otimes (A_{1} + \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+					&= \P'[X] + \e (I \otimes I)
+\end{align*}
+
+\begin{align*}
+	-\mathcal{R}'[X]{\bf e} &= (-\P'[X] - \e (I \otimes I)){\bf e}\\
+							&= -\P'[X]{\bf e} - \e (I \otimes I){\bf e}\\
+							&= \e{\bf e} - \e{\bf e}\\
+							&= 0
+\end{align*}
+
+
+
+%Now, we consider an MPE with other coefficients given by
+%\begin{equation}\label{eq:eMPE}
+%P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
+%\end{equation}
+%where $\e \geq 0$ and $S$ is the minimal positive solution in Theorem \ref{thm:ConvergenceNewtonMPE}.
+%Then, \eqref{eq:eMPE} also satisfies Assumption \ref{ass:MPE}.
+%Moreover, for $Y_{1} \leq Y_{2} \in L[0,S]:=\{Y \in \RR^{\mbym} ~|~ 0 \leq Y \leq S\}$,
+%\begin{align*}
+%	(P'_{\e}[Y_{2}] - P'_{\e}[Y_{1}])(Y_{2} - Y_{1}) &= \sum_{k=2}^{n} \sum_{l=0}^{k-1} A_{k}(Y_{2}^{l}(Y_{2}-Y_{1})Y_{2}^{k-l-1} - Y_{1}^{l}(Y_{2}-Y_{1})Y_{1}^{k-l-1})\\
+%	&\qquad + (A_{1}-\e I)(Y_{2}-Y_{1}) - (A_{1}-\e I)(Y_{2}-Y_{1})\geq 0,
+%\end{align*}
+%i.e., $P_{\e}$ is order-convex on $L[0,S]$.
+%Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
+%Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
+
 
 \bibliographystyle{plain}
 \bibliography{SHSeo}
