@@ -298,6 +298,23 @@ Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \
 But, if $-P'[S]$ becomes nearly singular, the quadratic convergence radius will be very small.
 In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'[S]$ is nearly singular.
 
+This paragraph is with reference to \cite{DeckerKelley1985}.
+Let $F_{\e}(X) = 0$ be the general bifurcation problem where $\e$ is a chosen continuation parameter and $\e = 0$ denotes the bifurcation point and let $S_{\e}$ denote a solution arc through the branch point.
+We assume that the follwings hold,
+\begin{equation}\label{eq:bifurcationAssumption}
+	\begin{array}{l}
+		\N_{0}={\rm Ker}(-F'_{0}[S_{0}])={\rm span}\{E_{0}\},\quad\|E_{0}\| = 1, \\
+		-F'[S_{0}](\M_{0}) = \M_{0},\qquad \RR^{\mbym} = \M_{0} \oplus \N_{0}.
+	\end{array}	
+\end{equation}
+Then, we can define $\proj_{\N_{0}}$ to be the projection onto $\N_{0}$ parallel to $\M_{0}$ and $\proj_{\M_{0}}=I-\proj_{\N_{0}}$.
+Clearly, $F'_{0}[S_{0}]$ is a Fredholm operator of index zero and hence will remain so for $\e$ near zero.
+In this case, it can be shown \cite{CrandallRabinowitz1973} that the structure of \eqref{eq:bifurcationAssumption} is also preserved for small $\e$, i.e., we can solve
+\begin{equation}
+	-F'_{\e}[S_{\e}](E_{\e}) = \mu_{\e}E_{\e}
+\end{equation}
+for a continuous eigenvalue-eigenvector pair $(\mu_{\e}, E_{\e})$ where $\mu_{0} = 0$.
+
 We assume that
 \begin{equation}
 	\begin{array}{l}

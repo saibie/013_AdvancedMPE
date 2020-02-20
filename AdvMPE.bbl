@@ -25,6 +25,12 @@ Geoffrey.~J. Butler, Charles~R. Johnson, and Henry Wolkowicz.
   comparison theorems in ordinary differential equations.
 \newblock {\em SIAM J. Algebraic Discrete Methods}, 6(1):47--53, January 1985.
 
+\bibitem{CrandallRabinowitz1973}
+Michael~G. Crandall and Paul~H. Rabinowitz.
+\newblock {\em Bifurcation, Perturbation of Simple Eigenvalues and Linearized
+  Stability}.
+\newblock University of Wisconsin-Madison, Mathematics Research Center, 1973.
+
 \bibitem{DeckerKellerKelley1983}
 D.~W. Decker, H.~B. Keller, and C.~T. Kelley.
 \newblock Convergence rates for {N}ewton's method at singular points.
@@ -135,11 +141,6 @@ Jie Meng, Sang-hyup Seo, and Hyun-min Kim.
   arising in stochastic models.
 \newblock {\em J. Sci. Comput.}, 76(2):759--776, January 2018.
 \newblock First Online : \url{https://doi.org/10.1007/s10915-018-0641-x}.
-
-\bibitem{Ortega2000}
-James~M. Ortega and Werner~C. Rheinboldt.
-\newblock {\em Iterative Solution of Nonlinear Equations in Several Variables}.
-\newblock SIAM, 2000.
 
 \bibitem{Reddien1978}
 G.~W. Reddien.
