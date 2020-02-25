@@ -293,11 +293,17 @@ and give some analysis for Newton's method.
 
 
 
-\section{Analysis for the Nearly Singular $M$-matrix $-\P'_S$}\label{sec:nearlysingular}
+\section{Analysis for the Nearly Singular $M$-matrix $-\P'[S]$}\label{sec:nearlysingular}
 Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'[S]$ is nonsingular.
 But, if $-P'[S]$ becomes nearly singular, the quadratic convergence radius will be very small.
 In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'[S]$ is nearly singular.
 
+Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, $S$ be the minimal positive solution of \eqref{eq:MPE}.
+Then, $-\P'[S]$ is an irreducible $M$-matrix.
+Therefore, the eigenvalue $\e$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by \cite[Perron-Frobenius Theorem]{Horn1985}.
+
+
+\section{What}
 This paragraph is with reference to \cite{DeckerKelley1985}.
 Let $F_{\e}(X) = 0$ be the general bifurcation problem where $\e$ is a chosen continuation parameter and $\e = 0$ denotes the bifurcation point and let $S_{\e}$ denote a solution arc through the branch point.
 We assume that the follwings hold,
