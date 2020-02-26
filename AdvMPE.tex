@@ -201,8 +201,8 @@ Here, we give some basic definitions and lemmas for this paper.
 
 Let $A, B \in \RR^{\mbym}$ be matrices.
 If all elements of $A$ is nonnegative, then we call that $A$ is a {\it nonnegative} matrix and denote $A \geq 0$. In similar sense, we define $A \leq 0$, $A > 0$, and $A < 0$.
-If a matrix $A$ can be written as $rI-B$ with $B \geq 0$ and $r \in \RR$, we call that $A$ is a \textit{$Z$-matrix}.
-Moreover, if $A=rI-B$ is a $Z$-matrix and $r\geq\rho(B)$ then $A$ is called an $M$-matrix.
+If a matrix $A$ can be written as $rI_{m}-B$ with $B \geq 0$ and $r \in \RR$, we call that $A$ is a \textit{$Z$-matrix}.
+Moreover, if $A=rI_{m}-B$ is a $Z$-matrix and $r\geq\rho(B)$ then $A$ is called an $M$-matrix.
 The following is a basic theorem for $M$-matrices.
 
 \begin{thm}\label{thm:proMmat}%{\rm \cite[Theorem 2.1]{Guo2007}, \cite[Theorem 2.1]{Poole1974}}
@@ -293,14 +293,40 @@ and give some analysis for Newton's method.
 
 
 
-\section{Analysis for the Nearly Singular $M$-matrix $-\P'[S]$}\label{sec:nearlysingular}
+\section{The Nearly Singular Derivative $-P'[S]$}\label{sec:nearlysingular}
 Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'[S]$ is nonsingular.
 But, if $-P'[S]$ becomes nearly singular, the quadratic convergence radius will be very small.
 In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'[S]$ is nearly singular.
 
 Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, $S$ be the minimal positive solution of \eqref{eq:MPE}.
 Then, $-\P'[S]$ is an irreducible $M$-matrix.
-Therefore, the eigenvalue $\e$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by \cite[Perron-Frobenius Theorem]{Horn1985}.
+Therefore, the eigenvalue $\mu$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by \cite[Perron-Frobenius Theorem]{Horn1985}.
+
+Here, we think over an other MPE,
+\begin{equation}\label{eq:epsMPE}
+	P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,
+\end{equation}
+where $\e \leq \mu$.
+%Then, $S$ is a solution of \eqref{eq:epsMPE}.
+Since the representation of the Fr\'echet derivative of $P_{\e}$ at $S$ is that
+\begin{align*}
+\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+&= \P'[S] + \e I_{m^2},
+\end{align*}
+$-\P'_{\e}[S]$ is also an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\mu - \e$ is the smallest eigenvalue of $-\P'_{\e}[S]$.
+
+\begin{lem}\label{thm:PeConv2MinSol}
+	For $\e \leq \mu$, \eqref{eq:epsMPE} has $S$ as the minimal positive solution.
+\end{lem}
+\begin{proof}
+	Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
+	Here, we show that $S$ is the unique solution in $L[0,S] := \{ X \in \RR^{\mbym} : 0 \leq X \leq S \}$.
+	Let $\{X_{\e, i}\}$ be the Newton sequence of \eqref{eq:epsMPE} with $X_{\e,0} = 0$.
+	Then,
+	\begin{equation}
+		X_{\e,1} = (- A_{1} - \e I_{m})^{-1}(A_{0} - \e S)
+	\end{equation}
+\end{proof}
 
 
 \section{What}
@@ -550,46 +576,64 @@ we have the following main theorem.
 \end{theorem}
 
 \section{Note}
-$$
-Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
-$$
-
-\begin{equation}
-P_{\e}(X) = A_{0} + \e S + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
-\end{equation}
 
 \begin{align*}
-\P'_{\e}[X] &= I \otimes (A_{1} - \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
-&= \P'_{0}[X] - \e (I \otimes I),
+	-A_{1} &= rI_{m} - N \\
+	-A_{1}^{-1} &= \frac{1}{r}\sum_{n=0}^{\infty} \left( \frac{N}{r} \right)^{n} \\
+	-A_{1}^{-1}A_{0} &= \frac1r \sum_{n=0}^{\infty}\left( \frac{N}{r} \right)^{n}A_{0} = X_{1} > 0 \\
+	-A_{1}-\e I_{m} &= (r - \e)I_{m} - N \\
+	(-A_{1} - \e I_{m})^{-1} &= \frac{1}{r - \e} \sum_{n=0}^{\infty} \left( \frac{N}{r - \e} \right)^{n} \\
+	&= \sum_{n=0}^{\infty} (-\e A_{1}^{-1})^{n}(-A_{1}^{-1}) \\
+	&= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
+	&= -A_{1}^{-1} + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
+	0 &= X_{0} < X_{1} \leq \ldots \leq X_{i} \leq \ldots \leq S \\
+	-X_{0} &> -X_{1} \geq \ldots \geq -X_{i} \geq \ldots \geq -S \\
+	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
+	&= -A_{1}^{-1} (A_{0} - \e S) + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
+	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \frac{1}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}A_{0} - \frac{\e}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}S
 \end{align*}
 
-\begin{center}
-	=============================
-\end{center}
-
-\begin{equation}
-	P(X) = \sum_{k=0}^{n} A_{k}X^{k}
-\end{equation}
-
-\begin{equation}
-	-\P'[S]{\bf e} = \e {\bf e}
-\end{equation}
-
-\begin{equation}
-	R(X) = \sum_{k=2}^{n} A_{k}X^{k} + (A_{1} + \e I)X + A_{0}
-\end{equation}
-
-\begin{align*}
-	\mathcal{R}'[X] &= I \otimes (A_{1} + \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
-					&= \P'[X] + \e (I \otimes I)
-\end{align*}
-
-\begin{align*}
-	-\mathcal{R}'[X]{\bf e} &= (-\P'[X] - \e (I \otimes I)){\bf e}\\
-							&= -\P'[X]{\bf e} - \e (I \otimes I){\bf e}\\
-							&= \e{\bf e} - \e{\bf e}\\
-							&= 0
-\end{align*}
+a
+%$$
+%Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
+%$$
+%
+%\begin{equation}
+%P_{\e}(X) = A_{0} + \e S + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
+%\end{equation}
+%
+%\begin{align*}
+%\P'_{\e}[X] &= I \otimes (A_{1} - \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+%&= \P'_{0}[X] - \e (I \otimes I),
+%\end{align*}
+%
+%\begin{center}
+%	=============================
+%\end{center}
+%
+%\begin{equation}
+%	P(X) = \sum_{k=0}^{n} A_{k}X^{k}
+%\end{equation}
+%
+%\begin{equation}
+%	-\P'[S]{\bf e} = \e {\bf e}
+%\end{equation}
+%
+%\begin{equation}
+%	R(X) = \sum_{k=2}^{n} A_{k}X^{k} + (A_{1} + \e I)X + A_{0}
+%\end{equation}
+%
+%\begin{align*}
+%	\mathcal{R}'[X] &= I \otimes (A_{1} + \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+%					&= \P'[X] + \e (I \otimes I)
+%\end{align*}
+%
+%\begin{align*}
+%	-\mathcal{R}'[X]{\bf e} &= (-\P'[X] - \e (I \otimes I)){\bf e}\\
+%							&= -\P'[X]{\bf e} - \e (I \otimes I){\bf e}\\
+%							&= \e{\bf e} - \e{\bf e}\\
+%							&= 0
+%\end{align*}
 
 
 
