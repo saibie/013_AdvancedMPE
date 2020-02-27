@@ -25,6 +25,7 @@
 \usepackage{color}
 \usepackage{eucal}
 \usepackage{mathrsfs}
+\usepackage{ulem}
 %\usepackage{hfont}
 
 
@@ -310,7 +311,7 @@ where $\e \leq \mu$.
 %Then, $S$ is a solution of \eqref{eq:epsMPE}.
 Since the representation of the Fr\'echet derivative of $P_{\e}$ at $S$ is that
 \begin{align*}
-\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
+\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
 &= \P'[S] + \e I_{m^2},
 \end{align*}
 $-\P'_{\e}[S]$ is also an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\mu - \e$ is the smallest eigenvalue of $-\P'_{\e}[S]$.
@@ -320,12 +321,6 @@ $-\P'_{\e}[S]$ is also an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonne
 \end{lem}
 \begin{proof}
 	Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
-	Here, we show that $S$ is the unique solution in $L[0,S] := \{ X \in \RR^{\mbym} : 0 \leq X \leq S \}$.
-	Let $\{X_{\e, i}\}$ be the Newton sequence of \eqref{eq:epsMPE} with $X_{\e,0} = 0$.
-	Then,
-	\begin{equation}
-		X_{\e,1} = (- A_{1} - \e I_{m})^{-1}(A_{0} - \e S)
-	\end{equation}
 \end{proof}
 
 
@@ -577,7 +572,7 @@ we have the following main theorem.
 
 \section{Note}
 
-\begin{align*}
+{\color{red}\begin{align*}
 	-A_{1} &= rI_{m} - N \\
 	-A_{1}^{-1} &= \frac{1}{r}\sum_{n=0}^{\infty} \left( \frac{N}{r} \right)^{n} \\
 	-A_{1}^{-1}A_{0} &= \frac1r \sum_{n=0}^{\infty}\left( \frac{N}{r} \right)^{n}A_{0} = X_{1} > 0 \\
@@ -586,12 +581,10 @@ we have the following main theorem.
 	&= \sum_{n=0}^{\infty} (-\e A_{1}^{-1})^{n}(-A_{1}^{-1}) \\
 	&= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
 	&= -A_{1}^{-1} + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
-	0 &= X_{0} < X_{1} \leq \ldots \leq X_{i} \leq \ldots \leq S \\
-	-X_{0} &> -X_{1} \geq \ldots \geq -X_{i} \geq \ldots \geq -S \\
 	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
 	&= -A_{1}^{-1} (A_{0} - \e S) + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
 	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \frac{1}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}A_{0} - \frac{\e}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}S
-\end{align*}
+\end{align*}}
 
 a
 %$$
