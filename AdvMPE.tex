@@ -25,7 +25,7 @@
 \usepackage{color}
 \usepackage{eucal}
 \usepackage{mathrsfs}
-\usepackage{ulem}
+%\usepackage{ulem}
 %\usepackage{hfont}
 
 
@@ -108,7 +108,7 @@
 \def\ones#1{\mathbf{1}_{#1}}
 %\def\onesn{\mathbf{1}_{n \times n}}
 
-\definecolor{gray}{rgb}{.5,.5,.5}
+\definecolor{gray}{rgb}{.7,.7,.7}
 
 \makeatother
 
@@ -308,13 +308,14 @@ Here, we think over an other MPE,
 	P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,
 \end{equation}
 where $\e \leq \mu$.
-%Then, $S$ is a solution of \eqref{eq:epsMPE}.
+Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
 Since the representation of the Fr\'echet derivative of $P_{\e}$ at $S$ is that
 \begin{align*}
 \P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
 &= \P'[S] + \e I_{m^2},
 \end{align*}
-$-\P'_{\e}[S]$ is also an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\mu - \e$ is the smallest eigenvalue of $-\P'_{\e}[S]$.
+$-\P'_{\e}[S]$ is an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\mu - \e$ is the smallest eigenvalue of $-\P'_{\e}[S]$.
+In addition, $-A_{1} - \e I_{m}$ is also an $M$-matrix.
 
 \begin{lem}\label{thm:PeConv2MinSol}
 	For $\e \leq \mu$, \eqref{eq:epsMPE} has $S$ as the minimal positive solution.
@@ -572,7 +573,7 @@ we have the following main theorem.
 
 \section{Note}
 
-{\color{red}\begin{align*}
+{\color{gray}\begin{align*}
 	-A_{1} &= rI_{m} - N \\
 	-A_{1}^{-1} &= \frac{1}{r}\sum_{n=0}^{\infty} \left( \frac{N}{r} \right)^{n} \\
 	-A_{1}^{-1}A_{0} &= \frac1r \sum_{n=0}^{\infty}\left( \frac{N}{r} \right)^{n}A_{0} = X_{1} > 0 \\
@@ -586,7 +587,41 @@ we have the following main theorem.
 	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \frac{1}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}A_{0} - \frac{\e}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}S
 \end{align*}}
 
-a
+\begin{equation}
+P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,\quad\e \leq \mu
+\end{equation}
+
+\begin{align*}
+\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
+&= \P'[S] + \e I_{m^2},
+\end{align*}
+
+\begin{align*}
+	X_{1} &= X_{0} - P'_{\e}[X_{0}]^{-1}(P(X_{0}))\\
+	P'_{\e}[X_{0}](H_{0}) &= -P(X_{0})
+\end{align*}
+
+\begin{align*}
+	& \sum_{k=2}^{n}\sum_{l=0}^{k-1}A_{k}X_{0}^{l}H_{0}X_{0}^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\ 
+	&\quad= -A_{0} + \e S - A_{1}X_{0} - \e X_{0} - \sum_{k=2}^{n}A_{k}X_{0}^{k}
+\end{align*}
+
+If $X_{0} = 0$,
+\begin{align*}
+	(A_{1}+\e I_{m})H_{0} &= -A_{0} + \e S \\
+	X_{1} - 0 = H_{0} &= -(A_{1}+\e I_{m})^{-1}(A_{0} - \e S) \\
+	&= -(A_{1}+\e I_{m})^{-1}A_{0} -(A_{1}+\e I_{m})^{-1}(-\e S).
+\end{align*}
+
+If $X_{0} = \e S$,
+\begin{align*}
+	\sum_{k=2}^{n}\sum_{l=0}^{k-1}& A_{k}(\e S)^{l}H_{0}(\e S)^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\
+	&= -A_{0} + \e S - A_{1}(\e S) - \e I_{m}(\e S) - \sum_{k=2}^{n}A_{k}(\e S)^{k} \\
+	\sum_{k=2}^{n}\sum_{l=0}^{k-1}& \e^{k-1}A_{k}S^{l}H_{0}S^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\
+	&= -A_{0} + \e S - \e A_{1}S - \e^{2}S - \sum_{k=2}^{n}\e^{k}A_{k}S^{k} \\
+\end{align*}
+
+
 %$$
 %Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
 %$$
