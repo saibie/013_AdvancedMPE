@@ -2,7 +2,7 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[10pt,a4paper,english]{amsart}
 \usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
+\usepackage[utf8]{inputenc}
 %\usepackage{endnotes}
 \usepackage{units}
 %\usepackage{multirow}
@@ -25,6 +25,7 @@
 \usepackage{color}
 \usepackage{eucal}
 \usepackage{mathrsfs}
+\usepackage{kotex}
 %\usepackage{ulem}
 %\usepackage{hfont}
 
@@ -295,51 +296,53 @@ and give some analysis for Newton's method.
 
 
 \section{The Nearly Singular Derivative $-P'[S]$}\label{sec:nearlysingular}
-Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if $-P'[S]$ is nonsingular.
-But, if $-P'[S]$ becomes nearly singular, the quadratic convergence radius will be very small.
-In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when $-P'[S]$ is nearly singular.
+Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \eqref{eq:NewtonStepMPE2} converges quadratically if the derivative at the solution is nonsingular.
+But, if the derivative becomes nearly singular, the quadratic convergence radius will be very small.
+In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when the derivative is nearly singular.
 
 Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, $S$ be the minimal positive solution of \eqref{eq:MPE}.
 Then, $-\P'[S]$ is an irreducible $M$-matrix.
-Therefore, the eigenvalue $\mu$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by \cite[Perron-Frobenius Theorem]{Horn1985}.
+Therefore, the eigenvalue $\mu$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by Perron-Frobenius Theorem in \cite{Horn1985}.
 
 Here, we think over an other MPE,
 \begin{equation}\label{eq:epsMPE}
-	P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,
+	P_{\e}(X) = (A_{0} - (\mu - \e) S) + (A_{1} + (\mu - \e) I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,
 \end{equation}
-where $\e \leq \mu$.
+where $\e \geq 0$.
 Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
-Since the representation of the Fr\'echet derivative of $P_{\e}$ at $S$ is that
+Since the representation of the Fr\'echet derivative of $P_{\mu - \e}$ at $S$ is that
 \begin{align*}
-\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
-&= \P'[S] + \e I_{m^2},
+\P'_{\e}[S] &= I_{m} \otimes (A_{1} + (\mu - \e) I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
+&= \P'[S] + (\mu - \e) I_{m^2},
 \end{align*}
-$-\P'_{\e}[S]$ is an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\mu - \e$ is the smallest eigenvalue of $-\P'_{\e}[S]$.
-In addition, $-A_{1} - \e I_{m}$ is also an $M$-matrix.
+$-\P'_{\e}[S]$ is an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\e$ is the smallest simple eigenvalue of $-\P'_{\e}[S]$.
+%In addition, $-A_{1} - \e I_{m}$ is also an $M$-matrix.
+Thus, 
+\begin{equation}
+	\begin{array}{l}
+		-P'_{\e}[S](E) = \e E, \quad \N_{\e} = {\rm span}(E), \\
+		\RR^{\mbym} = \M_{\e} \oplus \N_{\e}, \quad P'_{\e}[S](\M_{\e}) = \M_{\e},
+	\end{array}
+\end{equation}
+where $E = \vec^{-1}({\bf e})$ and ${\bf e}$ is a unit eigenvector of $-\P'[S]$ corresponding to $\mu$.
 
-\begin{lem}\label{thm:PeConv2MinSol}
-	For $\e \leq \mu$, \eqref{eq:epsMPE} has $S$ as the minimal positive solution.
-\end{lem}
-\begin{proof}
-	Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
-\end{proof}
+By \cite{DeckerKelley1985}, $P_{\e}(X) = 0$ is the bifurcation problem where $\e$ is a chosen continuation parameter and the solution arc $S_{\e}$ is a constant arc.
 
+***
 
-\section{What}
-This paragraph is with reference to \cite{DeckerKelley1985}.
-Let $F_{\e}(X) = 0$ be the general bifurcation problem where $\e$ is a chosen continuation parameter and $\e = 0$ denotes the bifurcation point and let $S_{\e}$ denote a solution arc through the branch point.
+Let $P_{\e}(X) = 0$ be the bifurcation problem where $\e$ is a chosen continuation parameter and $\e = 0$ denotes the bifurcation point and let $S_{\e}$ denote a solution arc through the branch point.
 We assume that the follwings hold,
 \begin{equation}\label{eq:bifurcationAssumption}
 	\begin{array}{l}
-		\N_{0}={\rm Ker}(-F'_{0}[S_{0}])={\rm span}\{E_{0}\},\quad\|E_{0}\| = 1, \\
-		-F'[S_{0}](\M_{0}) = \M_{0},\qquad \RR^{\mbym} = \M_{0} \oplus \N_{0}.
+		\N_{0}={\rm Ker}(P'_{0}[S_{0}])={\rm span}\{E_{0}\},\quad\|E_{0}\| = 1, \\
+		P'[S_{0}](\M_{0}) = \M_{0},\qquad \RR^{\mbym} = \M_{0} \oplus \N_{0}.
 	\end{array}	
 \end{equation}
 Then, we can define $\proj_{\N_{0}}$ to be the projection onto $\N_{0}$ parallel to $\M_{0}$ and $\proj_{\M_{0}}=I-\proj_{\N_{0}}$.
-Clearly, $F'_{0}[S_{0}]$ is a Fredholm operator of index zero and hence will remain so for $\e$ near zero.
+Clearly, $P'_{0}[S_{0}]$ is a Fredholm operator of index zero and hence will remain so for $\e$ near zero.
 In this case, it can be shown \cite{CrandallRabinowitz1973} that the structure of \eqref{eq:bifurcationAssumption} is also preserved for small $\e$, i.e., we can solve
 \begin{equation}
-	-F'_{\e}[S_{\e}](E_{\e}) = \mu_{\e}E_{\e}
+	P'_{\e}[S_{\e}](E_{\e}) = \mu_{\e}E_{\e}
 \end{equation}
 for a continuous eigenvalue-eigenvector pair $(\mu_{\e}, E_{\e})$ where $\mu_{0} = 0$.
 
@@ -573,6 +576,11 @@ we have the following main theorem.
 
 \section{Note}
 
+여기서, $P_{\e}$이 $P_{0}$로 접근하는 bifurcation problem이 있는지 {\color{red}보여주냐}, Decker에 의해 존재하니까 {\color{red}그냥 써도 된다}고 주장하느냐의 문제가 있겠다.
+분명히 있긴 한데, 왜 그렇게 되는지 보여주지를 못하겠다.
+Translation에 의한 ordered pair relation으로 추정되지만, 보여주지 못하면 의미가 없다.
+
+
 {\color{gray}\begin{align*}
 	-A_{1} &= rI_{m} - N \\
 	-A_{1}^{-1} &= \frac{1}{r}\sum_{n=0}^{\infty} \left( \frac{N}{r} \right)^{n} \\
@@ -585,7 +593,7 @@ we have the following main theorem.
 	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
 	&= -A_{1}^{-1} (A_{0} - \e S) + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
 	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \frac{1}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}A_{0} - \frac{\e}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}S
-\end{align*}}
+\end{align*}
 
 \begin{equation}
 P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,\quad\e \leq \mu
@@ -619,7 +627,7 @@ If $X_{0} = \e S$,
 	&= -A_{0} + \e S - A_{1}(\e S) - \e I_{m}(\e S) - \sum_{k=2}^{n}A_{k}(\e S)^{k} \\
 	\sum_{k=2}^{n}\sum_{l=0}^{k-1}& \e^{k-1}A_{k}S^{l}H_{0}S^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\
 	&= -A_{0} + \e S - \e A_{1}S - \e^{2}S - \sum_{k=2}^{n}\e^{k}A_{k}S^{k} \\
-\end{align*}
+\end{align*}}
 
 
 %$$
@@ -679,6 +687,7 @@ If $X_{0} = \e S$,
 %i.e., $P_{\e}$ is order-convex on $L[0,S]$.
 %Since $P_{\e}(0) = A_{0} + \e S \geq 0$ and $P_{\e}(S) = 0$, $S$ is the unique solution for $P_{\e}(X) = 0$ on $L[0,S]$ by \cite[Monotone Newton Theorem]{Ortega2000}.
 %Thus, $P_{\e}(X) = 0$ has $S$ as the minimal nonnegative solution although the coefficients of $P_{\e}$ do not satisfy \eqref{eq:SuffMPE}, always.
+
 
 
 \bibliographystyle{plain}
