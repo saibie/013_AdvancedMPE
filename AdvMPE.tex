@@ -89,14 +89,14 @@
 \def\d{\delta}
 \def\e{\varepsilon}
 \def\l{\lambda}
-\def\D{\mathcal{D}}
+\def\D{\mathfrak{D}}
 \def\F{\mathcal{F}}
 \def\G{\mathcal{G}}
 \def\Q{\mathcal{Q}}
 \def\M{\mathcal{M}}
 \def\N{\mathcal{N}}
 \def\P{\mathcal{P}}
-\def\X{\mathcal{X}}
+\def\X{\mathfrak{X}}
 \def\proj{\mathbf{P}}
 \def\pjn{\mathbf{P}_{\mathcal{N}}}
 \def\pjm{\mathbf{P}_{\mathcal{M}}}
@@ -308,152 +308,116 @@ Here, we think over an other MPE,
 \begin{equation}\label{eq:epsMPE}
 	P_{\e}(X) = (A_{0} - (\mu - \e) S) + (A_{1} + (\mu - \e) I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,
 \end{equation}
-where $\e \geq 0$.
+for $\e \geq 0$.
 Clearly, $S$ is a solution of \eqref{eq:epsMPE}.
-Since the representation of the Fr\'echet derivative of $P_{\mu - \e}$ at $S$ is that
+Since the representation of the Fr\'echet derivative of $P_{\e}$ at $S$ is that
 \begin{align*}
 \P'_{\e}[S] &= I_{m} \otimes (A_{1} + (\mu - \e) I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
 &= \P'[S] + (\mu - \e) I_{m^2},
 \end{align*}
 $-\P'_{\e}[S]$ is an $M$-matrix by Theorem \ref{thm:proMmat}, and the nonnegative number $\e$ is the smallest simple eigenvalue of $-\P'_{\e}[S]$.
 %In addition, $-A_{1} - \e I_{m}$ is also an $M$-matrix.
-Thus, 
+Here, we assume that
+%\begin{equation}
+%		-P'_{\e}[S](N) = \e N, \quad \N = {\rm span}(N),
+%\end{equation}
+%where 
 \begin{equation}
-	\begin{array}{l}
-		-P'_{\e}[S](E) = \e E, \quad \N_{\e} = {\rm span}(E), \\
-		\RR^{\mbym} = \M_{\e} \oplus \N_{\e}, \quad P'_{\e}[S](\M_{\e}) = \M_{\e},
-	\end{array}
+	N = \vec^{-1}({\bf n}), \quad \N = {\rm span}(N), \quad \RR^{\mbym} = \N \oplus \M,
 \end{equation}
-where $E = \vec^{-1}({\bf e})$ and ${\bf e}$ is a unit eigenvector of $-\P'[S]$ corresponding to $\mu$.
+where ${\bf n}$ is a unit eigenvector of $-\P'[S]$ corresponding to $\mu$.
+In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\pjm = I - \pjn$.
 
-By \cite{DeckerKelley1985}, $P_{\e}(X) = 0$ is the bifurcation problem where $\e$ is a chosen continuation parameter and the solution arc $S_{\e}$ is a constant arc.
+\begin{lemma}\label{lem:BisInvertible}
+	Suppose the MPE \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE} and \eqref{eq:epsMPE} is given.
+	Then, $\e$ is a simple eigenvalue of $-\mathcal{P}'_{\e}[S]$, $\pjn P''_{\e}[S](N, N) \neq 0$, and $P'_{\e}[S](\M) = \M$.
+\end{lemma}
 
-***
-
-Let $P_{\e}(X) = 0$ be the bifurcation problem where $\e$ is a chosen continuation parameter and $\e = 0$ denotes the bifurcation point and let $S_{\e}$ denote a solution arc through the branch point.
-We assume that the follwings hold,
-\begin{equation}\label{eq:bifurcationAssumption}
-	\begin{array}{l}
-		\N_{0}={\rm Ker}(P'_{0}[S_{0}])={\rm span}\{E_{0}\},\quad\|E_{0}\| = 1, \\
-		P'[S_{0}](\M_{0}) = \M_{0},\qquad \RR^{\mbym} = \M_{0} \oplus \N_{0}.
-	\end{array}	
-\end{equation}
-Then, we can define $\proj_{\N_{0}}$ to be the projection onto $\N_{0}$ parallel to $\M_{0}$ and $\proj_{\M_{0}}=I-\proj_{\N_{0}}$.
-Clearly, $P'_{0}[S_{0}]$ is a Fredholm operator of index zero and hence will remain so for $\e$ near zero.
-In this case, it can be shown \cite{CrandallRabinowitz1973} that the structure of \eqref{eq:bifurcationAssumption} is also preserved for small $\e$, i.e., we can solve
-\begin{equation}
-	P'_{\e}[S_{\e}](E_{\e}) = \mu_{\e}E_{\e}
-\end{equation}
-for a continuous eigenvalue-eigenvector pair $(\mu_{\e}, E_{\e})$ where $\mu_{0} = 0$.
-
-We assume that
-\begin{equation}
-	\begin{array}{l}
-		-P'[S](E) = \e E, \quad\|E\| = 1, \quad\N_{\e}={\rm span}\{E\},\\
-		\RR^{\mbym} = \M_{\e} \oplus \N_{\e},\qquad P'[S](\M_{\e}) = \M_{\e},
-	\end{array}	
-\end{equation}
-where $\e$ is a simple eigenvalue of $-\P'[S]$ whose absolute value is the smallest.
-Then, we can define $\proj_{\N_{\e}}$ to be the projection onto $\N$
-parallel to $\M$ and $\proj_{\M_{\e}}=I-\proj_{\N_{\e}}$.
-If $\e = 0$, then the following theorem shows the converging tendency of \eqref{eq:NewtonStepMPE2} for the singular $-P'_{0}[S]$.
-
-
-\begin{theorem}{\rm (cf. \cite[Theorem 1.5]{Guo1998M}, \cite[Theorem 1.1]{Kelley1986})}\label{thm:SingularConvergence}
-	Let $\proj_{\N_{0}} P''[S](E, E)$ be nonzero and let
-	\begin{equation}\label{eq:Wset}
-		W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{0}}(\tilde{X})\| \leq \theta \|\proj_{\N_{0}}(\tilde{X})\|\right.\right\}.
+\begin{proof}
+	Since $S$ is positive and $A_{k}$'s are irreducible, $-\P'[S]$ is irreducible.
+	Thus, $-\P'_{\e}[S] = -\P'[S] + (\e - \mu)I_{m}$ is also irreducible as the diagonal entries do not effect on irreducibility of matrices.
+	Then, by Perron-Frobenius Theorem \cite{Horn1985}, $\e$ is a simple eigenvalue of $-\P'_{\e}[S]$ with a positive eigenvector. Thus, we can find $m^{2}$ linearly independent
+	vectors $\chi_{1},\chi_{2},\cdots \chi_{m^{2}}$ such that $\chi_{1}>0$ and
+	
+	\begin{equation}\label{eq:invUDsU}
+	\X^{-1}(-\P'_{\e}[S])\X=\bmatrix{
+		\e & 0\\
+		0 & \D}, ~\textrm{where }\X=\left[\begin{array}{c|c|c|c} \phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}\\ \chi_{1}&\chi_{2}&\cdots&\chi_{m^{2}}\\\phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}
+	\end{array} \right]
 	\end{equation}
-	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P'[X_{i}]^{-1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	and $\D$ is an $(m^{2}-1)\times(m^{2}-1)$ nonsingular matrix, i.e., $\M = {\rm span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{m^{2}}))$ and $P'_{\e}[S](\M) = \M$.
+	By the same way, we also have a positive vector $\psi_{1}$ such that $-\psi_{1}^{T}\P'_{\e}[S] = \e \psi_{1}^{T}$.
+	%	Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
+	Since $N \in \N = {\rm span}(\vec^{-1}(\chi_{1}))$, there exists nonzero $a \in \RR$ such that $N = a\vec^{-1}(\chi_{1})$.
+	From $\vec^{-1}(\chi_{1}) > 0$ and $S > 0$, we have
+	\begin{align*}
+		P''_{\e}[S](N,N) &= P''[S](N,N) \\
+		& = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}NS^{j}NS^{n-l-j-2} + S^{l}NS^{j}NS^{n-l-j-2} \right) \numberthis \\
+		& = 2a^{2} \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l} \vec^{-1}(\chi_{1}) S^{j} \vec^{-1}(\chi_{1}) S^{n-l-j-2} \right) > 0.
+	\end{align*}
+	On the other hand,
 	\begin{equation}
-		\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-		\qquad \lim_{i \rightarrow \infty}\frac{\|\proj_{\M_{0}}(\tXi)\|}{\|\proj_{\N_{0}}(\tXi)\|^{2}}=0.
+		\vec\left( P''[S](N,N) \right) = k_{1}\chi_{1}+k_{2}\chi_{2}+\cdots+k_{m^{2}}\chi_{m^{2}}
+	\end{equation}
+	for some real numbers $k_{1},k_{2},\ldots,k_{m^{2}}$.
+	By Fundamental theorem of linear algebra in \cite{strang2006linear} and Lemma 6.3.10 in \cite{Horn1985}, we have
+	\begin{equation}\label{eq:k1psiTchi1}
+	\psi_{1}^{T} \vec\left( P''[S](N,N) \right) = k_{1}\psi_{1}^{T}\chi_{1}.
+	\end{equation}
+	Since all of $P''[S](N,N)$, $\chi_{1}$, and $\psi_{1}$ are positive, the left side of \eqref{eq:k1psiTchi1} is positive, i.e., $k_{1}$ must be positive.
+	Therefore,
+	\begin{equation}
+		\pjn \left( P''[S](N,N) \right) = k_{1}\vec^{-1}(\chi_{1}) > 0.
+	\end{equation}	
+\end{proof}
+
+\hrulefill
+
+Then, 
+\begin{equation}
+	-P'_{\e}[S](\M_{\e}) = \M_{\e},
+\end{equation}
+if $\RR^{\mbym} = \N_{\e} \oplus \M_{\e}$.
+Moreover, we can define $\proj_{\N_{\e}}$ to be the projection onto $\N_{\e}$ parallel to $\M_{\e}$ and $\proj_{\M_{\e}}=I-\proj_{\N_{\e}}$.
+
+From \cite{DeckerKelley1985}, we note that $P_{\e}(X) = 0$ is the bifurcation problem where $\e$ is a chosen continuation parameter and the solution arc $S_{\e}$ is a constant arc.
+Specially, for $\e = 0$, the MPE \eqref{eq:epsMPE} becomes a singular problem which can be applied by the following theorem refer to \cite[Theorem 1.1]{Kelley1986}.
+
+\begin{theorem}\label{thm:SingularConvergence}
+	Let $\proj_{\N_{0}} (P_{0}''[S](N, N))$ be nonzero and let
+	\begin{equation}\label{eq:Wset}
+	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{0}}(\tilde{X})\| \leq \theta \|\proj_{\N_{0}}(\tilde{X})\|\right.\right\}.
+	\end{equation}
+	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P'_{0}[X_{i}]^{-1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	\begin{equation}
+	\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+	\qquad \lim_{i \rightarrow \infty}\frac{\|\proj_{\M_{0}}(\tXi)\|}{\|\proj_{\N_{0}}(\tXi)\|^{2}}=0.
 	\end{equation}
 \end{theorem}
 
 Defining
 \begin{align*}
-	\l E &= \proj_{\N_{\e}} P''[S](E, E),\\
-	\mu E &= \proj_{\N_{\e}} \tilde{X},\numberthis\\
-	s &= {\rm sign}(\e\l),
+\l N &= \proj_{\N_{\e}} P''[S](N, N),\\
+\nu N &= \proj_{\N_{\e}} \tilde{X},\numberthis\\
+s &= {\rm sign}(\e\l),
 \end{align*}
 we consider the conical region
 \begin{equation}\label{eq:Wsset}
-	W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{\e}}(\tilde{X})\| \leq \theta \|\proj_{\N_{\e}}(\tilde{X})\|, ~{\rm sign}(\mu) = s \right.\right\}.
+W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{\e}}(\tilde{X})\| \leq \theta \|\proj_{\N_{\e}}(\tilde{X})\|, ~{\rm sign}(\nu) = s \right.\right\}.
 \end{equation}
+Then, we can apply the following theorem to the problem for $\e > 0$.
 
 \begin{theorem}{\rm (cf. \cite[Theorem 3.22]{DeckerKelley1985})}\label{thm:NealySingularConvergence}
-	Assume $\l \neq 0$, and $0 < \e < \bar{\e}$.
-	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{0} \in W_{s}(\rho, \theta)$ then $F_{X_{0}}^{\prime -1}$ exists and all subsequent Newton iterates remain in this set and converges to $S = S(\e)$. Further,
+	Assume $\l \neq 0$, and $\e > 0$.
+	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{0} \in W_{s}(\rho, \theta)$ then $P'_{\e}[X_{0}]^{-1}$ exists and all subsequent Newton iterates remain in this set and converges to $S$. Further,
 	\begin{equation}
-		\|\pjn\tXii\| < \tfrac{3}{4}\|\pjn\tXi\|, \qquad \|\pjm(\tXii)\| \leq K\|\tXi\|^{2},
+	\|\proj_{\N_{\e}}\tXii\| < \tfrac{3}{4}\|\proj_{\N_{\e}}\tXi\|, \qquad \|\proj_{\M_{\e}}(\tXii)\| \leq K\|\tXi\|^{2},
 	\end{equation}
 	for $i \in \NN \cup \{0\}$, some $K > 0$, and $\rho(\e)$, $\theta(\e)$ may be chosen such that $\rho(0) = \rho_{0}$, $\theta(0) = \theta_{0}$ where $\rho_{0}$, $\theta_{0}$ are values for which the conclusions of Theorem \ref{thm:SingularConvergence} hold.
 \end{theorem}
 
 
 
-\begin{lemma}\label{lem:BisInvertible}
-	Suppose the matrix polynomial equation \eqref{eq:MPE} satisfies Assumption \ref{ass:MPE}.
-	If the matrix $-\mathcal{P}'_{S}$ is a singular $M$-matrix,
-	then $0$ is a simple eigenvalue of $-\mathcal{P}'_{S}$, $\N\oplus\M=\mathbb{R}^{m \times m}$,
-	$\N$ is one-dimensional and the map $\mathcal{B}_{N_{0}}$ is invertible
-	for some nonzero $N_{0}\in\N$.
-\end{lemma}
-
-
-\begin{proof}
-	Since $S$ is positive and $A_{k}$'s are irreducible, $-\P'_{S}$ is irreducible.
-	Then, by Perron-Frobenius Theorem \cite[Theorem 8.4.4]{Horn1985},
-	$0$ is a simple eigenvalue of $\P'_{S}$ with a positive eigenvector. Thus, we can find $n^{2}$ linearly independent
-	vectors $\chi_{1},\chi_{2},\cdots \chi_{n^{2}}$ such that $\chi_{1}>0$ and
-	
-	\begin{equation}\label{eq:invUDsU}
-	\X^{-1}\P'_{S}\X=\bmatrix{
-		0 & 0\\
-		0 & \mathcal{D}}, ~\textrm{where }\X=\left[\begin{array}{c|c|c|c} \phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}\\ \chi_{1}&\chi_{2}&\cdots&\chi_{n^{2}}\\\phantom{1}&\phantom{1}&\phantom{1}&\phantom{1}
-	\end{array} \right]
-	\end{equation}
-	and $\mathcal{D}$
-	is an $(n^{2}-1)\times(n^{2}-1)$ nonsingular matrix.
-	By the same way, we also have a positive vector $\psi$ such that $\psi^{T}\P'_{S} = 0$.
-	Now, $P'_{S}(N) = 0$ if and only if $\P'_{S}\mathrm{vec}(N)=0$.
-	From \eqref{eq:invUDsU}, $\P'_{S}\mathrm{vec}(N) = 0$ if and only if $\mathrm{vec}(N) \in \mathrm{span}(\chi_{1})$,
-	in which case we write $N = a\vec^{-1}(\chi_{1})$ for some nonzero $a \in \RR$.
-	Thus, $\N = \mathrm{span}(\vec^{-1}(\chi_{1}))$.
-	Simiarly, $\M = \mathrm{span}(\vec^{-1}(\chi_{2}), \ldots, \vec^{-1}(\chi_{n^{2}}))$.
-	Therefore, $\N$ is one-dimensional and $\mathbb{R}^{m \times m}=\N\oplus\M$.
-	
-	To prove the map $\mathcal{B}_{N_{0}}$ is invertible for a nonzero matrix $N_{0} \in \N$ , we only need to show that
-	$$
-	\pjn\left( P''_{S}(N_{0},N) \right) \neq 0,
-	$$
-	for all nonzero $N \in \N$ because $\mathcal{B}_{N_{0}}$ is linear and $\N$ is one-dimensional.
-	Since $\vec^{-1}(\chi_{1})>0$ and $S > 0$, we have
-	\begin{align*}
-	P''_{S}(N_{0},N) & = \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l}N_{0}S^{j}NS^{n-l-j-2} + S^{l}NS^{j}N_{0}S^{n-l-j-2} \right) \\
-	& = 2ab \sum_{k=2}^{n} \sum_{l=0}^{k-2} \sum_{j=0}^{l} A_{k}\left( S^{l} \vec^{-1}(\chi_{1}) S^{j} \vec^{-1}(\chi_{1}) S^{n-l-j-2} \right) \neq 0
-	\end{align*}
-	where $N = a\vec^{-1}(\chi_{1})$ and $N_{0} = b\vec^{-1}(\chi_{1})$.
-	Moreover, $P''_{S}(N_{0},N)$ is either positive or negative.
-	
-	On the other hand,
-	$$
-	\vec\left( P''_{S}(N_{0},N) \right) = k_{1}\chi_{1}+k_{2}\chi_{2}+\cdots+k_{n^{2}}\chi_{n^{2}}
-	$$
-	for some real numbers $k_{1},k_{2},\cdots,k_{n^{2}}$.
-	By Fundamental theorem of linear algebra in \cite{strang2006linear} and Lemma 6.3.10 in \cite{Horn1985}, we have
-	\begin{equation}\label{eq:yTPtYx}
-	\psi^{T} \vec\left( P''_{S}(N_{0},N) \right) = k_{1}\psi^{T}\chi_{1}.
-	\end{equation}
-	Since $P''_{S}(N_{0},N)$ is either positive or negative and $\psi$ is positive, the left side of \eqref{eq:yTPtYx} is also either positive or negative.
-	So, $k_{1}$ cannot be zero.
-	Therefore,
-	$$
-	\pjn \left( P''_{S}(N_{0},N) \right) = k_{1}\vec^{-1}(\chi_{1}) \neq 0.
-	$$
-	
-\end{proof}
 
 
 
