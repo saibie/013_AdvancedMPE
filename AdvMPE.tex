@@ -371,6 +371,97 @@ In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\
 	\end{equation}	
 \end{proof}
 
+
+\begin{lemma}{\rm \cite[Lemma 3.3]{SeoSeoKim2018}}\label{lem:TaylorLemma}
+	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
+	and let a Newton sequence $\{X_{\e,i}\}_{i=0}^{\infty}$ for \eqref{eq:epsMPE} converge to $S$. Then,
+	\begin{equation}
+		\| P_{\e}({X}_{i})\|\leq a\|\tilde{X}_{\e,i}\|^{2}+b\|\tilde{X}_{\e,i}\|\|\tilde{X}_{\e,i-1}\|+c\|\tilde{X}_{\e, i-1}\|^{2}
+	\end{equation}
+	for some positive real numbers $a,b,c$.
+\end{lemma}
+
+%\begin{proof}
+%	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
+%	\begin{equation}\label{eq:Taylor}
+%	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
+%	\end{equation}
+%	and
+%	\begin{equation*}
+%	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
+%	\end{equation*}
+%	which is equivalent to
+%	\begin{equation}\label{eq:TaylorMPE3}
+%	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
+%	\end{equation}
+%	From \eqref{eq:NewtonStepMPE}, we have
+%	\begin{equation}\label{eq:NewtonStepAnother}
+%	0 = P'_{X_{i-1}}(X_{i} - X_{i-1}) + P(X_{i-1}),
+%	\end{equation}
+%	and clearly
+%	\begin{equation}
+%	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
+%	\end{equation}
+%	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
+%	and substitute \eqref{eq:TaylorMPE3}, we obtain
+%	\begin{align*}
+%	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
+%	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
+%	\end{align*}
+%	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
+%	\begin{align*}
+%	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
+%	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
+%	\end{align*}
+%	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
+%	we have required result.
+%\end{proof}
+In Lemma \ref{lem:TaylorLemma}, the equation is different from that in \cite[Lemma 3.3]{SeoSeoKim2018}.
+But, in the same way, Lemma \ref{lem:TaylorLemma} can be proved, easily.
+
+\begin{lemma}\label{lem:DominatedPMconvergence}
+	For any fixed $\theta > 0$, let
+	\begin{equation}
+		\mathcal{Q} = \{i \in \NN \cup \{0\}|\|\pjm(\tilde{X}_{\e,i})\| > \theta \|\pjn(\tilde{X}_{\e,i})\|\}
+	\end{equation}
+	where $\{X_{\e, i}\}$ is a Newton sequence for \eqref{eq:epsMPE} which converges to $S$.
+	Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
+	$\| \tilde{X}_{\e,i}\| \leq c \| \tilde{X}_{\e,i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
+\end{lemma}
+
+\begin{proof}
+	Using Taylor's Theorem and the fact that $P'_{\e}[S]\left(\pjn(\tilde{X}_{\e,i})\right) = \e\pjn(\tilde{X}_{\e,i})$, we obtain that
+	\begin{align*}
+		P(X_{\e,i}) &= P(S) + P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
+		&= \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
+	\end{align*}
+	Since $P'_{\e}[S]|_{\M} : \M \rightarrow \M$ is invertible, $\left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$ for some constant $c_{1}>0$.
+	For $i\in\mathcal{Q}$, we have
+	\begin{equation*}
+		\|\tilde{X}_{\e,i}\| \leq \left\| \pjm(\tilde{X}_{\e,i})\right\| + \left\| \pjn(\tilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\tilde{X}_{\e,i})\right\|.
+	\end{equation*}
+	Thus by \eqref{eq:TaylorMPE},
+	\begin{equation}\label{eq:NormofhatXi}
+	\|P(X_{i})\| \geq c_{1}\|\pjm(\tilde{X}_{i})\| - c_{2}\|\tilde{X}_{i}\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tilde{X}_{i}\| - c_{2}\|\tilde{X}_{i}\|^{2}.
+	\end{equation}
+	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
+	$$
+	\| P({X}_{i})\|\leq c_{3}\|\tilde{X}_{i}\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tilde{X}_{i}\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
+	$$
+	From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
+	any $i$, we have
+	$$
+	c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tilde{X}_{i}\| \leq c_{3}\|\tilde{X}_{i}\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tilde{X}_{i}\|}.
+	$$
+	Since $\tilde{X}_{i}$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
+	we can find an $i_{0}$ such that $\|\tilde{X}_{i}\|\leq c\|\tilde{X}_{i-1}\|^{2}$
+	for all $i\geq i_{0}$.
+\end{proof}
+
 \hrulefill
 
 Then, 
@@ -423,97 +514,10 @@ Then, we can apply the following theorem to the problem for $\e > 0$.
 
 
 
-\begin{lemma}\label{lem:TaylorLemma}
-	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
-	and let $\{X_{i}\}_{i=0}^{\infty}$ be a Newton sequence in \eqref{eq:NewtonStepMPE2}. Then,
-	$$
-	\| P({X}_{i})\|\leq a\|\tXi\|^{2}+b\|\tXi\|\|\tilde{X}_{i-1}\|+c\|\tilde{X}_{i-1}\|^{2}
-	$$
-	for some positive real numbers $a,b,c$.
-\end{lemma}
-
-\begin{proof}
-	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
-	\begin{equation}\label{eq:Taylor}
-	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
-	\end{equation}
-	and
-	\begin{equation*}
-	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
-	\end{equation*}
-	which is equivalent to
-	\begin{equation}\label{eq:TaylorMPE3}
-	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
-	\end{equation}
-	From \eqref{eq:NewtonStepMPE}, we have
-	\begin{equation}\label{eq:NewtonStepAnother}
-	0 = P'_{X_{i-1}}(X_{i} - X_{i-1}) + P(X_{i-1}),
-	\end{equation}
-	and clearly
-	\begin{equation}
-	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
-	\end{equation}
-	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
-	and substitute \eqref{eq:TaylorMPE3}, we obtain
-	\begin{align*}
-	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
-	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
-	\end{align*}
-	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
-	\begin{align*}
-	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
-	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
-	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
-	\end{align*}
-	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
-	we have required result.
-\end{proof}
 
 
 
 
-\begin{lemma}\label{lem:DominatedPMconvergence}
-	For any fixed $\theta > 0$, let
-	$$
-	\mathcal{Q} = \{i \in \NN \cup \{0\}|\|\pjm(\tXi)\| > \theta \|\pjn(\tXi)\|\}
-	$$
-	where $\{X_{i}\}$ is the Newton sequence in Theorem \ref{thm:ConvergenceNewtonMPE}.
-	Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
-	$\| \tXi\| \leq c \| \tilde{X}_{i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
-\end{lemma}
-
-\begin{proof}
-	Using Taylor's Theorem and the fact that $P'_{S}\left(\pjn(\tXi)\right) = 0$,
-	\begin{equation}\label{eq:TaylorMPE}
-	P(X_{i}) = P(S) + P'_{S}(\tXi) + O(\|\tXi\|^{2}) = P'_{S}\left(\pjm(\tXi)\right) + O(\|\tXi\|^{2}).
-	\end{equation}
-	Since $P'_{S}|_{\M} : \M \rightarrow \M$ is
-	invertible, $\left\| P'_{S}\left(\pjm(\tXi)\right)\right\| \geq c_{1}\|\pjm(\tXi)\|$
-	for some constant $c_{1}>0$.
-	For $i\in\mathcal{Q}$, we have
-	\begin{equation*}
-	\|\tXi\| \leq \left\| \pjm(\tXi)\right\| + \left\| \pjn(\tXi)\right\|
-	\leq (\theta^{-1} + 1) \left\| \pjm(\tXi)\right\|.
-	\end{equation*}
-	Thus by \eqref{eq:TaylorMPE},
-	\begin{equation}\label{eq:NormofhatXi}
-	\|P(X_{i})\| \geq c_{1}\|\pjm(\tXi)\| - c_{2}\|\tXi\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tXi\| - c_{2}\|\tXi\|^{2}.
-	\end{equation}
-	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
-	$$
-	\| P({X}_{i})\|\leq c_{3}\|\tXi\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tXi\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
-	$$
-	From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
-	any $i$, we have
-	$$
-	c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tXi\| \leq c_{3}\|\tXi\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tXi\|}.
-	$$
-	Since $\tXi$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
-	we can find an $i_{0}$ such that $\|\tXi\|\leq c\|\tilde{X}_{i-1}\|^{2}$
-	for all $i\geq i_{0}$.\end{proof}
 \begin{corollary}
 	Assume that, for given $\theta>0$, $\|\pjm(\tXi)\|>\theta\|\pjn(\tXi)\|$
 	for all $i$ large enough. Then $X_{i}\rightarrow S$ quadratically.

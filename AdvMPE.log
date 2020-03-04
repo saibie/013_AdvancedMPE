@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  3 MAR 2020 18:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  4 MAR 2020 14:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -668,28 +668,31 @@ L/cmm/m/it/10 m[] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1) \OMS/cmsy/m/n/10 ^^B
 1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^_[]\OT1/cmr/m/n/10 ))$
  []
 
-[4] [5] [6] [7] (./AdvMPE.bbl [8]
+[4] [5]
+Underfull \vbox (badness 1117) has occurred while \output is active []
+
+ [6]
+[7] (./AdvMPE.bbl [8]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 43.
-
-(c:/usr/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
+ (c:/usr/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 660.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 664.
  [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 660.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 664.
  (./AdvMPE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 660.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 660.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 664.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 664.
 Package rerunfilecheck Info: File `AdvMPE.out' has not changed.
-(rerunfilecheck)             Checksum: 0A2AC68DA87678339A4CA45E2B2B2170;293.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 660.
+(rerunfilecheck)             Checksum: D9C15B58BFB595890FA075C1ECE93FF3;293.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 664.
  ) 
 Here is how much of TeX's memory you used:
- 10921 strings out of 481228
- 150386 string characters out of 5919441
- 466274 words of memory out of 5000000
- 25627 multiletter control sequences out of 15000+600000
+ 10916 strings out of 481228
+ 150304 string characters out of 5919441
+ 468063 words of memory out of 5000000
+ 25624 multiletter control sequences out of 15000+600000
  560037 words of font info for 118 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  38i,11n,34p,3238b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -706,48 +709,47 @@ c/amsfonts/cm/cmr5.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmr7.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr8.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.
 pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/usr
-/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/usr/texli
-ve/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/usr/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/usr/texlive/2
-019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/usr/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/usr/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/texlive/2019
-/texmf-dist/fonts/type1/public/nanumtype1/nanummjmac.pfb><c:/usr/texlive/2019/t
-exmf-dist/fonts/type1/public/nanumtype1/nanummjmad.pfb><c:/usr/texlive/2019/tex
-mf-dist/fonts/type1/public/nanumtype1/nanummjmae.pfb><c:/usr/texlive/2019/texmf
--dist/fonts/type1/public/nanumtype1/nanummjmb0.pfb><c:/usr/texlive/2019/texmf-d
-ist/fonts/type1/public/nanumtype1/nanummjmb2.pfb><c:/usr/texlive/2019/texmf-dis
-t/fonts/type1/public/nanumtype1/nanummjmb3.pfb><c:/usr/texlive/2019/texmf-dist/
-fonts/type1/public/nanumtype1/nanummjmb4.pfb><c:/usr/texlive/2019/texmf-dist/fo
-nts/type1/public/nanumtype1/nanummjmb8.pfb><c:/usr/texlive/2019/texmf-dist/font
-s/type1/public/nanumtype1/nanummjmb9.pfb><c:/usr/texlive/2019/texmf-dist/fonts/
-type1/public/nanumtype1/nanummjmba.pfb><c:/usr/texlive/2019/texmf-dist/fonts/ty
-pe1/public/nanumtype1/nanummjmbb.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type
-1/public/nanumtype1/nanummjmbc.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/
-public/nanumtype1/nanummjmbd.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/pu
-blic/nanumtype1/nanummjmc1.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/publ
-ic/nanumtype1/nanummjmc3.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public
-/nanumtype1/nanummjmc5.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/n
-anumtype1/nanummjmc6.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nan
-umtype1/nanummjmc7.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanum
-type1/nanummjmc8.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanumty
-pe1/nanummjmc9.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanumtype
-1/nanummjmcd.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanumtype1/
-nanummjmd5.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanumtype1/na
-nummjmd7.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx10
-00.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfcc0800.pfb
-><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/u
-sr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/usr/tex
-live/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/usr/texlive/2
-019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/usr/texlive/2019/te
-xmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/usr/texlive/2019/texmf-di
-st/fonts/type1/public/cm-super/sfti1000.pfb><c:/usr/texlive/2019/texmf-dist/fon
-ts/type1/public/cm-super/sftt0800.pfb>
-Output written on AdvMPE.pdf (9 pages, 1301970 bytes).
+c:/usr/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/usr
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/usr/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/usr/tex
+live/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/usr/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/usr/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/usr/texliv
+e/2019/texmf-dist/fonts/type1/public/nanumtype1/nanummjmac.pfb><c:/usr/texlive/
+2019/texmf-dist/fonts/type1/public/nanumtype1/nanummjmad.pfb><c:/usr/texlive/20
+19/texmf-dist/fonts/type1/public/nanumtype1/nanummjmae.pfb><c:/usr/texlive/2019
+/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb0.pfb><c:/usr/texlive/2019/t
+exmf-dist/fonts/type1/public/nanumtype1/nanummjmb2.pfb><c:/usr/texlive/2019/tex
+mf-dist/fonts/type1/public/nanumtype1/nanummjmb3.pfb><c:/usr/texlive/2019/texmf
+-dist/fonts/type1/public/nanumtype1/nanummjmb4.pfb><c:/usr/texlive/2019/texmf-d
+ist/fonts/type1/public/nanumtype1/nanummjmb8.pfb><c:/usr/texlive/2019/texmf-dis
+t/fonts/type1/public/nanumtype1/nanummjmb9.pfb><c:/usr/texlive/2019/texmf-dist/
+fonts/type1/public/nanumtype1/nanummjmba.pfb><c:/usr/texlive/2019/texmf-dist/fo
+nts/type1/public/nanumtype1/nanummjmbb.pfb><c:/usr/texlive/2019/texmf-dist/font
+s/type1/public/nanumtype1/nanummjmbc.pfb><c:/usr/texlive/2019/texmf-dist/fonts/
+type1/public/nanumtype1/nanummjmbd.pfb><c:/usr/texlive/2019/texmf-dist/fonts/ty
+pe1/public/nanumtype1/nanummjmc1.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type
+1/public/nanumtype1/nanummjmc3.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/
+public/nanumtype1/nanummjmc5.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/pu
+blic/nanumtype1/nanummjmc6.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/publ
+ic/nanumtype1/nanummjmc7.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public
+/nanumtype1/nanummjmc8.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/n
+anumtype1/nanummjmc9.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nan
+umtype1/nanummjmcd.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanum
+type1/nanummjmd5.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/nanumty
+pe1/nanummjmd7.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/
+sfbx1000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfcc08
+00.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb
+><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/u
+sr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/usr/tex
+live/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/usr/texlive/2
+019/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/usr/texlive/2019/te
+xmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/usr/texlive/2019/texmf-di
+st/fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on AdvMPE.pdf (9 pages, 1293207 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 399 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
+ 460 PDF objects out of 1000 (max. 8388607)
+ 394 compressed objects within 4 object streams
+ 93 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
