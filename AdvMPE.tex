@@ -376,7 +376,7 @@ In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\
 	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
 	and let a Newton sequence $\{X_{\e,i}\}_{i=0}^{\infty}$ for \eqref{eq:epsMPE} converge to $S$. Then,
 	\begin{equation}
-		\| P_{\e}({X}_{i})\|\leq a\|\tilde{X}_{\e,i}\|^{2}+b\|\tilde{X}_{\e,i}\|\|\tilde{X}_{\e,i-1}\|+c\|\tilde{X}_{\e, i-1}\|^{2}
+		\| P_{\e}({X}_{\e, i})\|\leq a\|\tilde{X}_{\e,i}\|^{2}+b\|\tilde{X}_{\e,i}\|\|\tilde{X}_{\e,i-1}\|+c\|\tilde{X}_{\e, i-1}\|^{2}
 	\end{equation}
 	for some positive real numbers $a,b,c$.
 \end{lemma}
@@ -420,8 +420,9 @@ In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\
 %	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
 %	we have required result.
 %\end{proof}
-In Lemma \ref{lem:TaylorLemma}, the equation is different from that in \cite[Lemma 3.3]{SeoSeoKim2018}.
-But, in the same way, Lemma \ref{lem:TaylorLemma} can be proved, easily.
+The equation \eqref{eq:epsMPE} is not same as \eqref{eq:MPE} but similar.
+So, Lemma \ref{lem:TaylorLemma} can be proved like \cite[Lemma 3.3]{SeoSeoKim2018}
+because it is used just Taylor's Theorem not the condition of coefficient matrices.
 
 \begin{lemma}\label{lem:DominatedPMconvergence}
 	For any fixed $\theta > 0$, let
@@ -436,7 +437,7 @@ But, in the same way, Lemma \ref{lem:TaylorLemma} can be proved, easily.
 \begin{proof}
 	Using Taylor's Theorem and the fact that $P'_{\e}[S]\left(\pjn(\tilde{X}_{\e,i})\right) = \e\pjn(\tilde{X}_{\e,i})$, we obtain that
 	\begin{align*}
-		P(X_{\e,i}) &= P(S) + P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
+		P_{\e}(X_{\e,i}) &= P_{\e}(S) + P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
 		&= \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
 	\end{align*}
 	Since $P'_{\e}[S]|_{\M} : \M \rightarrow \M$ is invertible, $\left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$ for some constant $c_{1}>0$.
@@ -445,79 +446,66 @@ But, in the same way, Lemma \ref{lem:TaylorLemma} can be proved, easily.
 		\|\tilde{X}_{\e,i}\| \leq \left\| \pjm(\tilde{X}_{\e,i})\right\| + \left\| \pjn(\tilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\tilde{X}_{\e,i})\right\|.
 	\end{equation*}
 	Thus by \eqref{eq:TaylorMPE},
-	\begin{equation}\label{eq:NormofhatXi}
-	\|P(X_{i})\| \geq c_{1}\|\pjm(\tilde{X}_{i})\| - c_{2}\|\tilde{X}_{i}\|^{2} \geq c_{1}(\theta^{-1}+1)^{-1}\|\tilde{X}_{i}\| - c_{2}\|\tilde{X}_{i}\|^{2}.
-	\end{equation}
+	\begin{align*}
+		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}) \right\| \\
+		&\geq \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
+		&\geq \left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\tilde{X}_{\e,i}) \right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
+		&\geq {\color{red}\left(c_{1} - \frac{\e}{\theta}\right)}\|\pjm(\tilde{X}_{\e,i})\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
+		&\geq \left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1}\|\tilde{X}_{\e,i}\| - c_{2}\|\tilde{X}_{\e,i}\|^{2}.
+	\end{align*}
 	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
+	\begin{equation}\label{eq:subNormofhatXi}
+		\| P_{\e}({X}_{\e,i})\|\leq c_{3}\|\tilde{X}_{\e,i}\|^{2}+c_{4}\|\tilde{X}_{\e,i-1}\|\|\tilde{X}_{\e,i}\|+c_{5}\|\tilde{X}_{\e,i-1}\|^{2}.
+	\end{equation}
+	With the combination of \eqref{eq:NormofhatXi} and \eqref{eq:subNormofhatXi}, we have
 	$$
-	\| P({X}_{i})\|\leq c_{3}\|\tilde{X}_{i}\|^{2}+c_{4}\|\tilde{X}_{i-1}\|\|\tilde{X}_{i}\|+c_{5}\|\tilde{X}_{i-1}\|^{2}.
+	\left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1} - c_{2}\|\tilde{X}_{\e,i}\| \leq c_{3}\|\tilde{X}_{\e,i}\| + c_{4}\|\tilde{X}_{\e,i-1}\| + c_{5}\frac{\|\tilde{X}_{\e,i-1}\|^{2}}{\|\tilde{X}_{\e,i}\|}.
 	$$
-	From \eqref{eq:NormofhatXi} and the fact that $X_{i}\neq S$ for
-	any $i$, we have
-	$$
-	c_{1}(\theta^{-1}+1)^{-1} - c_{2}\|\tilde{X}_{i}\| \leq c_{3}\|\tilde{X}_{i}\| + c_{4}\|\tilde{X}_{i-1}\| + c_{5}\frac{\|\tilde{X}_{i-1}\|^{2}}{\|\tilde{X}_{i}\|}.
-	$$
-	Since $\tilde{X}_{i}$ converges to $0$ by Theorem \ref{thm:ConvergenceNewtonMPE},
-	we can find an $i_{0}$ such that $\|\tilde{X}_{i}\|\leq c\|\tilde{X}_{i-1}\|^{2}$
+	Since $\tilde{X}_{\e, i}$ converges to $0$, we can find an $i_{0}$ such that $\|\tilde{X}_{i}\|\leq c\|\tilde{X}_{i-1}\|^{2}$
 	for all $i\geq i_{0}$.
 \end{proof}
 
 \hrulefill
 
-Then, 
-\begin{equation}
-	-P'_{\e}[S](\M_{\e}) = \M_{\e},
-\end{equation}
-if $\RR^{\mbym} = \N_{\e} \oplus \M_{\e}$.
-Moreover, we can define $\proj_{\N_{\e}}$ to be the projection onto $\N_{\e}$ parallel to $\M_{\e}$ and $\proj_{\M_{\e}}=I-\proj_{\N_{\e}}$.
-
 From \cite{DeckerKelley1985}, we note that $P_{\e}(X) = 0$ is the bifurcation problem where $\e$ is a chosen continuation parameter and the solution arc $S_{\e}$ is a constant arc.
 Specially, for $\e = 0$, the MPE \eqref{eq:epsMPE} becomes a singular problem which can be applied by the following theorem refer to \cite[Theorem 1.1]{Kelley1986}.
 
 \begin{theorem}\label{thm:SingularConvergence}
-	Let $\proj_{\N_{0}} (P_{0}''[S](N, N))$ be nonzero and let
+	Let $\pjn (P_{0}''[S](N, N))$ be nonzero and let
 	\begin{equation}\label{eq:Wset}
-	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{0}}(\tilde{X})\| \leq \theta \|\proj_{\N_{0}}(\tilde{X})\|\right.\right\}.
+	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
 	\end{equation}
-	If $X_{0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{i}\}$ is well defined and $\| P'_{0}[X_{i}]^{-1}\|\leq c\|\tXi\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	If $X_{0, 0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{0, i}\}$ is well defined and $\| P'_{0}[X_{0,i}]^{-1}\|\leq c\|\tilde{X}_{0,i}\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
 	\begin{equation}
-	\lim_{i \rightarrow \infty}\frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-	\qquad \lim_{i \rightarrow \infty}\frac{\|\proj_{\M_{0}}(\tXi)\|}{\|\proj_{\N_{0}}(\tXi)\|^{2}}=0.
+	\lim_{i \rightarrow \infty}\frac{\|\tilde{X}_{0,i+1}\|}{\|\tilde{X}_{0,i}\|} = \frac{1}{2},
+	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tilde{X}_{0,i})\|}{\|\pjn(\tilde{X}_{0,i})\|^{2}}=0.
 	\end{equation}
 \end{theorem}
 
 Defining
 \begin{align*}
-\l N &= \proj_{\N_{\e}} P''[S](N, N),\\
-\nu N &= \proj_{\N_{\e}} \tilde{X},\numberthis\\
+\l N &= \pjn P''_{\e}[S](N, N),\\
+\nu N &= \pjn \tilde{X},\numberthis\\
 s &= {\rm sign}(\e\l),
 \end{align*}
 we consider the conical region
 \begin{equation}\label{eq:Wsset}
-W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\proj_{\M_{\e}}(\tilde{X})\| \leq \theta \|\proj_{\N_{\e}}(\tilde{X})\|, ~{\rm sign}(\nu) = s \right.\right\}.
+W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|, ~{\rm sign}(\nu) = s \right.\right\}.
 \end{equation}
 Then, we can apply the following theorem to the problem for $\e > 0$.
 
 \begin{theorem}{\rm (cf. \cite[Theorem 3.22]{DeckerKelley1985})}\label{thm:NealySingularConvergence}
 	Assume $\l \neq 0$, and $\e > 0$.
-	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{0} \in W_{s}(\rho, \theta)$ then $P'_{\e}[X_{0}]^{-1}$ exists and all subsequent Newton iterates remain in this set and converges to $S$. Further,
+	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{\e,0} \in W_{s}(\rho, \theta)$ then $P'_{\e}[X_{\e,0}]^{-1}$ exists and all subsequent Newton iterates remain in this set and converges to $S$. Further,
 	\begin{equation}
-	\|\proj_{\N_{\e}}\tXii\| < \tfrac{3}{4}\|\proj_{\N_{\e}}\tXi\|, \qquad \|\proj_{\M_{\e}}(\tXii)\| \leq K\|\tXi\|^{2},
+	\|\pjn\tilde{X}_{\e,i+1}\| < \tfrac{3}{4}\|\pjn\tilde{X}_{\e,i}\|, \qquad \|\pjm(\tilde{X}_{\e,i+1})\| \leq K\|\tilde{X}_{\e,i}\|^{2},
 	\end{equation}
 	for $i \in \NN \cup \{0\}$, some $K > 0$, and $\rho(\e)$, $\theta(\e)$ may be chosen such that $\rho(0) = \rho_{0}$, $\theta(0) = \theta_{0}$ where $\rho_{0}$, $\theta_{0}$ are values for which the conclusions of Theorem \ref{thm:SingularConvergence} hold.
 \end{theorem}
 
+\hrulefill
 
-
-
-
-
-
-
-
-
-
-
+{\color{gray}
 \begin{corollary}
 	Assume that, for given $\theta>0$, $\|\pjm(\tXi)\|>\theta\|\pjn(\tXi)\|$
 	for all $i$ large enough. Then $X_{i}\rightarrow S$ quadratically.
@@ -541,13 +529,16 @@ we have the following main theorem.
 	$$
 	
 \end{theorem}
+}
+
+\section{Advanced Line Search}
+
+From Theorem \ref{thm:NealySingularConvergence}, we see that $\pjm(\tilde{X}_{\e,i})$ is terminated more than $\pjn(\tilde{X}_{\e,i})$ for the Newton sequence $\{X_{\e,i}\}$ converging to $S$.
+It means that $\{\tilde{X}_{\e,i}\}_{i \geq i_{0}}$ lies on near one-dimensional subspace $\N$ for some $i_{0}$.
+So, with just a scalar multiplication, we can accelerate Newton's method.
+
 
 \section{Note}
-
-여기서, $P_{\e}$이 $P_{0}$로 접근하는 bifurcation problem이 있는지 {\color{red}보여주냐}, Decker에 의해 존재하니까 {\color{red}그냥 써도 된다}고 주장하느냐의 문제가 있겠다.
-분명히 있긴 한데, 왜 그렇게 되는지 보여주지를 못하겠다.
-Translation에 의한 ordered pair relation으로 추정되지만, 보여주지 못하면 의미가 없다.
-
 
 {\color{gray}\begin{align*}
 	-A_{1} &= rI_{m} - N \\
