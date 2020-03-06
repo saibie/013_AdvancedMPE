@@ -173,7 +173,7 @@ Decker and Kelley \cite{DeckerKelley1985} showed an analysis for Newton's method
 at nearly singular roots.
 In \cite{Kelley1986}, Kelley analyzed convergence rate of the method for functions whose high order derivatives at the solution are singular.
 For specific functions on $\RR^{\mbyn}$, Guo and Lancaster \cite{Guo1998M} analyzed and provided a modification about Newton's method for algebraic Riccati equations at singular roots.
-In \cite{SeoSeo2020}, S-.H. Seo and J-.H. Seo suggested a modified Newton method for matrix polynomial equations with $n$-degree for singular problems.
+In \cite{SeoSeoKim2018}, S-.H. Seo, J-.H. Seo, and H-.M. Kim suggested a modified Newton method for matrix polynomial equations with $n$-degree for singular problems.
 
 In \cite{Kelley1983, DeckerKellerKelley1983}, accelerations for Newton's method at singular roots was suggested for general functions on Banach spaces.
 For specific functions on $\RR^{\mbyn}$, modifications of Newton's method at singular roots was provided in \cite{Guo1998M, SeoSeoKim2018}.
@@ -427,10 +427,11 @@ because it is used just Taylor's Theorem not the condition of coefficient matric
 \begin{lemma}\label{lem:DominatedPMconvergence}
 	For any fixed $\theta > 0$, let
 	\begin{equation}
-		\mathcal{Q} = \{i \in \NN \cup \{0\}|\|\pjm(\tilde{X}_{\e,i})\| > \theta \|\pjn(\tilde{X}_{\e,i})\|\}
+		\mathcal{Q} = \{i \in \NN \cup \{0\}\,|\,\|\pjm(\tilde{X}_{\e,i})\| > \theta \|\pjn(\tilde{X}_{\e,i})\|\}
 	\end{equation}
-	where $\{X_{\e, i}\}$ is a Newton sequence for \eqref{eq:epsMPE} which converges to $S$.
-	Then, there exist an integer $i_{0}$ and a constant $c > 0$ such that
+	where $\{X_{\e, i}\}$ is a Newton sequence for \eqref{eq:epsMPE} which converges to $S$,
+	and let ${\color{red}c_{1}} > 0$ be the smallest singular value of $\P'_{\e}[S]|_{\M}$.
+	Then, for $\e < c_{1}\theta$, there exist an integer $i_{0}$ and a constant $c > 0$ such that
 	$\| \tilde{X}_{\e,i}\| \leq c \| \tilde{X}_{\e,i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
 \end{lemma}
 
@@ -440,7 +441,7 @@ because it is used just Taylor's Theorem not the condition of coefficient matric
 		P_{\e}(X_{\e,i}) &= P_{\e}(S) + P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
 		&= \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
 	\end{align*}
-	Since $P'_{\e}[S]|_{\M} : \M \rightarrow \M$ is invertible, $\left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$ for some constant $c_{1}>0$.
+	Since $c_{1} > 0$ is the smallest singular value of $P'_{\e}[S]|_{\M}$, $\left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$.
 	For $i\in\mathcal{Q}$, we have
 	\begin{equation*}
 		\|\tilde{X}_{\e,i}\| \leq \left\| \pjm(\tilde{X}_{\e,i})\right\| + \left\| \pjn(\tilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\tilde{X}_{\e,i})\right\|.
@@ -450,7 +451,7 @@ because it is used just Taylor's Theorem not the condition of coefficient matric
 		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}) \right\| \\
 		&\geq \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
 		&\geq \left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\tilde{X}_{\e,i}) \right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
-		&\geq {\color{red}\left(c_{1} - \frac{\e}{\theta}\right)}\|\pjm(\tilde{X}_{\e,i})\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
+		&\geq \left(c_{1} - \frac{\e}{\theta}\right)\|\pjm(\tilde{X}_{\e,i})\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
 		&\geq \left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1}\|\tilde{X}_{\e,i}\| - c_{2}\|\tilde{X}_{\e,i}\|^{2}.
 	\end{align*}
 	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
@@ -533,103 +534,35 @@ we have the following main theorem.
 
 \section{Advanced Line Search}
 
-From Theorem \ref{thm:NealySingularConvergence}, we see that $\pjm(\tilde{X}_{\e,i})$ is terminated more than $\pjn(\tilde{X}_{\e,i})$ for the Newton sequence $\{X_{\e,i}\}$ converging to $S$.
-It means that $\{\tilde{X}_{\e,i}\}_{i \geq i_{0}}$ lies on near one-dimensional subspace $\N$ for some $i_{0}$.
-So, with just a scalar multiplication, we can accelerate Newton's method.
+From the previous section, we see that $\pjm(\tilde{X}_{i})$ is almost terminated more than $\pjn(\tilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
+which converges to $S$ and is from a nearly singular problem.
+It means that $\{\tilde{X}_{i}\}_{i \geq i_{0}}$ lies on near one-dimensional subspace $\N$ for some nonnegative integer $i_{0}$.
+So, with just a proper scalar multiplication, we can accelerate Newton's method as
+\begin{equation}\label{eq:accelNewton}
+	X_{i+1} = X_{i} - \a_{i} P'[X_{i}]^{-1}(P(X_{i})), \quad i = 0, 1, 2, \ldots.
+\end{equation}
+As introduced in Section \ref{sec:intro}, the proper scalar $\a_{i}$ is suggested for specific singular problems in \cite{Guo1998M, SeoSeoKim2018}.
+If $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ holds for small $\e > 0$, then $\a_{i} = 2$ is the proper scalar.
+But, for nearly singular problems, we cannot guarantee that $\a_{i} = 2$ is the proper.
+So, for nearly singular problems, we suggest the way finding the proper scalar $\a_{i}$ based on exact line searches in \cite{Seo2008}.
+
+For given initial guess $X_{0}$, Newton's method with exact line searches is defined by
+\begin{equation}
+	\begin{cases}
+		X_{i+1} = X_{i} + \a_{i} H_{i},\\
+		\a_{i} = \underset{1 \leq \a \leq 2}{\rm argmin}\,\|P(X_{i} + \a H_{i})\|^{2},
+	\end{cases}
+\end{equation}
+where $H_{i} = -P'[X_{i}](P(X_{i}))$.
+Thus, finding $\a_{i}$ is equivalent to finding the minimal point in the interval $[1, 2]$ of the $2n$-degree polynomial
+\begin{equation}
+	p_{i}(t) = \|P(X_{i} + t H_{i})\|^{2}.
+\end{equation}
+
+
 
 
 \section{Note}
-
-{\color{gray}\begin{align*}
-	-A_{1} &= rI_{m} - N \\
-	-A_{1}^{-1} &= \frac{1}{r}\sum_{n=0}^{\infty} \left( \frac{N}{r} \right)^{n} \\
-	-A_{1}^{-1}A_{0} &= \frac1r \sum_{n=0}^{\infty}\left( \frac{N}{r} \right)^{n}A_{0} = X_{1} > 0 \\
-	-A_{1}-\e I_{m} &= (r - \e)I_{m} - N \\
-	(-A_{1} - \e I_{m})^{-1} &= \frac{1}{r - \e} \sum_{n=0}^{\infty} \left( \frac{N}{r - \e} \right)^{n} \\
-	&= \sum_{n=0}^{\infty} (-\e A_{1}^{-1})^{n}(-A_{1}^{-1}) \\
-	&= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
-	&= -A_{1}^{-1} + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} \\
-	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \sum_{n=0}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
-	&= -A_{1}^{-1} (A_{0} - \e S) + \sum_{n=1}^{\infty} \e^{n} (-A_{1}^{-1})^{n+1} (A_{0} - \e S) \\
-	(-A_{1} - \e I_{m})^{-1}(A_{0} - \e S) &= \frac{1}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}A_{0} - \frac{\e}{r - \e}\sum_{n=0}^{\infty}\left(\frac{N}{r - \e}\right)^{n}S
-\end{align*}
-
-\begin{equation}
-P_{\e}(X) = (A_{0} - \e S) + (A_{1} + \e I_{m})X + \sum_{k=2}^{n}A_{k}X^{k} = 0,\quad\e \leq \mu
-\end{equation}
-
-\begin{align*}
-\P'_{\e}[S] &= I_{m} \otimes (A_{1} + \e I_{m}) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(S^{k-l-1})^{T} \otimes A_{k}S^{l}\\
-&= \P'[S] + \e I_{m^2},
-\end{align*}
-
-\begin{align*}
-	X_{1} &= X_{0} - P'_{\e}[X_{0}]^{-1}(P(X_{0}))\\
-	P'_{\e}[X_{0}](H_{0}) &= -P(X_{0})
-\end{align*}
-
-\begin{align*}
-	& \sum_{k=2}^{n}\sum_{l=0}^{k-1}A_{k}X_{0}^{l}H_{0}X_{0}^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\ 
-	&\quad= -A_{0} + \e S - A_{1}X_{0} - \e X_{0} - \sum_{k=2}^{n}A_{k}X_{0}^{k}
-\end{align*}
-
-If $X_{0} = 0$,
-\begin{align*}
-	(A_{1}+\e I_{m})H_{0} &= -A_{0} + \e S \\
-	X_{1} - 0 = H_{0} &= -(A_{1}+\e I_{m})^{-1}(A_{0} - \e S) \\
-	&= -(A_{1}+\e I_{m})^{-1}A_{0} -(A_{1}+\e I_{m})^{-1}(-\e S).
-\end{align*}
-
-If $X_{0} = \e S$,
-\begin{align*}
-	\sum_{k=2}^{n}\sum_{l=0}^{k-1}& A_{k}(\e S)^{l}H_{0}(\e S)^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\
-	&= -A_{0} + \e S - A_{1}(\e S) - \e I_{m}(\e S) - \sum_{k=2}^{n}A_{k}(\e S)^{k} \\
-	\sum_{k=2}^{n}\sum_{l=0}^{k-1}& \e^{k-1}A_{k}S^{l}H_{0}S^{k-l-1} + (A_{1}+\e I_{m})H_{0} \\
-	&= -A_{0} + \e S - \e A_{1}S - \e^{2}S - \sum_{k=2}^{n}\e^{k}A_{k}S^{k} \\
-\end{align*}}
-
-
-%$$
-%Q_{\e}(X) = AX^{2} + (B - \e I)X + (C + \e S) = 0
-%$$
-%
-%\begin{equation}
-%P_{\e}(X) = A_{0} + \e S + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
-%\end{equation}
-%
-%\begin{align*}
-%\P'_{\e}[X] &= I \otimes (A_{1} - \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
-%&= \P'_{0}[X] - \e (I \otimes I),
-%\end{align*}
-%
-%\begin{center}
-%	=============================
-%\end{center}
-%
-%\begin{equation}
-%	P(X) = \sum_{k=0}^{n} A_{k}X^{k}
-%\end{equation}
-%
-%\begin{equation}
-%	-\P'[S]{\bf e} = \e {\bf e}
-%\end{equation}
-%
-%\begin{equation}
-%	R(X) = \sum_{k=2}^{n} A_{k}X^{k} + (A_{1} + \e I)X + A_{0}
-%\end{equation}
-%
-%\begin{align*}
-%	\mathcal{R}'[X] &= I \otimes (A_{1} + \e I) + \sum_{k=2}^{n}\sum_{l=0}^{k-1}(X^{k-l-1})^{T} \otimes A_{k}X^{l}\\
-%					&= \P'[X] + \e (I \otimes I)
-%\end{align*}
-%
-%\begin{align*}
-%	-\mathcal{R}'[X]{\bf e} &= (-\P'[X] - \e (I \otimes I)){\bf e}\\
-%							&= -\P'[X]{\bf e} - \e (I \otimes I){\bf e}\\
-%							&= \e{\bf e} - \e{\bf e}\\
-%							&= 0
-%\end{align*}
-
 
 
 %Now, we consider an MPE with other coefficients given by

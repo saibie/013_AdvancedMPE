@@ -25,12 +25,6 @@ Geoffrey.~J. Butler, Charles~R. Johnson, and Henry Wolkowicz.
   comparison theorems in ordinary differential equations.
 \newblock {\em SIAM J. Algebraic Discrete Methods}, 6(1):47--53, January 1985.
 
-\bibitem{CrandallRabinowitz1973}
-Michael~G. Crandall and Paul~H. Rabinowitz.
-\newblock {\em Bifurcation, Perturbation of Simple Eigenvalues and Linearized
-  Stability}.
-\newblock University of Wisconsin-Madison, Mathematics Research Center, 1973.
-
 \bibitem{DeckerKellerKelley1983}
 D.~W. Decker, H.~B. Keller, and C.~T. Kelley.
 \newblock Convergence rates for {N}ewton's method at singular points.
@@ -158,12 +152,6 @@ Jong-Hyeon Seo and Hyun-Min Kim.
 \newblock Convergence of pure and relaxed {N}ewton methods for solving a matrix
   polynomial equation arising in stochastic models.
 \newblock {\em Linear Algebra Appl.}, 440:34--49, 2014.
-
-\bibitem{SeoSeo2020}
-Sang-hyup Seo and Jong-Hyeon Seo.
-\newblock Convergence of relaxed {N}ewton method for order-convex matrix
-  equations.
-\newblock {\em Comput. Appl. Math.}, 39(1):1--17, 2020.
 
 \bibitem{SeoSeoKim2018}
 Sang-hyup Seo, Jong-Hyeon Seo, and Hyun-Min Kim.
