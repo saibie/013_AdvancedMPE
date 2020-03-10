@@ -554,11 +554,41 @@ For given initial guess $X_{0}$, Newton's method with exact line searches is def
 	\end{cases}
 \end{equation}
 where $H_{i} = -P'[X_{i}](P(X_{i}))$.
-Thus, finding $\a_{i}$ is equivalent to finding the minimal point in the interval $[1, 2]$ of the $2n$-degree polynomial
-\begin{equation}
-	p_{i}(t) = \|P(X_{i} + t H_{i})\|^{2}.
-\end{equation}
+Thus, finding $\a_{i}$ is equivalent to finding the minimum point in the interval $[1, 2]$ of the $2n$-degree polynomial
+\begin{align*}
+	p_{i}(t) &= \|P(X_{i} + t H_{i})\|^{2} \\
+	&= {\rm tr} \left((P(X_{i} + tH_{i})^{T}(P(X_{i} + tH_{i})\right) \numberthis \label{eq:pit}\\
+	&= {\rm tr} \left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right).
+\end{align*}
 
+To expand \eqref{eq:pit}, let a function $\tau_{(X,H)} : \{0, 1\} \rightarrow \{X, H\}$ be given by $\tau_{(X,H)}(0) = X$ and $\tau_{(X,H)}(1) = H$,
+and let $\mathfrak{U}_{k,l} = \left\{\left. {\bf v} \in \{0, 1\}^{k} \, \right| \, {\bf 1}^{T}{\bf v} = l \right\}$.
+Then, for $0 \leq l \leq k$, we define
+\begin{equation}
+	\Phi_{(X, H)}(k, l) = \sum_{{\bf v} \in \mathfrak{U}_{k,l}} \prod_{j=1}^{k} \tau_{(X,H)}(v_{j}),
+\end{equation}
+where ${\bf v} = \bmatrix{v_{1}&v_{2}&\cdots&v_{k}}^{T}$.
+Then, it is easy to verify that
+\begin{equation}
+	\Phi_{(X, tH)}(k,l) = t^{l}\Phi_{(X, H)}(k,l),\quad\textrm{and}\quad \left(\Phi_{(X, H)}(k,l)\right)^{T} = \Phi_{(X^{T}, H^{T})}(k,l).
+\end{equation}
+Moreover, 
+\begin{align*}
+	P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
+	&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} \Phi_{(X_{i}, tH_{i})}(k, l)\\
+	&= \sum_{k=0}^{n}\sum_{l=0}^{k} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+	&= \sum_{l=0}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l).
+\end{align*}
+Thus, 
+\begin{align*}
+	p_{i}(t) 
+	&= \mathrm{tr}\left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)\\
+	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)^{T}\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(k, l)A_{k}^{T}\right) \left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+	&= \mathrm{tr}\left(\sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	&= \sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right).
+\end{align*}
 
 
 
