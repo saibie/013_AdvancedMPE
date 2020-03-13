@@ -593,31 +593,59 @@ Hence, there are
 	&\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \left( \binom{r}{s}(r-1) + \binom{k}{l}(k-1) + 3 \right)\\
 	&\quad=\left(2^{n+2}(n-2)+8\right)\left(\frac{(n+1)(n+2)}{2}-1\right) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}=O(2^{n}n)
 \end{align*}
-of matrix multiplications to obtain all coefficients of $p_{i}$, i.e., there are $O(2^{n}n^{3})$ flops.
+of matrix multiplications to obtain all coefficients of $p_{i}$.
 
 
 \section{Note}
 
 \begin{align*}
-	p_{i}(t) 
-	&= \mathrm{tr}\left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)\\
-	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)^{T}\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
-	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(k, l)A_{k}^{T}\right) \left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
-	&= \mathrm{tr}\left(\sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-	&= \sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-	&= \sum_{r=0}^{n}\sum_{s=0}^{r}\sum_{k=0}^{n}\sum_{l=0}^{k} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right).
+	X_{i+1} &= X_{i} + H_{i} \\
+	P'[X_{i}](H_{i}) &= -P(X_{i})
 \end{align*}
 
 \begin{align*}
-	&\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \left( \binom{r}{s}(r-1) + \binom{k}{l}(k-1) + 3 \right)\\
-	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{k}{l}(k-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} 3\\
-	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{k}{l}(k-1) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}\\
-	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \left(2^{n+1}(n-2)+4\right)\left(\frac{(n+1)(n+2)}{2}-1\right) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}\\
-	&=\left(2^{n+2}(n-2)+8\right)\left(\frac{(n+1)(n+2)}{2}-1\right) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}
+	\P'[X_{i}] &= \sum_{k=1}^{n} \sum_{l=0}^{k-1} (X_{i}^{k-l-1})^{T} \otimes A_{k}X_{i}^{l}\\
+	&\Downarrow\\
+	{\rm mxmus}&= \sum_{k=2}^{n} \sum_{l=0}^{k-2} \left((k-l-2) + l + m \right)\\
+	&= \sum_{k=2}^{n} \sum_{l=0}^{k-2} \left(k - 2 + m \right)\\
+	&= \frac16 n(n+1)(2n + 1) + \frac12 n(n+1)(m-3) + n(2-m)\\
+	&= O(n^{3}) + O(n^{2}m)
 \end{align*}
 
+\begin{align*}
+	\P'[X_{i}]h_{i} &= -\vec(P(X_{i}))\\
+	&\Downarrow\\
+	{\rm flops}&= O(m^{6})\\
+	{\rm mxmus}&= O(m^{3})
+\end{align*}
+
+{\color{gray}\begin{align*}
+	P(X_{i}) &= \sum_{k=0}^{n} A_{k}X_{i}^{k}\\
+	&\Downarrow\\
+	{\rm mxmus}&= \sum_{k=0}^{n} k\\
+	&= O(n^{2})
+\end{align*}}
+
 a
+%\begin{align*}
+%	p_{i}(t) 
+%	&= \mathrm{tr}\left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)\\
+%	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)^{T}\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+%	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(k, l)A_{k}^{T}\right) \left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+%	&= \mathrm{tr}\left(\sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+%	&= \sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+%	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+%	&= \sum_{r=0}^{n}\sum_{s=0}^{r}\sum_{k=0}^{n}\sum_{l=0}^{k} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right).
+%\end{align*}
+%
+%\begin{align*}
+%	&\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \left( \binom{r}{s}(r-1) + \binom{k}{l}(k-1) + 3 \right)\\
+%	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{k}{l}(k-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} 3\\
+%	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{k}{l}(k-1) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}\\
+%	&=\sum_{r=1}^{n}\sum_{s=0}^{r}\sum_{k=1}^{n}\sum_{l=0}^{k} \binom{r}{s}(r-1) + \left(2^{n+1}(n-2)+4\right)\left(\frac{(n+1)(n+2)}{2}-1\right) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}\\
+%	&=\left(2^{n+2}(n-2)+8\right)\left(\frac{(n+1)(n+2)}{2}-1\right) + 3\left(\frac{(n+1)(n+2)}{2}-1\right)^{2}
+%\end{align*}
+%
 %Now, we consider an MPE with other coefficients given by
 %\begin{equation}\label{eq:eMPE}
 %P_{\e}(X) = (A_{0} + \e S) + (A_{1} - \e I)X + \sum_{k=2}^{n}A_{k}X^{k},
