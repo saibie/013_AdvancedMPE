@@ -431,27 +431,27 @@ because it is proved with just Taylor's Theorem, without the conditions of coeff
 		\mathcal{Q} = \{i \in \NN \cup \{0\}\,|\,\|\pjm(\tilde{X}_{\e,i})\| > \theta \|\pjn(\tilde{X}_{\e,i})\|\}
 	\end{equation}
 	where $\{X_{\e, i}\}$ is a Newton sequence for \eqref{eq:epsMPE} which converges to $S$,
-	and let ${\color{red}c_{1}} > 0$ be the smallest singular value of $\P'_{\e}[S]|_{\M}$.
+	and let ${\color{red}c_{1}} > 0$ be the smallest singular value of $-\P'_{\e}[S]|_{\M}$.
 	Then, for $\e < c_{1}\theta$, there exist an integer $i_{0}$ and a constant $c > 0$ such that
 	$\| \tilde{X}_{\e,i}\| \leq c \| \tilde{X}_{\e,i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
 \end{lemma}
 
 \begin{proof}
-	Using Taylor's Theorem and the fact that $P'_{\e}[S]\left(\pjn(\tilde{X}_{\e,i})\right) = \e\pjn(\tilde{X}_{\e,i})$, we obtain that
+	Using Taylor's Theorem and the fact that $-P'_{\e}[S]\left(\pjn(\tilde{X}_{\e,i})\right) = \e\pjn(\tilde{X}_{\e,i})$, we obtain that
 	\begin{align*}
-		P_{\e}(X_{\e,i}) &= P_{\e}(S) + P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
-		&= \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
+		P_{\e}(X_{\e,i}) &= P_{\e}(S) - P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
+		&= \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
 	\end{align*}
-	Since $c_{1} > 0$ is the smallest singular value of $P'_{\e}[S]|_{\M}$, $\left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$.
+	Since $c_{1} > 0$ is the smallest singular value of $-P'_{\e}[S]|_{\M}$, $\left\| -P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$.
 	For $i\in\mathcal{Q}$, we have
 	\begin{equation*}
 		\|\tilde{X}_{\e,i}\| \leq \left\| \pjm(\tilde{X}_{\e,i})\right\| + \left\| \pjn(\tilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\tilde{X}_{\e,i})\right\|.
 	\end{equation*}
 	Thus by \eqref{eq:TaylorMPE},
 	\begin{align*}
-		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}) \right\| \\
-		&\geq \left\| \e\pjn(\tilde{X}_{\e,i}) + P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
-		&\geq \left\| P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\tilde{X}_{\e,i}) \right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
+		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}) \right\| \\
+		&\geq \left\| \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
+		&\geq \left\| -P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\tilde{X}_{\e,i}) \right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
 		&\geq \left(c_{1} - \frac{\e}{\theta}\right)\|\pjm(\tilde{X}_{\e,i})\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
 		&\geq \left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1}\|\tilde{X}_{\e,i}\| - c_{2}\|\tilde{X}_{\e,i}\|^{2}.
 	\end{align*}
@@ -547,7 +547,7 @@ If $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ holds for small $\e > 
 But, for nearly singular problems, we cannot guarantee that $\a_{i} = 2$ is the proper.
 So, we suggest the way finding the proper scalar $\a_{i}$ based on exact line searches in \cite{Seo2008}.
 
-For given initial guess $X_{0}$, Newton's method with exact line searches is defined by
+For given initial guess $X_{0}$, the Newton sequence $\{X_{i}\}$ with exact line searches is defined by
 \begin{equation}
 	\begin{cases}
 		X_{i+1} = X_{i} + \a_{i} H_{i},\\
@@ -603,11 +603,35 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\end{equation}
 	or
 	\begin{equation}
-		\|X_{i} + \a_{i}H_{i} - S\| \leq \|X_{i+i} - S\|,
+		\|X_{i} + \a_{i}H_{i} - S\| \leq \|\tilde{X}_{i+i}\|,
 	\end{equation}
 	where $\a_{i} = \underset{1\leq t \leq 2}{\rm argmin}\,\|P(X_{i} + t H_{i})\|^{2}$.
 \end{thm}}
 
+\begin{proof}
+	\begin{equation}
+		(1-\e)\|\pjn(\tXi)\| \leq \|\tXi\| \leq (1+\e)\|\pjn(\tXi)\|
+	\end{equation}
+	For $t \in [1, 2]$,
+	\begin{equation}
+		\|P(X_{i} + \a_{i}H_{i})\| \leq \|P(X_{i} + tH_{i})\|
+	\end{equation}
+	
+	\begin{align*}
+		P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
+		&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} t^{l}\Phi_{(X_{i}, H_{i})}(k, l)\\
+		&= \sum_{k=0}^{n}\sum_{l=0}^{k} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+		&= \sum_{l=0}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + \sum_{l=1}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + t\sum_{k=1}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, 1) + \sum_{l=2}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)
+	\end{align*}
+	
+	\begin{align*}
+		P(X + tH) &= P(X) + P'[X](tH) + \frac12 P''[X](tH)^{2} + \cdots \\
+		&= P(X) + P'[X](tH) + O(\|tH\|^{2})
+	\end{align*}
+	
+\end{proof}
 
 \section{Advanced Line Search}
 
@@ -623,7 +647,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\end{equation}
 	or
 	\begin{equation}
-	\|X_{i} + \a_{i}H_{i} - S\| < \|X_{i+i} - S\|,
+	\|X_{i} + \a_{i}H_{i} - S\| \leq \|X_{i+i} - S\|,
 	\end{equation}
 	where $\a_{i} = \min\left\{t_{jk}\in [1, 2] \,\middle|\, \sum_{l=0}^{n}b_{ljk}t_{jk}^{l} = 0,\,1\leq j \leq m,\,1\leq k \leq m\right\}$ and $b_{ljk} = \left[B_{l}\right]_{jk}$.
 \end{thm}}
