@@ -609,6 +609,12 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 \end{thm}}
 
 \begin{proof}
+	\begin{align*}
+		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
+		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
+		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\|
+	\end{align*}
+	
 	\begin{equation}
 		(1-\e)\|\pjn(\tXi)\| \leq \|\tXi\| \leq (1+\e)\|\pjn(\tXi)\|
 	\end{equation}
@@ -618,6 +624,25 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\end{equation}
 	
 	\begin{align*}
+		H_{i} &= X_{i+1} - X_{i}\\
+		&= X_{i+1} - X_{i} + S - S\\
+		&= \tXi - \tXii
+	\end{align*}
+	
+	\begin{equation*}
+		\pjn\tXi \geq 0,\quad \pjn\tXi = c_{i}E
+	\end{equation*}
+	
+	\begin{align*}
+		\|S - X_{i} - \a_{i}H_{i}\| &= \|(1 - \a_{i})\tXi + \a_{i}\tXii\| \\
+		&= \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii + (1 - \a_{i})\pjm\tXi + \a_{i}\pjm\tXii\| \\
+		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\|\pjm\tXi\| + \a_{i}\|\pjm\tXii\| \\
+		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\e\|\pjn\tXi\| + \a_{i}\e\|\pjn\tXii\| \\
+		&= \|(1 - \a_{i})c_{i}E + \a_{i}c_{i+1}E\| + (\a_{i} - 1)\e c_{i}\|E\| + \a_{i}\e c_{i+1}\|E\| \\
+		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}|\|E\| + (\a_{i} - 1)\e c_{i}\|E\| + \a_{i}\e c_{i+1}\|E\|
+	\end{align*}
+
+	{\color{gray}\begin{align*}
 		P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
 		&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} t^{l}\Phi_{(X_{i}, H_{i})}(k, l)\\
 		&= \sum_{k=0}^{n}\sum_{l=0}^{k} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
@@ -629,7 +654,21 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{align*}
 		P(X + tH) &= P(X) + P'[X](tH) + \frac12 P''[X](tH)^{2} + \cdots \\
 		&= P(X) + P'[X](tH) + O(\|tH\|^{2})
+	\end{align*}}
+	
+	Approach 2. Suppose $\|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\|$.
+	
+	\begin{align*}
+		P(X_{i} + tH_{i}) &= P(S) + P'[S](X_{i} + tH_{i} - S) + O(\|X_{i} + tH_{i} - S\|^{2}) \\
+		&= -P'[S]\left((1-t)\tXi + t\tXii\right) + O(\|(1-t)\tXi + t\tXii\|^{2})
 	\end{align*}
+	
+	{\color{gray}\begin{align*}
+		\|P(X_{i} + tH_{i})\| &\leq \bar{p}\|(1-t)\tXi + t\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2} \\
+		&\leq (t-1)\bar{p}\|\tXi\| + t\bar{p}\|\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2} \\
+		&< (t-1)\bar{p}\|\tXi\| + t\bar{p}\|(1-\a_{i})\tXi + \a_{i}\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2} \\
+		&\leq (t-1)\bar{p}\|\tXi\| + t\bar{p}(\a_{i}-1)\|\tXi\| + t\bar{p}\a_{i}\|\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2}
+	\end{align*}}
 	
 \end{proof}
 
