@@ -609,14 +609,16 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 \end{thm}}
 
 \begin{proof}
-	\begin{align*}
-		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
-		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
-		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\|
-	\end{align*}
+	\begin{equation*}
+		\pjn\tXi \geq 0,\quad \pjn\tXi = c_{i}N
+	\end{equation*}
 	
 	\begin{equation}
-		(1-\e)\|\pjn(\tXi)\| \leq \|\tXi\| \leq (1+\e)\|\pjn(\tXi)\|
+		\begin{array}{c}
+			(1-\e)\|\pjn(\tXi)\| < \|\tXi\| < (1+\e)\|\pjn(\tXi)\| \\
+			(1-\e)\|c_{i}N\| < \|\tXi\| < (1+\e)\|c_{i}N\| \\
+			(1-\e)|c_{i}| < \|\tXi\| < (1+\e)|c_{i}|
+		\end{array}
 	\end{equation}
 	For $t \in [1, 2]$,
 	\begin{equation}
@@ -629,19 +631,23 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		&= \tXi - \tXii
 	\end{align*}
 	
-	\begin{equation*}
-		\pjn\tXi \geq 0,\quad \pjn\tXi = c_{i}E
-	\end{equation*}
+	\begin{align*}
+		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
+		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
+		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
+		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \a_{i}\right| \longrightarrow 0
+	\end{align*}
 	
 	\begin{align*}
 		\|S - X_{i} - \a_{i}H_{i}\| &= \|(1 - \a_{i})\tXi + \a_{i}\tXii\| \\
 		&= \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii + (1 - \a_{i})\pjm\tXi + \a_{i}\pjm\tXii\| \\
 		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\|\pjm\tXi\| + \a_{i}\|\pjm\tXii\| \\
 		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\e\|\pjn\tXi\| + \a_{i}\e\|\pjn\tXii\| \\
-		&= \|(1 - \a_{i})c_{i}E + \a_{i}c_{i+1}E\| + (\a_{i} - 1)\e c_{i}\|E\| + \a_{i}\e c_{i+1}\|E\| \\
-		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}|\|E\| + (\a_{i} - 1)\e c_{i}\|E\| + \a_{i}\e c_{i+1}\|E\|
+		&= \|(1 - \a_{i})c_{i}E + \a_{i}c_{i+1}N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
+		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}|\|N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
+		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}| + (\a_{i} - 1)\e c_{i} + \a_{i}\e c_{i+1}
 	\end{align*}
-
+	
 	{\color{gray}\begin{align*}
 		P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
 		&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} t^{l}\Phi_{(X_{i}, H_{i})}(k, l)\\
@@ -661,6 +667,24 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{align*}
 		P(X_{i} + tH_{i}) &= P(S) + P'[S](X_{i} + tH_{i} - S) + O(\|X_{i} + tH_{i} - S\|^{2}) \\
 		&= -P'[S]\left((1-t)\tXi + t\tXii\right) + O(\|(1-t)\tXi + t\tXii\|^{2})
+	\end{align*}
+	
+	\begin{align*}
+		P(X_{i} + tH_{i}) - P(X_{i} + \a_{i}H_{i}) &\geq P'[X_{i} + \a_{i}H_{i}]\left((t - \a_{i})H_{i}\right) \\
+		&= -(t - \a_{i})P'[X_{i} + \a_{i}H_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) 
+	\end{align*}
+	
+	\begin{align*}
+		P(X_{i} + tH_{i}) - P(X_{i}) &\geq P'[X_{i}]\left(tH_{i}\right) \\
+		&= -tP'[X_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
+		&= -tP(X_{i}) \\
+		P(X_{i} + tH_{i}) &\geq (1-t)P(X_{i})
+	\end{align*}
+	
+	\begin{align*}
+		P(X_{i+1}) - P(X_{i}) &\geq P'[X_{i}]\left(H_{i}\right) \\
+		&= -P(X_{i}) \\
+		P(X_{i+1}) &\geq 0
 	\end{align*}
 	
 	{\color{gray}\begin{align*}
