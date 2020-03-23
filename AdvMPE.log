@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  23 MAR 2020 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  23 MAR 2020 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -678,46 +678,53 @@ L/cmm/m/it/10 m[] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1) \OMS/cmsy/m/n/10 ^^B
  []
 
 [4] [5] [6] [7]
-Overfull \hbox (19.14232pt too wide) detected at line 649
+Overfull \hbox (19.14232pt too wide) detected at line 658
 []
  []
 
 [8]
-Overfull \hbox (21.63345pt too wide) detected at line 695
+Overfull \hbox (21.63345pt too wide) detected at line 704
 []
  []
 
 
-Overfull \hbox (20.28566pt too wide) detected at line 707
+Overfull \hbox (20.28566pt too wide) detected at line 716
 []
  []
 
 
-Overfull \hbox (25.99005pt too wide) detected at line 731
+Underfull \vbox (badness 2486) has occurred while \output is active []
+
+ [9]
+Overfull \hbox (25.99005pt too wide) detected at line 740
 []
  []
 
-[9] [10] (./AdvMPE.bbl [11]
+[10] (./AdvMPE.bbl [11]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 37.
 
 (c:/usr/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-))
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 882.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 882.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 891.
+
+[13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 891.
  (./AdvMPE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 882.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 882.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 891.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 891.
 Package rerunfilecheck Info: File `AdvMPE.out' has not changed.
 (rerunfilecheck)             Checksum: C47787DE96C1E1F0EB6C7DC385D16781;432.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 882.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 891.
  ) 
 Here is how much of TeX's memory you used:
- 10909 strings out of 481228
- 149979 string characters out of 5919441
- 476735 words of memory out of 5000000
+ 10912 strings out of 481228
+ 150006 string characters out of 5919441
+ 470735 words of memory out of 5000000
  25620 multiletter control sequences out of 15000+600000
  553417 words of font info for 95 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -752,10 +759,10 @@ lic/cm-super/sfrm0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm
 /sfti0800.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfti1
 000.pfb><c:/usr/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt0800.pf
 b>
-Output written on AdvMPE.pdf (12 pages, 448430 bytes).
+Output written on AdvMPE.pdf (13 pages, 449139 bytes).
 PDF statistics:
- 418 PDF objects out of 1000 (max. 8388607)
- 370 compressed objects within 4 object streams
- 110 named destinations out of 1000 (max. 500000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 376 compressed objects within 4 object streams
+ 113 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

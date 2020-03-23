@@ -599,6 +599,15 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
 	Then,
 	\begin{equation}
+		S \in L[X_{i} + H_{i}, X_{i} + 2H_{i}],
+	\end{equation}
+	where $L[A, B] := \left\{C \mid A \leq C \leq B\right\}$.
+\end{thm}}
+
+{\color{red}\begin{thm}
+	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
+	Then,
+	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| < \|P(X_{i+i})\|\quad\textrm{and}\quad\|P(X_{i} + \a_{i}H_{i})\| < \eta,
 	\end{equation}
 	or
@@ -635,7 +644,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
 		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
 		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
-		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \frac{\a_{i}}{\a_{i} - 1}\right| < \gamma = \gamma(\e)
+		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right| < \gamma = \gamma(\e)
 	\end{align*}
 	
 	\begin{align*}
