@@ -635,7 +635,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
 		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
 		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
-		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \a_{i}\right| \longrightarrow 0
+		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \frac{\a_{i}}{\a_{i} - 1}\right| < \gamma = \gamma(\e)
 	\end{align*}
 	
 	\begin{align*}
@@ -645,22 +645,22 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\e\|\pjn\tXi\| + \a_{i}\e\|\pjn\tXii\| \\
 		&= \|(1 - \a_{i})c_{i}E + \a_{i}c_{i+1}N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
 		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}|\|N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
-		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}| + (\a_{i} - 1)\e c_{i} + \a_{i}\e c_{i+1}
+		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}| + \left((\a_{i} - 1)c_{i} + \a_{i} c_{i+1}\right)\e
 	\end{align*}
 	
-	{\color{gray}\begin{align*}
-		P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
-		&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} t^{l}\Phi_{(X_{i}, H_{i})}(k, l)\\
-		&= \sum_{k=0}^{n}\sum_{l=0}^{k} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
-		&= \sum_{l=0}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
-		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + \sum_{l=1}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
-		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + t\sum_{k=1}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, 1) + \sum_{l=2}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)
-	\end{align*}
-	
-	\begin{align*}
-		P(X + tH) &= P(X) + P'[X](tH) + \frac12 P''[X](tH)^{2} + \cdots \\
-		&= P(X) + P'[X](tH) + O(\|tH\|^{2})
-	\end{align*}}
+%	{\color{gray}\begin{align*}
+%		P(X_{i} + tH_{i}) &= \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k} \\
+%		&= \sum_{k=0}^{n}A_{k} \sum_{l=0}^{k} t^{l}\Phi_{(X_{i}, H_{i})}(k, l)\\
+%		&= \sum_{k=0}^{n}\sum_{l=0}^{k} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+%		&= \sum_{l=0}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+%		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + \sum_{l=1}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\\
+%		&= \sum_{k=0}^{n} A_{k}X_{i}^{k} + t\sum_{k=1}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, 1) + \sum_{l=2}^{n} t^{l} \sum_{k=l}^{n} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)
+%	\end{align*}
+%	
+%	\begin{align*}
+%		P(X + tH) &= P(X) + P'[X](tH) + \frac12 P''[X](tH)^{2} + \cdots \\
+%		&= P(X) + P'[X](tH) + O(\|tH\|^{2})
+%	\end{align*}}
 	
 	Approach 2. Suppose $\|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\|$.
 	
@@ -693,6 +693,55 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		&< (t-1)\bar{p}\|\tXi\| + t\bar{p}\|(1-\a_{i})\tXi + \a_{i}\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2} \\
 		&\leq (t-1)\bar{p}\|\tXi\| + t\bar{p}(\a_{i}-1)\|\tXi\| + t\bar{p}\a_{i}\|\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2}
 	\end{align*}}
+	
+	\begin{align*}
+		\|P(X_{i} + tH_{i})\| &\leq \bar{p}\|(1-t)\tXi + t\tXii\| + \bar{c}\|(1-t)\tXi + t\tXii\|^{2} \\
+		&= \bar{p}\|(1-t)\pjn\tXi + t\pjn\tXii + (1-t)\pjm\tXi + t\pjm\tXii\| \\
+		&\qquad + \bar{c}\|(1-t)\pjn\tXi + t\pjn\tXii + (1-t)\pjm\tXi + t\pjm\tXii\|^{2} \\
+		&\leq \bar{p}\|(1-t)\pjn\tXi + t\pjn\tXii\| + \|(1-t)\pjm\tXi\| + \|t\pjm\tXii\| \\
+		&\qquad + \bar{c}\left(\|(1-t)\pjn\tXi + t\pjn\tXii\| + \|(1-t)\pjm\tXi\| + \|t\pjm\tXii\|\right)^{2} \\
+		&\leq \bar{p}\|(1-t)c_{i}E + tc_{i+1}E\| + \|(1-t)\pjm\tXi\| + \|t\pjm\tXii\| \\
+		&\qquad + \bar{c}\left(\|(1-t)c_{i}E + tc_{i+1}E\| + \|(1-t)\pjm\tXi\| + \|t\pjm\tXii\|\right)^{2} \\
+		&= \bar{p}\|(1-t)c_{i}E + tc_{i+1}E\| + (t-1)\|\pjm\tXi\| + t\|\pjm\tXii\| \\
+		&\qquad + \bar{c}\left(\|(1-t)c_{i}E + tc_{i+1}E\| + (t-1)\|\pjm\tXi\| + t\|\pjm\tXii\|\right)^{2}
+	\end{align*}
+	
+	\begin{align*}
+		&< \bar{p}|(1-t)c_{i} + tc_{i+1}| + (t-1)\e c_{i} + t\e c_{i+1} \\
+		&\qquad + \bar{c}\left(|(1-t)c_{i} + tc_{i+1}| + (t-1)\e c_{i} + t\e c_{i+1}\right)^{2} \\
+		&= \bar{p}|(1-t)c_{i} + tc_{i+1}| + (t-1)\e c_{i} + t\e c_{i+1} \\
+		&\qquad + \bar{c}\left(|(1-t)c_{i} + tc_{i+1}|^{2} + (t-1)^{2}\e^{2} c_{i}^{2} + t^{2}\e^{2} c_{i+1}^{2}\right. \\
+		&\qquad\qquad \left.+ 2|(1-t)c_{i} + tc_{i+1}| (t-1)\e c_{i} + 2|(1-t)c_{i} + tc_{i+1}|t\e c_{i+1} + 2t(t-1)c_{i}c_{i+1}\e^{2}\right) \\
+		&= \bar{p}|(1-t)c_{i} + tc_{i+1}| + \left((t-1)c_{i} + tc_{i+1}\right)\e \\
+		&\qquad + \bar{c}\left((1-t)^{2}c_{i}^{2} + t^{2}c_{i+1}^{2} + 2(1-t)tc_{i}c_{i+1} + (t-1)^{2}\e^{2} c_{i}^{2} + t^{2}\e^{2} c_{i+1}^{2}\right. \\
+		&\qquad\qquad \left.+ 2|(1-t)c_{i} + tc_{i+1}| (t-1)\e c_{i} + 2|(1-t)c_{i} + tc_{i+1}|t\e c_{i+1} + 2t(t-1)c_{i}c_{i+1}\e^{2}\right) \\
+		&\leq \bar{p}|(1-t)c_{i} + tc_{i+1}| + \left((t-1)c_{i} + tc_{i+1}\right)\e \\
+		&\qquad + \bar{c}\left((1-t)^{2}c_{i}^{2} + t^{2}c_{i+1}^{2} + 2(1-t)tc_{i}c_{i+1} + \left((t-1)^{2}c_{i}^{2} + t^{2}c_{i+1}^{2} + 2t(t-1)c_{i}c_{i+1}\right)\e^{2} \right. \\
+		&\qquad\qquad \left.+ 2(t-1)^{2}c_{i}^{2}\e + 4t(t-1)c_{i}c_{i+1}\e + 2t^{2}c_{i+1}^{2}\e\right) \\
+		&= \bar{p}|(1-t)c_{i} + tc_{i+1}| + \bar{c}\left((1-t)^{2}c_{i}^{2} + t^{2}c_{i+1}^{2} + 2(1-t)tc_{i}c_{i+1}\right)\\
+		&\qquad + \bar{c}\e\left(2(t-1)^{2}c_{i}^{2} + 4t(t-1)c_{i}c_{i+1} + 2t^{2}c_{i+1}^{2}\right) + \left((t-1)c_{i} + tc_{i+1}\right)\e \\
+		&\qquad\qquad \bar{c}\left((t-1)^{2}c_{i}^{2} + t^{2}c_{i+1}^{2} + 2t(t-1)c_{i}c_{i+1}\right)\e^{2} \\
+		&= \bar{p}|(1-t)c_{i} + tc_{i+1}| + \bar{c}\left((1-t)c_{i} + tc_{i+1}\right)^{2} \\
+		&\qquad + \left(2\bar{c}\left((t-1)c_{i} + tc_{i+1}\right)^{2} + (t-1)c_{i} + tc_{i+1}\right)\e \\
+		&\qquad\qquad + \bar{c}\left((t-1)c_{i} + tc_{i+1}\right)^{2}\e^{2} \\
+		&= \bar{p}|(1-t)c_{i} + tc_{i+1}| + \bar{c}\left((1-t)c_{i} + tc_{i+1}\right)^{2} \\
+		&\qquad + \left(2\bar{c}\left((t-1)c_{i} + tc_{i+1}\right)^{2} + (t-1)c_{i} + tc_{i+1}\right)\e + \bar{c}\left((t-1)c_{i} + tc_{i+1}\right)^{2}\e^{2} \\
+		&\leq \bar{p}|(1-t)c_{i} + tc_{i+1}| + \bar{c}\left((1-t)c_{i} + tc_{i+1}\right)^{2} \\
+		&\qquad + \left(2\bar{c}\left(c_{i} + 2c_{i+1}\right)^{2} + c_{i} + 2c_{i+1}\right)\e + \bar{c}\left(c_{i} + 2c_{i+1}\right)^{2}\e^{2}
+	\end{align*}
+	
+	Approach 3. $\dtyl\dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \frac{\a_{i}}{\a_{i} - 1}\right| < \gamma = \gamma(\e)$.
+	
+	\begin{equation}
+		\frac{\|\tXi\|}{\|\tXii\|} \approx \nu \Longrightarrow \a = \frac{\nu}{\nu - 1}
+	\end{equation}
+	
+	\begin{align*}
+		\therefore \a =& \frac{\nu}{\nu - 1} \Longrightarrow \\
+		& \a \nu - \a = \nu \\
+		& (\a - 1)\nu = \a \\
+		& \nu = \frac{\a}{\a - 1}
+	\end{align*}
 	
 \end{proof}
 
