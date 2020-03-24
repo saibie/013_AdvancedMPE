@@ -101,8 +101,8 @@
 \def\proj{\mathbf{P}}
 \def\pjn{\mathbf{P}_{\mathcal{N}}}
 \def\pjm{\mathbf{P}_{\mathcal{M}}}
-\def\tXi{\tilde{X}_{i}}
-\def\tXii{\tilde{X}_{i+1}}
+\def\tXi{\widetilde{X}_{i}}
+\def\tXii{\widetilde{X}_{i+1}}
 \def\dpm#1{\begin{displaymath}#1\end{displaymath}}
 \def\bdm{\begin{displaymath}}
 \def\edm{\end{displaymath}}
@@ -229,7 +229,7 @@ for any nonnegative solution $S$ of $F(X) = 0$, then they are called the {\it mi
 The {\it minimal positive solution} and the {\it maximal positive solution} also are can be defined, similarly.
 If the Fr\'echet derivative of $F$ at a solution $S$ is nonsingular, then $S$ is called {\it simple}.
 Furthermore, we call that a not simple solution is {\it non-simple}.
-In this paper, for convenience, the notation $||\cdot||$ is used instead of the Frobenius norm $||\cdot||_{F}$ and $\tilde{X}$ denotes $S - X$, the difference between $X$ and the solution $S$, 
+In this paper, for convenience, the notation $||\cdot||$ is used instead of the Frobenius norm $||\cdot||_{F}$ and $\widetilde{X}$ denotes $S - X$, the difference between $X$ and the solution $S$, 
 because they are used very frequently.
 
 
@@ -377,23 +377,23 @@ In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\
 	Let $S$ be the minimal positive solution of \eqref{eq:MPE} with Assumption \ref{ass:MPE},
 	and let a Newton sequence $\{X_{\e,i}\}_{i=0}^{\infty}$ for \eqref{eq:epsMPE} converge to $S$. Then,
 	\begin{equation}
-		\| P_{\e}({X}_{\e, i})\|\leq a\|\tilde{X}_{\e,i}\|^{2}+b\|\tilde{X}_{\e,i}\|\|\tilde{X}_{\e,i-1}\|+c\|\tilde{X}_{\e, i-1}\|^{2}
+		\| P_{\e}({X}_{\e, i})\|\leq a\|\widetilde{X}_{\e,i}\|^{2}+b\|\widetilde{X}_{\e,i}\|\|\widetilde{X}_{\e,i-1}\|+c\|\widetilde{X}_{\e, i-1}\|^{2}
 	\end{equation}
 	for some positive real numbers $a,b,c$.
 \end{lemma}
 
 %\begin{proof}
-%	From Taylor's Theorem and putting $S = X_{i-1} - \tilde{X}_{i-1}$, we have
+%	From Taylor's Theorem and putting $S = X_{i-1} - \widetilde{X}_{i-1}$, we have
 %	\begin{equation}\label{eq:Taylor}
 %	P(X_{i}) = P(S) + P'_{S}(X_{i} - S) + O(\|X_{i} - S\|^{2}),
 %	\end{equation}
 %	and
 %	\begin{equation*}
-%	0 = P(S) = P(X_{i-1} - \tilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\tilde{X}_{i-1}) + O(\|\tilde{X}_{i-1}\|^{2}),
+%	0 = P(S) = P(X_{i-1} - \widetilde{X}_{i-1}) = P(X_{i-1}) - P'_{X_{i-1}}(\widetilde{X}_{i-1}) + O(\|\widetilde{X}_{i-1}\|^{2}),
 %	\end{equation*}
 %	which is equivalent to
 %	\begin{equation}\label{eq:TaylorMPE3}
-%	- P(X_{i-1}) + P'_{X_{i-1}}(\tilde{X}_{i-1}) = O(\|\tilde{X}_{i-1}\|^{2}).
+%	- P(X_{i-1}) + P'_{X_{i-1}}(\widetilde{X}_{i-1}) = O(\|\widetilde{X}_{i-1}\|^{2}).
 %	\end{equation}
 %	From \eqref{eq:NewtonStepMPE}, we have
 %	\begin{equation}\label{eq:NewtonStepAnother}
@@ -401,22 +401,22 @@ In addition, we define $\pjn$ is a projection onto $\N$ parallel to $\M$, and $\
 %	\end{equation}
 %	and clearly
 %	\begin{equation}
-%	X_{i} - X_{i-1} = \tXi - \tilde{X}_{i-1}.
+%	X_{i} - X_{i-1} = \tXi - \widetilde{X}_{i-1}.
 %	\end{equation}
 %	If we subtract \eqref{eq:NewtonStepAnother} from \eqref{eq:Taylor} 
 %	and substitute \eqref{eq:TaylorMPE3}, we obtain
 %	\begin{align*}
-%	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \tilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
-%	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2}).
+%	P(X_{i}) & = P(S) + P'_{S}(\tXi) - P(X_{i-1}) - P'_{X_{i-1}}(\tXi - \widetilde{X}_{i-1}) + O(\|\tXi\|^{2}) \\
+%	& = P'_{S}(\tXi) - P'_{X_{i-1}}(\tXi) + O(\| \tXi \|^{2}) + O(\|\widetilde{X}_{i-1}\|^{2}).
 %	\end{align*}
-%	Putting $S = X_{i-1} - \tilde{X}_{i-1}$ in the previous equality,
+%	Putting $S = X_{i-1} - \widetilde{X}_{i-1}$ in the previous equality,
 %	\begin{align*}
-%	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \tilde{X}_{i-1})^{l}\tXi(X_{i-1} - \tilde{X}_{i-1})^{k-l-1} \\
-%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-%	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\tilde{X}_{i-1}\|)\\
-%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-%	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\tilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\tilde{X}_{i-1}\|^{2})\\
-%	& = O(\| \tilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \tilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
+%	P(X_{i}) & = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}(X_{i-1} - \widetilde{X}_{i-1})^{l}\tXi(X_{i-1} - \widetilde{X}_{i-1})^{k-l-1} \\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\widetilde{X}_{i-1}\|^{2})\\
+%	& = \sum_{k=1}^{n}\sum_{l=0}^{k-1}A_{k}X_{i-1}^{l}\tXi X_{i-1}^{k-l-1} + O(\|\tXi\|\|\widetilde{X}_{i-1}\|)\\
+%	& \qquad\qquad\qquad\qquad - P'_{X_{i-1}}(\tXi)	+ O(\| \tXi \|^{2}) + O(\|\widetilde{X}_{i-1}\|^{2})\\
+%	& = P'_{X_{i-1}}(\tXi)+O(\|\tXi\|\|\widetilde{X}_{i-1}\|)- P'_{X_{i-1}}(\tXi)+O(\| \tXi \|^{2}) + O(\|\widetilde{X}_{i-1}\|^{2})\\
+%	& = O(\| \widetilde{X}_{i-1} \|^{2}) + O(\| \tXi \|\| \widetilde{X}_{i-1} \|) + O(\| \tXi \|^{2}).
 %	\end{align*}
 %	Since $\|\cdot\|$ is a multiplicative matrix norm on $\mathbb{R}^{m\times m}$,
 %	we have required result.
@@ -428,42 +428,42 @@ because it is proved with just Taylor's Theorem, without the conditions of coeff
 \begin{lemma}\label{lem:DominatedPMconvergence}
 	For any fixed $\theta > 0$, let
 	\begin{equation}
-		\mathcal{Q} = \{i \in \NN \cup \{0\}\,|\,\|\pjm(\tilde{X}_{\e,i})\| > \theta \|\pjn(\tilde{X}_{\e,i})\|\}
+		\mathcal{Q} = \{i \in \NN \cup \{0\}\,|\,\|\pjm(\widetilde{X}_{\e,i})\| > \theta \|\pjn(\widetilde{X}_{\e,i})\|\}
 	\end{equation}
 	where $\{X_{\e, i}\}$ is a Newton sequence for \eqref{eq:epsMPE} which converges to $S$,
 	and let ${\color{red}c_{1}} > 0$ be the smallest singular value of $-\P'_{\e}[S]|_{\M}$.
 	Then, for $\e < c_{1}\theta$, there exist an integer $i_{0}$ and a constant $c > 0$ such that
-	$\| \tilde{X}_{\e,i}\| \leq c \| \tilde{X}_{\e,i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
+	$\| \widetilde{X}_{\e,i}\| \leq c \| \widetilde{X}_{\e,i-1} \|^{2}$ for all $i\geq i_{0}$ in $\mathcal{Q}$.
 \end{lemma}
 
 \begin{proof}
-	Using Taylor's Theorem and the fact that $-P'_{\e}[S]\left(\pjn(\tilde{X}_{\e,i})\right) = \e\pjn(\tilde{X}_{\e,i})$, we obtain that
+	Using Taylor's Theorem and the fact that $-P'_{\e}[S]\left(\pjn(\widetilde{X}_{\e,i})\right) = \e\pjn(\widetilde{X}_{\e,i})$, we obtain that
 	\begin{align*}
-		P_{\e}(X_{\e,i}) &= P_{\e}(S) - P'_{\e}[S](\tilde{X}_{\e,i}) + O(\|\tilde{X}_{\e,i}\|^{2}) \\
-		&= \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
+		P_{\e}(X_{\e,i}) &= P_{\e}(S) - P'_{\e}[S](\widetilde{X}_{\e,i}) + O(\|\widetilde{X}_{\e,i}\|^{2}) \\
+		&= \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
 	\end{align*}
-	Since $c_{1} > 0$ is the smallest singular value of $-P'_{\e}[S]|_{\M}$, $\left\| -P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\tilde{X}_{\e,i})\|$.
+	Since $c_{1} > 0$ is the smallest singular value of $-P'_{\e}[S]|_{\M}$, $\left\| -P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\widetilde{X}_{\e,i})\|$.
 	For $i\in\mathcal{Q}$, we have
 	\begin{equation*}
-		\|\tilde{X}_{\e,i}\| \leq \left\| \pjm(\tilde{X}_{\e,i})\right\| + \left\| \pjn(\tilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\tilde{X}_{\e,i})\right\|.
+		\|\widetilde{X}_{\e,i}\| \leq \left\| \pjm(\widetilde{X}_{\e,i})\right\| + \left\| \pjn(\widetilde{X}_{\e,i})\right\| < (\theta^{-1} + 1) \left\| \pjm(\widetilde{X}_{\e,i})\right\|.
 	\end{equation*}
 	Thus by \eqref{eq:TaylorMPE},
 	\begin{align*}
-		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right) + O(\|\tilde{X}_{\e,i}\|^{2}) \right\| \\
-		&\geq \left\| \e\pjn(\tilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
-		&\geq \left\| -P'_{\e}[S]\left(\pjm(\tilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\tilde{X}_{\e,i}) \right\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
-		&\geq \left(c_{1} - \frac{\e}{\theta}\right)\|\pjm(\tilde{X}_{\e,i})\| - c_{2}\|\tilde{X}_{\e,i}\|^{2} \\
-		&\geq \left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1}\|\tilde{X}_{\e,i}\| - c_{2}\|\tilde{X}_{\e,i}\|^{2}.
+		\|P_{\e}(X_{\e,i})\| &= \left\| \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}) \right\| \\
+		&\geq \left\| \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right)\right\| - c_{2}\|\widetilde{X}_{\e,i}\|^{2} \\
+		&\geq \left\| -P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right)\right\| - \left\| \e\pjn(\widetilde{X}_{\e,i}) \right\| - c_{2}\|\widetilde{X}_{\e,i}\|^{2} \numberthis \label{eq:NormofhatXi}\\
+		&\geq \left(c_{1} - \frac{\e}{\theta}\right)\|\pjm(\widetilde{X}_{\e,i})\| - c_{2}\|\widetilde{X}_{\e,i}\|^{2} \\
+		&\geq \left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1}\|\widetilde{X}_{\e,i}\| - c_{2}\|\widetilde{X}_{\e,i}\|^{2}.
 	\end{align*}
 	On the other hand, from Lemma \ref{lem:TaylorLemma}, we have
 	\begin{equation}\label{eq:subNormofhatXi}
-		\| P_{\e}({X}_{\e,i})\|\leq c_{3}\|\tilde{X}_{\e,i}\|^{2}+c_{4}\|\tilde{X}_{\e,i-1}\|\|\tilde{X}_{\e,i}\|+c_{5}\|\tilde{X}_{\e,i-1}\|^{2}.
+		\| P_{\e}({X}_{\e,i})\|\leq c_{3}\|\widetilde{X}_{\e,i}\|^{2}+c_{4}\|\widetilde{X}_{\e,i-1}\|\|\widetilde{X}_{\e,i}\|+c_{5}\|\widetilde{X}_{\e,i-1}\|^{2}.
 	\end{equation}
 	With the combination of \eqref{eq:NormofhatXi} and \eqref{eq:subNormofhatXi}, we have
 	$$
-	\left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1} - c_{2}\|\tilde{X}_{\e,i}\| \leq c_{3}\|\tilde{X}_{\e,i}\| + c_{4}\|\tilde{X}_{\e,i-1}\| + c_{5}\frac{\|\tilde{X}_{\e,i-1}\|^{2}}{\|\tilde{X}_{\e,i}\|}.
+	\left(c_{1} - \frac{\e}{\theta}\right)(\theta^{-1}+1)^{-1} - c_{2}\|\widetilde{X}_{\e,i}\| \leq c_{3}\|\widetilde{X}_{\e,i}\| + c_{4}\|\widetilde{X}_{\e,i-1}\| + c_{5}\frac{\|\widetilde{X}_{\e,i-1}\|^{2}}{\|\widetilde{X}_{\e,i}\|}.
 	$$
-	Since $\tilde{X}_{\e, i}$ converges to $0$, we can find an $i_{0}$ such that $\|\tilde{X}_{i}\|\leq c\|\tilde{X}_{i-1}\|^{2}$
+	Since $\widetilde{X}_{\e, i}$ converges to $0$, we can find an $i_{0}$ such that $\|\widetilde{X}_{i}\|\leq c\|\widetilde{X}_{i-1}\|^{2}$
 	for all $i\geq i_{0}$.
 \end{proof}
 
@@ -475,24 +475,24 @@ Specially, for $\e = 0$, the MPE \eqref{eq:epsMPE} becomes a singular problem wh
 \begin{theorem}\label{thm:SingularConvergence}
 	Let $\pjn (P_{0}''[S](N, N))$ be nonzero and let
 	\begin{equation}\label{eq:Wset}
-	W(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|\right.\right\}.
+	W(\rho, \theta) = \left\{ X \left|\,0 < \|\widetilde{X}\| < \rho, ~\|\pjm(\widetilde{X})\| \leq \theta \|\pjn(\widetilde{X})\|\right.\right\}.
 	\end{equation}
-	If $X_{0, 0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{0, i}\}$ is well defined and $\| P'_{0}[X_{0,i}]^{-1}\|\leq c\|\tilde{X}_{0,i}\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
+	If $X_{0, 0}\in W(\rho_{0}, \theta_{0})$ for $\rho_{0},\theta_{0}$ sufficiently small, then the Newton sequence $\{X_{0, i}\}$ is well defined and $\| P'_{0}[X_{0,i}]^{-1}\|\leq c\|\widetilde{X}_{0,i}\|^{-1}$ for all $i\geq1$ and some constant $c>0$. Moreover,
 	\begin{equation}
-	\lim_{i \rightarrow \infty}\frac{\|\tilde{X}_{0,i+1}\|}{\|\tilde{X}_{0,i}\|} = \frac{1}{2},
-	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\tilde{X}_{0,i})\|}{\|\pjn(\tilde{X}_{0,i})\|^{2}}=0.
+	\lim_{i \rightarrow \infty}\frac{\|\widetilde{X}_{0,i+1}\|}{\|\widetilde{X}_{0,i}\|} = \frac{1}{2},
+	\qquad \lim_{i \rightarrow \infty}\frac{\|\pjm(\widetilde{X}_{0,i})\|}{\|\pjn(\widetilde{X}_{0,i})\|^{2}}=0.
 	\end{equation}
 \end{theorem}
 
 Defining
 \begin{align*}
 \l N &= \pjn P''_{\e}[S](N, N),\\
-\nu N &= \pjn \tilde{X},\numberthis\\
+\nu N &= \pjn \widetilde{X},\numberthis\\
 s &= {\rm sign}(\e\l),
 \end{align*}
 we consider the conical region
 \begin{equation}\label{eq:Wsset}
-W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\tilde{X}\| < \rho, ~\|\pjm(\tilde{X})\| \leq \theta \|\pjn(\tilde{X})\|, ~{\rm sign}(\nu) = s \right.\right\}.
+W_{s}(\rho, \theta) = \left\{ X \left|\,0 < \|\widetilde{X}\| < \rho, ~\|\pjm(\widetilde{X})\| \leq \theta \|\pjn(\widetilde{X})\|, ~{\rm sign}(\nu) = s \right.\right\}.
 \end{equation}
 Then, we can apply the following theorem to the problem for $\e > 0$.
 
@@ -500,7 +500,7 @@ Then, we can apply the following theorem to the problem for $\e > 0$.
 	Assume $\l \neq 0$, and $\e > 0$.
 	Then, there are continuous functions $\rho = \rho(\e)$, $\theta = \theta(\e)$, monotonically increasing as $\e \downarrow 0$ such that if $X_{\e,0} \in W_{s}(\rho, \theta)$ then $P'_{\e}[X_{\e,0}]^{-1}$ exists and all subsequent Newton iterates remain in this set and converges to $S$. Further,
 	\begin{equation}
-	\|\pjn\tilde{X}_{\e,i+1}\| < \tfrac{3}{4}\|\pjn\tilde{X}_{\e,i}\|, \qquad \|\pjm(\tilde{X}_{\e,i+1})\| \leq K\|\tilde{X}_{\e,i}\|^{2},
+	\|\pjn\widetilde{X}_{\e,i+1}\| < \tfrac{3}{4}\|\pjn\widetilde{X}_{\e,i}\|, \qquad \|\pjm(\widetilde{X}_{\e,i+1})\| \leq K\|\widetilde{X}_{\e,i}\|^{2},
 	\end{equation}
 	for $i \in \NN \cup \{0\}$, some $K > 0$, and $\rho(\e)$, $\theta(\e)$ may be chosen such that $\rho(0) = \rho_{0}$, $\theta(0) = \theta_{0}$ where $\rho_{0}$, $\theta_{0}$ are values for which the conclusions of Theorem \ref{thm:SingularConvergence} hold.
 \end{theorem}
@@ -535,15 +535,15 @@ we have the following main theorem.
 
 \section{Exact Line Search for Some Iterative Point}
 
-From the previous section, we see that $\pjm(\tilde{X}_{i})$ is almost terminated more than $\pjn(\tilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
+From the previous section, we see that $\pjm(\widetilde{X}_{i})$ is almost terminated more than $\pjn(\widetilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
 which converges to $S$ and is from a nearly singular problem.
-It means that $\{\tilde{X}_{i}\}_{i \geq i_{0}}$ lies on near one-dimensional subspace $\N$ for some nonnegative integer $i_{0}$.
+It means that $\{\widetilde{X}_{i}\}_{i \geq i_{0}}$ lies on near one-dimensional subspace $\N$ for some nonnegative integer $i_{0}$.
 So, with just a proper scalar multiplication, we can accelerate Newton's method as
 \begin{equation}\label{eq:accelNewton}
 	X_{i+1} = X_{i} - \a_{i} P'[X_{i}]^{-1}(P(X_{i})), \quad i = 0, 1, 2, \ldots.
 \end{equation}
 As introduced in Section \ref{sec:intro}, the proper scalar $\a_{i}$ is suggested for specific singular problems in \cite{Guo1998M, SeoSeoKim2018}.
-If $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ holds for small $\e > 0$, then $\a_{i} = 2$ is the proper scalar.
+If $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ holds for small $\e > 0$, then $\a_{i} = 2$ is the proper scalar.
 But, for nearly singular problems, we cannot guarantee that $\a_{i} = 2$ is the proper.
 So, we suggest the way finding the proper scalar $\a_{i}$ based on exact line searches in \cite{Seo2008}.
 
@@ -596,7 +596,7 @@ Hence, there are about
 matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 
 {\color{red}\begin{thm}
-	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
+	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
 	Then,
 	\begin{equation}
 		S \in L[X_{i} + H_{i}, X_{i} + 2H_{i}],
@@ -605,19 +605,29 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 \end{thm}}
 
 {\color{red}\begin{thm}
-	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
+	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
 	Then,
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| < \|P(X_{i+i})\|\quad\textrm{and}\quad\|P(X_{i} + \a_{i}H_{i})\| < \eta,
 	\end{equation}
 	or
 	\begin{equation}
-		\|X_{i} + \a_{i}H_{i} - S\| \leq \|\tilde{X}_{i+i}\|,
+		\|X_{i} + \a_{i}H_{i} - S\| \leq \|\widetilde{X}_{i+i}\|,
 	\end{equation}
 	where $\a_{i} = \underset{1\leq t \leq 2}{\rm argmin}\,\|P(X_{i} + t H_{i})\|^{2}$.
 \end{thm}}
 
 \begin{proof}
+	\begin{align*}
+		p_{i}(t) 
+		&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+		&=\sum_{j=0}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
+		p'_{i}(t)
+		&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} jt^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
+		p'_{i}(\a_{i})
+		&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} j\a_{i}^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)
+	\end{align*}
+	
 	\begin{equation*}
 		\pjn\tXi \geq 0,\quad \pjn\tXi = c_{i}N
 	\end{equation*}
@@ -761,7 +771,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{equation}
 		B_{l} = \sum_{k=l}^{n} A_{k} \Phi_{(X_{i}, H_{i})}(k, l)
 	\end{equation}
-	and suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\tilde{X}_{i})\| < \e \|\pjn(\tilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
+	and suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
 	Then,
 	\begin{equation}
 	\|P(X_{i} + \a_{i}H_{i})\| < \|P(X_{i+i})\|\quad\textrm{and}\quad\|P(X_{i} + \a_{i}H_{i})\| < \eta,
@@ -817,28 +827,28 @@ a
 %\end{align*}}
 %
 %a
-%\begin{align*}
-%	p_{i}(t) 
-%	&= \mathrm{tr}\left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)\\
-%	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)^{T}\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
-%	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(k, l)A_{k}^{T}\right) \left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
-%	&= \mathrm{tr}\left(\sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-%	&= \sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-%	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-%	&= \sum_{r=0}^{n}\sum_{s=0}^{r}\sum_{k=0}^{n}\sum_{l=0}^{k} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right).
-%\end{align*}
+\begin{align*}
+	p_{i}(t) 
+	&= \mathrm{tr}\left(\left(\sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)^{T} \sum_{k=0}^{n}A_{k}(X_{i} + tH_{i})^{k}\right)\\
+	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)^{T}\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+	&= \mathrm{tr}\left(\left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(k, l)A_{k}^{T}\right) \left(\sum_{l=0}^{n}\sum_{k=l}^{n} t^{l} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\right)\\
+	&= \mathrm{tr}\left(\sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	&= \sum_{s=0}^{n}\sum_{r=s}^{n}\sum_{l=0}^{n}\sum_{k=l}^{n} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	&= \sum_{r=0}^{n}\sum_{s=0}^{r}\sum_{k=0}^{n}\sum_{l=0}^{k} t^{s+l} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right).
+\end{align*}
 
-%b
-%\begin{align*}
-%	p_{i}(t) 
-%	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-%	\textrm{Put }&j=s+l\\
-%	\textrm{case 1) }&j\leq n\\
-%	&\sum_{s=0}^{j} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
-%	~\\
-%	\textrm{case 2) }&j > n\\
-%	&\sum_{s=j-n}^{n} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)
-%\end{align*}
+b
+\begin{align*}
+	p_{i}(t) 
+	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+	\textrm{Put }&j=s+l\\
+	\textrm{case 1) }&j\leq n\\
+	&\sum_{s=0}^{j} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
+	~\\
+	\textrm{case 2) }&j > n\\
+	&\sum_{s=j-n}^{n} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)
+\end{align*}
 %
 %\begin{tabular}{|c|c|c|c|c|c|c|c|}
 %	\hline
