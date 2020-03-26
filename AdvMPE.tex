@@ -607,9 +607,10 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 \begin{thm}
 	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
 	Then, for some $\bar{c} > 0$,
-	\begin{equation}
-		\left\|P(X_{i} + tH_{i}) - P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| < ((t-1)c_{i} + tc_{i+1})\bar{c}\e,
-	\end{equation}
+	\begin{align*}
+		\left\|P(X_{i} + tH_{i}) - P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| &< ((t-1)c_{i} + tc_{i+1})\bar{c}\e \\
+		&\leq (c_{i} + 2c_{i+1})\bar{c}\e,
+	\end{align*}
 	where $\pjn(X_{i}) = c_{i}N$, $\bar{p} = \|\pjn\|$, and $1 \leq t \leq 2$.
 \end{thm}
 
@@ -618,12 +619,12 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	By Taylor theorem and the multilinearity of $P^{(k)}[\,\cdot\,]$,
 	\begin{align*}
 		&P(X_{i} + tH_{i}) \\
-		&= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right) \\
-		&= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right) + \pjm\left((t-1)\tXi - t\tXii\right)\right)^{k} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k}}P^{(k)}[S]\Psi_{\left(\pjn\left((t-1)\tXi - t\tXii\right),~ \pjm\left((t-1)\tXi - t\tXii\right)\right)}({\bf v}) \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right)\right)^{k} + D_{i} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn(X_{i} + tH_{i}) + \pjm(S) - S\right)^{k} + D_{i} \\
-		&= P\left(\pjn(X_{i} + tH_{i}) + \pjm(S) - S\right) + D_{i},
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right) \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right) + \pjm\left((t-1)\tXi - t\tXii\right)\right)^{k} \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k}}P^{(k)}[S]\Psi_{\left(\pjn\left((t-1)\tXi - t\tXii\right),~ \pjm\left((t-1)\tXi - t\tXii\right)\right)}({\bf v}) \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right)\right)^{k} + D_{i} \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn(X_{i} + tH_{i}) + \pjm(S) - S\right)^{k} + D_{i} \\
+		&\quad= P\left(\pjn(X_{i} + tH_{i}) + \pjm(S) - S\right) + D_{i},
 	\end{align*}
 	where 
 	\begin{equation*}
@@ -633,34 +634,37 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{equation*}
 		P^{(k)}[S](A)^{k} = P^{(k)}[S](\underset{k\text{-times}}{\underbrace{A, A, \cdots, A}}).
 	\end{equation*}
-	Therefore,
+	Therefore, 
 	\begin{align*}
 		&\text{1) }\|D_{i}\| \\
+		&= \left\|P(X_{i} + tH_{i}) - P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| \\
 		&= \left\|\sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}}P^{(k)}[S]\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
 		&\leq \bar{c}\left\|(t-1)\pjm(\tXi) - t\pjm(\tXii)\right\| \\
 		&\leq \bar{c}(t-1)\left\|\pjm(\tXi)\right\| + \bar{c}t\left\|\pjm(\tXii)\right\| \\
 		&< \bar{c}\e(t-1)\left\|\pjn(\tXi)\right\| + \bar{c}\e t\left\|\pjn(\tXii)\right\| \\
-		&= ((t-1)c_{i} + tc_{i+1})\bar{c}\e.
+		&= ((t-1)c_{i} + tc_{i+1})\bar{c}\e \\
+		&\leq (c_{i} + 2c_{i+1})\bar{c}\e.
 	\end{align*}
 	
 	\begin{align*}
-		&\text{2) }\|D_{i}\| \\
-		&= \left\|\sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}}P^{(k)}[S]\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
-		&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
-		&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left\|\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
-		&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left\|(t-1)\pjn(\tXi) - t\pjn(\tXii)\right\|^{k - {\bf 1}^{T}{\bf v}} \left\|(t-1)\pjm(\tXi) - t\pjm(\tXii)\right\|^{{\bf 1}^{T}{\bf v}} \\
-		&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left(\left\|(t-1)\pjn(\tXi)\right\| + \left\|t\pjn(\tXii)\right\|\right)^{k - {\bf 1}^{T}{\bf v}} \left(\left\|(t-1)\pjm(\tXi)\right\| + \left\|t\pjm(\tXii)\right\|\right)^{{\bf 1}^{T}{\bf v}} \\
-		&< \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left(\left\|(t-1)\pjn(\tXi)\right\| + \left\|t\pjn(\tXii)\right\|\right)^{k - {\bf 1}^{T}{\bf v}} \left(\e\left\|(t-1)\pjn(\tXi)\right\| + \e\left\|t\pjn(\tXii)\right\|\right)^{{\bf 1}^{T}{\bf v}} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \e^{{\bf 1}^{T}{\bf v}}\left(\left\|(t-1)\pjn(\tXi)\right\| + \left\|t\pjn(\tXii)\right\|\right)^{k} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \e^{{\bf 1}^{T}{\bf v}}\left((t-1)c_{i} + tc_{i+1}\right)^{k} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{l=1}^{k} \binom{k}{l}\left\|P^{(k)}[S]\right\| \e^{l}\left((t-1)c_{i} + tc_{i+1}\right)^{k} \\
-		&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{l=1}^{k} \binom{k}{l}\bar{p}_{k} \e^{l}\left((t-1)c_{i} + tc_{i+1}\right)^{k}
+		&\left\|P(X_{i} + tH_{i})\right\| - \left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| \\
+		&\leq\left\|P(X_{i} + tH_{i}) - P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| \\
+		&< (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{align*}
+	\begin{align*}
+		&\left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| - \left\|P(X_{i} + tH_{i})\right\| \\
+		&\leq\left\|P(X_{i} + tH_{i}) - P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| \\
+		&< (c_{i} + 2c_{i+1})\bar{c}\e
 	\end{align*}
 	
+	\begin{equation*}
+		\left|\left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| - \left\|P(X_{i} + tH_{i})\right\|\right| < (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{equation*}
 \end{proof}
 
-{\color{red}\begin{thm}
-	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ for small $\e > 0$ and $i \geq i_{0}$.
+\begin{thm}
+	Suppose that there exists $i_{0} \in \NN$ such that $\|\pjm(\widetilde{X}_{i})\| < \e \|\pjn(\widetilde{X}_{i})\|$ 
+	for small $\e > 0$ and $i \geq i_{0}$.
 	Then,
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| < \|P(X_{i+i})\|\quad\textrm{and}\quad\|P(X_{i} + \a_{i}H_{i})\| < \eta,
@@ -670,19 +674,9 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		\|X_{i} + \a_{i}H_{i} - S\| \leq \|\widetilde{X}_{i+i}\|,
 	\end{equation}
 	where $\a_{i} = \underset{1\leq t \leq 2}{\rm argmin}\,\|P(X_{i} + t H_{i})\|^{2}$.
-\end{thm}}
+\end{thm}
 
 \begin{proof}
-	\begin{align*}
-		p_{i}(t) 
-		&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
-		&=\sum_{j=0}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
-		p'_{i}(t)
-		&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} jt^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
-		p'_{i}(\a_{i})
-		&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} j\a_{i}^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)
-	\end{align*}
-	
 	\begin{equation*}
 		\pjn\tXi \geq 0,\quad \pjn\tXi = c_{i}N
 	\end{equation*}
@@ -691,13 +685,19 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		\begin{array}{c}
 			(1-\e)\|\pjn(\tXi)\| < \|\tXi\| < (1+\e)\|\pjn(\tXi)\| \\
 			(1-\e)\|c_{i}N\| < \|\tXi\| < (1+\e)\|c_{i}N\| \\
-			(1-\e)|c_{i}| < \|\tXi\| < (1+\e)|c_{i}|
+			(1-\e)c_{i} < \|\tXi\| < (1+\e)c_{i}
 		\end{array}
 	\end{equation}
 	For $t \in [1, 2]$,
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| \leq \|P(X_{i} + tH_{i})\|
 	\end{equation}
+	\begin{align*}
+		\left\|P(X_{i} + \a_{i}H_{i})\right\| &< \left\|P(\pjn(X_{i} + \a_{i}H_{i}) + \pjm(S))\right\| + (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{align*}
+	\begin{align*}
+		\left\|P(X_{i} + tH_{i})\right\| &< \left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| + (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{align*}
 	
 	\begin{align*}
 		H_{i} &= X_{i+1} - X_{i}\\
@@ -839,6 +839,33 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 \end{thm}}
 
 \section{Note}
+
+%\begin{align*}
+%	p_{i}(t) 
+%	&= \sum_{s=0}^{n}\sum_{l=0}^{n} t^{s+l} \sum_{r=s}^{n}\sum_{k=l}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, l)\right)\\
+%	&=\sum_{j=0}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} t^{j} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
+%	p'_{i}(t)
+%	&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} jt^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)\\
+%	p'_{i}(\a_{i})
+%	&=\sum_{j=1}^{2n}\sum_{s=\max\{0, j-n\}}^{\min\{j, n\}} j\a_{i}^{j-1} \sum_{r=s}^{n}\sum_{k=j-s}^{n} \mathrm{tr}\left(\Phi_{(X_{i}^{T}, H_{i}^{T})}(r, s)A_{r}^{T} A_{k}\Phi_{(X_{i}, H_{i})}(k, j-s)\right)
+%\end{align*}
+
+\begin{align*}
+	P\left(\pjn(X_{i} + tH_{i}) + \pjm(S)\right) &= \sum_{k=0}^{n}A_{k}\left(\pjn(X_{i} + tH_{i}) + \pjm(S)\right)^{k} \\
+	&= \sum_{k=0}^{n}A_{k}\left(\pjn(X_{i} + tH_{i}) + \pjm(S)\right)^{k}
+\end{align*}
+
+\begin{align*}
+	&\|D_{i}\| \\
+	&= \left\|\sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}}P^{(k)}[S]\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
+	&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left\|\Psi_{\left((t-1)\pjn(\tXi) - t\pjn(\tXii),~ (t-1)\pjm(\tXi) - t\pjm(\tXii)\right)}({\bf v})\right\| \\
+	&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left\|(t-1)\pjn(\tXi) - t\pjn(\tXii)\right\|^{k - {\bf 1}^{T}{\bf v}} \left\|(t-1)\pjm(\tXi) - t\pjm(\tXii)\right\|^{{\bf 1}^{T}{\bf v}} \\
+	&\leq \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \left(\left\|(t-1)\pjn(\tXi)\right\| + \left\|t\pjn(\tXii)\right\|\right)^{k - {\bf 1}^{T}{\bf v}} \left(\left\|(t-1)\pjm(\tXi)\right\| + \left\|t\pjm(\tXii)\right\|\right)^{{\bf 1}^{T}{\bf v}} \\
+	&< \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k} \setminus {\bf 0}} \left\| P^{(k)}[S]\right\| \e^{{\bf 1}^{T}{\bf v}}\left(\left\|(t-1)\pjn(\tXi)\right\| + \left\|t\pjn(\tXii)\right\|\right)^{k} \\
+	&= \sum_{k=1}^{n} \frac{1}{k!} \sum_{l=1}^{k} \binom{k}{l}\left\|P^{(k)}[S]\right\| \e^{l}\left((t-1)c_{i} + tc_{i+1}\right)^{k} \\
+	&= \sum_{k=1}^{n} \sum_{l=1}^{k} \frac{1}{k!} \binom{k}{l}\bar{p}_{k} \e^{l}\left((t-1)c_{i} + tc_{i+1}\right)^{k} \\
+	&= \sum_{l=1}^{n}\e^{l} \sum_{k=l}^{n} \frac{1}{k!} \binom{k}{l}\bar{p}_{k} \left((t-1)c_{i} + tc_{i+1}\right)^{k}
+\end{align*}
 
 \begin{align*}
 	S - X &= \pjn(S - X) + \pjm(S - X) \\
