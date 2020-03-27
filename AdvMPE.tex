@@ -692,6 +692,20 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| \leq \|P(X_{i} + tH_{i})\|
 	\end{equation}
+	\begin{equation*}
+		\left|\left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| - \left\|P(X_{i} + tH_{i})\right\|\right| < (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{equation*}
+	\begin{equation*}
+		\left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| > \left\|P(X_{i} + tH_{i})\right\| - (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{equation*}
+	\begin{equation*}
+		-\left\|P(\pjn(X_{i} + \a_{i}H_{i}) + \pjm(S))\right\| > -\left\|P(X_{i} + \a_{i}H_{i})\right\| - (c_{i} + 2c_{i+1})\bar{c}\e
+	\end{equation*}
+	\begin{align*}
+		&\left\|P(\pjn(X_{i} + tH_{i}) + \pjm(S))\right\| - \left\|P(\pjn(X_{i} + \a_{i}H_{i}) + \pjm(S))\right\| \\
+		&> \left\|P(X_{i} + tH_{i})\right\| - \left\|P(X_{i} + \a_{i}H_{i})\right\| - 2(c_{i} + 2c_{i+1})\bar{c}\e \\
+		&\geq - 2(c_{i} + 2c_{i+1})\bar{c}\e
+	\end{align*}
 	\begin{align*}
 		\left\|P(X_{i} + \a_{i}H_{i})\right\| &< \left\|P(\pjn(X_{i} + \a_{i}H_{i}) + \pjm(S))\right\| + (c_{i} + 2c_{i+1})\bar{c}\e
 	\end{align*}
@@ -710,16 +724,6 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
 		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
 		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right| < \gamma = \gamma(\e)
-	\end{align*}
-	
-	\begin{align*}
-		\|S - X_{i} - \a_{i}H_{i}\| &= \|(1 - \a_{i})\tXi + \a_{i}\tXii\| \\
-		&= \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii + (1 - \a_{i})\pjm\tXi + \a_{i}\pjm\tXii\| \\
-		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\|\pjm\tXi\| + \a_{i}\|\pjm\tXii\| \\
-		&\leq \|(1 - \a_{i})\pjn\tXi + \a_{i}\pjn\tXii\| + (\a_{i} - 1)\e\|\pjn\tXi\| + \a_{i}\e\|\pjn\tXii\| \\
-		&= \|(1 - \a_{i})c_{i}E + \a_{i}c_{i+1}N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
-		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}|\|N\| + (\a_{i} - 1)\e c_{i}\|N\| + \a_{i}\e c_{i+1}\|N\| \\
-		&= |(1 - \a_{i})c_{i} + \a_{i}c_{i+1}| + \left((\a_{i} - 1)c_{i} + \a_{i} c_{i+1}\right)\e
 	\end{align*}
 	
 %	{\color{gray}\begin{align*}
@@ -804,19 +808,23 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 		&\qquad + \left(2\bar{c}\left(c_{i} + 2c_{i+1}\right)^{2} + c_{i} + 2c_{i+1}\right)\e + \bar{c}\left(c_{i} + 2c_{i+1}\right)^{2}\e^{2}
 	\end{align*}
 	
-	Approach 3. $\dtyl\dashv \left|\frac{\|\tXi\|}{\|\tXii\|} - \frac{\a_{i}}{\a_{i} - 1}\right| < \gamma = \gamma(\e)$.
-	
-	\begin{equation}
-		\frac{\|\tXi\|}{\|\tXii\|} \approx \nu \Longrightarrow \a = \frac{\nu}{\nu - 1}
-	\end{equation}
+	Approach 3. $\dtyl\dashv \left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right| < \gamma = \gamma(\e)$.
 	
 	\begin{align*}
-		\therefore \a =& \frac{\nu}{\nu - 1} \Longrightarrow \\
-		& \a \nu - \a = \nu \\
-		& (\a - 1)\nu = \a \\
-		& \nu = \frac{\a}{\a - 1}
+		\left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right|
+		&= \frac{\left|\a_{i}\|\tXii\| - (\a_{i} - 1)\|\tXi\|\right|}{\a_{i}\|\tXi\|} \\
+		&= \frac{\left|\a_{i}\|\pjn\tXii + \pjm\tXii\| - (\a_{i} - 1)\|\pjn\tXi + \pjm\tXi\|\right|}{\a_{i}\|\tXi\|} \\
+		&\leq \frac{\left|\a_{i}\|\pjn\tXii\| + \a_{i}\|\pjm\tXii\| - (\a_{i} - 1)\|\pjn\tXi\| + (\a_{i} - 1)\|\pjm\tXi\|\right|}{\a_{i}\|\tXi\|} \\
+		&\leq \frac{\left|\a_{i}\|\pjn\tXii\| - (\a_{i} - 1)\|\pjn\tXi\|\right| + \a_{i}\|\pjm\tXii\| + (\a_{i} - 1)\|\pjm\tXi\|}{\a_{i}\|\tXi\|} \\
+		&< \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e\|\pjn\tXii\| + (\a_{i} - 1)\e\|\pjn\tXi\|}{\a_{i}\|\tXi\|} \\
+		&= \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e c_{i+1} + (\a_{i} - 1)\e c_{i}}{\a_{i}\|\tXi\|} \\
+		&= \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e c_{i+1} + (\a_{i} - 1)\e c_{i}}{\a_{i}\|\pjn\tXi + \pjm\tXi\|} \\
+		&= \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e c_{i+1} + (\a_{i} - 1)\e c_{i}}{\a_{i}\|\pjn\tXi\| - \a_{i}\|\pjm\tXi\|} \\
+		&< \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e c_{i+1} + (\a_{i} - 1)\e c_{i}}{\a_{i}\|\pjn\tXi\| - \a_{i}\e\|\pjn\tXi\|} \\
+		&= \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right| + \a_{i}\e c_{i+1} + (\a_{i} - 1)\e c_{i}}{\a_{i}(1- \e)c_{i}} \\
+		&= \frac{\left|\a_{i}c_{i+1} - (\a_{i} - 1)c_{i}\right|}{\a_{i}(1- \e)c_{i}} + \frac{\e c_{i+1}}{(1- \e)c_{i}} + \frac{(\a_{i} - 1)\e}{\a_{i}(1- \e)}
 	\end{align*}
-	
+	a
 \end{proof}
 
 \section{Advanced Line Search}
@@ -835,7 +843,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\begin{equation}
 	\|X_{i} + \a_{i}H_{i} - S\| \leq \|X_{i+i} - S\|,
 	\end{equation}
-	where $\a_{i} = \min\left\{t_{jk}\in [1, 2] \,\middle|\, \sum_{l=0}^{n}b_{ljk}t_{jk}^{l} = 0,\,1\leq j \leq m,\,1\leq k \leq m\right\}$ and $b_{ljk} = \left[B_{l}\right]_{jk}$.
+	where $\dtyl \a_{i} = \min\left\{t_{jk}\in [1, 2] \,\middle|\, \sum_{l=0}^{n}b_{ljk}t_{jk}^{l} = 0,\,1\leq j \leq m,\,1\leq k \leq m\right\}$ and $b_{ljk} = \left[B_{l}\right]_{jk}$.
 \end{thm}}
 
 \section{Note}
