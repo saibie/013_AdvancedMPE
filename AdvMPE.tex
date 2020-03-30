@@ -534,6 +534,11 @@ we have the following main theorem.
 }
 
 \section{Exact Line Search for Some Iterative Point}
+\begin{enumerate}[1)]
+	\item Analytic하게 증명할 필요가 있는가?
+	\item $\pjn$내에서의 $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
+	\item $t \in [1, 2]$에 대해 우리가 원하는 $S$가 존재함을 보여야 하지 않나?
+\end{enumerate}
 
 From the previous section, we see that $\pjm(\widetilde{X}_{i})$ is almost terminated more than $\pjn(\widetilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
 which converges to $S$ and is from a nearly singular problem.
@@ -619,7 +624,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	By Taylor theorem and the multilinearity of $P^{(k)}[\,\cdot\,]$,
 	\begin{align*}
 		&P(X_{i} + tH_{i}) \\
-		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right) \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right)^{k} \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right) + \pjm\left((t-1)\tXi - t\tXii\right)\right)^{k} \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k}}P^{(k)}[S]\Psi_{\left(\pjn\left((t-1)\tXi - t\tXii\right),~ \pjm\left((t-1)\tXi - t\tXii\right)\right)}({\bf v}) \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right)\right)^{k} + D_{i} \\
@@ -688,6 +693,13 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 			(1-\e)c_{i} < \|\tXi\| < (1+\e)c_{i}
 		\end{array}
 	\end{equation}
+	
+	\begin{align*}
+		H_{i} &= X_{i+1} - X_{i}\\
+		&= X_{i+1} - X_{i} + S - S\\
+		&= \tXi - \tXii
+	\end{align*}
+	
 	For $t \in [1, 2]$,
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| \leq \|P(X_{i} + tH_{i})\|
@@ -714,15 +726,9 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\end{align*}
 	
 	\begin{align*}
-		H_{i} &= X_{i+1} - X_{i}\\
-		&= X_{i+1} - X_{i} + S - S\\
-		&= \tXi - \tXii
-	\end{align*}
-	
-	\begin{align*}
 		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
-		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
-		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
+		\textrm{Approach 2. }& \dashv \|S - (X_{i} + \a_{i}H_{i})\| = \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
+		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + H_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
 		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right| < \gamma = \gamma(\e)
 	\end{align*}
 	
@@ -743,26 +749,15 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	Approach 2. Suppose $\|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\|$.
 	
 	\begin{align*}
-		P(X_{i} + tH_{i}) &= P(S) + P'[S](X_{i} + tH_{i} - S) + O(\|X_{i} + tH_{i} - S\|^{2}) \\
-		&= -P'[S]\left((1-t)\tXi + t\tXii\right) + O(\|(1-t)\tXi + t\tXii\|^{2})
-	\end{align*}
-	
-	\begin{align*}
-		P(X_{i} + tH_{i}) - P(X_{i} + \a_{i}H_{i}) &\geq P'[X_{i} + \a_{i}H_{i}]\left((t - \a_{i})H_{i}\right) \\
-		&= -(t - \a_{i})P'[X_{i} + \a_{i}H_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) 
+		P(X_{i+1}) &= -P'[S](\tXii) + O(\|\tXii\|^{2}) \\
+		\left\|P(X_{i+1})\right\| &\leq c\|\tXii\| < c\left\|S - X_{i} - \a_{i}H_{i}\right\|
 	\end{align*}
 	
 	\begin{align*}
 		P(X_{i} + tH_{i}) - P(X_{i}) &\geq P'[X_{i}]\left(tH_{i}\right) \\
 		&= -tP'[X_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
 		&= -tP(X_{i}) \\
-		P(X_{i} + tH_{i}) &\geq (1-t)P(X_{i})
-	\end{align*}
-	
-	\begin{align*}
-		P(X_{i+1}) - P(X_{i}) &\geq P'[X_{i}]\left(H_{i}\right) \\
-		&= -P(X_{i}) \\
-		P(X_{i+1}) &\geq 0
+		P(X_{i} + tH_{i}) &\geq (1-t)P(X_{i}) \qquad\text{(??)}
 	\end{align*}
 	
 	{\color{gray}\begin{align*}
