@@ -440,7 +440,8 @@ because it is proved with just Taylor's Theorem, without the conditions of coeff
 	Using Taylor's Theorem and the fact that $-P'_{\e}[S]\left(\pjn(\widetilde{X}_{\e,i})\right) = \e\pjn(\widetilde{X}_{\e,i})$, we obtain that
 	\begin{align*}
 		P_{\e}(X_{\e,i}) &= P_{\e}(S) - P'_{\e}[S](\widetilde{X}_{\e,i}) + O(\|\widetilde{X}_{\e,i}\|^{2}) \\
-		&= \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
+		&= - P'_{\e}[S]\left(\pjn(\widetilde{X}_{\e,i}) + \pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}) \numberthis\label{eq:TaylorMPE} \\
+		&= \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}).
 	\end{align*}
 	Since $c_{1} > 0$ is the smallest singular value of $-P'_{\e}[S]|_{\M}$, $\left\| -P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\widetilde{X}_{\e,i})\|$.
 	For $i\in\mathcal{Q}$, we have
@@ -536,9 +537,24 @@ we have the following main theorem.
 \section{Exact Line Search for Some Iterative Point}
 \begin{enumerate}[1)]
 	\item Analytic하게 증명할 필요가 있는가?
-	\item $\pjn$내에서의 $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
+	\item $\N$ 안에 $\tXi$가 들어있을 때, $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
 	\item $t \in [1, 2]$에 대해 우리가 원하는 $S$가 존재함을 보여야 하지 않나?
 \end{enumerate}
+
+\begin{lem}
+	$\N$ 안에 $\tXi$가 들어있을 때, $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
+\end{lem}
+
+\begin{proof}
+	Let $\tXi \in \N$. Then, $-P'[S](\tXi) = \e\tXi$.
+	\begin{align*}
+		X_{i+1} &= X_{i} - P'[X_{i}]^{-1}(P(X_{i})) \\
+		\tXii &= \tXi - P'[X_{i}]^{-1}(P(X_{i})) \\
+		-P'[S](\tXii) &= -P'[S]\left(\tXi - P'[X_{i}]^{-1}(P(X_{i}))\right) \\
+		&= -P'[S](\tXi) + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
+		&= \e\tXi + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right)
+	\end{align*}
+\end{proof}
 
 From the previous section, we see that $\pjm(\widetilde{X}_{i})$ is almost terminated more than $\pjn(\widetilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
 which converges to $S$ and is from a nearly singular problem.
