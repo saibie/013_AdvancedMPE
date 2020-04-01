@@ -515,11 +515,8 @@ Then, we can apply the following theorem to the problem for $\e > 0$.
 \end{corollary}
 
 
-When $P'_{S}$ is singular practically the Newton sequence
-converges linearly, according to the corollary we conclude that \textit{the
-	error will generally be dominated by its $\N$ component}\cite{Guo1998M}.
-From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
-we have the following main theorem.
+When $P'_{S}$ is singular practically the Newton sequence converges linearly, according to the corollary we conclude that \textit{the error will generally be dominated by its $\N$ component}\cite{Guo1998M}.
+From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}, we have the following main theorem.
 
 \begin{theorem}\label{thm:LinearConvergence1over2}
 	If $-\P'_{S}$ is a singular $M$-matrix and the convergence rate
@@ -527,12 +524,10 @@ we have the following main theorem.
 	is not quadratic, then $\| P_{X_{i}}^{\prime -1}\|\leq c\| \tXi\|^{-1}$
 	for all $i \geq 1$ and some constant $c > 0$. Moreover,
 	$$
-	\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-	\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+		\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+		\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
 	$$
-	
-\end{theorem}
-}
+\end{theorem}}
 
 \section{Exact Line Search for Some Iterative Point}
 \begin{enumerate}[1)]
@@ -553,6 +548,30 @@ we have the following main theorem.
 		-P'[S](\tXii) &= -P'[S]\left(\tXi - P'[X_{i}]^{-1}(P(X_{i}))\right) \\
 		&= -P'[S](\tXi) + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
 		&= \e\tXi + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right)
+	\end{align*}
+	\begin{align*}
+		P(X) &= P(Y) + P'[Y](X - Y) + \frac{1}{2}P''[Y](X - Y)^{2} + \cdots + \frac{1}{n!}P^{(n)}[Y](X - Y)^{n} \\
+		&= \sum_{k=0}^{n} \frac{1}{k!} P^{(k)}[Y](X - Y)^{k}
+	\end{align*}
+	\begin{align*}
+		P'[X](X - Y) &= P'[Y](X - Y) + P''[Y](X - Y)^{2} + \cdots + \frac{1}{(n-1)!}P^{(n)}(X - Y)^{n}\\
+		&= \sum_{k=1}^{n} \frac{1}{(k-1)!}P^{(k)}[Y](X - Y)^{k}
+	\end{align*}
+	{\color{red}
+	\begin{align*}
+		P(X_{i})
+		&= P(S) + P'[S](-\tXi) + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= P'[S](-\tXi) + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \e\tXi + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k}
+	\end{align*}
+	\begin{align*}
+		P[X_{i}](X_{i} - S) &= \sum_{k=1}^{n} \frac{1}{(k-1)!}P^{(k)}[S](X_{i} - S)^{k} \\
+		&= P'[S](-\tXi) + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \e\tXi + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k}
+	\end{align*}}
+	\begin{align*}
+		P(X_{i}) &= P[X_{i}](X_{i} - X_{i+1}) = P[X_{i}](\tXii - \tXi) \\
+		&= P[X_{i}](\tXii) - P[X_{i}](\tXi)
 	\end{align*}
 \end{proof}
 
