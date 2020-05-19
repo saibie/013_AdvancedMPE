@@ -533,7 +533,7 @@ From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}, we hav
 \begin{enumerate}[1)]
 	\item Analytic하게 증명할 필요가 있는가?
 	\item $\N$ 안에 $\tXi$가 들어있을 때, $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
-	\item $t \in [1, 2]$에 대해 우리가 원하는 $S$가 존재함을 보여야 하지 않나?
+	\item $t \in [1, 2]$에 대해 우리가 원하는 $S$가 존재함을 보여야 하지 않나? {\color{red}$\longleftarrow$ 이게 뭔 개소리야? 1달 지나니 못 알아듣는 걸 메모해 놨네 이걸...}
 \end{enumerate}
 
 \begin{lem}
@@ -568,6 +568,12 @@ From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}, we hav
 		P[X_{i}](X_{i} - S) &= \sum_{k=1}^{n} \frac{1}{(k-1)!}P^{(k)}[S](X_{i} - S)^{k} \\
 		&= P'[S](-\tXi) + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k} \\
 		&= \e\tXi + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k}
+	\end{align*}
+	\begin{align*}
+		P[X_{i}](X_{i} - S) - P(X_{i})
+		&= \sum_{k=2}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k} - \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \sum_{k=2}^{n} \left(\frac{1}{(k-1)!} - \frac{1}{k!}\right) P^{(k)}[S](-\tXi)^{k} \\
+		&= \sum_{k=2}^{n} \frac{1}{k(k-2)!} P^{(k)}[S](-\tXi)^{k} 
 	\end{align*}}
 	\begin{align*}
 		P(X_{i}) &= P[X_{i}](X_{i} - X_{i+1}) = P[X_{i}](\tXii - \tXi) \\
