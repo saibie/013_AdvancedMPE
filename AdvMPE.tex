@@ -301,7 +301,8 @@ Generally, by Kantorovich theorem \cite{Kantorovich1964}, the Newton iteration \
 But, if the derivative becomes nearly singular, the quadratic convergence radius will be very small.
 In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2} when the derivative is nearly singular.
 
-Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, $S$ be the minimal positive solution of \eqref{eq:MPE}.
+Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, 
+and let $S$ be the minimal positive solution of \eqref{eq:MPE}.
 Then, $-\P'[S]$ is an irreducible $M$-matrix.
 Therefore, the eigenvalue $\mu$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by Perron-Frobenius Theorem in \cite{Horn1985}.
 
@@ -440,7 +441,8 @@ because it is proved with just Taylor's Theorem, without the conditions of coeff
 	Using Taylor's Theorem and the fact that $-P'_{\e}[S]\left(\pjn(\widetilde{X}_{\e,i})\right) = \e\pjn(\widetilde{X}_{\e,i})$, we obtain that
 	\begin{align*}
 		P_{\e}(X_{\e,i}) &= P_{\e}(S) - P'_{\e}[S](\widetilde{X}_{\e,i}) + O(\|\widetilde{X}_{\e,i}\|^{2}) \\
-		&= \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}). \numberthis\label{eq:TaylorMPE}
+		&= - P'_{\e}[S]\left(\pjn(\widetilde{X}_{\e,i}) + \pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}) \numberthis\label{eq:TaylorMPE} \\
+		&= \e\pjn(\widetilde{X}_{\e,i}) - P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right) + O(\|\widetilde{X}_{\e,i}\|^{2}).
 	\end{align*}
 	Since $c_{1} > 0$ is the smallest singular value of $-P'_{\e}[S]|_{\M}$, $\left\| -P'_{\e}[S]\left(\pjm(\widetilde{X}_{\e,i})\right)\right\| \geq c_{1}\|\pjm(\widetilde{X}_{\e,i})\|$.
 	For $i\in\mathcal{Q}$, we have
@@ -514,11 +516,8 @@ Then, we can apply the following theorem to the problem for $\e > 0$.
 \end{corollary}
 
 
-When $P'_{S}$ is singular practically the Newton sequence
-converges linearly, according to the corollary we conclude that \textit{the
-	error will generally be dominated by its $\N$ component}\cite{Guo1998M}.
-From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}
-we have the following main theorem.
+When $P'_{S}$ is singular practically the Newton sequence converges linearly, according to the corollary we conclude that \textit{the error will generally be dominated by its $\N$ component}\cite{Guo1998M}.
+From Lemmas \ref{lem:BisInvertible} and \ref{lem:DominatedPMconvergence}, we have the following main theorem.
 
 \begin{theorem}\label{thm:LinearConvergence1over2}
 	If $-\P'_{S}$ is a singular $M$-matrix and the convergence rate
@@ -526,14 +525,62 @@ we have the following main theorem.
 	is not quadratic, then $\| P_{X_{i}}^{\prime -1}\|\leq c\| \tXi\|^{-1}$
 	for all $i \geq 1$ and some constant $c > 0$. Moreover,
 	$$
-	\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
-	\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
+		\lim_{i \rightarrow \infty} \frac{\|\tXii\|}{\|\tXi\|} = \frac{1}{2},
+		\qquad \lim_{i\rightarrow\infty} \frac{\|\pjm(\tXi)\|}{\|\pjn(\tXi)\|^{2}}=0.
 	$$
-	
-\end{theorem}
-}
+\end{theorem}}
 
 \section{Exact Line Search for Some Iterative Point}
+\begin{enumerate}[1)]
+	\item Analytic하게 증명할 필요가 있는가?
+	\item $\N$ 안에 $\tXi$가 들어있을 때, $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
+	\item $t \in [1, 2]$에 대해 우리가 원하는 $S$가 존재함을 보여야 하지 않나? {\color{red}$\longleftarrow$ 이게 뭔 개소리야? 1달 지나니 못 알아듣는 걸 메모해 놨네 이걸...}
+\end{enumerate}
+
+\begin{lem}
+	$\N$ 안에 $\tXi$가 들어있을 때, $\tXi$의 움직임에 대해 따로 증명할 필요가 있지 않을까?
+\end{lem}
+
+\begin{proof}
+	Let $\tXi \in \N$. Then, $-P'[S](\tXi) = \e\tXi$.
+	\begin{align*}
+		X_{i+1} &= X_{i} - P'[X_{i}]^{-1}(P(X_{i})) \\
+		\tXii &= \tXi - P'[X_{i}]^{-1}(P(X_{i})) \\
+		-P'[S](\tXii) &= -P'[S]\left(\tXi - P'[X_{i}]^{-1}(P(X_{i}))\right) \\
+		&= -P'[S](\tXi) + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
+		&= \e\tXi + P'[S]\left(P'[X_{i}]^{-1}(P(X_{i}))\right)
+	\end{align*}
+	\begin{align*}
+		P(X) &= P(Y) + P'[Y](X - Y) + \frac{1}{2}P''[Y](X - Y)^{2} + \cdots + \frac{1}{n!}P^{(n)}[Y](X - Y)^{n} \\
+		&= \sum_{k=0}^{n} \frac{1}{k!} P^{(k)}[Y](X - Y)^{k}
+	\end{align*}
+	\begin{align*}
+		P'[X](X - Y) &= P'[Y](X - Y) + P''[Y](X - Y)^{2} + \cdots + \frac{1}{(n-1)!}P^{(n)}(X - Y)^{n}\\
+		&= \sum_{k=1}^{n} \frac{1}{(k-1)!}P^{(k)}[Y](X - Y)^{k}
+	\end{align*}
+	{\color{red}
+	\begin{align*}
+		P(X_{i})
+		&= P(S) + P'[S](-\tXi) + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= P'[S](-\tXi) + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \e\tXi + \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k}
+	\end{align*}
+	\begin{align*}
+		P[X_{i}](X_{i} - S) &= \sum_{k=1}^{n} \frac{1}{(k-1)!}P^{(k)}[S](X_{i} - S)^{k} \\
+		&= P'[S](-\tXi) + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \e\tXi + P''[S](-\tXi)^{2} + \sum_{k=3}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k}
+	\end{align*}
+	\begin{align*}
+		P[X_{i}](X_{i} - S) - P(X_{i})
+		&= \sum_{k=2}^{n} \frac{1}{(k-1)!}P^{(k)}[S](-\tXi)^{k} - \sum_{k=2}^{n} \frac{1}{k!}P^{(k)}[S](-\tXi)^{k} \\
+		&= \sum_{k=2}^{n} \left(\frac{1}{(k-1)!} - \frac{1}{k!}\right) P^{(k)}[S](-\tXi)^{k} \\
+		&= \sum_{k=2}^{n} \frac{1}{k(k-2)!} P^{(k)}[S](-\tXi)^{k} 
+	\end{align*}}
+	\begin{align*}
+		P(X_{i}) &= P[X_{i}](X_{i} - X_{i+1}) = P[X_{i}](\tXii - \tXi) \\
+		&= P[X_{i}](\tXii) - P[X_{i}](\tXi)
+	\end{align*}
+\end{proof}
 
 From the previous section, we see that $\pjm(\widetilde{X}_{i})$ is almost terminated more than $\pjn(\widetilde{X}_{i})$ for the Newton sequence $\{X_{i}\}$
 which converges to $S$ and is from a nearly singular problem.
@@ -619,7 +666,7 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	By Taylor theorem and the multilinearity of $P^{(k)}[\,\cdot\,]$,
 	\begin{align*}
 		&P(X_{i} + tH_{i}) \\
-		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right) \\
+		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left((t-1)\tXi - t\tXii\right)^{k} \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!}P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right) + \pjm\left((t-1)\tXi - t\tXii\right)\right)^{k} \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!} \sum_{{\bf v}\in \{0,1\}^{k}}P^{(k)}[S]\Psi_{\left(\pjn\left((t-1)\tXi - t\tXii\right),~ \pjm\left((t-1)\tXi - t\tXii\right)\right)}({\bf v}) \\
 		&\quad= \sum_{k=1}^{n} \frac{1}{k!} P^{(k)}[S]\left(\pjn\left((t-1)\tXi - t\tXii\right)\right)^{k} + D_{i} \\
@@ -688,6 +735,13 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 			(1-\e)c_{i} < \|\tXi\| < (1+\e)c_{i}
 		\end{array}
 	\end{equation}
+	
+	\begin{align*}
+		H_{i} &= X_{i+1} - X_{i}\\
+		&= X_{i+1} - X_{i} + S - S\\
+		&= \tXi - \tXii
+	\end{align*}
+	
 	For $t \in [1, 2]$,
 	\begin{equation}
 		\|P(X_{i} + \a_{i}H_{i})\| \leq \|P(X_{i} + tH_{i})\|
@@ -714,15 +768,9 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	\end{align*}
 	
 	\begin{align*}
-		H_{i} &= X_{i+1} - X_{i}\\
-		&= X_{i+1} - X_{i} + S - S\\
-		&= \tXi - \tXii
-	\end{align*}
-	
-	\begin{align*}
 		\textrm{Approach 1. }& \dashv \|S - X_{i} - \a_{i}H_{i}\| \leq \|\tXii\| \\
-		\textrm{Approach 2. }& \dashv \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
-		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + tH_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
+		\textrm{Approach 2. }& \dashv \|S - (X_{i} + \a_{i}H_{i})\| = \|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\| \\
+		&\qquad\Longrightarrow \exists t \in [1,2] \setminus \{\a_{i}\} ~;~ \|P(X_{i} + H_{i})\| < \|P(X_{i} + \a_{i}H_{i})\| \\
 		\textrm{Approach 3. }& \dashv \left|\frac{\|\tXii\|}{\|\tXi\|} - \frac{\a_{i} - 1}{\a_{i}}\right| < \gamma = \gamma(\e)
 	\end{align*}
 	
@@ -743,26 +791,15 @@ matrix multiplications to obtain all coefficients of $p_{i}$ for every $i$.
 	Approach 2. Suppose $\|(1-\a_{i})\tXi + \a_{i}\tXii\| > \|\tXii\|$.
 	
 	\begin{align*}
-		P(X_{i} + tH_{i}) &= P(S) + P'[S](X_{i} + tH_{i} - S) + O(\|X_{i} + tH_{i} - S\|^{2}) \\
-		&= -P'[S]\left((1-t)\tXi + t\tXii\right) + O(\|(1-t)\tXi + t\tXii\|^{2})
-	\end{align*}
-	
-	\begin{align*}
-		P(X_{i} + tH_{i}) - P(X_{i} + \a_{i}H_{i}) &\geq P'[X_{i} + \a_{i}H_{i}]\left((t - \a_{i})H_{i}\right) \\
-		&= -(t - \a_{i})P'[X_{i} + \a_{i}H_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) 
+		P(X_{i+1}) &= -P'[S](\tXii) + O(\|\tXii\|^{2}) \\
+		\left\|P(X_{i+1})\right\| &\leq c\|\tXii\| < c\left\|S - X_{i} - \a_{i}H_{i}\right\|
 	\end{align*}
 	
 	\begin{align*}
 		P(X_{i} + tH_{i}) - P(X_{i}) &\geq P'[X_{i}]\left(tH_{i}\right) \\
 		&= -tP'[X_{i}]\left(P'[X_{i}]^{-1}(P(X_{i}))\right) \\
 		&= -tP(X_{i}) \\
-		P(X_{i} + tH_{i}) &\geq (1-t)P(X_{i})
-	\end{align*}
-	
-	\begin{align*}
-		P(X_{i+1}) - P(X_{i}) &\geq P'[X_{i}]\left(H_{i}\right) \\
-		&= -P(X_{i}) \\
-		P(X_{i+1}) &\geq 0
+		P(X_{i} + tH_{i}) &\geq (1-t)P(X_{i}) \qquad\text{(??)}
 	\end{align*}
 	
 	{\color{gray}\begin{align*}
