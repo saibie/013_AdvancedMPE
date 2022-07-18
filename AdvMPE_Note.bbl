@@ -1,0 +1,139 @@
+\def\noopsort#1{}\def\l{\char32l}\def\v#1{{\accent20 #1}}
+  \let\^^_=\v\def\hbk{hardback}\def\pbk{paperback}
+\begin{thebibliography}{10}
+
+\bibitem{ALFA2003}
+Attahiru~Sule Alfa.
+\newblock Combined elapsed time and matrix-analytic method for the discrete
+  time \mbox{$GI/G/1$ and $GI^X/G/1$} systems.
+\newblock {\em Queueing Syst.}, 45:5--25, 2003.
+
+\bibitem{Bean1997}
+Nigel~G. Bean, Leslie~W. Bright, Guy Latouche, Charles E.~M. Pearce, Philip~K.
+  Pollett, and Peter~G. Taylor.
+\newblock The quasi-stationary behavior of quasi-birth-and-death processes.
+\newblock {\em Ann. Appl. Probab.}, 7(1):134--155, Feb 1997.
+
+\bibitem{bini2005}
+Dario~A. Bini, Guy Latouche, and Beatrice Meini.
+\newblock {\em Numerical Methods for Structured Markov Chains}.
+\newblock Oxford University Press Oxford, 2005.
+
+\bibitem{Butler1985}
+Geoffrey.~J. Butler, Charles~R. Johnson, and Henry Wolkowicz.
+\newblock Nonnegative solutions of a quadratic matrix equation arising from
+  comparison theorems in ordinary differential equations.
+\newblock {\em SIAM J. Algebraic Discrete Methods}, 6(1):47--53, January 1985.
+
+\bibitem{Davis1981}
+George~J. Davis.
+\newblock Numerical solution of a quadratic matrix equation.
+\newblock {\em SIAM J. Sci. Comput.}, 2:164--175, 1981.
+
+\bibitem{Davis1983}
+George~J. Davis.
+\newblock Algorithm 598: an algorithm to compute solvent of the matrix equation
+  {$AX^2 + BX + C = 0$}.
+\newblock {\em ACM Trans. Math. Software}, 9(2):246--254, June 1983.
+
+\bibitem{Gohberg1982}
+Israel Gohberg, Peter Lancaster, and Leiba Rodman.
+\newblock {\em Matrix Polynomials}.
+\newblock Academic Press, 1982.
+
+\bibitem{Guo2001}
+Chun-Hua {Guo}.
+\newblock {Nonsymmetric algebraic Riccati equations and Wiener-Hopf
+  factorization for M-matrices.}
+\newblock {\em SIAM J. Matrix Anal. Appl.}, 23(1):225--242, 2001.
+
+\bibitem{Guo2007}
+Chun-Hua Guo and Nicholas~J. Higham.
+\newblock Iterative solution of a nonsymmetric algebraic {R}iccati equation.
+\newblock {\em SIAM J. Matrix Anal. Appl.}, 29:396--412, 2007.
+
+\bibitem{Guo1998M}
+Chun-hua Guo and Peter Lancaster.
+\newblock Analysis and modification of {N}ewton's method for algebraic
+  {R}iccati equations.
+\newblock {\em Math. Comp.}, 67(223):1089--1105, 1998.
+
+\bibitem{Guo2000}
+Chun-Hua Guo and Alan~J Laub.
+\newblock On the iterative solution of a class of nonsymmetric algebraic
+  {Riccati} equations.
+\newblock {\em SIAM J. Matrix Anal. Appl.}, 22(2):376--391, 2000.
+
+\bibitem{SophieHautphenne2008}
+Sophie Hautphenne, Guy Latouche, and Marie-Ange Remiche.
+\newblock {Newton's} iteration for the extinction probability of a {Markovian}
+  binary tree.
+\newblock {\em Linear Algebra Appl.}, 428:2791--2804, 2008.
+
+\bibitem{He2001}
+Qi-Ming He and Marcel~F. Neuts.
+\newblock On the convergence and limits of certain matrix sequences arising in
+  quasi-birth-and-death {Markov} chains.
+\newblock {\em J. Appl. Probab.}, 38(2):519--541, 2001.
+
+\bibitem{Higham2000}
+Nicholas~J. Higham and Hyun-Min Kim.
+\newblock Numerical analysis of a quadratic matrix equation.
+\newblock {\em IMA J. Numer. Anal.}, 20(4):499--519, 2000.
+
+\bibitem{Higham2001}
+Nicholas~J. Higham and Hyun-Min Kim.
+\newblock Solving a quadratic matrix equation by {Newton's} method with exact
+  line searches.
+\newblock {\em SIAM J. Matrix Anal. Appl.}, 23:303--316, 2001.
+
+\bibitem{roger91}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Topics in Matrix Analysis}.
+\newblock Cambridge University Press, 2nd edition, 1995.
+
+\bibitem{Kim2008}
+Hyun-Min Kim.
+\newblock Convergence of {Newton}'s method for solving a class of quadratic
+  matrix equations.
+\newblock {\em Honam Math. J.}, 30(2):399--409, 2008.
+
+\bibitem{Lancaster1966}
+Peter Lancaster.
+\newblock {\em Lambda-matrices and Vibrating Systems}.
+\newblock Pergamon Press, 1966.
+
+\bibitem{Lancaster1985}
+Peter Lancaster and Miron Tismenetsky.
+\newblock {\em The Theory of Matrices with Applications}.
+\newblock Academic Press, 2 edition, 1985.
+
+\bibitem{Latouche1999}
+Guy Latouche and Vaidyanathan Ramaswami.
+\newblock {\em Introduction to Matrix Analytic Methods in Stochastic Modeling}.
+\newblock ASA-SIAM, 1999.
+
+\bibitem{Poole1974}
+George Poole and Thomas Boullion.
+\newblock A survey on {$M$}-matrices.
+\newblock {\em SIAM Rev.}, 16(4):419--427, 1974.
+
+\bibitem{SeoKim2014}
+Jong-Hyeon Seo and Hyun-Min Kim.
+\newblock Convergence of pure and relaxed {N}ewton methods for solving a matrix
+  polynomial equation arising in stochastic models.
+\newblock {\em Linear Algebra Appl.}, 440:34--49, 2014.
+
+\bibitem{SeoSeoKim2018}
+Sang-hyup Seo, Jong-Hyeon Seo, and Hyun-Min Kim.
+\newblock Convergence of a modified {N}ewton method for a matrix polynomial
+  equation arising in stochastic problem.
+\newblock {\em Electron. J. Linear Algebra}, 34:500--513, October 2018.
+
+\bibitem{SeoSeoKim2013}
+Sang-Hyup Seo, Jong-Hyun Seo, and Hyun-Min Kim.
+\newblock {N}ewton's method for solving a quadratic matrix equation with
+  special coefficient matrices.
+\newblock {\em Honam Math. J.}, 35(3):417--433, 2013.
+
+\end{thebibliography}
