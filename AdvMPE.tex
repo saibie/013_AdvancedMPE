@@ -304,7 +304,9 @@ In this section, we will see the converging tendency of \eqref{eq:NewtonStepMPE2
 Let the MPE \eqref{eq:MPE} satisfy Assumption \ref{ass:MPE}, 
 and let $S$ be the minimal positive solution of \eqref{eq:MPE}.
 Then, $-\P'[S]$ is an irreducible $M$-matrix.
-Therefore, the eigenvalue $\mu$ of $-\P'[S]$ whose absolute value is the smallest in absolute values of all eigenvalues is nonnegative and simple by Perron-Frobenius Theorem in \cite{Horn1985}.
+Therefore, $\mu$ is a nonnegative and simple eigenvalue of $-\P'[S]$
+if $$\mu = \min\{|\l| : \l\text{ is an eigenvalue of }-\P'[S]\}$$
+by Perron-Frobenius Theorem in \cite{Horn1985}.
 
 Here, we think over an other MPE,
 \begin{equation}\label{eq:epsMPE}
